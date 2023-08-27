@@ -3,48 +3,60 @@ dotenv.config();
 import { Schema, model } from 'mongoose';
 import bcryptjs from 'bcryptjs';
 import cloudinary from '../../config/cloudinary/index.mjs';
-import jwt from 'jsonwebtoken'
+import jwt from 'jsonwebtoken';
 
-const Users = new Schema({
-  fullName: {
-    type: String,
-    default: '',
-    required: true,
-    trim: true,
+const Users = new Schema(
+  {
+    fullName: {
+      type: String,
+      default: '',
+      required: true,
+      trim: true,
+    },
+    username: {
+      type: String,
+      default: '',
+      required: true,
+      trim: true,
+      unique: true,
+    },
+    email: {
+      type: String,
+      default: '',
+      required: true,
+      trim: true,
+      unique: true,
+    },
+    phoneNumber: {
+      type: String,
+      default: '',
+      trim: true,
+    },
+    address: {
+      type: String,
+      default: '',
+    },
+    password: {
+      type: String,
+      default: '',
+      required: true,
+      trim: true,
+      minLength: 7,
+    },
+    avatar: {
+      type: String,
+      default:
+        'https://antimatter.vn/wp-content/uploads/2022/11/anh-avatar-trang-fb-mac-dinh.jpg',
+    },
+    roles: {
+      type: Schema.Types.ObjectId,
+      ref: 'roles',
+    },
   },
-  username: {
-    type: String,
-    default: '',
-    required: true,
-    trim: true,
-    unique: true,
-  },
-  email: {
-    type: String,
-    default: '',
-    required: true,
-    trim: true,
-    unique: true,
-  },
-  password: {
-    type: String,
-    default: '',
-    required: true,
-    trim: true,
-    minLength: 7,
-  },
-  avatar: {
-    type: String,
-    default:
-      'https://antimatter.vn/wp-content/uploads/2022/11/anh-avatar-trang-fb-mac-dinh.jpg',
-  },
-  roles: {
-    type: Schema.Types.ObjectId,
-    ref: 'employess'
+  {
+    timestamps: true,
   }
-}, {
-  timestamps: true
-});
+);
 
 Users.pre('save', async function (next) {
   const user = this;
@@ -54,7 +66,7 @@ Users.pre('save', async function (next) {
   next();
 });
 
-Users.methods.uploadFileToCloudinary = async function (file) { 
+Users.methods.uploadFileToCloudinary = async function (file) {
   const user = this;
   try {
     if (!file) {
@@ -82,12 +94,16 @@ Users.methods.uploadFileToCloudinary = async function (file) {
   }
 };
 
-Users.methods.generateAccessToken = function () { 
-  return jwt.sign({ _id: this._id }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '15m' });
+Users.methods.generateAccessToken = function () {
+  return jwt.sign({ _id: this._id }, process.env.ACCESS_TOKEN_SECRET, {
+    expiresIn: '15m',
+  });
 };
 
-Users.methods.generateRefreshToken = function () { 
-  return jwt.sign({ _id: this._id }, process.env.REFRESH_TOKEN_SECRET, { expiresIn: '365d' });
+Users.methods.generateRefreshToken = function () {
+  return jwt.sign({ _id: this._id }, process.env.REFRESH_TOKEN_SECRET, {
+    expiresIn: '365d',
+  });
 };
 
 Users.methods.addRole = async function (role) {
@@ -109,6 +125,5 @@ Users.methods.addRole = async function (role) {
     };
   }
 };
-
 
 export default model('users', Users);

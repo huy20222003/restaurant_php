@@ -1,15 +1,18 @@
 import authRouter from './authRouter.mjs';
-import todosRouter from './todosRouter.mjs';
-import userRouter from './userRouter.mjs';
-import labelRouter from './labelRouter.mjs';
-import adminRouter from './adminRouter.mjs';
+import dishesRouter from './dishesRouter.mjs';
+import categorysRouter from './categorysRouter.mjs';
+import cartsRouter from './cartsRouter.mjs';
+import employeesRouter from './employeesRouter.mjs';
+import adminAuthRouter from './adminAuthRouter.mjs';
+
 
 function routes(app) {
   app.use('/api/auth', authRouter);
-  app.use('/api/todos', todosRouter);
-  app.use('/api/user', userRouter);
-  app.use('/api/label', labelRouter);
-  app.use('/api/admin', adminRouter);
+  app.use('/api/auth/admin', adminAuthRouter);
+  app.use('/api/dishes', dishesRouter);
+  app.use('/api/category', categorysRouter);
+  app.use('/api/cart', cartsRouter);
+  app.use('/api/employee', employeesRouter);
 }
 
 export default routes;

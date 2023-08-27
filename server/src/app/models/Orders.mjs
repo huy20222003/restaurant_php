@@ -1,23 +1,26 @@
-import {Schema, model} from 'mongoose';
+import { Schema, model } from 'mongoose';
 
-const Orders = new Schema ({
+const Orders = new Schema(
+  {
     items: {
-        type: Array,
+      type: Array,
     },
-    total_prices: {
-        type: Number,
-        default: 0
+    totalPrices: {
+      type: Number,
+      default: 0,
     },
     status: {
-        type: String,
-        default: 'pending'
+      type: String,
+      default: 'pending',
     },
     userOrder: {
-        type: Schema.Types.ObjectId,
-        ref: 'users'
-    }
-}, {
-    timestamps: true
-});
+      type: Schema.Types.ObjectId,
+      ref: 'users',
+    },
+  },
+  {
+    timestamps: true,
+  }
+);
 
 export default model('orders', Orders);

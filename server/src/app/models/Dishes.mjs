@@ -1,33 +1,33 @@
-import {Schema, model} from 'mongoose';
+import { Schema, model } from 'mongoose';
 
-const Dishes = new Schema ({
+const Dishes = new Schema(
+  {
     name: {
-        type: String,
-        required: true,
+      type: String,
+      maxLength: 250,
+      required: true,
     },
     description: {
-        type: String,
-        default: '',
-        maxLength: 3000,
+      type: String,
+      default: '',
+      maxLength: 3000,
     },
     price: {
-        type: Number,
-        required: true,
-    }, 
+      type: Number,
+      required: true,
+    },
     category: {
-        type: String,
-        required: true,
+      type: String,
+      default: '',
     },
     image_url: {
-        type: String,
-        required: true,
+      type: String,
+      required: true,
     },
-    userCreate: {
-        type: Schema.Types.ObjectId,
-        ref: 'employess'
-    }
-}, {
-    timestamps: true
-});
+  },
+  {
+    timestamps: true,
+  }
+);
 
 export default model('dishes', Dishes);
