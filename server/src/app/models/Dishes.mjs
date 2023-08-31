@@ -24,6 +24,11 @@ const Dishes = new Schema(
       type: String,
       required: true,
     },
+    rate: {
+      type: String,
+      default: '0',
+      required: true
+    }
   },
   {
     timestamps: true,

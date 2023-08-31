@@ -11,10 +11,6 @@ const Roles = new Schema(
       type: Schema.Types.ObjectId,
       ref: 'users',
     },
-    employeeId: {
-      type: Schema.Types.ObjectId,
-      ref: 'employees',
-    },
   },
   {
     timestamps: true,

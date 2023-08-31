@@ -1,5 +1,11 @@
 @import 'normalize.css';
+@import '@fontsource/roboto/300.css';
+@import '@fontsource/roboto/400.css';
+@import '@fontsource/roboto/500.css';
+@import '@fontsource/roboto/700.css';
+
 
 html {
     font-size: 62.5%;
+    font-family: 'Roboto, san-serif';
 }

@@ -20,10 +20,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGU3Nzc0N
 
 ###
 
-POST http://localhost:3000/api/auth/admin/login
+GET http://localhost:3000/api/auth/account
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGU3NzhlNmZiNWQ5NmYxZmY3NzEwNjMiLCJpYXQiOjE2OTM0NjMxMzMsImV4cCI6MTY5MzQ2NDAzM30.4HeyRb6g_Dy2VhkLKQV6lHpKh0YAMhVknT8k4_Xhtws
 
-{
-    "username": "admin",
-    "password": "1234567"
-}

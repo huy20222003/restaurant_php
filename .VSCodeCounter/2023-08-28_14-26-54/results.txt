@@ -1,0 +1,127 @@
+Date : 2023-08-28 14:26:54
+Directory : c:\Users\21H1 HNQA\Documents\mern_web\restaurant
+Total : 64 files,  12357 codes, 11 comments, 274 blanks, all 12642 lines
+
+Languages
++----------------+------------+------------+------------+------------+------------+
+| language       | files      | code       | comment    | blank      | total      |
++----------------+------------+------------+------------+------------+------------+
+| JSON           |          6 |     10,741 |          0 |          4 |     10,745 |
+| JavaScript     |         29 |      1,057 |          9 |        185 |      1,251 |
+| JavaScript JSX |         21 |        427 |          2 |         61 |        490 |
+| CSS            |          4 |        111 |          0 |         18 |        129 |
+| HTML           |          1 |         13 |          0 |          1 |         14 |
+| Markdown       |          2 |          7 |          0 |          5 |         12 |
+| XML            |          1 |          1 |          0 |          0 |          1 |
++----------------+------------+------------+------------+------------+------------+
+
+Directories
++------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                       | files      | code       | comment    | blank      | total      |
++------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                          |         64 |     12,357 |         11 |        274 |     12,642 |
+| . (Files)                                                                                                  |          1 |          2 |          0 |          1 |          3 |
+| client                                                                                                     |         33 |      8,811 |          3 |         89 |      8,903 |
+| client (Files)                                                                                             |          6 |      8,266 |          1 |         10 |      8,277 |
+| client\public                                                                                              |          1 |          1 |          0 |          0 |          1 |
+| client\src                                                                                                 |         26 |        544 |          2 |         79 |        625 |
+| client\src (Files)                                                                                         |          3 |         36 |          1 |          6 |         43 |
+| client\src\Components                                                                                      |         11 |        172 |          0 |         32 |        204 |
+| client\src\Components\Button                                                                               |          3 |         53 |          0 |         12 |         65 |
+| client\src\Components\Copyright                                                                            |          2 |         20 |          0 |          3 |         23 |
+| client\src\Components\Form                                                                                 |          3 |         63 |          0 |         11 |         74 |
+| client\src\Components\Form\FormInput                                                                       |          3 |         63 |          0 |         11 |         74 |
+| client\src\Components\Loader                                                                               |          3 |         36 |          0 |          6 |         42 |
+| client\src\Contexts                                                                                        |          1 |        107 |          1 |         16 |        124 |
+| client\src\GlobalStyles                                                                                    |          2 |         13 |          0 |          5 |         18 |
+| client\src\Pages                                                                                           |          4 |        175 |          0 |          9 |        184 |
+| client\src\Pages\Dashboard                                                                                 |          2 |          7 |          0 |          2 |          9 |
+| client\src\Pages\Login                                                                                     |          2 |        168 |          0 |          7 |        175 |
+| client\src\Reducers                                                                                        |          3 |         31 |          0 |          7 |         38 |
+| client\src\Reducers\AuthReducer                                                                            |          3 |         31 |          0 |          7 |         38 |
+| client\src\constants                                                                                       |          1 |          1 |          0 |          1 |          2 |
+| client\src\utils                                                                                           |          1 |          9 |          0 |          3 |         12 |
+| server                                                                                                     |         30 |      3,544 |          8 |        184 |      3,736 |
+| server (Files)                                                                                             |          2 |      2,506 |          0 |          2 |      2,508 |
+| server\src                                                                                                 |         28 |      1,038 |          8 |        182 |      1,228 |
+| server\src (Files)                                                                                         |          2 |         33 |          5 |         10 |         48 |
+| server\src\app                                                                                             |         14 |        865 |          0 |        115 |        980 |
+| server\src\app\controllers                                                                                 |          7 |        506 |          0 |         80 |        586 |
+| server\src\app\models                                                                                      |          7 |        359 |          0 |         35 |        394 |
+| server\src\config                                                                                          |          2 |         27 |          0 |          6 |         33 |
+| server\src\config\cloudinary                                                                               |          1 |          9 |          0 |          3 |         12 |
+| server\src\config\database                                                                                 |          1 |         18 |          0 |          3 |         21 |
+| server\src\middleware                                                                                      |          2 |         41 |          3 |         12 |         56 |
+| server\src\routes                                                                                          |          8 |         72 |          0 |         39 |        111 |
++------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++------------------------------------------------------------------------------------------------------------+----------------+------------+------------+------------+------------+
+| filename                                                                                                   | language       | code       | comment    | blank      | total      |
++------------------------------------------------------------------------------------------------------------+----------------+------------+------------+------------+------------+
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurant\README.md                                                 | Markdown       |          2 |          0 |          1 |          3 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurant\client\.eslintrc.cjs                                      | JavaScript     |         20 |          0 |          1 |         21 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurant\client\README.md                                          | Markdown       |          5 |          0 |          4 |          9 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurant\client\index.html                                         | HTML           |         13 |          0 |          1 |         14 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurant\client\package-lock.json                                  | JSON           |      8,186 |          0 |          1 |      8,187 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurant\client\package.json                                       | JSON           |         37 |          0 |          1 |         38 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurant\client\public\vite.svg                                    | XML            |          1 |          0 |          0 |          1 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurant\client\src\.prettierrc                                    | JSON           |          6 |          0 |          0 |          6 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurant\client\src\App.jsx                                        | JavaScript JSX |         16 |          1 |          4 |         21 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurant\client\src\Components\Button\Button.jsx                   | JavaScript JSX |         15 |          0 |          3 |         18 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurant\client\src\Components\Button\Button.module.css            | CSS            |         37 |          0 |          8 |         45 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurant\client\src\Components\Button\index.jsx                    | JavaScript JSX |          1 |          0 |          1 |          2 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurant\client\src\Components\Copyright\Copyright.jsx             | JavaScript JSX |         19 |          0 |          3 |         22 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurant\client\src\Components\Copyright\index.jsx                 | JavaScript JSX |          1 |          0 |          0 |          1 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurant\client\src\Components\Form\FormInput\FormInput.jsx        | JavaScript JSX |         25 |          0 |          4 |         29 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurant\client\src\Components\Form\FormInput\FormInput.module.css | CSS            |         37 |          0 |          6 |         43 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurant\client\src\Components\Form\FormInput\index.jsx            | JavaScript JSX |          1 |          0 |          1 |          2 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurant\client\src\Components\Loader\Loader.jsx                   | JavaScript JSX |          6 |          0 |          3 |          9 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurant\client\src\Components\Loader\Loader.module.css            | CSS            |         29 |          0 |          2 |         31 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurant\client\src\Components\Loader\index.jsx                    | JavaScript JSX |          1 |          0 |          1 |          2 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurant\client\src\Contexts\AuthContext.jsx                       | JavaScript JSX |        107 |          1 |         16 |        124 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurant\client\src\GlobalStyles\GlobalStyles.css                  | CSS            |          8 |          0 |          2 |         10 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurant\client\src\GlobalStyles\GlobalStyles.jsx                  | JavaScript JSX |          5 |          0 |          3 |          8 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurant\client\src\Pages\Dashboard\Dashboard.jsx                  | JavaScript JSX |          6 |          0 |          2 |          8 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurant\client\src\Pages\Dashboard\index.jsx                      | JavaScript JSX |          1 |          0 |          0 |          1 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurant\client\src\Pages\Login\Login.jsx                          | JavaScript JSX |        167 |          0 |          6 |        173 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurant\client\src\Pages\Login\index.jsx                          | JavaScript JSX |          1 |          0 |          1 |          2 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurant\client\src\Reducers\AuthReducer\action.jsx                | JavaScript JSX |          7 |          0 |          2 |          9 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurant\client\src\Reducers\AuthReducer\constants.jsx             | JavaScript JSX |          1 |          0 |          1 |          2 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurant\client\src\Reducers\AuthReducer\reducer.jsx               | JavaScript JSX |         23 |          0 |          4 |         27 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurant\client\src\constants\index.jsx                            | JavaScript JSX |          1 |          0 |          1 |          2 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurant\client\src\main.jsx                                       | JavaScript JSX |         14 |          0 |          2 |         16 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurant\client\src\utils\setAuthToken.jsx                         | JavaScript JSX |          9 |          0 |          3 |         12 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurant\client\vite.config.js                                     | JavaScript     |          5 |          1 |          2 |          8 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurant\server\package-lock.json                                  | JSON           |      2,465 |          0 |          1 |      2,466 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurant\server\package.json                                       | JSON           |         41 |          0 |          1 |         42 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurant\server\src\.prettierrc                                    | JSON           |          6 |          0 |          0 |          6 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurant\server\src\app\controllers\AdminAuthController.mjs        | JavaScript     |        114 |          0 |         17 |        131 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurant\server\src\app\controllers\AuthController.mjs             | JavaScript     |        151 |          0 |         21 |        172 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurant\server\src\app\controllers\CartsController.mjs            | JavaScript     |         41 |          0 |         12 |         53 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurant\server\src\app\controllers\CategorysController.mjs        | JavaScript     |         49 |          0 |         10 |         59 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurant\server\src\app\controllers\DishesController.mjs           | JavaScript     |         49 |          0 |         10 |         59 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurant\server\src\app\controllers\Employees.mjs                  | JavaScript     |        102 |          0 |          9 |        111 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurant\server\src\app\controllers\OrdersController.mjs           | JavaScript     |          0 |          0 |          1 |          1 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurant\server\src\app\models\Carts.mjs                           | JavaScript     |         17 |          0 |          3 |         20 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurant\server\src\app\models\Categorys.mjs                       | JavaScript     |         18 |          0 |          3 |         21 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurant\server\src\app\models\Dishes.mjs                          | JavaScript     |         31 |          0 |          3 |         34 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurant\server\src\app\models\Employees.mjs                       | JavaScript     |        127 |          0 |         10 |        137 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurant\server\src\app\models\Orders.mjs                          | JavaScript     |         24 |          0 |          3 |         27 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurant\server\src\app\models\Roles.mjs                           | JavaScript     |         22 |          0 |          3 |         25 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurant\server\src\app\models\Users.mjs                           | JavaScript     |        120 |          0 |         10 |        130 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurant\server\src\config\cloudinary\index.mjs                    | JavaScript     |          9 |          0 |          3 |         12 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurant\server\src\config\database\index.mjs                      | JavaScript     |         18 |          0 |          3 |         21 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurant\server\src\index.mjs                                      | JavaScript     |         27 |          5 |         10 |         42 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurant\server\src\middleware\auth.mjs                            | JavaScript     |         21 |          3 |          5 |         29 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurant\server\src\middleware\authorizeRoles.mjs                  | JavaScript     |         20 |          0 |          7 |         27 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurant\server\src\routes\adminAuthRouter.mjs                     | JavaScript     |          9 |          0 |          6 |         15 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurant\server\src\routes\authRouter.mjs                          | JavaScript     |         10 |          0 |          6 |         16 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurant\server\src\routes\cartsRouter.mjs                         | JavaScript     |          8 |          0 |          5 |         13 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurant\server\src\routes\categorysRouter.mjs                     | JavaScript     |         10 |          0 |          6 |         16 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurant\server\src\routes\dishesRouter.mjs                        | JavaScript     |         10 |          0 |          6 |         16 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurant\server\src\routes\employeesRouter.mjs                     | JavaScript     |         10 |          0 |          5 |         15 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurant\server\src\routes\index.mjs                               | JavaScript     |         15 |          0 |          4 |         19 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurant\server\src\routes\ordersRouter.mjs                        | JavaScript     |          0 |          0 |          1 |          1 |
+| Total                                                                                                      |                |     12,357 |         11 |        274 |     12,642 |
++------------------------------------------------------------------------------------------------------------+----------------+------------+------------+------------+------------+
