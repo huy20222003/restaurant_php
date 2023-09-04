@@ -6,7 +6,7 @@ const dishApi = {
         return axiosConfig.get(url);
     },
     createEmployee: (data)=> {
-        const url = '/employee/create-employee';
+        const url = '/employee/create-emloyee';
         return axiosConfig.post(url, data);
     },
     deleteEmployee: (employeeId)=> {
