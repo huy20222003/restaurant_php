@@ -1,7 +1,8 @@
-import styles from './DefaultLayout.module.css';
-import Header from '../Components/User/Header';
-import Footer from '../Components/User/Footer';
+import styles from './DefaultLayoutUser.module.css';
+import Header from '../../Components/User/Header';
+import Footer from '../../Components/User/Footer';
 
+// eslint-disable-next-line react/prop-types
 const DefaultLayout = ({children}) => {
   return (
     <div>

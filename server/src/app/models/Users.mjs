@@ -38,7 +38,7 @@ const Users = new Schema(
     },
     password: {
       type: String,
-      default: '',
+      default: '1234567',
       required: true,
       trim: true,
       minLength: 7,

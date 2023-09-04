@@ -37,3 +37,10 @@
   color: white;
   font-size: 1.4rem;
 }
+
+@media only screen and (max-width: 740px) {
+  .searchContainer {
+    width: 30rem;
+    margin: 2rem 0;
+  }
+}

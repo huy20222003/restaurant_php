@@ -8,10 +8,10 @@ class EmployeeController {
       res.status(200).json({
         success: true,
         message: 'Retrieve employee data successfully!',
-        data: employees,
+        employees,
       });
     } catch (error) {
-      res.status(500).json({ success: false, error: 'Internal server error' });
+      res.status(500).json({ success: false, message: 'Internal server error' });
     }
   }
 
@@ -29,7 +29,7 @@ class EmployeeController {
       ) {
         return res
           .status(400)
-          .json({ success: false, error: 'Required fields missing' });
+          .json({ success: false, message: 'Required fields missing' });
       }
 
       const newEmployee = new Employees({
@@ -45,10 +45,10 @@ class EmployeeController {
       res.status(201).json({
         success: true,
         message: 'Employee added successfully!',
-        data: newEmployee,
+        employee: newEmployee,
       });
     } catch (error) {
-      res.status(400).json({ success: false, error: 'Bad request' });
+      res.status(400).json({ success: false, message: 'Bad request' });
     }
   }
 
@@ -62,7 +62,7 @@ class EmployeeController {
       if (!updatedEmployee) {
         return res
           .status(404)
-          .json({ success: false, error: 'Employee not found' });
+          .json({ success: false, message: 'Employee not found' });
       }
       console.log(updatedEmployee)
 
@@ -75,7 +75,7 @@ class EmployeeController {
       ) {
         return res
           .status(400)
-          .json({ success: false, error: 'Required fields missing' });
+          .json({ success: false, message: 'Required fields missing' });
       }
 
       res.json({
@@ -84,7 +84,7 @@ class EmployeeController {
         data: updatedEmployee,
       });
     } catch (error) {
-      res.status(400).json({ success: false, error: 'Bad request' });
+      res.status(400).json({ success: false, message: 'Bad request' });
     }
   }
 
@@ -94,7 +94,7 @@ class EmployeeController {
       if (!deletedEmployee) {
         return res
           .status(404)
-          .json({ success: false, error: 'Employee not found' });
+          .json({ success: false, message: 'Employee not found' });
       }
       res.json({
         success: true,
@@ -102,7 +102,7 @@ class EmployeeController {
         data: deletedEmployee,
       });
     } catch (error) {
-      res.status(400).json({ success: false, error: 'Bad request' });
+      res.status(400).json({ success: false, message: 'Bad request' });
     }
   }
 }

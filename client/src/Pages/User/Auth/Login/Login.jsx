@@ -10,20 +10,31 @@ import {
   Box,
   Grid,
   Typography,
+  InputAdornment,
+  IconButton,
 } from '@mui/material';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import AccountCircle from '@mui/icons-material/AccountCircle';
+import LockIcon from '@mui/icons-material/Lock';
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Cookies from 'js-cookie';
+import { toast } from 'react-toastify';
 import { AuthContext } from '../../../../Contexts/AuthContext';
 import Copyright from '../../../../Components/Copyright';
-import Cookies from 'js-cookie';
 
 const defaultTheme = createTheme();
 
 const Login = () => {
+  document.title = 'Đăng nhập tài khoản';
   const { loginUser } = useContext(AuthContext);
   const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleClickShowPassword = () => setShowPassword((show) => !show);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -35,16 +46,17 @@ const Login = () => {
     try {
       const loginData = await loginUser(loginForm);
       if (!loginData.success) {
-        console.log(loginData);
+        toast.error(loginData.message);
       } else {
         const expiration = new Date();
         expiration.setTime(expiration.getTime() + 15 * 60 * 1000);
         Cookies.set('user', loginData.accessToken, { expires: expiration });
         Cookies.set('refresh', loginData.refreshToken, { expires: 365 });
+        toast.success(loginData.message);
         navigate('/');
       }
     } catch (error) {
-      console.log(error);
+      toast.error('Server Error');
     }
   };
 
@@ -95,24 +107,45 @@ const Login = () => {
                 required
                 fullWidth
                 id="username"
-                label="Username"
+                label="Tài khoản"
                 name="username"
                 autoComplete="username"
                 autoFocus
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <AccountCircle />
+                    </InputAdornment>
+                  ),
+                }}
               />
               <TextField
                 margin="normal"
                 required
                 fullWidth
                 name="password"
-                label="Password"
-                type="password"
+                label="Mật khẩu"
+                type={showPassword ? 'text' : 'password'}
                 id="password"
                 autoComplete="current-password"
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <LockIcon />
+                    </InputAdornment>
+                  ),
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <IconButton onClick={handleClickShowPassword} edge="end">
+                        {showPassword ? <VisibilityOff /> : <Visibility />}
+                      </IconButton>
+                    </InputAdornment>
+                  ),
+                }}
               />
               <FormControlLabel
                 control={<Checkbox value="remember" color="primary" />}
-                label="Remember me"
+                label="Nhớ tôi"
               />
               <Button
                 type="submit"
@@ -129,7 +162,7 @@ const Login = () => {
                     variant="body2"
                     sx={{ textDecoration: 'none' }}
                   >
-                    Forgot password?
+                    Quên mật khẩu?
                   </Link>
                 </Grid>
                 <Grid item>
@@ -138,7 +171,7 @@ const Login = () => {
                     variant="body2"
                     sx={{ textDecoration: 'none' }}
                   >
-                    {"Don't have an account? Sign Up"}
+                    Bạn chưa có tài khoản? Đăng ký ngay
                   </Link>
                 </Grid>
               </Grid>

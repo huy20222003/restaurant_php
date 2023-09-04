@@ -7,17 +7,27 @@ import Roles from '../models/Roles.mjs';
 dotenv.config();
 
 class AuthController {
-  async getProfile(req, res) {
+  async getUserProfile(req, res) {
     try {
-      const admin = await Employees.findById(req._id).select('-password');
+      const user = await Employees.findById(req._id).select('-password');
       if (!user) {
         return res
           .status(404)
           .json({ success: false, message: 'User not found!' });
       }
-      return res
-        .status(200)
-        .json({ success: true, message: 'User found!', data: admin });
+      const role = await Roles.findById(user.roles);
+
+      if (!role) {
+        return res
+          .status(404)
+          .json({ success: false, message: 'Role not found' });
+      }
+      return res.status(200).json({
+        success: true,
+        message: 'User found!',
+        user,
+        role: role.name,
+      });
     } catch (error) {
       res.status(500).json({
         success: false,
@@ -37,16 +47,16 @@ class AuthController {
     }
 
     try {
-      const admin = await Employees.findOne({ username });
+      const user = await Employees.findOne({ username });
 
-      if (!admin) {
+      if (!user) {
         return res.status(401).json({
           success: false,
           message: 'Invalid username or password!',
         });
       }
 
-      const passwordMatch = await bcryptjs.compare(password, admin.password);
+      const passwordMatch = await bcryptjs.compare(password, user.password);
 
       if (!passwordMatch) {
         return res.status(401).json({
@@ -55,14 +65,14 @@ class AuthController {
         });
       }
 
-      const role = await Roles.findById(admin.roles);
+      const role = await Roles.findById(user.roles);
 
       if (!role) {
         return res.status(404).json({ message: 'Role not found' });
       }
 
-      const accessToken = admin.generateAccessToken();
-      const refreshToken = admin.generateRefreshToken();
+      const accessToken = user.generateAccessToken();
+      const refreshToken = user.generateRefreshToken();
 
       return res.status(201).json({
         success: true,
@@ -82,40 +92,40 @@ class AuthController {
 
   async refreshToken(req, res) {
     try {
-      const refreshToken = req.body.refreshToken;
+      const { refreshToken } = req.body;
       if (!refreshToken) {
         return res.status(401).json({
           success: false,
           message: 'RefreshToken not found.',
         });
-      }
+      } else {
+        try {
+          const decoded = jwt.verify(
+            refreshToken,
+            process.env.REFRESH_TOKEN_SECRET
+          );
 
-      try {
-        const decoded = jwt.verify(
-          refreshToken,
-          process.env.REFRESH_TOKEN_SECRET
-        );
+          if (!decoded) {
+            return res.status(403).json({
+              success: false,
+              message: 'RefreshToken is invalid.',
+            });
+          } else {
+            const user = await Employees.findById(decoded._id);
+            const accessToken = user.generateAccessToken();
 
-        if (!decoded) {
+            return res.status(200).json({
+              success: true,
+              message: 'New AccessToken generated!',
+              accessToken,
+            });
+          }
+        } catch (verifyError) {
           return res.status(403).json({
             success: false,
             message: 'RefreshToken is invalid.',
           });
-        } else {
-          const admin = await Employees.findById(decoded._id);
-          const accessToken = admin.generateAccessToken();
-
-          return res.status(200).json({
-            success: true,
-            message: 'New AccessToken generated!',
-            data: accessToken,
-          });
         }
-      } catch (verifyError) {
-        return res.status(403).json({
-          success: false,
-          message: 'RefreshToken is invalid.',
-        });
       }
     } catch (error) {
       res.status(500).json({

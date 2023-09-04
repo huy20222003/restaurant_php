@@ -1,32 +1,65 @@
-import { Badge, Container, Box, Typography, Divider } from '@mui/material';
+import {
+  Badge,
+  Container,
+  Box,
+  Typography,
+  Divider,
+  Avatar,
+  Menu,
+  MenuItem,
+} from '@mui/material';
 import styles from './Header.module.css';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { Link } from 'react-router-dom';
 import styled from '@emotion/styled';
 import Search from '../Search';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../Contexts/AuthContext';
 
-const CustomTabContainer = styled('div')(({ theme }) => ({
-  padding: '0.4rem 1rem',
-  cursor: 'pointer',
-}));
+const CustomTabContainer = styled('div')`
+  && {
+    padding: 0.4rem 1rem;
+    cursor: pointer;
+  }
+`;
 
-const CustomTabTitle = styled('p')(({ theme }) => ({
-  fontSize: '1.4rem',
-  '&:hover': {
-    color: '#f16c12',
-  },
-  textTransform: 'uppercase',
-  fontFamily: 'Roboto, san-serif',
-}));
+const CustomTabTitle = styled('p')`
+  && {
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    font-family: Roboto, sans-serif;
+    &:hover {
+      color: #f16c12; // Màu khi hover
+    }
+  }
+`;
 
 const Header = () => {
   const {
     authState: { user, isAuthenticated },
+    logoutUser,
   } = useContext(AuthContext);
 
-  console.log(isAuthenticated);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
+  const navigate = useNavigate();
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const handleLogout = () => {
+    logoutUser();
+    handleClose();
+  };
+
+  const hadleNavigateCart = () => {
+    navigate('/user/cart');
+  };
 
   return (
     <div>
@@ -41,7 +74,71 @@ const Header = () => {
           <Search />
           <div className={styles.btnContainer}>
             {isAuthenticated ? (
-              <Typography>{user?.username}</Typography>
+              <Box sx={{ mx: '1rem' }}>
+                <Avatar
+                  alt="avatar"
+                  src={user?.avatar}
+                  onClick={handleClick}
+                  sx={{ cursor: 'pointer' }}
+                />
+                <Menu
+                  id="basic-menu"
+                  anchorEl={anchorEl}
+                  open={open}
+                  onClose={handleClose}
+                  MenuListProps={{
+                    'aria-labelledby': 'basic-button',
+                  }}
+                >
+                  <MenuItem
+                    sx={{ fontSize: '1.2rem', fontWeight: 500 }}
+                    onClick={handleClose}
+                  >
+                    <Link
+                      to="/"
+                      style={{ textDecoration: 'none', color: '#000' }}
+                    >
+                      Trang chủ
+                    </Link>
+                  </MenuItem>
+                  <MenuItem
+                    sx={{ fontSize: '1.2rem', fontWeight: 500 }}
+                    onClick={handleClose}
+                  >
+                    <Link
+                      to="/user/profile"
+                      style={{ textDecoration: 'none', color: '#000' }}
+                    >
+                      Thông tin cá nhân
+                    </Link>
+                  </MenuItem>
+                  <MenuItem
+                    sx={{ fontSize: '1.2rem', fontWeight: 500 }}
+                    onClick={handleClose}
+                  >
+                    <Link
+                      to="/user/account"
+                      style={{ textDecoration: 'none', color: '#000' }}
+                    >
+                      Tài khoản của tôi
+                    </Link>
+                  </MenuItem>
+                  <MenuItem
+                    sx={{ fontSize: '1.2rem', fontWeight: 500 }}
+                    onClick={handleLogout}
+                  >
+                    <Link
+                      to="/"
+                      style={{ textDecoration: 'none', color: '#000' }}
+                    >
+                      Đăng xuất
+                    </Link>
+                  </MenuItem>
+                </Menu>
+                {/* <Typography sx={{fontSize: '1.4rem', marginLeft: '1rem'}}>
+                  {user?.username}
+                </Typography> */}
+              </Box>
             ) : (
               <div className={styles.btnAuthencation}>
                 <Link
@@ -59,12 +156,20 @@ const Header = () => {
                 </Link>
               </div>
             )}
-            <div className={styles.btnCart}>
-              <Badge badgeContent={1} color="primary" sx={{ fontSize: '1rem' }}>
-                <ShoppingCartIcon color="#fff" sx={{ fontSize: 20 }} />
-              </Badge>
-              <Typography>Giỏ hàng</Typography>
-            </div>
+            {isAuthenticated ? (
+              <div className={styles.btnCart} onClick={hadleNavigateCart}>
+                <Badge
+                  badgeContent={1}
+                  color="primary"
+                  sx={{ fontSize: '1rem' }}
+                >
+                  <ShoppingCartIcon color="#fff" sx={{ fontSize: 20 }} />
+                </Badge>
+                <Typography>Giỏ hàng</Typography>
+              </div>
+            ) : (
+              ''
+            )}
           </div>
         </div>
         <Box
@@ -81,6 +186,14 @@ const Header = () => {
           </CustomTabContainer>
           <CustomTabContainer>
             <Link
+              to="/about"
+              style={{ textDecoration: 'none', color: 'black' }}
+            >
+              <CustomTabTitle>Giới thiệu</CustomTabTitle>
+            </Link>
+          </CustomTabContainer>
+          <CustomTabContainer>
+            <Link
               to="/dishes"
               style={{ textDecoration: 'none', color: 'black' }}
             >
@@ -93,11 +206,6 @@ const Header = () => {
               style={{ textDecoration: 'none', color: 'black' }}
             >
               <CustomTabTitle>Dịch vụ</CustomTabTitle>
-            </Link>
-          </CustomTabContainer>
-          <CustomTabContainer>
-            <Link to="/sale" style={{ textDecoration: 'none', color: 'black' }}>
-              <CustomTabTitle>Khuyến mại</CustomTabTitle>
             </Link>
           </CustomTabContainer>
           <CustomTabContainer>

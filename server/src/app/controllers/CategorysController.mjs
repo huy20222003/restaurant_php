@@ -4,7 +4,7 @@ class CategoryController {
     async getAllCategories(req, res) {
         try {
             const categories = await Categorys.find({});
-            res.status(200).json({ success: true, message: 'Retrieve category data successfully!', data: categories });
+            res.status(200).json({ success: true, message: 'Retrieve category data successfully!', categories });
         } catch (error) {
             res.status(500).json({ success: false, error: 'Internal server error' });
         }
@@ -19,7 +19,7 @@ class CategoryController {
             }
 
             const savedCategory = await newCategory.save();
-            res.status(201).json({ success: true, message: 'Category added successfully!', data: savedCategory });
+            res.status(201).json({ success: true, message: 'Category added successfully!', category: savedCategory });
         } catch (error) {
             res.status(400).json({ success: false, error: 'Bad request' });
         }
@@ -36,7 +36,7 @@ class CategoryController {
                 return res.status(400).json({ success: false, error: 'Category name is required' });
             }
 
-            res.status(201).json({ success: true, message: 'Category updated successfully!', data: updatedCategory });
+            res.status(201).json({ success: true, message: 'Category updated successfully!', updatedCategory });
         } catch (error) {
             res.status(400).json({ success: false, error: 'Bad request' });
         }
@@ -48,7 +48,7 @@ class CategoryController {
             if (!deletedCategory) {
                 return res.status(404).json({ success: false, error: 'Category not found' });
             }
-            res.status(201).json({ success: true, message: 'Category deleted successfully!', data: deletedCategory });
+            res.status(201).json({ success: true, message: 'Category deleted successfully!', deletedCategory });
         } catch (error) {
             res.status(400).json({ success: false, error: 'Bad request' });
         }

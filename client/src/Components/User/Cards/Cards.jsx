@@ -20,8 +20,8 @@ const Cards = () => {
               <LocalShippingIcon sx={{fontSize: '5rem', color: '#f16c12'}} />
             </CardMedia>
             <CardContent>
-              <Typography variant="h5">MIỄN PHÍ VẬN CHUYỂN</Typography>
-              <Typography variant="p" sx={{fontSize: '1.2rem'}}>
+              <Typography variant='h5'>MIỄN PHÍ VẬN CHUYỂN</Typography>
+              <Typography variant="body2" sx={{fontSize: '1.2rem'}}>
                 Chúng tôi vận chuyển miễn phí với đơn hàng trị giá trên
                 1.000.000đ
               </Typography>
@@ -35,7 +35,7 @@ const Cards = () => {
             </CardMedia>
             <CardContent>
               <Typography variant="h5">HỖ TRỢ ONLINE 24/24</Typography>
-              <Typography variant="p" sx={{fontSize: '1.2rem'}}>
+              <Typography variant="body2" sx={{fontSize: '1.2rem'}}>
                 Đội tư vấn của chúng tôi luôn sẵn sàng hỗ trợ khi bạn gặp khó
                 khăn
               </Typography>
@@ -48,8 +48,8 @@ const Cards = () => {
               <CardGiftcardRoundedIcon sx={{fontSize: '5rem', color: '#f16c12'}} />
             </CardMedia>
             <CardContent>
-              <Typography variant="h5">QUÀ TẶNG CUỐI TUẦN</Typography>
-              <Typography variant="p" sx={{fontSize: '1.2rem'}}>
+              <Typography variant='h5'>QUÀ TẶNG CUỐI TUẦN</Typography>
+              <Typography variant="body2" sx={{fontSize: '1.2rem'}}>
                 Khuyến mại lớn, rinh quà tặng với mỗi thứ 7 và chủ nhật hàng
                 tuần
               </Typography>

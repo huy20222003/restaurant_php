@@ -18,15 +18,16 @@ class AuthController {
       const role = await Roles.findById(user.roles);
 
       if (!role) {
-        return res.status(404).json({ message: 'Role not found' });
+        return res
+          .status(404)
+          .json({ success: false, message: 'Role not found' });
       }
-      return res
-        .status(200)
-        .json({
-          success: true,
-          message: 'User found!',
-          data: { user, role: role.name },
-        });
+      return res.status(200).json({
+        success: true,
+        message: 'User found!',
+        user,
+        role: role.name,
+      });
     } catch (error) {
       res.status(500).json({
         success: false,
@@ -117,7 +118,9 @@ class AuthController {
       return res.status(201).json({
         success: true,
         message: 'Logged in successfully!',
-        data: { accessToken, refreshToken, role: role.name },
+        accessToken,
+        refreshToken,
+        role: role.name,
       });
     } catch (error) {
       res.status(500).json({
@@ -156,7 +159,7 @@ class AuthController {
           return res.status(200).json({
             success: true,
             message: 'New AccessToken generated!',
-            data: accessToken,
+            accessToken,
           });
         }
       } catch (verifyError) {

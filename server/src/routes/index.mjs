@@ -4,6 +4,7 @@ import categorysRouter from './categorysRouter.mjs';
 import cartsRouter from './cartsRouter.mjs';
 import employeesRouter from './employeesRouter.mjs';
 import adminAuthRouter from './adminAuthRouter.mjs';
+import userRouter from './usersRouter.mjs';
 
 
 function routes(app) {
@@ -13,6 +14,7 @@ function routes(app) {
   app.use('/api/category', categorysRouter);
   app.use('/api/cart', cartsRouter);
   app.use('/api/employee', employeesRouter);
+  app.use('/api/user', userRouter);
 }
 
 export default routes;

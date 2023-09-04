@@ -10,24 +10,22 @@ import {
   Grid,
   Typography,
   Container,
-  Alert,
-  AlertTitle,
-  Collapse,
 } from '@mui/material';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Cookies from 'js-cookie';
+import {toast} from 'react-toastify';
 import { AuthContext } from '../../../../Contexts/AuthContext';
 import Copyright from '../../../../Components/Copyright';
 
 const defaultTheme = createTheme();
 
 const AdminLogin = () => {
+  document.title = 'Đăng nhập tài khoản Admin';
     const { loginAdmin } = useContext(AuthContext);
     const navigate = useNavigate();
-    const [open, setOpen] = useState(false);
-    const [alertInfo, setAlertInfo] = useState({});
   
     const handleSubmit = async (e) => {
       e.preventDefault();
@@ -39,41 +37,22 @@ const AdminLogin = () => {
       try {
         const loginData = await loginAdmin(loginForm);
         if (!loginData.success) {
-          setAlertInfo({
-            type: 'error',
-            message: loginData.message
-          });
-          setOpen(true);
+          toast.error(loginData.message);
         } else {
-          setAlertInfo({
-            type: 'success',
-            message: loginData.message
-          });
-          setOpen(true);
-          navigate('/admin/dashboard');
+          const expiration = new Date();
+          expiration.setTime(expiration.getTime() + 15 * 60 * 1000);
+          Cookies.set('user', loginData.accessToken, { expires: expiration });
+          Cookies.set('refresh', loginData.refreshToken, { expires: 365 });
+          toast.success(loginData.message);
+          navigate('/admin');
         }
       } catch (error) {
-        setAlertInfo({
-          type: 'error',
-          message: 'Server Error'
-        });
-        setOpen(true);
+        toast.error('Server Error');
       }
     };
 
   return (
     <ThemeProvider theme={defaultTheme}>
-      <Collapse in={open} sx={{ position: 'relative' }}>
-        <Alert
-          severity={alertInfo.type}
-          onClose={() => {
-            setOpen(false);
-          }}
-        >
-          <AlertTitle>{alertInfo.type}</AlertTitle>
-          {alertInfo.message}
-        </Alert>
-      </Collapse>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box

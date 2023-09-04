@@ -5,10 +5,11 @@ import { initStateAuth, reducer } from '../Reducers/AuthReducer/reducer';
 import { API_URL } from '../constants';
 import { setAuth } from '../Reducers/AuthReducer/action';
 import setAuthToken from '../utils/setAuthToken';
+import authApi from '../Service/authApi';
 
 export const AuthContext = createContext();
 
-export const AuthProvider = ({ children }) => {
+export const AuthProvider = (prop) => {
   const [authState, dispatch] = useReducer(reducer, initStateAuth);
 
   const handleError = (error) => {
@@ -29,20 +30,26 @@ export const AuthProvider = ({ children }) => {
       if (!accessToken) {
         setAuthenticatedUser(false, null, null);
         return;
-      } else {
-        setAuthToken(accessToken);
-        const response = await axios.get(`${API_URL}/auth/account`);
+      }
 
-        if (response.data.success) {
-          setAuthenticatedUser(true, response.data.data.user, response.data.data.role);
-        } else {
-          setAuthenticatedUser(false, null, null);
-          Cookies.remove('user');
-          setAuthToken(null);
-        }
+      setAuthToken(accessToken);
+
+      let accountUrl = `${API_URL}/auth/account`;
+      if (window.location.href.includes('admin')) {
+        accountUrl = `${API_URL}/auth/admin/account`;
+      }
+
+      const response = await axios.get(accountUrl);
+
+      if (response.data.success) {
+        setAuthenticatedUser(true, response.data.user, response.data.role);
+      } else {
+        setAuthenticatedUser(false, null, null);
+        Cookies.remove('user');
+        setAuthToken(null);
       }
     } catch (error) {
-      setAuthenticatedUser(false, null);
+      setAuthenticatedUser(false, null, null);
     }
   }, []);
 
@@ -52,10 +59,7 @@ export const AuthProvider = ({ children }) => {
 
   const registerUser = async (registerForm) => {
     try {
-      const response = await axios.post(
-        `${API_URL}/auth/register`,
-        registerForm
-      );
+      const response = await authApi.register(registerForm);
       await loadUser();
       return response.data;
     } catch (error) {
@@ -65,7 +69,7 @@ export const AuthProvider = ({ children }) => {
 
   const loginUser = async (loginForm) => {
     try {
-      const response = await axios.post(`${API_URL}/auth/login`, loginForm);
+      const response = await authApi.login(loginForm);
       await loadUser();
       return response.data;
     } catch (error) {
@@ -75,7 +79,7 @@ export const AuthProvider = ({ children }) => {
 
   const loginAdmin = async (loginForm) => {
     try {
-      const response = await axios.post(`${API_URL}/auth/admin/login`, loginForm);
+      const response = await authApi.loginAdmin(loginForm);
       await loadUser();
       return response.data;
     } catch (error) {
@@ -85,32 +89,34 @@ export const AuthProvider = ({ children }) => {
 
   const logoutUser = () => {
     Cookies.remove('user');
-    setAuthenticatedUser(false, null);
+    setAuthenticatedUser(false, null, null);
   };
 
   const handleRefreshToken = useCallback(async () => {
     try {
       const refreshToken = Cookies.get('refresh');
-      if (!refreshToken) {
-        return;
-      } else {
-        const response = await axios.post(`${API_URL}/auth/refresh`, {
+      if (refreshToken) {
+        const accountUrl = window.location.href.includes('admin')
+          ? `${API_URL}/auth/admin/refresh`
+          : `${API_URL}/auth/refresh`;
+
+        const response = await axios.post(accountUrl, {
           refreshToken,
         });
 
-        if (response.data.success) {
-          const expiration = new Date();
-          expiration.setTime(expiration.getTime() + 15 * 60 * 1000);
-          Cookies.set('user', response.data.data, {
-            expires: expiration,
-          });
-          await loadUser();
-        }
+        const newToken = response.data.accessToken;
+
+        // Lưu token mới vào cookie
+        const expiration = new Date();
+        expiration.setTime(expiration.getTime() + 15 * 60 * 1000);
+        Cookies.set('user', newToken, {
+          expires: expiration,
+        });
       }
     } catch (error) {
       return handleError(error);
     }
-  }, [loadUser]);
+  }, []);
 
   //Tự động handle refreshToken mỗi khi loadUser
   useEffect(() => {
@@ -128,7 +134,7 @@ export const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider value={AuthContextData}>
-      {children}
+      {prop.children}
     </AuthContext.Provider>
   );
 };
