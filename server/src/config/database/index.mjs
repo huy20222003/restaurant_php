@@ -7,8 +7,7 @@ async function connectDB() {
     connect(
       `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.uztxur5.mongodb.net/restaurant?retryWrites=true&w=majority`,
       {
-        useNewUrlParser: true,
-        useUnifiedTopology: true
+        useNewUrlParser: true
       }
     );
     console.log('Connect sucessfully');
