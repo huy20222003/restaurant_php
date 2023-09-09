@@ -13,11 +13,8 @@ import componentsOverride from './overrides';
 
 // ----------------------------------------------------------------------
 
-ThemeProviders.propTypes = {
-  children: PropTypes.node,
-};
 
-export default function ThemeProviders ({ children }) {
+const ThemeProviders = ({ children })=> {
   const themeOptions = useMemo(
     () => ({
       palette,
@@ -42,3 +39,9 @@ export default function ThemeProviders ({ children }) {
     </StyledEngineProvider>
   );
 }
+
+ThemeProviders.propTypes = {
+  children: PropTypes.node,
+};
+
+export default ThemeProviders;
