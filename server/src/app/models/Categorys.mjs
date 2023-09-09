@@ -7,10 +7,10 @@ const Categorys = new Schema(
       maxLength: 250,
       required: true,
     },
-    items: {
-      type: Array,
-      required: true,
-    },
+    description: {
+      type: String,
+      maxLength: 3000,
+    }
   },
   {
     timestamps: true,

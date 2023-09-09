@@ -6,9 +6,9 @@ import authorizeRoles from '../middleware/authorizeRoles.mjs';
 
 import UsersController from '../app/controllers/UsersController.mjs';
 
-router.get('/', UsersController.getAllUser);
-router.get('/:_id', UsersController.getSingleUser);
-router.post('/create-user', UsersController.createUser);
-router.delete('/delete-user/:_id', UsersController.deleteUserById);
+router.get('/', authVerify, authorizeRoles(['admin', 'employee']), UsersController.getAllUser);
+router.get('/:_id',authVerify, authorizeRoles(['admin', 'employee']), UsersController.getSingleUser);
+router.post('/create-user', authVerify, authorizeRoles(['admin', 'employee']), UsersController.createUser);
+router.delete('/delete-user/:_id', authVerify, authorizeRoles(['admin', 'employee']), UsersController.deleteUserById);
 
 export default router;

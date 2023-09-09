@@ -1,7 +1,7 @@
 import { Schema, model } from 'mongoose';
 import cloudinary from '../../config/cloudinary/index.mjs';
 
-const Dishes = new Schema(
+const Products = new Schema(
   {
     name: {
       type: String,
@@ -17,12 +17,21 @@ const Dishes = new Schema(
       type: Number,
       required: true,
     },
-    category: {
+    priceSale: {
+      type: Number,
+      default: ''
+    },
+    status: {
       type: String,
-      default: '',
+      enum: ['sale', 'new'],
+      default: 'new'
+    },
+    category: {
+      type: Schema.Types.ObjectId,
+      required: true
     },
     image_url: {
-      type: String,
+      type: Array,
       required: true,
     },
     rate: {
@@ -35,7 +44,7 @@ const Dishes = new Schema(
   }
 );
 
-Dishes.statics.uploadFileToCloudinary  = async function (image_url) {
+Products.statics.uploadFileToCloudinary  = async function (image_url) {
   try {
     if (!image_url) {
       return {
@@ -60,4 +69,4 @@ Dishes.statics.uploadFileToCloudinary  = async function (image_url) {
   }
 };
 
-export default model('dishes', Dishes);
+export default model('products', Products);

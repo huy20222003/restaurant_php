@@ -7,10 +7,6 @@ const Roles = new Schema(
       maxLength: 250,
       required: true,
     },
-    userId: {
-      type: Schema.Types.ObjectId,
-      ref: 'users',
-    },
   },
   {
     timestamps: true,

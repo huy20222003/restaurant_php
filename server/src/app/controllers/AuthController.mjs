@@ -57,8 +57,6 @@ class AuthController {
       }
 
       const newUser = new Users({ fullName, username, email, password });
-      const role = new Roles({ name: 'user' });
-      newUser.addRole(role);
 
       const accessToken = newUser.generateAccessToken();
       const refreshToken = newUser.generateRefreshToken();

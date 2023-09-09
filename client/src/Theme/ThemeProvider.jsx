@@ -17,7 +17,7 @@ ThemeProvider.propTypes = {
   children: PropTypes.node,
 };
 
-export default function ThemeProvider({ children }) {
+const ThemeProvider = ({ children })=> {
   const themeOptions = useMemo(
     () => ({
       palette,
@@ -42,3 +42,5 @@ export default function ThemeProvider({ children }) {
     </StyledEngineProvider>
   );
 }
+
+export default ThemeProvider;

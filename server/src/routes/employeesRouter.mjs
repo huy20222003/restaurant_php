@@ -3,7 +3,7 @@ const router = Router();
 import authVerify from '../middleware/auth.mjs';
 import authorizeRoles from '../middleware/authorizeRoles.mjs';
 
-import Employees from '../app/controllers/Employees.mjs';
+import Employees from '../app/controllers/EmployeesController.mjs';
 
 router.get('/', authVerify, authorizeRoles(['admin']), Employees.getAllEmployees);
 router.post('/create-emloyee', authVerify, authorizeRoles(['admin']), Employees.addEmployee);
