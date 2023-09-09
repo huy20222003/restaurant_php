@@ -50,6 +50,8 @@ const FormDialogCategory = ({ fields, handleCreate }) => {
             value={formData[field.name] || ''}
             onChange={handleFieldChange}
             required
+            multiline
+            rows={field.row}
           />
         ))}
       </DialogContent>

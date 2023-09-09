@@ -92,36 +92,36 @@ export const AuthProvider = (prop) => {
     setAuthenticatedUser(false, null, null);
   };
 
-  const handleRefreshToken = useCallback(async () => {
-    try {
-      const refreshToken = Cookies.get('refresh');
-      if (refreshToken) {
-        const accountUrl = window.location.href.includes('admin')
-          ? `${API_URL}/auth/admin/refresh`
-          : `${API_URL}/auth/refresh`;
+  // const handleRefreshToken = useCallback(async () => {
+  //   try {
+  //     const refreshToken = Cookies.get('refresh');
+  //     if (refreshToken) {
+  //       const accountUrl = window.location.href.includes('admin')
+  //         ? `${API_URL}/auth/admin/refresh`
+  //         : `${API_URL}/auth/refresh`;
 
-        const response = await axios.post(accountUrl, {
-          refreshToken,
-        });
+  //       const response = await axios.post(accountUrl, {
+  //         refreshToken,
+  //       });
 
-        const newToken = response.data.accessToken;
+  //       const newToken = response.data.accessToken;
 
-        // Lưu token mới vào cookie
-        const expiration = new Date();
-        expiration.setTime(expiration.getTime() + 15 * 60 * 1000);
-        Cookies.set('user', newToken, {
-          expires: expiration,
-        });
-      }
-    } catch (error) {
-      return handleError(error);
-    }
-  }, []);
+  //       // Lưu token mới vào cookie
+  //       const expiration = new Date();
+  //       expiration.setTime(expiration.getTime() + 15 * 60 * 1000);
+  //       Cookies.set('user', newToken, {
+  //         expires: expiration,
+  //       });
+  //     }
+  //   } catch (error) {
+  //     return handleError(error);
+  //   }
+  // }, []);
 
-  //Tự động handle refreshToken mỗi khi loadUser
-  useEffect(() => {
-    handleRefreshToken();
-  }, [handleRefreshToken]);
+  // //Tự động handle refreshToken mỗi khi loadUser
+  // useEffect(() => {
+  //   handleRefreshToken();
+  // }, [handleRefreshToken]);
 
   const AuthContextData = {
     authState,

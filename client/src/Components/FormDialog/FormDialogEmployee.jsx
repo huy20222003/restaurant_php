@@ -40,8 +40,12 @@ const FormDialogEmployee = ({ fields, handleCreate }) => {
     handleCreate(formData);
     handleClose();
     setFormData({
-      ...formData,
-      position: '', // Reset position after submission if needed
+      fullName: '',
+    username: '',
+    email: '',
+    position: '', // Ensure this is initially defined
+    salary: '',
+    password: '', // Reset position after submission if needed
     });
   };
 

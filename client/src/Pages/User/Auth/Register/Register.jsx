@@ -1,247 +1,149 @@
-import {
-  Avatar,
-  Button,
-  CssBaseline,
-  TextField,
-  Link,
-  Paper,
-  Box,
-  Grid,
-  Typography,
-  InputAdornment,
-  IconButton,
-} from '@mui/material';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import LockIcon from '@mui/icons-material/Lock';
-import AccountCircle from '@mui/icons-material/AccountCircle';
-import EmailIcon from '@mui/icons-material/Email';
-import Visibility from '@mui/icons-material/Visibility';
-import VisibilityOff from '@mui/icons-material/VisibilityOff';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { useContext, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
+// @mui
+import { styled } from '@mui/material/styles';
+import { Container, Typography, Divider, Stack, Button } from '@mui/material';
+import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { AuthContext } from '../../../../Contexts/AuthContext';
-import Copyright from '../../../../Components/Copyright';
-import Cookies from 'js-cookie';
+// hooks
+import useResponsive from '../../../../hooks/useReponsive';
+// components
+import Logo from '../../../../Components/User/logo';
+import Iconify from '../../../../Components/User/iconify';
+// sections
+import RegisterForm from '../../../../section/auth/RegisterForm';
 
-const defaultTheme = createTheme();
+// ----------------------------------------------------------------------
+
+const StyledRoot = styled('div')(({ theme }) => ({
+  [theme.breakpoints.up('md')]: {
+    display: 'flex',
+  },
+}));
+
+const StyledSection = styled('div')(({ theme }) => ({
+  width: '100%',
+  maxWidth: 480,
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  boxShadow: theme.customShadows.card,
+  backgroundColor: theme.palette.background.default,
+}));
+
+const StyledContent = styled('div')(({ theme }) => ({
+  maxWidth: 480,
+  margin: 'auto',
+  minHeight: '100vh',
+  display: 'flex',
+  justifyContent: 'center',
+  flexDirection: 'column',
+  padding: theme.spacing(6, 0),
+}));
+
+// ----------------------------------------------------------------------
 
 const Register = () => {
-  document.title = 'Đăng ký tài khoản';
-  const { registerUser } = useContext(AuthContext);
-  const navigate = useNavigate();
-  const [showPassword, setShowPassword] = useState(false);
+  const mdUp = useResponsive('up', 'md');
 
-  const handleClickShowPassword = () => setShowPassword((show) => !show);
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const data = new FormData(e.currentTarget);
-    if (data.get('password') !== data.get('confirmPassword')) {
-      toast.error('Password do not match');
-    } else {
-      try {
-        const formData = {
-          fullName: data.get('fullName'),
-          username: data.get('username'),
-          email: data.get('email'),
-          password: data.get('password'),
-        };
-        const registerData = await registerUser(formData);
-        if (!registerData.success) {
-          toast.error(registerData.message);
-        } else {
-          const expiration = new Date();
-          expiration.setTime(expiration.getTime() + 15 * 60 * 1000);
-          Cookies.set('user', registerData.accessToken, {
-            expires: expiration,
-          });
-          Cookies.set('refreshU', registerData.refreshToken, { expires: 365 });
-          toast.success(registerData.message);
-          navigate('/auth/login');
-        }
-      } catch (error) {
-        toast.success('Server Error');
-      }
-    }
+  const handleClick = () => {
+    toast.info('Chức năng đang được phát triển');
   };
 
   return (
-    <ThemeProvider theme={defaultTheme}>
-      <Grid container component="main" sx={{ height: '100vh' }}>
-        <CssBaseline />
-        <Grid
-          item
-          xs={false}
-          sm={4}
-          md={7}
+    <>
+      <Helmet>
+        <title> Đăng ký </title>
+      </Helmet>
+
+      <StyledRoot>
+        <Logo
           sx={{
-            backgroundImage: 'url(https://source.unsplash.com/random?food)',
-            backgroundRepeat: 'no-repeat',
-            backgroundColor: (t) =>
-              t.palette.mode === 'light'
-                ? t.palette.grey[50]
-                : t.palette.grey[900],
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
+            position: 'fixed',
+            top: { xs: 16, sm: 24, md: 40 },
+            left: { xs: 16, sm: 24, md: 40 },
           }}
         />
-        <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
-          <Box
-            sx={{
-              my: 8,
-              mx: 4,
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-            }}
-          >
-            <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-              <LockOutlinedIcon />
-            </Avatar>
-            <Typography component="h1" variant="h5">
-              Sign Up
+
+        {mdUp && (
+          <StyledSection>
+            <Typography variant="h3" sx={{ px: 5, mt: 5, mb: 5 }}>
+              Hi, Welcome to Restaurant
             </Typography>
-            <Box
-              component="form"
-              noValidate
-              onSubmit={handleSubmit}
-              sx={{ mt: 1 }}
-            >
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                id="fullName"
-                label="FullName"
-                name="fullName"
-                autoComplete="fullName"
-                autoFocus
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <AccountCircle />
-                    </InputAdornment>
-                  ),
-                }}
-              />
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                id="username"
-                label="Username"
-                name="username"
-                autoComplete="username"
-                autoFocus
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <AccountCircle />
-                    </InputAdornment>
-                  ),
-                }}
-              />
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                id="email"
-                label="Email"
-                name="email"
-                autoComplete="email"
-                autoFocus
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <EmailIcon />
-                    </InputAdornment>
-                  ),
-                }}
-              />
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                name="password"
-                label="Mật khẩu"
-                type={showPassword ? 'text' : 'password'}
-                id="password"
-                autoComplete="current-password"
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <LockIcon />
-                    </InputAdornment>
-                  ),
-                  endAdornment: (
-                    <InputAdornment position="end">
-                      <IconButton onClick={handleClickShowPassword} edge="end">
-                        {showPassword ? <VisibilityOff /> : <Visibility />}
-                      </IconButton>
-                    </InputAdornment>
-                  ),
-                }}
-              />
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                name="confirmPassword"
-                label="Nhập lại ật khẩu"
-                type={showPassword ? 'text' : 'password'}
-                id="confirmPassword"
-                autoComplete="current-password"
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <LockIcon />
-                    </InputAdornment>
-                  ),
-                  endAdornment: (
-                    <InputAdornment position="end">
-                      <IconButton onClick={handleClickShowPassword} edge="end">
-                        {showPassword ? <VisibilityOff /> : <Visibility />}
-                      </IconButton>
-                    </InputAdornment>
-                  ),
-                }}
-              />
+            <img src="/assets/illustrations/illustration_login.png" alt="login" />
+          </StyledSection>
+        )}
+
+        <Container maxWidth="sm">
+          <StyledContent>
+            <Typography variant="h4" gutterBottom>
+              Đăng ký
+            </Typography>
+
+            <Typography variant="body2" sx={{ mb: 5 }}>
+              Bạn đã có tài khoản? {''}
+              <Link to="/auth/login" style={{ textDecoration: 'none' }}>
+                Đăng nhập
+              </Link>
+            </Typography>
+
+            <Stack direction="row" spacing={2}>
               <Button
-                type="submit"
                 fullWidth
-                variant="contained"
-                sx={{ mt: 3, mb: 2, height: 30 }}
+                size="large"
+                color="inherit"
+                variant="outlined"
+                onClick={handleClick}
               >
-                Sign Up
+                <Iconify
+                  icon="eva:google-fill"
+                  color="#DF3E30"
+                  width={22}
+                  height={22}
+                />
               </Button>
-              <Grid container>
-                <Grid item xs>
-                  <Link
-                    href="#"
-                    variant="body2"
-                    sx={{ textDecoration: 'none' }}
-                  >
-                    Forgot password?
-                  </Link>
-                </Grid>
-                <Grid item>
-                  <Link
-                    href="/auth/login"
-                    variant="body2"
-                    sx={{ textDecoration: 'none' }}
-                  >
-                    {'Already have an account? Sign in'}
-                  </Link>
-                </Grid>
-              </Grid>
-              <Copyright sx={{ mt: 5 }} />
-            </Box>
-          </Box>
-        </Grid>
-      </Grid>
-    </ThemeProvider>
+
+              <Button
+                fullWidth
+                size="large"
+                color="inherit"
+                variant="outlined"
+                onClick={handleClick}
+              >
+                <Iconify
+                  icon="eva:facebook-fill"
+                  color="#1877F2"
+                  width={22}
+                  height={22}
+                />
+              </Button>
+
+              <Button
+                fullWidth
+                size="large"
+                color="inherit"
+                variant="outlined"
+                onClick={handleClick}
+              >
+                <Iconify
+                  icon="eva:twitter-fill"
+                  color="#1C9CEA"
+                  width={22}
+                  height={22}
+                />
+              </Button>
+            </Stack>
+
+            <Divider sx={{ my: 3 }}>
+              <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+                Hoặc
+              </Typography>
+            </Divider>
+
+            <RegisterForm />
+          </StyledContent>
+        </Container>
+      </StyledRoot>
+    </>
   );
 };
 

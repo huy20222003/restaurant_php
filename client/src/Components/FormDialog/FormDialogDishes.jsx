@@ -104,8 +104,8 @@ const FormDialogDishes = ({ fields, handleCreate }) => {
               value={formData[field.name] || ''}
               onChange={handleFieldChange}
               required
-              multiline={field.multiline}
-              rows={field.rows}
+              multiline
+              rows={field.row}
             />
           ))}
           <FormControl
@@ -121,6 +121,7 @@ const FormDialogDishes = ({ fields, handleCreate }) => {
               label="Age"
               sx={{ minWidth: 200 }}
               onChange={handleFieldChange}
+              required
             >
               {renderCategories()}
             </Select>

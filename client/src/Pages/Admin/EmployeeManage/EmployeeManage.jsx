@@ -165,13 +165,13 @@ const EmployeeManage = () => {
 
   return (
     <Box>
-      <Typography variant="h3" align="center" gutterBottom>
+      <Typography variant="h4" align="center" gutterBottom>
         Danh sách nhân viên
       </Typography>
       <Box sx={{ marginBottom: '2rem' }}>
         <Button
           variant="contained"
-          size="large"
+          size="medium"
           startIcon={<AddIcon />}
           onClick={handleOpenFormDialog}
         >

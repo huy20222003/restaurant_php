@@ -34,7 +34,7 @@ const Page404 = () => {
 
           <Box
             component="img"
-            src="/image404.svg"
+            src="/assets/illustrations/illustration_404.svg"
             sx={{ height: 260, mx: 'auto', my: { xs: 5, sm: 10 } }}
           />
           {window.location.href.includes('admin') ? (

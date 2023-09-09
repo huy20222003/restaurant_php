@@ -13,7 +13,7 @@ const DataTable = ({ columns, rows }) => {
         }}
         pageSizeOptions={[10, 20]}
         checkboxSelection
-        sx={{fontSize: '1.2rem'}}
+        sx={{fontSize: '1rem'}}
       />
     </div>
   );

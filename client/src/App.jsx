@@ -1,63 +1,45 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
+// routes
+import Router from './routers/routes';
+// theme
+import ThemeProvider from './theme';
+// components
+import ScrollToTop from './Components/User/scroll-to-top';
+//ToastContainer
 import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+//context
+import { AuthProvider } from './Contexts/AuthContext';
+import { ProductsProvider } from './Contexts/ProductsContext';
+import { CommonProvider } from './Contexts/CommonContext';
+import { UsersProvider } from './Contexts/UsersContext';
+import { EmployeesProvider } from './Contexts/EmployeesContext';
+import { CategoryProvider } from './Contexts/CategoryContext';
 
-//DefaultLayout
-import DefaultLayoutUser from './DefaultLayout/DefaultLayoutUser';
-import DefaultLayoutAdmin from './DefaultLayout/DefaultLayoutAdmin';
+// ----------------------------------------------------------------------
 
-//Page 404
-import Page404 from './Pages/Page404/Page404';
-
-import {
-  noDefaultLayout,
-  defaultLayoutUser,
-  defaultLayoutAdmin,
-} from './routers/routes';
-
-function App() {
+export default function App() {
   return (
-    <Router>
-      <div className="App">
-        <Routes>
-          {noDefaultLayout.map((route, index) => {
-            const Page = route.element;
-            return <Route key={index} path={route.path} element={<Page />} />;
-          })}
-          {defaultLayoutUser.map((route, index) => {
-            const Page = route.element;
-            return (
-              <Route
-                key={index}
-                path={route.path}
-                element={
-                  <DefaultLayoutUser>
-                    <Page />
-                  </DefaultLayoutUser>
-                }
-              />
-            );
-          })}
-          {defaultLayoutAdmin.map((route, index) => {
-            const Page = route.element;
-            return (
-              <Route
-                key={index}
-                path={route.path}
-                element={
-                  <DefaultLayoutAdmin>
-                    <Page />
-                  </DefaultLayoutAdmin>
-                }
-              />
-            );
-          })}
-          <Route path="*" element={<Page404 />} />
-        </Routes>
-        <ToastContainer />
-      </div>
-    </Router>
+    <HelmetProvider>
+      <BrowserRouter>
+        <ThemeProvider>
+          <ScrollToTop />
+          <ToastContainer />
+          <AuthProvider>
+            <ProductsProvider>
+              <CommonProvider>
+                <UsersProvider>
+                  <EmployeesProvider>
+                    <CategoryProvider>
+                      <Router />
+                    </CategoryProvider>
+                  </EmployeesProvider>
+                </UsersProvider>
+              </CommonProvider>
+            </ProductsProvider>
+          </AuthProvider>
+        </ThemeProvider>
+      </BrowserRouter>
+    </HelmetProvider>
   );
 }
-
-export default App;

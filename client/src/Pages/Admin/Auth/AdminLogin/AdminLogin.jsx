@@ -18,7 +18,6 @@ import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import {toast} from 'react-toastify';
 import { AuthContext } from '../../../../Contexts/AuthContext';
-import Copyright from '../../../../Components/Copyright';
 
 const defaultTheme = createTheme();
 
@@ -116,7 +115,6 @@ const AdminLogin = () => {
             </Grid>
           </Box>
         </Box>
-        <Copyright sx={{ mt: 8, mb: 4 }} />
       </Container>
     </ThemeProvider>
   );

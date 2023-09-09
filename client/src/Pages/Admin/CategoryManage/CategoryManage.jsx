@@ -27,6 +27,7 @@ const CategoryManage = () => {
   const columns = [
     { field: 'id', headerName: 'ID', type: 'String', width: 100 },
     { field: 'name', headerName: 'Tên', type: 'String', width: 130 },
+    { field: 'description', headerName: 'Mô tả', type: 'String', width: 160 },
     { field: 'quantity', headerName: 'Số lượng', type: 'number', width: 100 },
     {
       field: 'actions',
@@ -100,7 +101,7 @@ const CategoryManage = () => {
     return {
       id: category?._id,
       name: category?.name,
-      quantity: category?.items.length
+      description: category?.description
     };
   });
 
@@ -109,7 +110,8 @@ const CategoryManage = () => {
   };
 
   const fiels = [
-    { name: 'name', label: 'Tên', type: 'text', mutiline: false, rows: 1 },
+    { name: 'name', label: 'Tên', type: 'text', row: 1 },
+    {name: 'description', label: 'Mô tả', type: 'text', row: 5}
   ];
 
   const handleView = (categoryId) => {
@@ -148,11 +150,11 @@ const CategoryManage = () => {
 
   return (
     <Box>
-      <Typography variant="h3" align="center" gutterBottom>
+      <Typography variant="h4" align="center" gutterBottom>
         Danh sách danh mục
       </Typography>
       <Box sx={{ marginBottom: '2rem' }}>
-        <Button variant="contained" size="large" startIcon={<AddIcon />} onClick={handleOpenFormDialog}>
+        <Button variant="contained" size="medium" startIcon={<AddIcon />} onClick={handleOpenFormDialog}>
           Thêm danh mục
         </Button>
       </Box>

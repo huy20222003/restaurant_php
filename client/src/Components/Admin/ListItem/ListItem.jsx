@@ -9,6 +9,7 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import PersonIcon from '@mui/icons-material/Person';
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 import FastfoodIcon from '@mui/icons-material/Fastfood';
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import styled from '@emotion/styled';
 import { useContext } from 'react';
 import { AuthContext } from '../../../Contexts/AuthContext';
@@ -18,7 +19,7 @@ const NavLinkCustom = styled(NavLink)`
     margin: 0;
     font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
     font-weight: 400;
-    font-size: 1rem;
+    font-size: 0.7rem;
     line-height: 1.5;
     letter-spacing: 0.00938em;
     display: block;
@@ -34,15 +35,15 @@ const MainListItems = () => {
 
   return (
     <>
-      <NavLinkCustom to="/admin">
+      <NavLinkCustom to="dashboard">
         <ListItemButton>
           <ListItemIcon>
             <DashboardIcon />
           </ListItemIcon>
-          <ListItemText primary="Trang chủ" />
+          <ListItemText sx={{fontSize: '0.7rem'}} primary="Trang chủ" />
         </ListItemButton>
       </NavLinkCustom>
-      <NavLinkCustom to="/admin/customer-manage">
+      <NavLinkCustom to="customer-manage">
         <ListItemButton>
           <ListItemIcon>
             <PersonIcon />
@@ -51,7 +52,7 @@ const MainListItems = () => {
         </ListItemButton>
       </NavLinkCustom>
       {role === 'admin' ? (
-        <NavLinkCustom to="/admin/employee-manage">
+        <NavLinkCustom to="employee-manage">
           <ListItemButton>
             <ListItemIcon>
               <PeopleIcon />
@@ -62,15 +63,15 @@ const MainListItems = () => {
       ) : (
         ''
       )}
-      <NavLinkCustom to="/admin/dish-manage">
+      <NavLinkCustom to="product-manage">
         <ListItemButton>
           <ListItemIcon>
             <FastfoodIcon />
           </ListItemIcon>
-          <ListItemText primary="Quản lý món ăn" />
+          <ListItemText primary="Quản lý sản phẩm" />
         </ListItemButton>
       </NavLinkCustom>
-      <NavLinkCustom to="/admin/category-manage">
+      <NavLinkCustom to="category-manage">
         <ListItemButton>
           <ListItemIcon>
             <FormatListBulletedIcon />
@@ -78,7 +79,15 @@ const MainListItems = () => {
           <ListItemText primary="Quản lý danh mục" />
         </ListItemButton>
       </NavLinkCustom>
-      <NavLinkCustom to="/admin/chart">
+      <NavLinkCustom to="order-manage">
+        <ListItemButton>
+          <ListItemIcon>
+            <AddShoppingCartIcon />
+          </ListItemIcon>
+          <ListItemText primary="Quản lý đơn hàng" />
+        </ListItemButton>
+      </NavLinkCustom>
+      <NavLinkCustom to="chart">
         <ListItemButton>
           <ListItemIcon>
             <BarChartIcon />

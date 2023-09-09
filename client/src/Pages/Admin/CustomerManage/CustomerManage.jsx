@@ -155,13 +155,13 @@ const CustomerManage = () => {
 
   return (
     <Box>
-      <Typography variant="h3" align="center" gutterBottom>
+      <Typography variant="h4" align="center" gutterBottom>
         Danh sách khách hàng
       </Typography>
       <Box sx={{ marginBottom: '2rem' }}>
         <Button
           variant="contained"
-          size="large"
+          size="medium"
           startIcon={<AddIcon />}
           onClick={handleOpenFormDialog}
         >
