@@ -3,7 +3,7 @@ import { HelmetProvider } from 'react-helmet-async';
 // routes
 import Router from './routers/routes';
 // theme
-import ThemeProvider from './theme/ThemeProvider';
+//import ThemeProvider from './theme/ThemeProvider';
 // components
 import ScrollToTop from './Components/User/scroll-to-top';
 //ToastContainer
@@ -22,7 +22,6 @@ export default function App() {
   return (
     <HelmetProvider>
       <BrowserRouter>
-        <ThemeProvider>
           <ScrollToTop />
           <ToastContainer />
           <AuthProvider>
@@ -38,7 +37,6 @@ export default function App() {
               </CommonProvider>
             </ProductsProvider>
           </AuthProvider>
-        </ThemeProvider>
       </BrowserRouter>
     </HelmetProvider>
   );
