@@ -22,8 +22,8 @@ export default function App() {
   return (
     <HelmetProvider>
       <BrowserRouter>
+        <ScrollToTop />
         <ThemeProvider>
-          <ScrollToTop />
           <ToastContainer />
           <AuthProvider>
             <ProductsProvider>
