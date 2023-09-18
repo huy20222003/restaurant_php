@@ -42,10 +42,8 @@ export default function Router() {
         {
           path: 'cart',
           element: <CartPage />,
-          children: [
-            { path: 'cart-order-success', element: <OrderSuccessPage /> },
-          ],
         },
+        { path: 'cart/cart-order-success', element: <OrderSuccessPage /> },
         { path: 'order', element: <OrderPage /> },
         { path: 'profile', element: <ProfilePage /> },
       ],
@@ -66,7 +64,7 @@ export default function Router() {
       path: '/admin',
       element: <DashboardLayoutAdmin />,
       children: [
-        { path: '/', element: <AdminDashboard /> },
+        { path: '/admin', element: <AdminDashboard /> },
         { path: 'customer-manage', element: <CustomerManage /> },
         { path: 'employee-manage', element: <EmployeeManage /> },
         { path: 'product-manage', element: <ProductManage /> },

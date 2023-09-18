@@ -28,7 +28,7 @@ const Footer = () => {
           <Logo />
         </Box>
       </Typography>
-      <Grid Box spacing={2} sx={{ justifyContent: 'space-between' }}>
+      <Grid Box sx={{ justifyContent: 'space-between' }}>
         <Grid item xs={8} md={3}>
           <Typography variant="body2">
             The starting point for your next project with Minimal UI Kit, built
