@@ -3,7 +3,7 @@ import Cookies from 'js-cookie';
 
 
 const axiosConfig = axios.create({
-  baseURL: 'http://localhost:3000/api', 
+  baseURL: 'https://restaurant-vh35.onrender.com/api', 
   timeout: 10000,
   headers: {
     'Content-Type': 'application/json',
