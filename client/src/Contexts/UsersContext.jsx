@@ -63,11 +63,31 @@ export const UsersProvider = (prop) => {
   }
   }, []);
 
+  const handleUpdateAvatar = useCallback(async(avatarUpdate)=> {
+    try {
+      const response = await userApi.updateAvatar(avatarUpdate);
+      return response.data;
+    } catch (error) {
+      return handleError(error);
+    }
+  }, []);
+
+  const handleUpdateDetail = useCallback(async(updateForm)=> {
+    try {
+      const response = await userApi.updateDetail(updateForm);
+      return response.data;
+    } catch (error) {
+      return handleError(error);
+    }
+  }, []);
+
   const UsersContextData = {
     usersState,
     handleCreateUser,
     handleGetOneUser,
     handleDeleteUser,
+    handleUpdateAvatar,
+    handleUpdateDetail,
   };
 
   return (

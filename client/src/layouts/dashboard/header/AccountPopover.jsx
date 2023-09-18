@@ -1,33 +1,27 @@
 import { useState, useContext } from 'react';
-import {useNavigate} from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
 // @mui
 import { alpha } from '@mui/material/styles';
-import { Box, Divider, Typography, Stack, MenuItem, Avatar, IconButton, Popover } from '@mui/material';
+import {
+  Box,
+  Divider,
+  Typography,
+  Stack,
+  MenuItem,
+  Avatar,
+  IconButton,
+  Popover,
+} from '@mui/material';
 //context
-import {AuthContext} from '../../../Contexts/AuthContext';
-
-// ----------------------------------------------------------------------
-
-const MENU_OPTIONS = [
-  {
-    label: 'Home',
-    icon: 'eva:home-fill',
-  },
-  {
-    label: 'Profile',
-    icon: 'eva:person-fill',
-  },
-  {
-    label: 'Settings',
-    icon: 'eva:settings-2-fill',
-  },
-];
-
+import { AuthContext } from '../../../Contexts/AuthContext';
 // ----------------------------------------------------------------------
 
 export default function AccountPopover() {
   const [open, setOpen] = useState(null);
-  const {authState: {user}, logoutUser} = useContext(AuthContext);
+  const {
+    authState: { user },
+    logoutUser,
+  } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleOpen = (event) => {
@@ -38,9 +32,18 @@ export default function AccountPopover() {
     setOpen(null);
   };
 
-  const handleLogout = ()=>{
+  const handleLogout = () => {
     logoutUser();
     navigate('/auth/login');
+  };
+
+  const handleNavigate = (data)=> {
+    if(data == 'dashboard') {
+      navigate('/dashboard/app');
+    } else if(data == 'profile') {
+      navigate('/dashboard/profile');
+    }
+    handleClose();
   }
 
   return (
@@ -62,7 +65,7 @@ export default function AccountPopover() {
           }),
         }}
       >
-        <Avatar src={user?.avatar} alt="photoURL" />
+        <Avatar src={'/assets/images/avatars/avatar_13.jpg'} alt="photoURL" />
       </IconButton>
 
       <Popover
@@ -96,11 +99,9 @@ export default function AccountPopover() {
         <Divider sx={{ borderStyle: 'dashed' }} />
 
         <Stack sx={{ p: 1 }}>
-          {MENU_OPTIONS.map((option) => (
-            <MenuItem key={option.label} onClick={handleClose}>
-              {option.label}
-            </MenuItem>
-          ))}
+          <MenuItem onClick={()=>handleNavigate('dashboard')}>Dashboard</MenuItem>
+          <MenuItem onClick={()=>handleNavigate('profile')}>Profile</MenuItem>
+          <MenuItem>Setting</MenuItem>
         </Stack>
 
         <Divider sx={{ borderStyle: 'dashed' }} />

@@ -8,7 +8,7 @@ import AdminAuthController from '../app/controllers/AdminAuthController.mjs';
 
 router.post('/login', AdminAuthController.loginAdmin);
 router.get('/account', authVerify, authorizeRoles(['admin', 'employee']), AdminAuthController.getUserProfile);
-router.post('/refresh', authVerify, authorizeRoles(['admin', 'employee']), AdminAuthController.refreshToken);
+router.post('/refresh', AdminAuthController.refreshToken);
 
 
 export default router;

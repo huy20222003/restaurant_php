@@ -11,8 +11,6 @@ import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 import FastfoodIcon from '@mui/icons-material/Fastfood';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import styled from '@emotion/styled';
-import { useContext } from 'react';
-import { AuthContext } from '../../../Contexts/AuthContext';
 
 const NavLinkCustom = styled(NavLink)`
   && {
@@ -29,18 +27,14 @@ const NavLinkCustom = styled(NavLink)`
 `;
 
 const MainListItems = () => {
-  const {
-    authState: { role },
-  } = useContext(AuthContext);
-
   return (
     <>
-      <NavLinkCustom to="dashboard">
+      <NavLinkCustom to="/admin">
         <ListItemButton>
           <ListItemIcon>
             <DashboardIcon />
           </ListItemIcon>
-          <ListItemText sx={{fontSize: '0.7rem'}} primary="Trang chủ" />
+          <ListItemText sx={{ fontSize: '0.7rem' }} primary="Trang chủ" />
         </ListItemButton>
       </NavLinkCustom>
       <NavLinkCustom to="customer-manage">
@@ -51,18 +45,14 @@ const MainListItems = () => {
           <ListItemText primary="Quản lý khách hàng" />
         </ListItemButton>
       </NavLinkCustom>
-      {role === 'admin' ? (
-        <NavLinkCustom to="employee-manage">
-          <ListItemButton>
-            <ListItemIcon>
-              <PeopleIcon />
-            </ListItemIcon>
-            <ListItemText primary="Quản lý nhân viên" />
-          </ListItemButton>
-        </NavLinkCustom>
-      ) : (
-        ''
-      )}
+      <NavLinkCustom to="employee-manage">
+        <ListItemButton>
+          <ListItemIcon>
+            <PeopleIcon />
+          </ListItemIcon>
+          <ListItemText primary="Quản lý nhân viên" />
+        </ListItemButton>
+      </NavLinkCustom>
       <NavLinkCustom to="product-manage">
         <ListItemButton>
           <ListItemIcon>

@@ -9,7 +9,7 @@ import AuthController from '../app/controllers/AuthController.mjs';
 router.post('/login', AuthController.login);
 router.post('/register', AuthController.register);
 router.get('/account', authVerify, authorizeRoles(['user']), AuthController.getUserProfile);
-router.post('/refresh', authVerify, authorizeRoles(['user']), AuthController.refreshToken);
+router.post('/refresh', AuthController.refreshToken);
 
 
 export default router;

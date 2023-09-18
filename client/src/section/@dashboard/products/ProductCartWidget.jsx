@@ -2,6 +2,8 @@ import {useNavigate} from 'react-router-dom';
 // @mui
 import { styled } from '@mui/material/styles';
 import { Badge } from '@mui/material';
+//context
+import { useCart } from '../../../hooks/context';
 // component
 import Iconify from '../../../Components/User/iconify';
 
@@ -32,13 +34,14 @@ const StyledRoot = styled('div')(({ theme }) => ({
 
 export default function CartWidget() {
   const navigate = useNavigate();
+  const {cartState: {items}} = useCart();
   const handleNavigateToCartPage = ()=> {
     navigate('/dashboard/cart');
   }
 
   return (
     <StyledRoot>
-      <Badge showZero badgeContent={0} color="error" max={99} onClick={handleNavigateToCartPage}>
+      <Badge showZero badgeContent={items.length} color="error" max={99} onClick={handleNavigateToCartPage}>
         <Iconify icon="eva:shopping-cart-fill" width={24} height={24} />
       </Badge>
     </StyledRoot>

@@ -11,7 +11,11 @@ class EmployeeController {
         employees,
       });
     } catch (error) {
-      res.status(500).json({ success: false, message: 'Internal server error' });
+      res.status(500).json({
+        success: false,
+        message: 'An error occurred while processing the request.',
+        error: error.message,
+      });
     }
   }
 
@@ -31,7 +35,15 @@ class EmployeeController {
           .status(400)
           .json({ success: false, message: 'Required fields missing' });
       }
-
+  
+      const roles = await Roles.findOne({ name: position });
+  
+      if (!roles) {
+        return res
+          .status(400)
+          .json({ success: false, message: 'Invalid position' });
+      }
+  
       const newEmployee = new Employees({
         fullName,
         username,
@@ -39,16 +51,22 @@ class EmployeeController {
         position,
         salary,
         password,
+        roles: roles._id,
       });
-      const role = new Roles({ name: 'employee', employeeId: newEmployee._id });
-      newEmployee.addRole(role);
+  
+      await newEmployee.save();
+  
       res.status(201).json({
         success: true,
         message: 'Employee added successfully!',
         employee: newEmployee,
       });
     } catch (error) {
-      res.status(400).json({ success: false, message: 'Bad request' });
+      res.status(500).json({
+        success: false,
+        message: 'An error occurred while processing the request.',
+        error: error.message,
+      });
     }
   }
 
@@ -64,7 +82,7 @@ class EmployeeController {
           .status(404)
           .json({ success: false, message: 'Employee not found' });
       }
-      console.log(updatedEmployee)
+      console.log(updatedEmployee);
 
       if (
         !updatedEmployee.fullName ||
@@ -84,7 +102,11 @@ class EmployeeController {
         data: updatedEmployee,
       });
     } catch (error) {
-      res.status(400).json({ success: false, message: 'Bad request' });
+      res.status(500).json({
+        success: false,
+        message: 'An error occurred while processing the request.',
+        error: error.message,
+      });
     }
   }
 
@@ -102,7 +124,11 @@ class EmployeeController {
         data: deletedEmployee,
       });
     } catch (error) {
-      res.status(400).json({ success: false, message: 'Bad request' });
+      res.status(500).json({
+        success: false,
+        message: 'An error occurred while processing the request.',
+        error: error.message,
+      });
     }
   }
 }

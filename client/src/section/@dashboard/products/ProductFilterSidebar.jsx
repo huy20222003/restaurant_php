@@ -8,8 +8,6 @@ import {
   Drawer,
   Rating,
   Divider,
-  Checkbox,
-  FormGroup,
   IconButton,
   Typography,
   RadioGroup,
@@ -18,18 +16,28 @@ import {
 // components
 import Iconify from '../../../Components/User/iconify';
 import Scrollbar from '../../../Components/User/scrollbar';
+//toast
+import { toast } from 'react-toastify';
+//
+import { useState, useContext } from 'react';
+//context
+import { ProductsContext } from '../../../Contexts/ProductsContext';
 
 // ----------------------------------------------------------------------
 
-export const SORT_BY_OPTIONS = [
-  { value: 'featured', label: 'Featured' },
-  { value: 'newest', label: 'Newest' },
-  { value: 'priceDesc', label: 'Price: High-Low' },
-  { value: 'priceAsc', label: 'Price: Low-High' },
+export const FILTER_CATEGORY_OPTIONS = [
+  'Tất cả',
+  'Đồ uống',
+  'Đồ ăn nhanh',
+  'Món cay',
+  'Món chay',
 ];
-export const FILTER_GENDER_OPTIONS = ['Đồ ăn nhanh', 'Đồ uống', 'Món cay'];
-export const FILTER_CATEGORY_OPTIONS = ['Tất acr', 'Đồ uống', 'Đồ ăn nhanh', 'Món cay', 'Món chay'];
-export const FILTER_RATING_OPTIONS = ['Trên 4 sao', 'Trên 3 sao', 'Trên 2 sao', 'Trên 1 sao'];
+export const FILTER_RATING_OPTIONS = [
+  'Trên 4 sao',
+  'Trên 3 sao',
+  'Trên 2 sao',
+  'Trên 1 sao',
+];
 export const FILTER_PRICE_OPTIONS = [
   { value: 'below', label: 'Dưới 100k' },
   { value: 'between', label: 'Từ 100k - 200k' },
@@ -44,10 +52,56 @@ ShopFilterSidebar.propTypes = {
   onCloseFilter: PropTypes.func,
 };
 
-export default function ShopFilterSidebar({ openFilter, onOpenFilter, onCloseFilter }) {
+export default function ShopFilterSidebar({
+  openFilter,
+  onOpenFilter,
+  onCloseFilter,
+}) {
+  const [categoryValue, setCategoryValue] = useState();
+  const [priceValue, setPriceValue] = useState();
+  const [starValue, setStarValue] = useState();
+  const { handleFilterProduct } = useContext(ProductsContext);
+
+  const handleChangeCategoryValue = (e) => {
+    setCategoryValue(e.target.value);
+    handleFilter();
+  };
+
+  const handleChangePriceValue = (e) => {
+    setPriceValue(e.target.value);
+    handleFilter();
+  };
+
+  const handleChangeStarValue = (e) => {
+    setStarValue(e.target.value);
+    handleFilter();
+  };
+
+  const handleFilter = async () => {
+    try {
+      const filterRes = await handleFilterProduct(
+        categoryValue,
+        priceValue,
+        starValue
+      );
+      if (!filterRes.success) {
+        toast.error(filterRes.message);
+      } else {
+        toast.success(filterRes.message);
+      }
+    } catch (error) {
+      toast.error('Server Error');
+    }
+  };
+
   return (
     <>
-      <Button disableRipple color="inherit" endIcon={<Iconify icon="ic:round-filter-list" />} onClick={onOpenFilter}>
+      <Button
+        disableRipple
+        color="inherit"
+        endIcon={<Iconify icon="ic:round-filter-list" />}
+        onClick={onOpenFilter}
+      >
         Filters&nbsp;
       </Button>
 
@@ -59,7 +113,12 @@ export default function ShopFilterSidebar({ openFilter, onOpenFilter, onCloseFil
           sx: { width: 280, border: 'none', overflow: 'hidden' },
         }}
       >
-        <Stack direction="row" alignItems="center" justifyContent="space-between" sx={{ px: 1, py: 2 }}>
+        <Stack
+          direction="row"
+          alignItems="center"
+          justifyContent="space-between"
+          sx={{ px: 1, py: 2 }}
+        >
           <Typography variant="subtitle1" sx={{ ml: 1 }}>
             Filters
           </Typography>
@@ -70,34 +129,23 @@ export default function ShopFilterSidebar({ openFilter, onOpenFilter, onCloseFil
 
         <Divider />
 
-        <Scrollbar>
+        <Scrollbar sx={{ overflowY: 'scroll' }}>
           <Stack spacing={3} sx={{ p: 3 }}>
-            <div>
-              <Typography variant="subtitle1" gutterBottom>
-                Gender
-              </Typography>
-              <FormGroup>
-                {FILTER_GENDER_OPTIONS.map((item) => (
-                  <FormControlLabel key={item} control={<Checkbox />} label={item} />
-                ))}
-              </FormGroup>
-            </div>
-
             <div>
               <Typography variant="subtitle1" gutterBottom>
                 Category
               </Typography>
               <RadioGroup>
                 {FILTER_CATEGORY_OPTIONS.map((item) => (
-                  <FormControlLabel key={item} value={item} control={<Radio />} label={item} />
+                  <FormControlLabel
+                    key={item}
+                    value={item}
+                    control={<Radio />}
+                    label={item}
+                    onChange={handleChangeCategoryValue}
+                  />
                 ))}
               </RadioGroup>
-            </div>
-
-            <div>
-              <Typography variant="subtitle1" gutterBottom>
-                Colors
-              </Typography>
             </div>
 
             <div>
@@ -106,7 +154,13 @@ export default function ShopFilterSidebar({ openFilter, onOpenFilter, onCloseFil
               </Typography>
               <RadioGroup>
                 {FILTER_PRICE_OPTIONS.map((item) => (
-                  <FormControlLabel key={item.value} value={item.value} control={<Radio />} label={item.label} />
+                  <FormControlLabel
+                    key={item.value}
+                    value={item.value}
+                    control={<Radio />}
+                    label={item.label}
+                    onChange={handleChangePriceValue}
+                  />
                 ))}
               </RadioGroup>
             </div>
@@ -120,6 +174,7 @@ export default function ShopFilterSidebar({ openFilter, onOpenFilter, onCloseFil
                   <FormControlLabel
                     key={item}
                     value={item}
+                    onChange={handleChangeStarValue}
                     control={
                       <Radio
                         disableRipple
@@ -131,7 +186,7 @@ export default function ShopFilterSidebar({ openFilter, onOpenFilter, onCloseFil
                         }}
                       />
                     }
-                    label="& Up"
+                    label={item}
                     sx={{
                       my: 0.5,
                       borderRadius: 1,

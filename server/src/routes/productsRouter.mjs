@@ -1,17 +1,21 @@
-import { Router } from 'express';
-const router = Router();
-import authVerify from '../middleware/auth.mjs';
-import authorizeRoles from '../middleware/authorizeRoles.mjs';
-
-
+import express from 'express';
 import ProductsController from '../app/controllers/ProductsController.mjs';
+import cashbinMiddleware from '../middleware/cashbinMiddleware.mjs';
+//verify
+import authVerify from '../middleware/auth.mjs';
+//----------------------------------------------------------------
+
+const router = express.Router();
 
 router.get('/', ProductsController.getAllProducts);
 router.get('/:_id', ProductsController.getSingleProduct);
-router.post('/create-product', authVerify, authorizeRoles(['admin', 'employee']), ProductsController.addProduct);
-router.put('/update-product/:_id', authVerify, authorizeRoles(['admin', 'employee']), ProductsController.updateProduct);
-router.delete('/delete-product/:_id', authVerify, authorizeRoles(['admin', 'employee']), ProductsController.deleteProduct);
-router.get('/search-product', ProductsController.searchProduct);
+router.get('/search-product', ProductsController.deleteProduct);
+router.get('/filter-product', ProductsController.filterProduct);
 
+router.use(cashbinMiddleware);
+
+router.post('/create-product', authVerify, ProductsController.addProduct);
+router.put('/update-product/:_id', authVerify, ProductsController.updateProduct);
+router.delete('/delete-product/:_id', authVerify, ProductsController.deleteProduct);
 
 export default router;

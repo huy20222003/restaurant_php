@@ -1,0 +1,8 @@
+p, admin, /create-product, POST
+p, admin, /update-product/:_id, PUT
+p, admin, /deletes-product/:_id, DELETE
+
+p, employee, /create-product, POST
+p, employee, /update-product/:_id, PUT
+
+p, user, /search-product, GET

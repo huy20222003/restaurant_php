@@ -13,6 +13,7 @@ import {
   getOne,
   setPage,
   searchProduct,
+  filterProduct,
 } from '../Reducers/ProductsReducer/action';
 import productApi from '../Service/productApi';
 
@@ -21,6 +22,7 @@ export const ProductsContext = createContext();
 export const ProductsProvider = (prop) => {
   const [productsState, dispatch] = useReducer(reducer, initProductsState);
   const [currentPage, setCurrentPage] = useState(1);
+  const [quantity, setQuantity] = useState(1);
 
   const handleError = (error) => {
     if (error.response && error.response.data) {
@@ -60,8 +62,8 @@ export const ProductsProvider = (prop) => {
       const response = await productApi.getOne(productId);
       if (response.data.success) {
         dispatch(getOne(response.data.product));
-        sessionStorage.setItem('product', JSON.stringify(response.data.product));
       }
+      return response.data;
     } catch (error) {
       return handleError(error);
     }
@@ -99,12 +101,25 @@ export const ProductsProvider = (prop) => {
       }
       return response.data;
     } catch (error) {
-      console.log(123);
+      return handleError(error);
+    }
+  }, []);
+
+  const handleFilterProduct = useCallback(async (categoryValue, priceValue, starValue) => {
+    try {
+      const response = await productApi.filterProduct(categoryValue, priceValue, starValue);
+      if (response.data.success) {
+        dispatch(filterProduct(response.data.products));
+      }
+      return response.data;
+    } catch (error) {
       return handleError(error);
     }
   }, []);
 
   const ProductsData = {
+    quantity,
+    setQuantity,
     productsState,
     handleGetAllProducts,
     handlePageChange,
@@ -113,6 +128,7 @@ export const ProductsProvider = (prop) => {
     handleCreateProduct,
     handleDeleteProduct,
     handleSearchProduct,
+    handleFilterProduct,
   };
 
   return (

@@ -16,6 +16,14 @@ const userApi = {
     deleteUser: (userId)=> {
         const url = `/user/delete-user/${userId}`;
         return axiosConfig.delete(url);
+    },
+    updateAvatar: (data)=> {
+        const url = '/user/update-user/avatar';
+        return axiosConfig.patch(url, data);
+    },
+    updateDetail: (data)=> {
+        const url = 'user/update-user/detail';
+        return axiosConfig.put(url, data);
     }
 }
 

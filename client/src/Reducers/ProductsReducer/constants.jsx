@@ -4,3 +4,4 @@ export const SET_PAGE = 'set_page';
 export const CREATE_PRODUCT = 'create_product';
 export const DELETE_PRODUCT = 'delete_product';
 export const SEARCH_PRODUCT = 'search_product';
+export const FILTER_PRODUCT = 'filter_product';

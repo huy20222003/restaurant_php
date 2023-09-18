@@ -1,0 +1,78 @@
+"filename", "language", "JavaScript", "JavaScript JSX", "XML", "JSON", "comment", "blank", "total"
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\client\package-lock.json", "JSON", 0, 0, 0, 240, 0, 0, 240
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\client\package.json", "JSON", 0, 0, 0, 2, 0, 0, 2
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\client\public\assets\icons\manage\ic_export.svg", "XML", 0, 0, 1, 0, 0, 0, 1
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\client\public\assets\icons\manage\ic_upload.svg", "XML", 0, 0, 1, 0, 0, 0, 1
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\client\public\assets\icons\service\ic_account.svg", "XML", 0, 0, 34, 0, 0, 1, 35
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\client\public\assets\icons\service\ic_assurances.svg", "XML", 0, 0, 33, 0, 0, 1, 34
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\client\public\assets\icons\service\ic_delivery.svg", "XML", 0, 0, 30, 0, 0, 1, 31
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\client\public\assets\icons\service\ic_package.svg", "XML", 0, 0, 29, 0, 0, 1, 30
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\client\public\assets\icons\service\ic_payment.svg", "XML", 0, 0, 33, 0, 0, 1, 34
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\client\public\assets\icons\service\ic_refund.svg", "XML", 0, 0, 31, 0, 0, 1, 32
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\client\src\Components\Admin\DataTable\DataTable.jsx", "JavaScript JSX", 0, 14, 0, 0, 2, 2, 18
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\client\src\Contexts\CartContext.jsx", "JavaScript JSX", 0, 12, 0, 0, 0, 1, 13
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\client\src\Contexts\CommonContext.jsx", "JavaScript JSX", 0, 3, 0, 0, 0, 0, 3
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\client\src\Pages\Admin\CategoryManage\CategoryManage.jsx", "JavaScript JSX", 0, 61, 0, 0, 7, 0, 68
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\client\src\Pages\Admin\CustomerManage\CustomerManage.jsx", "JavaScript JSX", 0, 69, 0, 0, 7, 2, 78
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\client\src\Pages\Admin\EmployeeManage\EmployeeManage.jsx", "JavaScript JSX", 0, 79, 0, 0, 7, 1, 87
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\client\src\Pages\Admin\ProductManage\ProductForm.jsx", "JavaScript JSX", 0, -43, 0, 0, -196, -2, -241
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\client\src\Pages\Admin\ProductManage\ProductManage.jsx", "JavaScript JSX", 0, 63, 0, 0, 6, -2, 67
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\client\src\Pages\User\AboutPage\AboutPage.jsx", "JavaScript JSX", 0, 16, 0, 0, 3, 4, 23
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\client\src\Pages\User\AboutPage\index.jsx", "JavaScript JSX", 0, 1, 0, 0, 0, 0, 1
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\client\src\Pages\User\CartPages\CartPage.jsx", "JavaScript JSX", 0, 7, 0, 0, 0, 0, 7
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\client\src\Pages\User\FAQPage\FAQPage.jsx", "JavaScript JSX", 0, 19, 0, 0, 3, 4, 26
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\client\src\Pages\User\FAQPage\index.jsx", "JavaScript JSX", 0, 1, 0, 0, 0, 0, 1
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\client\src\Pages\User\HomePage\HomePage.jsx", "JavaScript JSX", 0, -2, 0, 0, 0, 0, -2
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\client\src\Pages\User\ProductsPage\ProductPageDetail.jsx", "JavaScript JSX", 0, 7, 0, 0, -4, 1, 4
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\client\src\Service\axiosConfig.jsx", "JavaScript JSX", 0, 1, 0, 0, 0, 0, 1
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\client\src\Service\cartApi.jsx", "JavaScript JSX", 0, 4, 0, 0, 0, 0, 4
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\client\src\layouts\home\HomeLayout.jsx", "JavaScript JSX", 0, 16, 0, 0, 2, 4, 22
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\client\src\layouts\home\footer\Footer.jsx", "JavaScript JSX", 0, 105, 0, 0, 3, 4, 112
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\client\src\layouts\home\header\Header.jsx", "JavaScript JSX", 0, 91, 0, 0, 3, 8, 102
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\client\src\layouts\home\header\nav\Nav.jsx", "JavaScript JSX", 0, 177, 0, 0, 2, 6, 185
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\client\src\layouts\home\header\nav\index.jsx", "JavaScript JSX", 0, 1, 0, 0, 0, 0, 1
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\client\src\layouts\home\index.jsx", "JavaScript JSX", 0, 1, 0, 0, 0, 0, 1
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\client\src\routers\routes.jsx", "JavaScript JSX", 0, 9, 0, 0, 0, 0, 9
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\client\src\section\@dashboard\cart\CartPayment\CartDelivery.jsx", "JavaScript JSX", 0, 151, 0, 0, 0, 6, 157
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\client\src\section\@dashboard\cart\CartPayment\CartPayment.jsx", "JavaScript JSX", 0, 18, 0, 0, 3, 3, 24
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\client\src\section\@dashboard\cart\CartPayment\CartPaymentInfo.jsx", "JavaScript JSX", 0, 92, 0, 0, 0, 6, 98
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\client\src\section\@dashboard\cart\CartPayment\CartShipInfo.jsx", "JavaScript JSX", 0, 178, 0, 0, 0, 7, 185
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\client\src\section\@dashboard\cart\CartSelect\CartSelect.jsx", "JavaScript JSX", 0, 16, 0, 0, 3, 3, 22
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\client\src\section\@dashboard\cart\CartSelect\CartSummary.jsx", "JavaScript JSX", 0, 123, 0, 0, 3, 7, 133
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\client\src\section\@dashboard\cart\CartSelect\CartTable.jsx", "JavaScript JSX", 0, 91, 0, 0, 3, 6, 100
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\client\src\section\@dashboard\cart\CartSelect\CartTableItem.jsx", "JavaScript JSX", 0, 226, 0, 0, 3, 11, 240
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\client\src\section\@dashboard\cart\CartStepper.jsx", "JavaScript JSX", 0, 142, 0, 0, 23, 16, 181
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\client\src\section\@dashboard\cart\index.jsx", "JavaScript JSX", 0, 1, 0, 0, 0, 2, 3
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\client\src\section\@dashboard\products\ProductCard.jsx", "JavaScript JSX", 0, -3, 0, 0, -1, 0, -4
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\client\src\section\@dashboard\products\productdetail\ProductDescription.jsx", "JavaScript JSX", 0, 4, 0, 0, -2, 2, 4
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\client\src\section\@dashboard\products\productdetail\ProductInfo.jsx", "JavaScript JSX", 0, 13, 0, 0, 5, 0, 18
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\client\src\section\about\Banner.jsx", "JavaScript JSX", 0, 83, 0, 0, 2, 5, 90
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\client\src\section\about\WhatIs.jsx", "JavaScript JSX", 0, 102, 0, 0, 2, 5, 109
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\client\src\section\about\index.jsx", "JavaScript JSX", 0, 3, 0, 0, 0, 2, 5
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\client\src\section\about\slider\Slider.jsx", "JavaScript JSX", 0, 36, 0, 0, 4, 4, 44
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\client\src\section\about\slider\SliderItem.jsx", "JavaScript JSX", 0, 83, 0, 0, 3, 6, 92
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\client\src\section\about\slider\sliderConfig.jsx", "JavaScript JSX", 0, 75, 0, 0, 0, 1, 76
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\client\src\section\admin\product\ProductFormDetail.jsx", "JavaScript JSX", 0, 63, 0, 0, 3, 5, 71
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\client\src\section\admin\product\ProductFormImage.jsx", "JavaScript JSX", 0, 55, 0, 0, 79, 8, 142
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\client\src\section\admin\product\ProductFormPrice.jsx", "JavaScript JSX", 0, 39, 0, 0, 2, 5, 46
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\client\src\section\admin\product\ProductFormProperty.jsx", "JavaScript JSX", 0, 129, 0, 0, 3, 9, 141
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\client\src\section\admin\product\index.jsx", "JavaScript JSX", 0, 4, 0, 0, 0, 3, 7
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\client\src\section\faq\Accordion.jsx", "JavaScript JSX", 0, 40, 0, 0, 3, 4, 47
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\client\src\section\faq\AccordionItems.jsx", "JavaScript JSX", 0, 33, 0, 0, 0, 2, 35
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\client\src\section\faq\Banner.jsx", "JavaScript JSX", 0, 115, 0, 0, 2, 5, 122
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\client\src\section\faq\ContactForm.jsx", "JavaScript JSX", 0, 60, 0, 0, 2, 6, 68
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\client\src\section\faq\Service.jsx", "JavaScript JSX", 0, 97, 0, 0, 2, 6, 105
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\client\src\section\faq\index.jsx", "JavaScript JSX", 0, 4, 0, 0, 0, 3, 7
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\client\src\section\home\Main\Main.jsx", "JavaScript JSX", 0, 1, 0, 0, 0, 0, 1
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\client\src\section\home\header\Header.jsx", "JavaScript JSX", 0, -91, 0, 0, -3, -8, -102
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\client\src\section\home\header\index.jsx", "JavaScript JSX", 0, -1, 0, 0, 0, 0, -1
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\client\src\section\home\header\nav\Nav.jsx", "JavaScript JSX", 0, -166, 0, 0, -2, -6, -174
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\client\src\section\home\header\nav\index.jsx", "JavaScript JSX", 0, -1, 0, 0, 0, 0, -1
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\server\src\app\controllers\CartsController.mjs", "JavaScript", 34, 0, 0, 0, 0, 6, 40
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\server\src\app\controllers\EmployeesController.mjs", "JavaScript", 7, 0, 0, 0, 0, 4, 11
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\server\src\app\controllers\ProductsController.mjs", "JavaScript", -8, 0, 0, 0, 0, -3, -11
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\server\src\app\models\DiscountCode.mjs", "JavaScript", 9, 0, 0, 0, 0, 3, 12
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\server\src\app\models\Payments.mjs", "JavaScript", 25, 0, 0, 0, 0, 3, 28
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\server\src\app\models\Products.mjs", "JavaScript", 7, 0, 0, 0, 0, 0, 7
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\server\src\routes\cartRouter.mjs", "JavaScript", 1, 0, 0, 0, 0, 0, 1
+"Total", "-", 75, 2527, 192, 242, -13, 186, 3209

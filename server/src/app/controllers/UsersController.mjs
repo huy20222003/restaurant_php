@@ -26,11 +26,19 @@ class AuthController {
     try {
       const user = await Users.findById(req.params._id).select('-password');
       if (!user) {
-        return res.status(404).json({ success: false, message: 'user not found' });
+        return res
+          .status(404)
+          .json({ success: false, message: 'user not found' });
       }
-      return res.status(200).json({ success: true, message: 'user found', user });
+      return res
+        .status(200)
+        .json({ success: true, message: 'user found', user });
     } catch (error) {
-      res.status(500).json({ success: false, message: 'Internal server error' });
+      res.status(500).json({
+        success: false,
+        message: 'An error occurred while processing the request.',
+        error: error.message,
+      });
     }
   }
 
@@ -82,6 +90,65 @@ class AuthController {
         return res
           .status(200)
           .json({ success: true, message: 'Delete user successful!' });
+      }
+    } catch (error) {
+      return res.status(500).json({
+        success: false,
+        message: 'An error occurred while processing the request.',
+        error: error.message,
+      });
+    }
+  }
+
+  async updateAvatar(req, res) {
+    try {
+      const { avatarUpdate } = req.body;
+      const user = await Users.findById(req.user._id);
+      if (!user) {
+        return res
+          .status(404)
+          .json({ success: false, message: 'User not found' });
+      } else {
+        const uploadResult = await Users.uploadFileToCloudinary(avatarUpdate);
+        if (!uploadResult.status) {
+          return res
+            .status(500)
+            .json({ success: false, message: 'Error uploading image_url' });
+        } else {
+          user.avatar = uploadResult.imageUrl;
+          await user.save();
+          return res
+            .status(200)
+            .json({ success: true, message: 'Update avatar successfull' });
+        }
+      }
+    } catch (error) {
+      return res.status(500).json({
+        success: false,
+        message: 'An error occurred while processing the request.',
+        error: error.message,
+      });
+    }
+  }
+
+  async updateInfo(req, res) {
+    try {
+      const { fullName, username, email, phoneNumber, shipAddress, address } =
+        req.body;
+      const user = await Users.findById(req.user._id);
+      if (!user) {
+        res.status(404).json({ success: false, message: 'User not found' });
+      } else {
+        user.fullName = fullName;
+        user.username = username;
+        user.email = email;
+        user.phoneNumber = phoneNumber;
+        user.shipAddress = shipAddress;
+        user.address = address;
+        await user.save();
+        res
+          .status(200)
+          .json({ success: true, message: 'Update user successfull', user });
       }
     } catch (error) {
       return res.status(500).json({

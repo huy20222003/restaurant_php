@@ -5,13 +5,33 @@ const Orders = new Schema(
     items: {
       type: Array,
     },
+    shipAddress: {
+      type: String,
+      default: '',
+      required: true,
+    },
+    phoneNumber: {
+      type: String,
+      default: '',
+      required: true
+    },
     totalPrices: {
       type: Number,
       default: 0,
     },
     status: {
       type: String,
-      default: 'pending',
+      enum: ['Confirmed', 'Ordered', 'Delivering', 'Delivered', 'Canceled', 'Returns'],
+      default: 'Ordered',
+    },
+    shippingFee: {
+      type: Number,
+      default: 0
+    },
+    paymentMethods: {
+      type: String,
+      default: '',
+      required: true,
     },
     userOrder: {
       type: Schema.Types.ObjectId,

@@ -10,21 +10,23 @@ import {
   Typography,
   Divider,
   IconButton,
-  Badge,
   Container,
-  Tooltip,
+  Menu,
+  MenuItem,
+  Avatar,
 } from '@mui/material';
 import MuiAppBar from '@mui/material/AppBar';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import NotificationsIcon from '@mui/icons-material/Notifications';
-import LogoutIcon from '@mui/icons-material/Logout';
+//component
 import {
   MainListItems,
   SecondaryListItems,
 } from '../../Components/Admin/ListItem/ListItem';
-import { Avatar } from '@mui/material';
+import NotificationsPopover from './header/NotificationsPopover';
+//context
 import { AuthContext } from '../../Contexts/AuthContext';
+//--------------------------------------------------------------
 
 const drawerWidth = 240;
 
@@ -64,7 +66,7 @@ const Drawer = styled(MuiDrawer, {
         easing: theme.transitions.easing.sharp,
         duration: theme.transitions.duration.leavingScreen,
       }),
-      width: theme.spacing(7),
+      width: 0,
       [theme.breakpoints.up('sm')]: {
         width: theme.spacing(9),
       },
@@ -83,6 +85,15 @@ const DashboardLayoutAdmin = () => {
   };
   const navigate = useNavigate();
 
+  const [anchorEl, setAnchorEl] = useState(null);
+  const openMenu = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
   const {
     authState: { user },
     logoutUser,
@@ -91,6 +102,17 @@ const DashboardLayoutAdmin = () => {
   const handleLogoutAdmin = () => {
     logoutUser();
     navigate('/auth/admin/login');
+  };
+
+  const handleNavigate = (data) => {
+    if (data == 'dashboard') {
+      navigate('/admin');
+    } else if (data == 'profile') {
+      navigate('/admin/profile');
+    } else if(data == 'setting') {
+      navigate('/admin/setting');
+    }
+    handleClose();
   };
 
   return (
@@ -121,20 +143,42 @@ const DashboardLayoutAdmin = () => {
               color="inherit"
               noWrap
               sx={{ flexGrow: 1 }}
-            >
-              Dashboard
-            </Typography>
-            {/* <IconButton color="inherit">
-              <Badge badgeContent={0} color="secondary">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton> */}
-            <Avatar src={user?.avatar} alt="avatar" />
-            <Tooltip title="Đăng xuất">
-              <IconButton color="inherit" onClick={handleLogoutAdmin}>
-                <LogoutIcon sx={{ fontSize: '1.6rem' }} />
-              </IconButton>
-            </Tooltip>
+            ></Typography>
+            <NotificationsPopover />
+            <Avatar
+              src={user?.avatar}
+              alt="avatar"
+              sx={{ cursor: 'pointer', ml: '0.5rem' }}
+              onClick={handleClick}
+            />
+            <Menu anchorEl={anchorEl} open={openMenu} onClose={handleClose}>
+              <Box sx={{ my: 1.5, px: 2.5 }}>
+                <Typography variant="subtitle2" noWrap>
+                  {user?.fullName}
+                </Typography>
+                <Typography
+                  variant="body2"
+                  sx={{ color: 'text.secondary' }}
+                  noWrap
+                >
+                  {user?.email}
+                </Typography>
+              </Box>
+              <MenuItem onClick={() => handleNavigate('dashboard')}>
+                Dashboard
+              </MenuItem>
+              <MenuItem onClick={() => handleNavigate('profile')}>
+                Profile
+              </MenuItem>
+              <MenuItem onClick={() => handleNavigate('setting')}>
+                Setting
+              </MenuItem>
+              <Divider sx={{ borderStyle: 'dashed' }} />
+
+              <MenuItem onClick={handleLogoutAdmin} sx={{ m: 1 }}>
+                Logout
+              </MenuItem>
+            </Menu>
           </Toolbar>
         </AppBar>
         <Drawer variant="permanent" open={open}>
@@ -170,8 +214,8 @@ const DashboardLayoutAdmin = () => {
           }}
         >
           <Toolbar />
-          <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-              <Outlet />
+          <Container maxWidth="lg" sx={{ mt: 1, mb: 1 }}>
+            <Outlet />
           </Container>
         </Box>
       </Box>

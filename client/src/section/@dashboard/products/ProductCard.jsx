@@ -9,8 +9,6 @@ import { fCurrency } from '../../../utils/formatNumber';
 // components
 import Label from '../../../Components/User/label';
 import ProductRating from './ProductRating';
-//context
-import { ProductsContext } from '../../../Contexts/ProductsContext';
 
 // ----------------------------------------------------------------------
 
@@ -31,10 +29,8 @@ ShopProductCard.propTypes = {
 export default function ShopProductCard({ product }) {
   const { _id, name, status, price, priceSale, image_url, rate } = product;
   const navigate = useNavigate();
-  const { handleGetOneProduct } = useContext(ProductsContext);
 
   const handleNavigateToProductDetail = (productId) => {
-    handleGetOneProduct(productId);
     navigate(`/dashboard/products/${productId}`);
   };
 
@@ -59,7 +55,7 @@ export default function ShopProductCard({ product }) {
             {status}
           </Label>
         )}
-        <StyledProductImg alt={name} src={image_url} />
+        <StyledProductImg alt={name} src={image_url[0]} />
       </Box>
 
       <Stack spacing={2} sx={{ p: 3 }}>

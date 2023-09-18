@@ -9,24 +9,16 @@ dotenv.config();
 class AuthController {
   async getUserProfile(req, res) {
     try {
-      const user = await Employees.findById(req._id).select('-password');
+      const user = await Employees.findById(req.user._id).select('-password');
       if (!user) {
         return res
           .status(404)
           .json({ success: false, message: 'User not found!' });
       }
-      const role = await Roles.findById(user.roles);
-
-      if (!role) {
-        return res
-          .status(404)
-          .json({ success: false, message: 'Role not found' });
-      }
       return res.status(200).json({
         success: true,
         message: 'User found!',
         user,
-        role: role.name,
       });
     } catch (error) {
       res.status(500).json({
@@ -64,13 +56,6 @@ class AuthController {
           message: 'Invalid username or password!',
         });
       }
-
-      const role = await Roles.findById(user.roles);
-
-      if (!role) {
-        return res.status(404).json({ message: 'Role not found' });
-      }
-
       const accessToken = user.generateAccessToken();
       const refreshToken = user.generateRefreshToken();
 
@@ -79,7 +64,6 @@ class AuthController {
         message: 'Logged in successfully!',
         accessToken,
         refreshToken,
-        role: role.name,
       });
     } catch (error) {
       res.status(500).json({

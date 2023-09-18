@@ -7,6 +7,8 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
+//font
+
 
 // ----------------------------------------------------------------------
 
@@ -29,6 +31,7 @@ export default function GlobalStyles() {
           padding: 0,
           width: '100%',
           height: '100%',
+          fontFamily: 'Public Sans, sans-serif',
         },
         '#root': {
           width: '100%',

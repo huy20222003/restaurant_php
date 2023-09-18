@@ -3,13 +3,12 @@ import { SET_AUTH } from './constants';
 export const initStateAuth = {
   isAuthenticated: false,
   user: null,
-  role: null
 };
 
 export const reducer = (state, action) => {
   const {
     type,
-    payload: { isAuthenticated, user, role },
+    payload: { isAuthenticated, user },
   } = action;
 
   switch (type) {
@@ -18,7 +17,6 @@ export const reducer = (state, action) => {
         ...state,
         isAuthenticated,
         user,
-        role,
       };
     default:
       return {

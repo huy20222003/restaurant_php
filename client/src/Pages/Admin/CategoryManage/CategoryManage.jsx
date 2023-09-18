@@ -1,28 +1,44 @@
-import { useContext, useState } from 'react';
-import { Box, Button, Paper, Typography } from '@mui/material';
+import { useState } from 'react';
+//@mui
+import {
+  Box,
+  Button,
+  Paper,
+  Typography,
+  Popover,
+  Menu,
+  MenuItem,
+  Stack,
+  ButtonBase,
+  Container,
+} from '@mui/material';
+//@mui icon
 import AddIcon from '@mui/icons-material/Add';
-import { CategoryContext } from '../../../Contexts/CategoryContext';
-import DataTable from '../../../Components/Admin/DataTable';
 import IconButton from '@mui/material/IconButton';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import VisibilityIcon from '@mui/icons-material/Visibility';
-import Popover from '@mui/material/Popover';
-import MenuItem from '@mui/material/MenuItem';
-import Menu from '@mui/material/Menu';
-import { CommonContext } from '../../../Contexts/CommonContext';
+//iconify
+import Iconify from '../../../Components/User/iconify';
+//component
+import DataTable from '../../../Components/Admin/DataTable';
 import FormDialogCategory from '../../../Components/FormDialog/FormDialogCategory';
+//context
+import { useCategory, useCommon } from '../../../hooks/context';
+//toast
 import { toast } from 'react-toastify';
+//sweet alert
+import Swal from 'sweetalert2';
 
 const CategoryManage = () => {
   const {
     categoryState: { categories },
     handleCreateCategory,
     handleDeleteCategory,
-  } = useContext(CategoryContext);
+  } = useCategory();
 
-  const { setOpenFormDialog } = useContext(CommonContext);
+  const { setOpenFormDialog } = useCommon();
 
   const columns = [
     { field: 'id', headerName: 'ID', type: 'String', width: 100 },
@@ -97,13 +113,15 @@ const CategoryManage = () => {
     );
   }
 
-  const rows = categories && categories.map((category) => {
-    return {
-      id: category?._id,
-      name: category?.name,
-      description: category?.description
-    };
-  });
+  const rows =
+    categories &&
+    categories.map((category) => {
+      return {
+        id: category?._id,
+        name: category?.name,
+        description: category?.description,
+      };
+    });
 
   const handleOpenFormDialog = () => {
     setOpenFormDialog(true);
@@ -111,7 +129,7 @@ const CategoryManage = () => {
 
   const fiels = [
     { name: 'name', label: 'Tên', type: 'text', row: 1 },
-    {name: 'description', label: 'Mô tả', type: 'text', row: 5}
+    { name: 'description', label: 'Mô tả', type: 'text', row: 5 },
   ];
 
   const handleView = (categoryId) => {
@@ -123,16 +141,26 @@ const CategoryManage = () => {
   };
 
   const handleDelete = async (categoryId) => {
-    try {
-      const deleteData = await handleDeleteCategory(categoryId);
-      if (!deleteData.success) {
-        toast.error(deleteData.message);
-      } else {
-        toast.success(deleteData.message);
+    Swal.fire({
+      title: 'Delete this category?',
+      text: 'Would you like to delete this category?',
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, of course!',
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        try {
+          const response = await handleDeleteCategory(categoryId);
+          if (response.success) {
+            Swal.fire('', 'Delete Successful!', 'success');
+          } else {
+            Swal.fire('', 'Delete failed!', 'error');
+          }
+        } catch (error) {
+          Swal.fire('', 'Server error!', 'error');
+        }
       }
-    } catch (error) {
-      toast.error('Server Error');
-    }
+    });
   };
 
   const handleCreate = async (category) => {
@@ -149,22 +177,62 @@ const CategoryManage = () => {
   };
 
   return (
-    <Box>
-      <Typography variant="h4" align="center" gutterBottom>
-        Danh sách danh mục
-      </Typography>
-      <Box sx={{ marginBottom: '2rem' }}>
-        <Button variant="contained" size="medium" startIcon={<AddIcon />} onClick={handleOpenFormDialog}>
-          Thêm danh mục
-        </Button>
+    <Box sx={{ display: 'flex', flex: '1 1 auto', maxWidth: '100%' }}>
+      <Box
+        sx={{
+          display: 'flex',
+          flex: '1 1 auto',
+          width: '100%',
+          flexDirection: 'column',
+        }}
+      >
+        <Box sx={{ flexGrow: 1, py: '64px' }}>
+          <Container sx={{pt: '40px'}}>
+            <Stack>
+              <Stack
+                sx={{ flexDirection: 'row', justifyContent: 'space-between' }}
+              >
+                <Stack>
+                  <Typography variant="h4">Categories</Typography>
+                  <Stack
+                    sx={{
+                      flexDirection: 'row',
+                      alignItems: 'center',
+                      mt: '8px',
+                    }}
+                  >
+                    <ButtonBase sx={{ p: '7px 12px' }}>
+                      <Iconify
+                        icon="material-symbols:upload"
+                        sx={{ mr: '0.3rem' }}
+                      />
+                      Upload
+                    </ButtonBase>
+                    <ButtonBase sx={{ p: '7px 12px' }}>
+                      <Iconify icon="uil:import" sx={{ mr: '0.3rem' }} />
+                      Export
+                    </ButtonBase>
+                  </Stack>
+                </Stack>
+                <Stack sx={{ flexDirection: 'row', alignItems: 'center' }}>
+                  <Button
+                    variant="contained"
+                    startIcon={<AddIcon />}
+                    sx={{ borderRadius: '12px' }}
+                    onClick={handleOpenFormDialog}
+                  >
+                    Add
+                  </Button>
+                </Stack>
+              </Stack>
+              <FormDialogCategory fields={fiels} handleCreate={handleCreate} />
+              <Paper elevation={0} sx={{ m: '32px 0 0' }}>
+                <DataTable columns={columns} rows={rows} />
+              </Paper>
+            </Stack>
+          </Container>
+        </Box>
       </Box>
-      <FormDialogCategory fields={fiels} handleCreate={handleCreate} />
-      <Paper elevation={3} style={{ marginTop: '2rem' }}>
-        <DataTable
-          columns={columns}
-          rows={rows}
-        />
-      </Paper>
     </Box>
   );
 };

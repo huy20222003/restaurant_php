@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useState } from 'react';
 //@mui
 import { Tab, Box } from '@mui/material';
@@ -33,6 +34,12 @@ const ProductTabs = ({product}) => {
       </TabContext>
     </Box>
   );
+};
+
+ProductTabs.propTypes = {
+  product: PropTypes.shape({
+    _id: PropTypes.string,
+  }),
 };
 
 export default ProductTabs;

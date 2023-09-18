@@ -5,6 +5,7 @@ import {
   GET_ONE_PRODUCT,
   SEARCH_PRODUCT,
   SET_PAGE,
+  FILTER_PRODUCT,
 } from './constants';
 
 export const initProductsState = {
@@ -45,7 +46,12 @@ export const reducer = (state, action) => {
         ...state,
         products: state.products.filter((PRODUCT) => PRODUCT._id !== payload),
       };
-      case SEARCH_PRODUCT:
+    case SEARCH_PRODUCT:
+      return {
+        ...state,
+        products: payload,
+      };
+    case FILTER_PRODUCT:
       return {
         ...state,
         products: payload,

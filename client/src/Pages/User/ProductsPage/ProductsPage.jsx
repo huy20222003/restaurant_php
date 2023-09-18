@@ -1,5 +1,5 @@
 import { Helmet } from 'react-helmet-async';
-import { useState, useContext } from 'react';
+import { useState } from 'react';
 // @mui
 import { Box, Container, Stack, Typography } from '@mui/material';
 // components
@@ -10,8 +10,8 @@ import {
   ProductFilterSidebar,
   ProductPagnition,
 } from '../../../section/@dashboard/products';
-// mock
-import { ProductsContext } from '../../../Contexts/ProductsContext';
+// context
+import {useProduct} from '../../../hooks/context';
 
 // ----------------------------------------------------------------------
 
@@ -19,7 +19,7 @@ export default function ProductsPage() {
   const [openFilter, setOpenFilter] = useState(false);
   const {
     productsState: { products },
-  } = useContext(ProductsContext);
+  } = useProduct();
 
   const handleOpenFilter = () => {
     setOpenFilter(true);

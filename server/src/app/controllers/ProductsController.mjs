@@ -20,9 +20,11 @@ class ProductsController {
         totalPages: totalPages,
       });
     } catch (error) {
-      res
-        .status(500)
-        .json({ success: false, message: 'Internal server error' });
+      res.status(500).json({
+        success: false,
+        message: 'An error occurred while processing the request.',
+        error: error.message,
+      });
     }
   }
 
@@ -38,61 +40,55 @@ class ProductsController {
         .status(200)
         .json({ success: true, message: 'Product found', product });
     } catch (error) {
-      res
-        .status(500)
-        .json({ success: false, message: 'Internal server error' });
+      res.status(500).json({
+        success: false,
+        message: 'An error occurred while processing the request.',
+        error: error.message,
+      });
     }
   }
 
   async addProduct(req, res) {
     try {
-      const { name, description, price, category, image_url } = req.body;
+      const {
+        name,
+        subDescription,
+        description,
+        price,
+        priceSale,
+        status,
+        size,
+        color,
+        quantity,
+        category,
+        image_url,
+      } = req.body;
 
-      if (!name || !price || !description || !category) {
+      if (
+        !name ||
+        !price ||
+        !description ||
+        !category ||
+        !status ||
+        !image_url
+      ) {
         return res
           .status(400)
           .json({ success: false, message: 'Required fields missing' });
       }
 
-      let imageUrl = image_url; // Giả định imageUrl ban đầu là image_url
-
-      if (Array.isArray(image_url)) {
-        const uploadResults = await Promise.all(
-          image_url.map(async (url) => {
-            if (url.startsWith('data:')) {
-              const uploadResult = await Products.uploadFileToCloudinary(url);
-              if (!uploadResult.status) {
-                return res
-                  .status(500)
-                  .json({
-                    success: false,
-                    message: 'Error uploading image_url',
-                  });
-              }
-              return uploadResult.imageUrl;
-            } else {
-              return url;
-            }
-          })
-        );
-
-        imageUrl = uploadResults; // Lấy danh sách imageUrl từ Cloudinary hoặc sử dụng nguyên bản
-      } else if (image_url.startsWith('data:')) {
-        const uploadResult = await Products.uploadFileToCloudinary(image_url);
-        if (!uploadResult.status) {
-          return res
-            .status(500)
-            .json({ success: false, message: 'Error uploading image_url' });
-        }
-        imageUrl = [uploadResult.imageUrl]; // Lấy imageUrl từ Cloudinary nếu image_url là một chuỗi
-      }
-
       const newProduct = new Products({
         name,
+        subDescription,
         description,
-        category,
         price,
-        image_url: imageUrl, // Sử dụng imageUrl đã cập nhật
+        priceSale,
+        status,
+        size,
+        color,
+        quantity,
+        category,
+        image_url,
       });
       await newProduct.save();
 
@@ -102,7 +98,11 @@ class ProductsController {
         product: newProduct,
       });
     } catch (error) {
-      res.status(400).json({ success: false, message: 'Bad request' });
+      res.status(500).json({
+        success: false,
+        message: 'An error occurred while processing the request.',
+        error: error.message,
+      });
     }
   }
 
@@ -136,13 +136,18 @@ class ProductsController {
         product: updateProduct,
       });
     } catch (error) {
-      res.status(400).json({ success: false, message: 'Bad request' });
+      res.status(500).json({
+        success: false,
+        message: 'An error occurred while processing the request.',
+        error: error.message,
+      });
     }
   }
 
   async deleteProduct(req, res) {
     try {
       const deletedProduct = await Products.findByIdAndDelete(req.params._id);
+      console.log(req.params._id);
       if (!deletedProduct) {
         return res
           .status(404)
@@ -154,12 +159,44 @@ class ProductsController {
         product: deletedProduct,
       });
     } catch (error) {
-      res.status(400).json({ success: false, message: 'Bad request' });
+      res.status(500).json({
+        success: false,
+        message: 'An error occurred while processing the request.',
+        error: error.message,
+      });
     }
   }
 
   async searchProduct(req, res) {
-    console.log(req.query);
+    const q = req.query.q;
+
+    try {
+      const products = await Products.find({
+        name: { $regex: q, $options: 'i' },
+      });
+
+      return res
+        .status(200)
+        .json({ success: true, message: 'Products found.', products });
+    } catch (error) {
+      res.status(500).json({
+        success: false,
+        message: 'An error occurred while processing the request.',
+        error: error.message,
+      });
+    }
+  }
+
+  async filterProduct(req, res) {
+    try {
+      const { categoryValue, priceValue, starValue } = req.query;
+    } catch (error) {
+      res.status(500).json({
+        success: false,
+        message: 'An error occurred while processing the request.',
+        error: error.message,
+      });
+    }
   }
 }
 

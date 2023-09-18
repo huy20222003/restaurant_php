@@ -1,8 +1,10 @@
-import { useState } from 'react';
+//@mui
 import { Button, Grid, Typography } from '@mui/material';
+import { useProduct } from '../../../../hooks/context';
+//----------------------------------------------------
 
 const ProductQuantity = () => {
-  const [quantity, setQuantity] = useState(1); 
+  const {quantity, setQuantity} = useProduct();
 
   const handleIncrease = () => {
     setQuantity(quantity + 1);

@@ -1,8 +1,13 @@
-//@mui
+import PropTypes from 'prop-types';
 import { Box, Typography, List, ListItem } from '@mui/material';
-//-----------------------------------------------
+import HTMLReactParser from 'html-react-parser';
 
 const ProductDescription = ({ product }) => {
+  const description =
+    product?.description && typeof product.description === 'string'
+      ? product.description
+      : '';
+
   return (
     <Box sx={{ width: '100%' }}>
       <Typography variant="h6">Product Information</Typography>
@@ -10,21 +15,20 @@ const ProductDescription = ({ product }) => {
         <ListItem>
           <Typography variant="body2">Product code: {product?._id}</Typography>
         </ListItem>
-        <ListItem>
-          <Typography variant="body2">Category: {product?.category}</Typography>
-        </ListItem>
       </List>
       <Typography variant="h6">Product Detail</Typography>
-      <List>
-        <ListItem>
-          <Typography variant="body2">Description: {product?.description}</Typography>
-        </ListItem>
-        <ListItem>
-          <Typography variant="body2">Ingredient: {product?._id}</Typography>
-        </ListItem>
-      </List>
+      <Typography variant="caption">
+        {HTMLReactParser(description)}
+      </Typography>
     </Box>
   );
+};
+
+ProductDescription.propTypes = {
+  product: PropTypes.shape({
+    _id: PropTypes.string,
+    description: PropTypes.string,
+  }),
 };
 
 export default ProductDescription;

@@ -19,7 +19,7 @@ const FormDialogEmployee = ({ fields, handleCreate }) => {
     fullName: '',
     username: '',
     email: '',
-    position: '', // Ensure this is initially defined
+    position: '', 
     salary: '',
     password: '',
   });

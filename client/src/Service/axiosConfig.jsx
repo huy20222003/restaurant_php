@@ -10,8 +10,6 @@ const axiosConfig = axios.create({
   },
 });
 
-// Intercept request và thêm token vào tiêu đề
-// Intercept request và thêm token vào tiêu đề
 axiosConfig.interceptors.request.use((config) => {
   const token = Cookies.get('user');
   if (token) {
@@ -28,11 +26,11 @@ axiosConfig.interceptors.response.use(
       if (refreshToken) {
         try {
           let response;
-          const refreshData = {refreshToken}
+     
           if(!window.location.href.includes('admin')) {
-            response = await axiosConfig.post('/auth/refresh',  refreshData );
+            response = await axiosConfig.post('/auth/refresh',  {refreshToken} );
           } else {
-            response = await axiosConfig.post('/auth/admin/refresh',  refreshData );
+            response = await axiosConfig.post('/auth/admin/refresh',  {refreshToken} );
           }
           const newToken = response.data.accessToken;
 
@@ -48,7 +46,7 @@ axiosConfig.interceptors.response.use(
           return axios.request(error.config);
         } catch (refreshError) {
           console.error('Lỗi khi làm mới token:', refreshError);
-          window.location.href = '/auth/login'; 
+          Cookies.remove('refresh');
         }
       } else {
         Cookies.remove('user');

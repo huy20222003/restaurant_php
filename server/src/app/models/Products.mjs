@@ -8,10 +8,16 @@ const Products = new Schema(
       maxLength: 250,
       required: true,
     },
+    subDescription: {
+      type: String,
+      default: '',
+      maxLength: 1000,
+    },
     description: {
       type: String,
       default: '',
       maxLength: 3000,
+      required: true,
     },
     price: {
       type: Number,
@@ -24,11 +30,24 @@ const Products = new Schema(
     status: {
       type: String,
       enum: ['sale', 'new'],
-      default: 'new'
+      default: 'new',
+      required: true,
     },
     category: {
       type: Schema.Types.ObjectId,
       required: true
+    },
+    size: {
+      type: Array,
+      default: ''
+    },
+    color: {
+      type: Array,
+      default: ''
+    },
+    quantity: {
+      type: Number,
+      default: 0
     },
     image_url: {
       type: Array,

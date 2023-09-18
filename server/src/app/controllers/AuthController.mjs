@@ -3,30 +3,24 @@ import Users from '../models/Users.mjs';
 import jwt from 'jsonwebtoken';
 import bcryptjs from 'bcryptjs';
 import Roles from '../models/Roles.mjs';
+import Carts from '../models/Carts.mjs';
 
 dotenv.config();
 
 class AuthController {
   async getUserProfile(req, res) {
     try {
-      const user = await Users.findById(req._id).select('-password');
+      const user = await Users.findById(req.user._id).select('-password');
+      console.log();
       if (!user) {
         return res
           .status(404)
           .json({ success: false, message: 'User not found!' });
       }
-      const role = await Roles.findById(user.roles);
-
-      if (!role) {
-        return res
-          .status(404)
-          .json({ success: false, message: 'Role not found' });
-      }
       return res.status(200).json({
         success: true,
         message: 'User found!',
         user,
-        role: role.name,
       });
     } catch (error) {
       res.status(500).json({
@@ -55,8 +49,20 @@ class AuthController {
           message: 'Username or email already exists!',
         });
       }
+      const userRole = await Roles.findOne({ name: 'user' });
 
-      const newUser = new Users({ fullName, username, email, password });
+      const newUser = new Users({
+        fullName,
+        username,
+        email,
+        password,
+        roles: userRole._id,
+      });
+
+      await newUser.save();
+
+      const newCart = new Carts({ userCart: newUser._id });
+      await newCart.save();
 
       const accessToken = newUser.generateAccessToken();
       const refreshToken = newUser.generateRefreshToken();
@@ -104,12 +110,6 @@ class AuthController {
         });
       }
 
-      const role = await Roles.findById(user.roles);
-
-      if (!role) {
-        return res.status(404).json({ message: 'Role not found' });
-      }
-
       const accessToken = user.generateAccessToken();
       const refreshToken = user.generateRefreshToken();
 
@@ -118,7 +118,6 @@ class AuthController {
         message: 'Logged in successfully!',
         accessToken,
         refreshToken,
-        role: role.name,
       });
     } catch (error) {
       res.status(500).json({

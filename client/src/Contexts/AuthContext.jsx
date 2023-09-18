@@ -1,8 +1,6 @@
 import { createContext, useCallback, useEffect, useReducer } from 'react';
-import axios from 'axios';
 import Cookies from 'js-cookie';
 import { initStateAuth, reducer } from '../Reducers/AuthReducer/reducer';
-import { API_URL } from '../constants';
 import { setAuth } from '../Reducers/AuthReducer/action';
 import setAuthToken from '../utils/setAuthToken';
 import authApi from '../Service/authApi';
@@ -20,36 +18,35 @@ export const AuthProvider = (prop) => {
     }
   };
 
-  const setAuthenticatedUser = (isAuthenticated, user, role) => {
-    dispatch(setAuth({ isAuthenticated, user, role }));
+  const setAuthenticatedUser = (isAuthenticated, user ) => {
+    dispatch(setAuth({ isAuthenticated, user }));
   };
 
   const loadUser = useCallback(async () => {
     try {
       const accessToken = Cookies.get('user');
       if (!accessToken) {
-        setAuthenticatedUser(false, null, null);
+        setAuthenticatedUser(false, null);
         return;
       }
 
       setAuthToken(accessToken);
+      let response;
 
-      let accountUrl = `${API_URL}/auth/account`;
-      if (window.location.href.includes('admin')) {
-        accountUrl = `${API_URL}/auth/admin/account`;
-      }
-
-      const response = await axios.get(accountUrl);
-
-      if (response.data.success) {
-        setAuthenticatedUser(true, response.data.user, response.data.role);
+      if (!window.location.href.includes('admin')) {
+        response = await authApi.account();
       } else {
-        setAuthenticatedUser(false, null, null);
+        response = await authApi.accountAdmin();
+      }
+      if (response.data.success) {
+        setAuthenticatedUser(true, response.data.user);
+      } else {
+        setAuthenticatedUser(false, null);
         Cookies.remove('user');
         setAuthToken(null);
       }
     } catch (error) {
-      setAuthenticatedUser(false, null, null);
+      setAuthenticatedUser(false, null);
     }
   }, []);
 
@@ -91,37 +88,6 @@ export const AuthProvider = (prop) => {
     Cookies.remove('user');
     setAuthenticatedUser(false, null, null);
   };
-
-  // const handleRefreshToken = useCallback(async () => {
-  //   try {
-  //     const refreshToken = Cookies.get('refresh');
-  //     if (refreshToken) {
-  //       const accountUrl = window.location.href.includes('admin')
-  //         ? `${API_URL}/auth/admin/refresh`
-  //         : `${API_URL}/auth/refresh`;
-
-  //       const response = await axios.post(accountUrl, {
-  //         refreshToken,
-  //       });
-
-  //       const newToken = response.data.accessToken;
-
-  //       // Lưu token mới vào cookie
-  //       const expiration = new Date();
-  //       expiration.setTime(expiration.getTime() + 15 * 60 * 1000);
-  //       Cookies.set('user', newToken, {
-  //         expires: expiration,
-  //       });
-  //     }
-  //   } catch (error) {
-  //     return handleError(error);
-  //   }
-  // }, []);
-
-  // //Tự động handle refreshToken mỗi khi loadUser
-  // useEffect(() => {
-  //   handleRefreshToken();
-  // }, [handleRefreshToken]);
 
   const AuthContextData = {
     authState,

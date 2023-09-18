@@ -32,6 +32,10 @@ const Users = new Schema(
       default: '',
       trim: true,
     },
+    shipAddress: {
+      type: String,
+      default: '',
+    },
     address: {
       type: String,
       default: '',
@@ -66,7 +70,7 @@ Users.pre('save', async function (next) {
   next();
 });
 
-Users.methods.uploadFileToCloudinary = async function (file) {
+Users.statics.uploadFileToCloudinary = async function (file) {
   const user = this;
   try {
     if (!file) {
@@ -78,8 +82,6 @@ Users.methods.uploadFileToCloudinary = async function (file) {
       const result = await cloudinary.uploader.upload(file, {
         upload_preset: process.env.UPLOAD_PRESET,
       });
-      user.avatar = result.secure_url;
-      await user.save();
       return {
         status: true,
         message: 'Upload successful',
@@ -95,35 +97,15 @@ Users.methods.uploadFileToCloudinary = async function (file) {
 };
 
 Users.methods.generateAccessToken = function () {
-  return jwt.sign({ _id: this._id }, process.env.ACCESS_TOKEN_SECRET, {
+  return jwt.sign({ _id: this._id, roles: this.roles }, process.env.ACCESS_TOKEN_SECRET, {
     expiresIn: '15m',
   });
 };
 
 Users.methods.generateRefreshToken = function () {
-  return jwt.sign({ _id: this._id }, process.env.REFRESH_TOKEN_SECRET, {
+  return jwt.sign({ _id: this._id, roles: this.roles }, process.env.REFRESH_TOKEN_SECRET, {
     expiresIn: '365d',
   });
-};
-
-Users.methods.addRole = async function (role) {
-  try {
-    this.roles = role._id;
-    await this.save();
-
-    role.userId = this._id;
-    await role.save();
-
-    return {
-      status: true,
-      message: 'Role added successfully',
-    };
-  } catch (error) {
-    return {
-      status: false,
-      message: 'Error adding role',
-    };
-  }
 };
 
 export default model('users', Users);

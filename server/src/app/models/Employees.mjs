@@ -102,35 +102,15 @@ Employees.methods.uploadFileToCloudinary = async function (file) {
 };
 
 Employees.methods.generateAccessToken = function () {
-  return jwt.sign({ _id: this._id }, process.env.ACCESS_TOKEN_SECRET, {
+  return jwt.sign({ _id: this._id, roles: this.roles }, process.env.ACCESS_TOKEN_SECRET, {
     expiresIn: '15m',
   });
 };
 
 Employees.methods.generateRefreshToken = function () {
-  return jwt.sign({ _id: this._id }, process.env.REFRESH_TOKEN_SECRET, {
+  return jwt.sign({ _id: this._id, roles: this.roles }, process.env.REFRESH_TOKEN_SECRET, {
     expiresIn: '365d',
   });
-};
-
-Employees.methods.addRole = async function (role) {
-  try {
-    this.roles = role._id;
-    await this.save();
-
-    role.userId = this._id;
-    await role.save();
-
-    return {
-      status: true,
-      message: 'Role added successfully',
-    };
-  } catch (error) {
-    return {
-      status: false,
-      message: 'Error adding role',
-    };
-  }
 };
 
 export default model('employees', Employees);

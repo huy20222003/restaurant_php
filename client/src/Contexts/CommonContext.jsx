@@ -5,6 +5,7 @@ export const CommonContext = createContext();
 
 export const CommonProvider = (prop) => {
   const [openFormDialog, setOpenFormDialog] = useState(false);
+  const [activeStep, setActiveStep] = useState(0);
 
   const handleEvolvingFunctionality = ()=> {
     toast.info('Chức năng đang phát triển');
@@ -14,7 +15,9 @@ export const CommonProvider = (prop) => {
   const commonData = {
    openFormDialog,
    setOpenFormDialog,
-   handleEvolvingFunctionality
+   activeStep, 
+   setActiveStep,
+   handleEvolvingFunctionality,
   };
 
   return (

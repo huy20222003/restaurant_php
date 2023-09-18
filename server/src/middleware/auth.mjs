@@ -16,8 +16,7 @@ async function authVerify(req, res, next) {
     } else {
       // Xác thực token
       const decoded = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
-      req._id = decoded._id; 
-
+      req.user = {_id: decoded._id, roles: decoded.roles}; 
       next(); // Cho phép đi tiếp tới middleware hoặc route tiếp theo
     }
   } catch (error) {

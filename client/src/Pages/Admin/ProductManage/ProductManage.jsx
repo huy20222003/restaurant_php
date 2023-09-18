@@ -1,32 +1,57 @@
-import { useContext, useState } from 'react';
-import { Box, Button, Paper, Typography } from '@mui/material';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+//@mui
+import {
+  Box,
+  Button,
+  ButtonBase,
+  Container,
+  Paper,
+  Stack,
+  Typography,
+  Popover,
+  MenuItem,
+  Menu,
+} from '@mui/material';
+//icon
 import AddIcon from '@mui/icons-material/Add';
-import { ProductsContext } from '../../../Contexts/ProductsContext';
 import DataTable from '../../../Components/Admin/DataTable';
 import IconButton from '@mui/material/IconButton';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import VisibilityIcon from '@mui/icons-material/Visibility';
-import Popover from '@mui/material/Popover';
-import MenuItem from '@mui/material/MenuItem';
-import Menu from '@mui/material/Menu';
-import { toast } from 'react-toastify';
-import { CommonContext } from '../../../Contexts/CommonContext';
-import FormDialogDishes from '../../../Components/FormDialog/FormDialogDishes';
+//context
+import { useProduct } from '../../../hooks/context';
+//component
+import Iconify from '../../../Components/User/iconify';
+//sweetalert
+import Swal from 'sweetalert2';
+//---------------------------------------------------------
 
 const ProductManage = () => {
   const {
     productsState: { products },
-    handleCreateProduct,
     handleDeleteProduct,
-  } = useContext(ProductsContext);
+  } = useProduct();
 
-  const { setOpenFormDialog } = useContext(CommonContext);
+  const navigate = useNavigate();
 
   const columns = [
     { field: 'id', headerName: 'ID', type: 'String', width: 90 },
-    { field: 'image_url', headerName: 'Ảnh', type: 'String', width: 100 },
+    {
+      field: 'image_url',
+      headerName: 'Ảnh',
+      type: 'String',
+      width: 100,
+      renderCell: (params) => (
+        <img
+          src={params.value} 
+          alt="Product"
+          style={{ width: '60%', height: '60%' }} 
+        />
+      ),
+    },
     { field: 'name', headerName: 'Tên', type: 'String', width: 160 },
     { field: 'description', headerName: 'Mô tả', type: 'String', width: 200 },
     { field: 'category', headerName: 'Danh mục', type: 'String', width: 160 },
@@ -112,13 +137,6 @@ const ProductManage = () => {
     };
   });
 
-  const fiels = [
-    { name: 'name', label: 'Tên', type: 'text', row: 1 },
-    { name: 'description', label: 'Mô tả', type: 'text', row: 5 },
-    { name: 'price', label: 'Giá', type: 'text', row: 1 },
-    { name: 'image_url', label: 'Ảnh sản phẩm', type: 'text', row: 1 },
-  ];
-
   const handleView = (productId) => {
     console.log(`View product with ID: ${productId}`);
   };
@@ -128,54 +146,88 @@ const ProductManage = () => {
   };
 
   const handleDelete = async (productId) => {
-    try {
-      const deleteData = await handleDeleteProduct(productId);
-      if (!deleteData.success) {
-        toast.error(deleteData.message);
-      } else {
-        toast.success(deleteData.message);
+    Swal.fire({
+      title: 'Delete this product?',
+      text: 'Would you like to delete this product?',
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, of course!',
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        try {
+          const response = await handleDeleteProduct(productId);
+          if (response.success) {
+            Swal.fire('', 'Delete Successful!', 'success');
+          } else {
+            Swal.fire('', 'Delete failed!', 'error');
+          }
+        } catch (error) {
+          Swal.fire('', 'Server error!', 'error');
+        }
       }
-    } catch (error) {
-      toast.error('Server Error');
-    }
+    });
   };
 
-  const handleOpenFormDialog = () => {
-    setOpenFormDialog(true);
-  };
-
-  const handleCreate = async (product) => {
-    try {
-      const createData = await handleCreateProduct(product);
-      if (!createData.success) {
-        toast.error(createData.message);
-      } else {
-        toast.success(createData.message);
-      }
-    } catch (error) {
-      toast.error('Server Error');
-    }
+  const handleNavigateCreateProductPage = () => {
+    navigate('/admin/product-manage/create');
   };
 
   return (
-    <Box>
-      <Typography variant="h4" align="center" gutterBottom>
-        Danh sách sản phẩm
-      </Typography>
-      <Box sx={{ marginBottom: '2rem' }}>
-        <Button
-          variant="contained"
-          size="medium"
-          startIcon={<AddIcon />}
-          onClick={handleOpenFormDialog}
-        >
-          Thêm sản phẩm
-        </Button>
+    <Box sx={{ display: 'flex', flex: '1 1 auto', maxWidth: '100%' }}>
+      <Box
+        sx={{
+          display: 'flex',
+          flex: '1 1 auto',
+          width: '100%',
+          flexDirection: 'column',
+        }}
+      >
+        <Box sx={{ flexGrow: 1, py: '64px' }}>
+          <Container sx={{pt: '40px'}}>
+            <Stack>
+              <Stack
+                sx={{ flexDirection: 'row', justifyContent: 'space-between' }}
+              >
+                <Stack>
+                  <Typography variant="h4">Products</Typography>
+                  <Stack
+                    sx={{
+                      flexDirection: 'row',
+                      alignItems: 'center',
+                      mt: '8px',
+                    }}
+                  >
+                    <ButtonBase sx={{ p: '7px 12px' }}>
+                      <Iconify
+                        icon="material-symbols:upload"
+                        sx={{ mr: '0.3rem' }}
+                      />
+                      Upload
+                    </ButtonBase>
+                    <ButtonBase sx={{ p: '7px 12px' }}>
+                      <Iconify icon="uil:import" sx={{ mr: '0.3rem' }} />
+                      Export
+                    </ButtonBase>
+                  </Stack>
+                </Stack>
+                <Stack sx={{ flexDirection: 'row', alignItems: 'center' }}>
+                  <Button
+                    variant="contained"
+                    startIcon={<AddIcon />}
+                    sx={{ borderRadius: '12px' }}
+                    onClick={handleNavigateCreateProductPage}
+                  >
+                    Add
+                  </Button>
+                </Stack>
+              </Stack>
+              <Paper elevation={0} sx={{ m: '32px 0 0' }}>
+                <DataTable columns={columns} rows={rows} />
+              </Paper>
+            </Stack>
+          </Container>
+        </Box>
       </Box>
-      <FormDialogDishes fields={fiels} handleCreate={handleCreate} />
-      <Paper elevation={3} style={{ marginTop: '2rem' }}>
-        <DataTable columns={columns} rows={rows} />
-      </Paper>
     </Box>
   );
 };
