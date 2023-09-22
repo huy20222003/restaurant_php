@@ -2,13 +2,14 @@ import { Router } from 'express';
 const router = Router();
 //verify
 import authVerify from '../middleware/auth.mjs';
+import cashbinMiddleware from '../middleware/cashbinMiddleware.mjs';
 //----------------------------------------------------------------
 
 
 import CartsController from '../app/controllers/CartsController.mjs';
 
-router.get('/', authVerify, CartsController.getUserCart);
-router.put('/update-cart', authVerify, CartsController.updateCart);
-router.delete('/update-cart/delete-product/:_id', authVerify, CartsController.deleteProductFromCart);
+router.get('/', authVerify, cashbinMiddleware,  CartsController.getUserCart);
+router.put('/update-cart', authVerify, cashbinMiddleware, CartsController.updateCart);
+router.delete('/update-cart/delete-product/:_id', authVerify, cashbinMiddleware, CartsController.deleteProductFromCart);
 
 export default router;

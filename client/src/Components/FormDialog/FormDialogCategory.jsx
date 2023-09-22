@@ -1,4 +1,5 @@
-import { useContext, useState } from 'react';
+import PropTypes from 'prop-types';
+//@mui
 import {
   Button,
   TextField,
@@ -7,11 +8,11 @@ import {
   DialogContent,
   DialogTitle,
 } from '@mui/material';
-import { CommonContext } from '../../Contexts/CommonContext';
+//context
+import { useCommon } from '../../hooks/context';
 
-const FormDialogCategory = ({ fields, handleCreate }) => {
-  const { openFormDialog, setOpenFormDialog } = useContext(CommonContext);
-  const [formData, setFormData] = useState({});
+const FormDialogCategory = ({ fields, formData, setFormData, handleSave, isEdit }) => {
+  const { openFormDialog, setOpenFormDialog } = useCommon();
 
   const handleClose = () => {
     setOpenFormDialog(false);
@@ -25,16 +26,12 @@ const FormDialogCategory = ({ fields, handleCreate }) => {
     }));
   };
 
-  const handleCreateData = () => {
-    handleCreate(formData);
-    handleClose();
-    setFormData({});
-  };
+  
 
   return (
     <Dialog open={openFormDialog} onClose={handleClose}>
       <DialogTitle sx={{ textAlign: 'center', fontSize: '1.8rem' }}>
-        Thêm danh mục
+        {isEdit ? 'Update category' : 'Add category'}
       </DialogTitle>
       <DialogContent>
         {fields.map((field, index) => (
@@ -62,14 +59,29 @@ const FormDialogCategory = ({ fields, handleCreate }) => {
           sx={{ color: 'red', borderColor: 'red' }}
           onClick={handleClose}
         >
-          Huỷ
+          Cancel
         </Button>
-        <Button variant="contained" size="large" onClick={handleCreateData}>
-          Thêm danh mục
+        <Button variant="contained" size="large" onClick={handleSave}>
+          {isEdit ? 'Update category' : 'Add category'}
         </Button>
       </DialogActions>
     </Dialog>
   );
+};
+
+FormDialogCategory.propTypes = {
+  fields: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      label: PropTypes.string.isRequired,
+      type: PropTypes.string.isRequired,
+      row: PropTypes.number,
+    })
+  ).isRequired,
+  formData: PropTypes.object.isRequired,
+  setFormData: PropTypes.func.isRequired,
+  handleSave: PropTypes.func.isRequired,
+  isEdit: PropTypes.bool.isRequired,
 };
 
 export default FormDialogCategory;

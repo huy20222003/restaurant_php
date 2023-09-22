@@ -1,4 +1,5 @@
-import { useContext, useState } from 'react';
+import PropTypes from 'prop-types';
+//@mui
 import {
   Button,
   TextField,
@@ -11,18 +12,18 @@ import {
   Select,
   MenuItem,
 } from '@mui/material';
-import { CommonContext } from '../../Contexts/CommonContext';
+//CommonContext
+import { useCommon } from '../../hooks/context';
+//---------------------------------------------------------------------------
 
-const FormDialogEmployee = ({ fields, handleCreate }) => {
-  const { openFormDialog, setOpenFormDialog } = useContext(CommonContext);
-  const [formData, setFormData] = useState({
-    fullName: '',
-    username: '',
-    email: '',
-    position: '', 
-    salary: '',
-    password: '',
-  });
+const FormDialogEmployee = ({
+  fields,
+  formData,
+  setFormData,
+  handleSave,
+  isEdit,
+}) => {
+  const { openFormDialog, setOpenFormDialog } = useCommon();
 
   const handleClose = () => {
     setOpenFormDialog(false);
@@ -36,24 +37,11 @@ const FormDialogEmployee = ({ fields, handleCreate }) => {
     });
   };
 
-  const handlecreateData = () => {
-    handleCreate(formData);
-    handleClose();
-    setFormData({
-      fullName: '',
-    username: '',
-    email: '',
-    position: '', // Ensure this is initially defined
-    salary: '',
-    password: '', // Reset position after submission if needed
-    });
-  };
-
   return (
     <div>
       <Dialog open={openFormDialog} onClose={handleClose}>
         <DialogTitle sx={{ textAlign: 'center', fontSize: '1.8rem' }}>
-          Thêm nhân viên
+          {isEdit ? 'Update Employee' : 'Add Employee'}
         </DialogTitle>
         <DialogContent>
           {fields.map((field, index) => {
@@ -74,18 +62,18 @@ const FormDialogEmployee = ({ fields, handleCreate }) => {
             );
           })}
           <FormControl autoFocus sx={{ margin: '2rem 0', display: 'block' }}>
-            <InputLabel id="demo-simple-select-label">Vị trí</InputLabel>
+            <InputLabel id="demo-simple-select-label">Position</InputLabel>
             <Select
               labelId="demo-simple-select-label"
               id="demo-simple-select"
               name="position"
-              value={formData.position} // Use formData.position here
+              value={formData.position || 'employee'}
               label="Vị trí"
               onChange={handleFieldChange}
               sx={{ minWidth: 400 }}
             >
-              <MenuItem value={'admin'}>Quản trị viên</MenuItem>
-              <MenuItem value={'employee'}>Nhân viên</MenuItem>
+              <MenuItem value={'admin'}>Admin</MenuItem>
+              <MenuItem value={'employee'}>Employee</MenuItem>
             </Select>
           </FormControl>
         </DialogContent>
@@ -96,15 +84,30 @@ const FormDialogEmployee = ({ fields, handleCreate }) => {
             sx={{ color: 'red', borderColor: 'red' }}
             onClick={handleClose}
           >
-            Huỷ
+            Cancel
           </Button>
-          <Button variant="contained" size="large" onClick={handlecreateData}>
-            Thêm nhân viên
+          <Button variant="contained" size="large" onClick={handleSave}>
+            {isEdit ? 'Update' : 'Add'}
           </Button>
         </DialogActions>
       </Dialog>
     </div>
   );
+};
+
+FormDialogEmployee.propTypes = {
+  fields: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      label: PropTypes.string.isRequired,
+      type: PropTypes.string.isRequired,
+      row: PropTypes.number,
+    })
+  ).isRequired,
+  formData: PropTypes.object.isRequired,
+  setFormData: PropTypes.func.isRequired,
+  handleSave: PropTypes.func.isRequired,
+  isEdit: PropTypes.bool.isRequired,
 };
 
 export default FormDialogEmployee;

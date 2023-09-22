@@ -1,6 +1,6 @@
 import { createContext, useCallback, useEffect, useReducer } from 'react';
 import { initCategoryState, reducer } from '../Reducers/CategoryReducer/reducer';
-import { getAll, createCategory, deleteCategory } from '../Reducers/CategoryReducer/action';
+import { getAll, getOne, createCategory, updateCategory, deleteCategory } from '../Reducers/CategoryReducer/action';
 import categoryApi from '../Service/categoryApi';
 
 export const CategoryContext = createContext();
@@ -34,22 +34,35 @@ export const CategoryProvider = (prop) => {
     }
   }, [handleGetAllCategory]);
 
-//   const handleGetOneCategory = useCallback(async(categoryId)=> {
-//     try {
-//       const response = await categoryApi.getOne(categoryId);
-//       if (response.data.success) {
-//         dispatch(getOne(response.data.category));
-//       }
-//     } catch (error) {
-//       return handleError(error);
-//     }
-//   }, []);
+  const handleGetOneCategory = useCallback(async(categoryId)=> {
+    try {
+      const response = await categoryApi.getOne(categoryId);
+      if (response.data.success) {
+        dispatch(getOne(response.data.category));
+      }
+      return response.data;
+    } catch (error) {
+      return handleError(error);
+    }
+  }, []);
 
   const handleCreateCategory = useCallback(async (category)=> {
     try {
       const response = await categoryApi.createCategory(category);
       if (response.data.success) {
         dispatch(createCategory(response.data.category));
+      }
+      return response.data;
+    } catch (error) {
+      return handleError(error);
+    }
+  }, []);
+
+  const handleUpdateCategory = useCallback(async (categoryId, data)=> {
+    try {
+      const response = await categoryApi.updateCategory(categoryId, data);
+      if (response.data.success) {
+        dispatch(updateCategory(response.data.category));
       }
       return response.data;
     } catch (error) {
@@ -73,7 +86,9 @@ export const CategoryProvider = (prop) => {
   const CategoryData = {
     categoryState,
     handleGetAllCategory,
+    handleGetOneCategory,
     handleCreateCategory,
+    handleUpdateCategory,
     handleDeleteCategory,
   };
 

@@ -1,13 +1,16 @@
 import { Helmet } from 'react-helmet-async';
 // @mui
-import { Grid, Container, Typography } from '@mui/material';
+import { Container, Typography, Box } from '@mui/material';
 // sections
-
-
+import {
+  Slider,
+  Category,
+  RecentlyProducts,
+  PopularProducts,
+} from '../../../section/@dashboard/app';
 // ----------------------------------------------------------------------
 
-const DashboardAppPage=()=> {
-
+const DashboardAppPage = () => {
   return (
     <>
       <Helmet>
@@ -19,12 +22,15 @@ const DashboardAppPage=()=> {
           Hi, Welcome back
         </Typography>
 
-        <Grid container spacing={3}>
-         
-        </Grid>
+        <Box>
+          <Slider />
+          <Category />
+          <PopularProducts />
+          <RecentlyProducts />
+        </Box>
       </Container>
     </>
   );
-}
+};
 
 export default DashboardAppPage;

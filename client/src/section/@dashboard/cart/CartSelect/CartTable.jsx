@@ -1,4 +1,6 @@
-import { useState } from 'react';
+import PropTypes from 'prop-types';
+import { useEffect } from 'react';
+//@mui
 import {
   ButtonBase,
   Card,
@@ -10,6 +12,7 @@ import {
   TableContainer,
   TableHead,
   TableRow,
+  TableBody,
   Typography,
 } from '@mui/material';
 //component
@@ -20,21 +23,47 @@ import Iconify from '../../../../Components/User/iconify';
 
 //---------------------------------------------------------------
 
-const CartTable = () => {
-  const [selectedProducts, setSelectedProducts] = useState([]);
+const CartTable = ({
+  orderData,
+  setOrderData,
+  selectedProducts,
+  setSelectedProducts,
+}) => {
   const {
-    cartState: { items, totalPrices },
+    cartState: { items },
   } = useCart();
+  console.log(selectedProducts);
 
   const handleProductSelect = (product) => {
     setSelectedProducts((prevSelectedProducts) => {
-      if (prevSelectedProducts.includes(product)) {
-        return prevSelectedProducts.filter((p) => p !== product);
+      const productIds = prevSelectedProducts.map((p) => p._id);
+      if (productIds.includes(product._id)) {
+        return prevSelectedProducts.filter((p) => p._id !== product._id);
       } else {
         return [...prevSelectedProducts, product];
       }
     });
   };
+
+  const calculateTotalPrice = () => {
+    let totalPrice = 0;
+    for (const selectedProduct of selectedProducts) {
+      const { product, quantity } = selectedProduct;
+      const price = product?.priceSale ? product?.priceSale : product?.price;
+      totalPrice += price * quantity;
+    }
+    return totalPrice;
+  };
+
+  const totalPrices = calculateTotalPrice();
+
+  useEffect(() => {
+    setOrderData((prevOrderData) => ({
+      ...prevOrderData,
+      totalPrices: totalPrices,
+      items: selectedProducts,
+    }));
+  }, [selectedProducts, setOrderData, totalPrices]);
 
   return (
     <>
@@ -75,25 +104,37 @@ const CartTable = () => {
                   <TableCell></TableCell>
                 </TableRow>
               </TableHead>
-              {items.map((item) => (
-                <CartTableItem
-                  key={item._id}
-                  item={item}
-                  totalPrices={totalPrices}
-                  onSelect={handleProductSelect}
-                  isSelected={selectedProducts.includes(item)}
-                />
-              ))}
+              <TableBody>
+                {items.map((item) => (
+                  <CartTableItem
+                    key={item._id}
+                    item={item}
+                    onSelect={handleProductSelect}
+                    isSelected={selectedProducts.some(
+                      (p) => p._id === item._id
+                    )}
+                    orderData={orderData}
+                    setOrderData={setOrderData}
+                  />
+                ))}
+              </TableBody>
             </Table>
           </TableContainer>
         </CardContent>
       </Paper>
-      <ButtonBase component='a' href='/dashboard/products'>
+      <ButtonBase component="a" href="/dashboard/products">
         <Iconify icon="eva:arrow-ios-back-fill" />
         Continue Shopping
       </ButtonBase>
     </>
   );
+};
+
+CartTable.propTypes = {
+  orderData: PropTypes.object.isRequired,
+  setOrderData: PropTypes.func.isRequired,
+  selectedProducts: PropTypes.array.isRequired,
+  setSelectedProducts: PropTypes.func.isRequired,
 };
 
 export default CartTable;

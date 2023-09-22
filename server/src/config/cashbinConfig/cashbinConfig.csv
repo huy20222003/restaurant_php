@@ -1,8 +1,64 @@
-p, admin, /create-product, POST
-p, admin, /update-product/:_id, PUT
-p, admin, /deletes-product/:_id, DELETE
+#auth admin Router
+p, admin, /api/auth/admin/account, GET
+p, employee, /api/auth/admin/account, GET
 
-p, employee, /create-product, POST
-p, employee, /update-product/:_id, PUT
+#auth user router
+p, user, /api/auth/account, GET
 
-p, user, /search-product, GET
+#product router
+p, admin, /api/products/create-product, POST
+p, admin, /api/products/update-product/:_id, PUT
+p, admin, /api/products/delete-product/:_id, DELETE
+
+p, employee, /api/products/create-product, POST
+p, employee, /api/products/update-product/:_id, PUT
+p, employee, /api/products/delete-product/:_id, DELETE
+
+#cart router
+p, user, /api/cart, GET
+p, user, /api/cart/update-cart, PUT
+p, user, /api/cart/update-cart/delete-product/:_id, DELETE
+
+#category router
+p, admin, /api/category/create-category, POST
+p, admin, /api/category/update-category/*, PUT
+p, admin, /api/category/delete-category/:_id, DELETE
+
+p, employee, /api/category/create-category, POST
+p, employee, /api/category/update-category/:_id, PUT
+p, employee, /api/category/delete-category/:_id, DELETE
+
+#employee router
+p, admin, /api/employee, GET
+p, admin, /api/employee/:_id, GET
+p, admin, /api/employee/create-emloyee, POST
+p, admin, /api/employee/update-employee/:_id, PUT
+p, admin, /api/employee/delete-employee/:_id, DELETE
+
+p, employee, /api/employee, GET
+p, employee, /api/employee/:_id, GET
+
+#order router
+p, admin, /api/order, GET
+p, admin, /api/order/:_id, GET
+
+p, employee, /api/order, GET
+p, employee, /api/order/:_id, GET
+
+p, user, /api/order/getAllById, GET
+p, user, /api/order/:_id, GET
+p, user, /api/order/create-order, POST
+
+#user router
+p, admin, /api/user, GET
+p, admin, /api/user/:_id, GET
+p, admin, /api/user/create-user, POST
+p, admin, /api/user/delete-user/:_id, DELETE
+
+p, employee, /api/user, GET
+p, employee, /api/user/:_id, GET
+p, employee, /api/user/create-user, POST
+p, employee, /api/user/delete-user/:_id, DELETE
+
+p, user, /api/user/update-user/avatar, PATCH
+p, user, /api/user/update-user/detail, PUT

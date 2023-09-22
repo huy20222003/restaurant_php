@@ -8,7 +8,6 @@ async function authVerify(req, res, next) {
     const authHeader = req.header('Authorization');
     const token = authHeader && authHeader.replace('Bearer ', '');
 
-    // Kiểm tra xem có tồn tại token hay không
     if (!token) {
       return res
         .status(401)
@@ -16,8 +15,8 @@ async function authVerify(req, res, next) {
     } else {
       // Xác thực token
       const decoded = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
-      req.user = {_id: decoded._id, roles: decoded.roles}; 
-      next(); // Cho phép đi tiếp tới middleware hoặc route tiếp theo
+      req.user = { _id: decoded._id, roles: decoded.roles };
+      next();
     }
   } catch (error) {
     res.status(401).json({ status: false, message: 'Unauthorized' });

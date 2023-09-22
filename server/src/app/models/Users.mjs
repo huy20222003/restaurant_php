@@ -52,6 +52,10 @@ const Users = new Schema(
       default:
         'https://antimatter.vn/wp-content/uploads/2022/11/anh-avatar-trang-fb-mac-dinh.jpg',
     },
+    status: {
+      type: String,
+      default: 'Verify',
+    },
     roles: {
       type: Schema.Types.ObjectId,
       ref: 'roles',

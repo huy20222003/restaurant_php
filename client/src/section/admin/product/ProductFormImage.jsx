@@ -3,40 +3,45 @@ import { useRef, useState } from 'react';
 //@mui
 import { Box, Stack, Typography } from '@mui/material';
 
-const ProductFormImage = ({ productData, setProductData }) => {
+const ProductFormImage = ({ setProductData }) => {
   const [previewImg, setPreviewImg] = useState([]);
   const fileInputRef = useRef(null);
 
   const handleChooseFile = () => {
     fileInputRef.current.click();
   };
+  console.log(previewImg);
 
   const handleChangeFile = (e) => {
     const files = e.target.files;
     const imageFiles = Array.from(files);
-
+  
     const promises = imageFiles.map((file) => {
       return new Promise((resolve) => {
         const reader = new FileReader();
-
+  
         reader.onload = (e) => {
           const base64Data = e.target.result;
           resolve(base64Data);
         };
-
+  
         reader.readAsDataURL(file);
       });
     });
-
+  
     Promise.all(promises)
       .then((base64Images) => {
-        setPreviewImg(base64Images);
-        setProductData({ ...productData, image_url: base64Images });
+        setPreviewImg((prevImages) => [...prevImages, ...base64Images]);
+        setProductData((prevData) => ({
+          ...prevData,
+          image_url: [...prevData.image_url, ...base64Images],
+        }));
       })
       .catch((error) => {
         console.error('Error converting images to base64:', error);
       });
   };
+  
 
   return (
     <>
@@ -88,45 +93,49 @@ const ProductFormImage = ({ productData, setProductData }) => {
               </Stack>
             </Stack>
           </Box>
-          <Box sx={{ my: '24px' }}>
-            <Stack
-              sx={{
-                justifyContent: 'center',
-                alignItems: 'center',
-                margin: '4px',
-                width: '80px',
-                height: '80px',
-                borderRadius: '10px',
-                overflow: 'hidden',
-                position: 'relative',
-                border: '1px solid rgba(145, 158, 171, 0.16)',
-              }}
-            >
-              {previewImg.map((image, index) => (
-                <Stack
-                  key={index}
-                  component={'span'}
-                  sx={{
-                    flexShrink: 0,
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                  }}
-                >
-                  <Box
-                    component={'img'}
-                    src={image}
+          {previewImg.length > 0 ? (
+            <Box sx={{ my: '24px' }}>
+              <Stack
+                sx={{
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  margin: '4px',
+                  width: '80px',
+                  height: '80px',
+                  borderRadius: '10px',
+                  overflow: 'hidden',
+                  position: 'relative',
+                  border: '1px solid rgba(145, 158, 171, 0.16)',
+                }}
+              >
+                {previewImg.map((image, index) => (
+                  <Stack
+                    key={index}
+                    component={'span'}
                     sx={{
-                      width: '100%',
-                      height: '100%',
                       flexShrink: 0,
-                      objectFit: 'cover',
-                      position: 'absolute',
+                      alignItems: 'center',
+                      justifyContent: 'center',
                     }}
-                  ></Box>
-                </Stack>
-              ))}
-            </Stack>
-          </Box>
+                  >
+                    <Box
+                      component={'img'}
+                      src={image}
+                      sx={{
+                        width: '100%',
+                        height: '100%',
+                        flexShrink: 0,
+                        objectFit: 'cover',
+                        position: 'absolute',
+                      }}
+                    ></Box>
+                  </Stack>
+                ))}
+              </Stack>
+            </Box>
+          ) : (
+            ''
+          )}
         </Box>
       </Stack>
     </>

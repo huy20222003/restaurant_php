@@ -1,9 +1,13 @@
-import {useNavigate} from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { useNavigate } from 'react-router-dom';
 //@mui
 import { Paper, Card, Typography, Stack, ButtonBase } from '@mui/material';
 import styled from '@emotion/styled';
 //component
 import CartConfirmProductItem from './CartConfirmProductItem';
+import Iconify from '../../../../Components/User/iconify';
+//context
+import { useCommon, useOrder } from '../../../../hooks/context';
 
 //---------------------------------------------------------------
 
@@ -29,115 +33,179 @@ const StyledButtonBaseConfirm = styled(ButtonBase)`
   }
 `;
 
-const CartConfirm = () => {
+const CartConfirm = ({ orderData }) => {
   const navigate = useNavigate();
+  const { setActiveStep } = useCommon();
+  const { handleCreateOrder } = useOrder();
 
-  const handleNavigate = ()=> {
-    navigate('/cart/cart-order-success');
-  }
+  const handleBack = () => {
+    setActiveStep((prevActiveStep) => prevActiveStep - 1);
+  };
+
+  const handleCreate = async () => {
+    try {
+      const createData = await handleCreateOrder(orderData);
+      if (!createData.success) {
+        console.log(createData.message);
+        console.log(createData.success);
+      } else {
+        console.log(createData.message);
+
+        navigate('/dashboard/cart');
+        setActiveStep(0);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
-    <Paper
-      elevation={3}
-      component={Card}
-      sx={{ width: '40rem', margin: '0 auto' }}
-    >
-      <Typography variant="h5" sx={{ p: '1rem', textAlign: 'center' }}>
-        Order Confirm
-      </Typography>
-      <Typography variant="h6" sx={{ textAlign: 'left', p: '1rem 0.5rem' }}>
-        Detail
-      </Typography>
-      <Stack sx={{ alignItems: 'center' }}>
-        <Stack
-          sx={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            width: '100%',
-            px: '1rem',
-            pb: '0.5rem',
-          }}
-        >
-          <Typography variant="body1">FullName</Typography>
-          <Typography variant="body2" sx={{ fontWeight: 600 }}>
-            Nguyen Huy
-          </Typography>
-        </Stack>
-        <Stack
-          sx={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            width: '100%',
-            px: '1rem',
-            pb: '0.5rem',
-          }}
-        >
-          <Typography variant="body1">Phone Number</Typography>
-          <Typography variant="body2" sx={{ fontWeight: 600 }}>
-            9999999999
-          </Typography>
-        </Stack>
-        <Stack
-          sx={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            width: '100%',
-            px: '1rem',
-            pb: '0.5rem',
-          }}
-        >
-          <Typography variant="body1">Address</Typography>
-          <Typography variant="body2" sx={{ fontWeight: 600 }}>
-            Ha Noi, Viet Nam
-          </Typography>
-        </Stack>
-        <Stack
-          sx={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            width: '100%',
-            px: '1rem',
-            pb: '0.5rem',
-          }}
-        >
-          <Typography variant="body1">Shipping Uniy</Typography>
-          <Typography variant="body2" sx={{ fontWeight: 600 }}>
-            Standard
-          </Typography>
-        </Stack>
-        <Stack
-          sx={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            width: '100%',
-            px: '1rem',
-            pb: '0.5rem',
-          }}
-        >
-          <Typography variant="body1">Shipping Fee</Typography>
-          <Typography variant="body2" sx={{ fontWeight: 600 }}>
-            22.000
-          </Typography>
-        </Stack>
-      </Stack>
-      <Typography variant="h6" sx={{ textAlign: 'left', p: '1rem 0.5rem' }}>
-        Products
-      </Typography>
-      <Stack sx={{ alignItems: 'center' }}>
-        <CartConfirmProductItem />
-      </Stack>
-      <Stack
-        sx={{
-          m: '1rem 0',
-          justifyContent: 'center',
-          alignItems: 'center',
-          width: '100%',
-        }}
+    <>
+      <Paper
+        elevation={3}
+        component={Card}
+        sx={{ width: '40rem', margin: '0 auto' }}
       >
-        <StyledButtonBaseConfirm onClick={handleNavigate}>Confirm Order</StyledButtonBaseConfirm>
-      </Stack>
-    </Paper>
+        <Typography variant="h5" sx={{ p: '1rem', textAlign: 'center' }}>
+          Order Confirm
+        </Typography>
+        <Typography variant="h6" sx={{ textAlign: 'left', p: '1rem 0.5rem' }}>
+          Detail
+        </Typography>
+        <Stack sx={{ alignItems: 'center' }}>
+          <Stack
+            sx={{
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              width: '100%',
+              px: '1rem',
+              pb: '0.5rem',
+            }}
+          >
+            <Typography variant="body1">FullName</Typography>
+            <Typography variant="body2" sx={{ fontWeight: 600 }}>
+              {orderData?.fullName}
+            </Typography>
+          </Stack>
+          <Stack
+            sx={{
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              width: '100%',
+              px: '1rem',
+              pb: '0.5rem',
+            }}
+          >
+            <Typography variant="body1">Phone Number</Typography>
+            <Typography variant="body2" sx={{ fontWeight: 600 }}>
+              {orderData?.phoneNumber}
+            </Typography>
+          </Stack>
+          <Stack
+            sx={{
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              width: '100%',
+              px: '1rem',
+              pb: '0.5rem',
+            }}
+          >
+            <Typography variant="body1">Address</Typography>
+            <Typography variant="body2" sx={{ fontWeight: 600 }}>
+              {orderData?.shipAddress}
+            </Typography>
+          </Stack>
+          <Stack
+            sx={{
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              width: '100%',
+              px: '1rem',
+              pb: '0.5rem',
+            }}
+          >
+            <Typography variant="body1">Shipping Unit</Typography>
+            <Typography variant="body2" sx={{ fontWeight: 600 }}>
+              {orderData?.shippingUnit}
+            </Typography>
+          </Stack>
+          <Stack
+            sx={{
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              width: '100%',
+              px: '1rem',
+              pb: '0.5rem',
+            }}
+          >
+            <Typography variant="body1">Sub Total Prices</Typography>
+            <Typography variant="body2" sx={{ fontWeight: 600 }}>
+              {orderData?.totalPrices}
+            </Typography>
+          </Stack>
+          <Stack
+            sx={{
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              width: '100%',
+              px: '1rem',
+              pb: '0.5rem',
+            }}
+          >
+            <Typography variant="body1">Shipping Fee</Typography>
+            <Typography variant="body2" sx={{ fontWeight: 600 }}>
+              {orderData?.shippingFee}
+            </Typography>
+          </Stack>
+          <Stack
+            sx={{
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              width: '100%',
+              px: '1rem',
+              pb: '0.5rem',
+            }}
+          >
+            <Typography variant="body1">Total Prices</Typography>
+            <Typography variant="body2" sx={{ fontWeight: 600 }}>
+              {orderData?.totalPrices + orderData?.shippingFee}
+            </Typography>
+          </Stack>
+        </Stack>
+        <Typography variant="h6" sx={{ textAlign: 'left', p: '1rem 0.5rem' }}>
+          Products
+        </Typography>
+        <Stack sx={{ alignItems: 'center' }}>
+          {orderData.items.map((item) => {
+            return (
+              <CartConfirmProductItem key={item.product._id} item={item} />
+            );
+          })}
+        </Stack>
+        <Stack
+          sx={{
+            m: '1rem 0',
+            justifyContent: 'center',
+            alignItems: 'center',
+            width: '100%',
+          }}
+        >
+          <StyledButtonBaseConfirm onClick={handleCreate}>
+            Confirm Order
+          </StyledButtonBaseConfirm>
+        </Stack>
+      </Paper>
+      <ButtonBase onClick={handleBack}>
+        <Iconify icon="eva:arrow-ios-back-fill" />
+        Back
+      </ButtonBase>
+    </>
   );
+};
+
+CartConfirm.propTypes = {
+  orderData: PropTypes.object.isRequired,
+  setOrderData: PropTypes.func.isRequired,
 };
 
 export default CartConfirm;

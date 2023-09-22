@@ -1,6 +1,6 @@
 //@mui
-import { useState } from 'react';
-import {useNavigate} from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import {
   ButtonBase,
   Card,
@@ -21,6 +21,8 @@ import {
   ProductFormProperty,
   ProductFormPrice,
 } from '../../../section/admin/product';
+//sweetalert
+import Swal from 'sweetalert2';
 
 //-----------------------------------------
 
@@ -61,28 +63,60 @@ const ProductForm = () => {
     status: '',
   });
 
-  const { handleCreateProduct } = useProduct();
+  const [isEdit, setIsEdit] = useState(false);
+  const { _id } = useParams();
+  const { handleCreateProduct, handleGetOneProduct, handleUpdateProduct } =
+    useProduct();
 
-  const handleCreate = async (e) => {
+  useEffect(() => {
+    const fetchData = async () => {
+      if (_id) {
+        setIsEdit(true);
+        try {
+          const response = await handleGetOneProduct(_id);
+          setProductData(response.product);
+        } catch (error) {
+          toast.error('Server Error');
+        }
+      }
+    };
+
+    fetchData();
+  }, [_id, handleGetOneProduct]);
+
+  const handleClick = async (e) => {
     e.preventDefault();
     try {
-      const createData = await handleCreateProduct(productData);
-      if (!createData.success) {
-        toast.error(createData.message);
+      if (isEdit) {
+        const updateData = await handleUpdateProduct(_id ,productData);
+        if (!updateData.success) {
+          Swal.fire('Failed', 'Update Product Failed', 'error');
+        } else {
+          Swal.fire('Successful', 'Update Product Successful', 'success');
+          navigate('/admin/product-manage');
+        }
       } else {
-        toast.success(createData.message);
-        navigate('/admin/product-manage');
+        const createData = await handleCreateProduct(productData);
+        if (!createData.success) {
+          Swal.fire('Failed', 'Update Product Failed', 'error');
+        } else {
+          Swal.fire('Successful', 'Create Product Successful', 'success');
+          navigate('/admin/product-manage');
+        }
       }
     } catch (error) {
       toast.error('Server Error');
     }
   };
+  
 
   return (
-    <form style={{ marginTop: '2rem' }} onSubmit={handleCreate}>
+    <form style={{ marginTop: '2rem' }} onSubmit={handleClick}>
       <Grid container spacing={2}>
         <Grid item md={4}>
-          <Typography variant="h6">{'Create Product'}</Typography>
+          <Typography variant="h6">
+            {isEdit ? 'Edit Product' : 'Create Product'}
+          </Typography>
           <Typography variant="body2">
             Title, short description, image...
           </Typography>
@@ -125,7 +159,7 @@ const ProductForm = () => {
         <Grid item xs={12} md={8}>
           <Stack sx={{ gap: '24px', padding: '24px', alignItems: 'flex-end' }}>
             <StyledButtonBaseCreate sx={{ maxWidth: '130px' }} type="submit">
-              {'Create Product'}
+              {isEdit ? 'Edit Product' : 'Create Product'}
             </StyledButtonBaseCreate>
           </Stack>
         </Grid>

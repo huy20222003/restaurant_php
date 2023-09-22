@@ -1,4 +1,5 @@
-import { useContext, useState } from 'react';
+import PropTypes from 'prop-types';
+//@mui
 import {
   Button,
   TextField,
@@ -7,16 +8,13 @@ import {
   DialogContent,
   DialogTitle,
 } from '@mui/material';
-import { CommonContext } from '../../Contexts/CommonContext';
+//context
+import { useCommon } from '../../hooks/context';
 
-const FormDialogCustomer = ({ fields, handleCreate }) => {
-  const { openFormDialog, setOpenFormDialog } = useContext(CommonContext);
-  const [formData, setFormData] = useState({
-    fullName: '',
-    username: '',
-    email: '',
-    password: '',
-  });
+//-------------------------------------------------------------
+
+const FormDialogCustomer = ({ fields, formData, setFormData, handleCreate }) => {
+  const { openFormDialog, setOpenFormDialog } = useCommon();
 
   const handleClose = () => {
     setOpenFormDialog(false);
@@ -30,17 +28,11 @@ const FormDialogCustomer = ({ fields, handleCreate }) => {
     });
   };
 
-  const handlecreateData = () => {
-    handleCreate(formData);
-    handleClose();
-    setFormData({ fullName: '', username: '', email: '', password: '' });
-  };
-
   return (
     <div>
       <Dialog open={openFormDialog} onClose={handleClose}>
         <DialogTitle sx={{ textAlign: 'center', fontSize: '1.8rem' }}>
-          Thêm khách hàng
+          {'Add Customer'}
         </DialogTitle>
         <DialogContent>
           {fields.map((field, index) => {
@@ -68,15 +60,29 @@ const FormDialogCustomer = ({ fields, handleCreate }) => {
             sx={{ color: 'red', borderColor: 'red' }}
             onClick={handleClose}
           >
-            Huỷ
+            Cancel
           </Button>
-          <Button variant="contained" size="large" onClick={handlecreateData}>
-            Thêm khách hàng
+          <Button variant="contained" size="large" onClick={handleCreate}>
+            {'Add'}
           </Button>
         </DialogActions>
       </Dialog>
     </div>
   );
+};
+
+FormDialogCustomer.propTypes = {
+  fields: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      label: PropTypes.string.isRequired,
+      type: PropTypes.string.isRequired,
+      row: PropTypes.number,
+    })
+  ).isRequired,
+  formData: PropTypes.object.isRequired,
+  setFormData: PropTypes.func.isRequired,
+  handleCreate: PropTypes.func.isRequired,
 };
 
 export default FormDialogCustomer;

@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 //@mui
 import { styled } from '@mui/material/styles';
@@ -151,14 +152,25 @@ ColorlibStepIcon.propTypes = {
 
 const steps = ['Cart', 'Payment', 'Confirm'];
 
-const components = [
-  <CartSelect key="cart-select" />,
-  <CartPayment key="cart-payment" />,
-  <CartConfirm key='cart-confirm' />,
-];
-
 const CartStepper = () => {
   const { activeStep } = useCommon();
+  const [orderData, setOrderData] = useState({
+    fullName: '',
+    phoneNumber: '',
+    shipAddress: '',
+    items: [],
+    totalPrices: 0,
+    status: 'Ordered',
+    shippingFee: 0,
+    shippingUnit: '',
+    paymentMethod: '',
+  });
+
+  const components = [
+    <CartSelect key="cart-select" orderData={orderData} setOrderData={setOrderData} />,
+    <CartPayment key="cart-payment" orderData={orderData} setOrderData={setOrderData} />,
+    <CartConfirm key="cart-confirm" orderData={orderData} setOrderData={setOrderData} />,
+  ];
 
   return (
     <div>

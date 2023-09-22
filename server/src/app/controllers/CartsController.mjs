@@ -13,13 +13,13 @@ class CartController {
           .json({ success: false, error: 'Cart not found' });
       }
 
-      res.status(200).json({
+      return res.status(200).json({
         success: true,
         message: 'Retrieve cart data successfully!',
         userCart,
       });
     } catch (error) {
-      res.status(500).json({
+      return res.status(500).json({
         success: false,
         message: 'An error occurred while processing the request.',
         error: error.message,
@@ -30,7 +30,7 @@ class CartController {
   async updateCart(req, res) {
     try {
       const userId = req.user._id;
-      const { productId, quantity } = req.body;
+      const { productId, quantity, property } = req.body;
 
       const cart = await Cart.findOne({ userCart: userId });
       const product = await Products.findById(productId);
@@ -48,7 +48,11 @@ class CartController {
       if (existingItem) {
         existingItem.quantity = quantity;
       } else {
-        cart.items.push({ product: product, quantity: quantity });
+        cart.items.push({
+          product: product,
+          quantity: quantity,
+          property: property,
+        });
       }
 
       cart.totalPrices = cart.items.reduce((total, item) => {
@@ -58,13 +62,13 @@ class CartController {
 
       await cart.save();
 
-      res.json({
+      return res.json({
         success: true,
         message: 'Cart updated successfully!',
         cart,
       });
     } catch (error) {
-      res.status(500).json({
+      return res.status(500).json({
         success: false,
         message: 'An error occurred while processing the request.',
         error: error.message,
@@ -92,18 +96,18 @@ class CartController {
         cart.items.splice(existingItemIndex, 1);
         await cart.save();
 
-        res.json({
+        return res.json({
           success: true,
           message: 'Product removed from cart successfully!',
           cart,
         });
       } else {
-        res
+        return res
           .status(404)
           .json({ success: false, message: 'Product not found in the cart!' });
       }
     } catch (error) {
-      res.status(500).json({
+      return res.status(500).json({
         success: false,
         message: 'An error occurred while processing the request.',
         error: error.message,

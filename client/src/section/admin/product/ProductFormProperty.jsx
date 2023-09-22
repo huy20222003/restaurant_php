@@ -75,7 +75,7 @@ const ProductFormProperty = ({ productData, setProductData }) => {
                 name="quantity"
                 label="Quantity"
                 fullWidth
-                value={productData.quantity}
+                value={productData?.quantity || ''}
                 onChange={(e) =>
                   setProductData({
                     ...productData,
@@ -91,7 +91,7 @@ const ProductFormProperty = ({ productData, setProductData }) => {
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
                   label="Category"
-                  value={productData.category}
+                  value={productData?.category || ''}
                   onChange={(e) =>
                     setProductData({
                       ...productData,
@@ -110,7 +110,7 @@ const ProductFormProperty = ({ productData, setProductData }) => {
                 fullWidth
                 multiline
                 rows={3}
-                value={productData.size.join('\n')}
+                value={productData?.size.join('\n') || ''}
                 onChange={handleSizeChange}
               />
             </Grid>
@@ -121,7 +121,7 @@ const ProductFormProperty = ({ productData, setProductData }) => {
                 fullWidth
                 multiline
                 rows={3}
-                value={productData.color.join('\n')}
+                value={productData?.color.join('\n') || ''}
                 onChange={handleColorChange}
               />
             </Grid>

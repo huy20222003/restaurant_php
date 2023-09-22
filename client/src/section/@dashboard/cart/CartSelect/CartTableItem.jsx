@@ -1,12 +1,11 @@
 import PropTypes from 'prop-types';
-import { useState, useCallback } from 'react';
+import { useCallback } from 'react';
 import {
   Avatar,
   Box,
   ButtonBase,
   Checkbox,
   Stack,
-  TableBody,
   TableCell,
   TableRow,
   Typography,
@@ -51,30 +50,38 @@ const StyledButtonQuantity = styled(ButtonBase)`
   }
 `;
 
-const CartTableItem = ({ item, totalPrices }) => {
-  const { product } = item;
-  const [quantityItem, setQuantityItem] = useState(item.quantity);
+const CartTableItem = ({
+  item,
+  onSelect,
+  isSelected,
+  orderData,
+  setOrderData,
+}) => {
+  const { product, property, quantity } = item;
   const { handleUpdateCart, handleDeleteProductFromCart } = useCart();
+
+  const totalPrices = (product?.priceSale || product?.price) * quantity;
 
   const updateCartItem = useCallback(
     (newQuantity) => {
-      setQuantityItem(newQuantity);
       handleUpdateCart({ productId: product?._id, quantity: newQuantity });
     },
     [handleUpdateCart, product?._id]
   );
 
   const handleIncrease = useCallback(() => {
-    const newQuantity = quantityItem + 1;
+    const newQuantity = quantity + 1;
     updateCartItem(newQuantity);
-  }, [quantityItem, updateCartItem]);
+    setOrderData({ ...orderData, totalPrices: totalPrices });
+  }, [orderData, quantity, setOrderData, totalPrices, updateCartItem]);
 
   const handleDecrease = useCallback(() => {
-    if (quantityItem > 1) {
-      const newQuantity = quantityItem - 1;
+    if (quantity > 1) {
+      const newQuantity = quantity - 1;
       updateCartItem(newQuantity);
     }
-  }, [quantityItem, updateCartItem]);
+    setOrderData({ ...orderData, totalPrices: totalPrices });
+  }, [orderData, quantity, setOrderData, totalPrices, updateCartItem]);
 
   const handleDeleteProduct = (productId) => {
     Swal.fire({
@@ -87,11 +94,11 @@ const CartTableItem = ({ item, totalPrices }) => {
       if (result.isConfirmed) {
         try {
           const response = await handleDeleteProductFromCart(productId);
-        if (response.success) {
-          Swal.fire('', 'Delete Successful!', 'success');
-        } else {
-          Swal.fire('', 'Delete failed!', 'error');
-        }
+          if (response.success) {
+            Swal.fire('', 'Delete Successful!', 'success');
+          } else {
+            Swal.fire('', 'Delete failed!', 'error');
+          }
         } catch (error) {
           Swal.fire('', 'Server error!', 'error');
         }
@@ -99,35 +106,38 @@ const CartTableItem = ({ item, totalPrices }) => {
     });
   };
 
+  const itemId = item ? item._id : null;
+  console.log(isSelected);
+
   return (
-    <TableBody>
-      <TableRow>
-        <TableCell>
-          <Checkbox />
-        </TableCell>
-        <TableCell
+    <TableRow key={itemId}>
+      <TableCell>
+        <Checkbox checked={isSelected} onChange={() => onSelect(item)} />
+      </TableCell>
+      <TableCell
+        sx={{
+          display: 'flex',
+          alignItems: 'center',
+          color: 'rgb(33, 43, 54)',
+          borderBottom: '1px dashed rgb(241, 243, 244)',
+        }}
+      >
+        <Avatar
+          src={product?.image_url[0]}
           sx={{
-            display: 'flex',
+            width: '64px',
+            height: '64px',
+            mr: '16px',
+            justifyContent: 'center',
             alignItems: 'center',
-            color: 'rgb(33, 43, 54)',
-            borderBottom: '1px dashed rgb(241, 243, 244)',
+            borderRadius: '12px',
           }}
-        >
-          <Avatar
-            src={product?.image_url[0]}
-            sx={{
-              width: '64px',
-              height: '64px',
-              mr: '16px',
-              justifyContent: 'center',
-              alignItems: 'center',
-              borderRadius: '12px',
-            }}
-          ></Avatar>
-          <Stack sx={{ gap: '4px' }}>
-            <Typography variant="subtitle1" sx={{ fontSize: '0.875rem' }}>
-              {product?.name}
-            </Typography>
+        ></Avatar>
+        <Stack sx={{ gap: '4px' }}>
+          <Typography variant="subtitle1" sx={{ fontSize: '0.875rem' }}>
+            {product?.name}
+          </Typography>
+          {property?.size ? (
             <Stack
               sx={{
                 alignItems: 'center',
@@ -159,64 +169,66 @@ const CartTableItem = ({ item, totalPrices }) => {
                   marginLeft: '4px',
                 }}
               >
-                6
+                {property?.size}
               </Box>
             </Stack>
-          </Stack>
-        </TableCell>
-        <TableCell>
-          {product?.priceSale ? product?.priceSale : product?.price}
-        </TableCell>
-        <TableCell>
-          <Box sx={{ width: '88px', textAlign: 'right' }}>
-            <Stack
-              sx={{
-                flexDirection: 'row',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                p: '4px',
-                width: '88px',
-                borderRadius: '8px',
-                fontWeight: 600,
-                lineHeight: 1.5,
-                border: '1px solid rgba(145, 158, 171, 0.2)',
-              }}
-            >
-              <StyledButtonQuantity onClick={handleDecrease}>
-                -
-              </StyledButtonQuantity>
-              {quantityItem}
-              <StyledButtonQuantity onClick={handleIncrease}>
-                +
-              </StyledButtonQuantity>
-            </Stack>
-            <Typography
-              variant="subtitle2"
-              sx={{
-                m: '8px 8px 0 0',
-                fontWeight: 400,
-                color: 'rgb(99, 115, 129)',
-              }}
-            >
-              available
-            </Typography>
-          </Box>
-        </TableCell>
-        <TableCell>{totalPrices}</TableCell>
-        <TableCell>
-          <ButtonBase
+          ) : (
+            ''
+          )}
+        </Stack>
+      </TableCell>
+      <TableCell>
+        {product?.priceSale ? product?.priceSale : product?.price}
+      </TableCell>
+      <TableCell>
+        <Box sx={{ width: '88px', textAlign: 'right' }}>
+          <Stack
             sx={{
-              color: 'rgb(99, 115, 129)',
-              transition:
-                'background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              p: '4px',
+              width: '88px',
+              borderRadius: '8px',
+              fontWeight: 600,
+              lineHeight: 1.5,
+              border: '1px solid rgba(145, 158, 171, 0.2)',
             }}
-            onClick={() => handleDeleteProduct(product?._id)}
           >
-            <Iconify icon="eva:trash-2-fill" />
-          </ButtonBase>
-        </TableCell>
-      </TableRow>
-    </TableBody>
+            <StyledButtonQuantity onClick={handleDecrease}>
+              -
+            </StyledButtonQuantity>
+            {quantity}
+            <StyledButtonQuantity onClick={handleIncrease}>
+              +
+            </StyledButtonQuantity>
+          </Stack>
+          <Typography
+            variant="subtitle2"
+            sx={{
+              m: '8px 8px 0 0',
+              fontWeight: 400,
+              color: 'rgb(99, 115, 129)',
+            }}
+          >
+            available
+          </Typography>
+        </Box>
+      </TableCell>
+      <TableCell>{totalPrices}</TableCell>
+      <TableCell>
+        <ButtonBase
+          sx={{
+            color: 'rgb(99, 115, 129)',
+            transition:
+              'background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
+          }}
+          onClick={() => handleDeleteProduct(product?._id)}
+        >
+          <Iconify icon="eva:trash-2-fill" />
+        </ButtonBase>
+      </TableCell>
+    </TableRow>
   );
 };
 
@@ -231,8 +243,15 @@ CartTableItem.propTypes = {
       price: PropTypes.number.isRequired,
     }).isRequired,
     quantity: PropTypes.number.isRequired,
+    property: PropTypes.shape({
+      color: PropTypes.string.isRequired,
+      size: PropTypes.string.isRequired,
+    }).isRequired,
   }).isRequired,
-  totalPrices: PropTypes.number.isRequired,
+  onSelect: PropTypes.func.isRequired,
+  isSelected: PropTypes.bool.isRequired,
+  orderData: PropTypes.object.isRequired,
+  setOrderData: PropTypes.func.isRequired,
 };
 
 export default CartTableItem;

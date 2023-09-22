@@ -14,7 +14,7 @@ const ProductFormDetail = ({ productData, setProductData }) => {
               name="price"
               label="Regular Price"
               fullWidth
-              value={productData.price}
+              value={productData?.price || ''}
               onChange={(e) => {
                 setProductData({ ...productData, price: e.target.value });
               }}
@@ -25,7 +25,7 @@ const ProductFormDetail = ({ productData, setProductData }) => {
               name="priceSale"
               label="Price Sale"
               fullWidth
-              value={productData.priceSale}
+              value={productData?.priceSale || ''}
               onChange={(e) => {
                 setProductData({ ...productData, priceSale: e.target.value });
               }}

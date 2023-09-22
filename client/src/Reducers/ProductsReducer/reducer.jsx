@@ -6,6 +6,7 @@ import {
   SEARCH_PRODUCT,
   SET_PAGE,
   FILTER_PRODUCT,
+  UPDATE_PRODUCT,
 } from './constants';
 
 export const initProductsState = {
@@ -40,6 +41,15 @@ export const reducer = (state, action) => {
       return {
         ...state,
         products: [...state.products, payload],
+      };
+    case UPDATE_PRODUCT:
+      const newProducts = state.products.map((product) =>
+        product._id === payload._id ? payload : product
+      );
+
+      return {
+        ...state,
+        products: newProducts,
       };
     case DELETE_PRODUCT:
       return {

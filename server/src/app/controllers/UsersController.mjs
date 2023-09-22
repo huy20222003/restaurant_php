@@ -14,7 +14,7 @@ class AuthController {
         .status(200)
         .json({ success: true, message: 'GET successful!', users });
     } catch (error) {
-      res.status(500).json({
+      return res.status(500).json({
         success: false,
         message: 'An error occurred while processing the request.',
         error: error.message,
@@ -34,7 +34,7 @@ class AuthController {
         .status(200)
         .json({ success: true, message: 'user found', user });
     } catch (error) {
-      res.status(500).json({
+      return res.status(500).json({
         success: false,
         message: 'An error occurred while processing the request.',
         error: error.message,
@@ -60,9 +60,14 @@ class AuthController {
           message: 'Username or email already exists!',
         });
       } else {
-        const newUser = new Users({ fullName, username, email, password });
-        const role = new Roles({ name: 'user' });
-        newUser.addRole(role);
+        const userRole = await Roles.findOne({ name: 'user' });
+        const newUser = new Users({
+          fullName,
+          username,
+          email,
+          password,
+          roles: userRole._id,
+        });
 
         return res.status(200).json({
           success: true,
@@ -71,7 +76,7 @@ class AuthController {
         });
       }
     } catch (error) {
-      res.status(500).json({
+      return res.status(500).json({
         success: false,
         message: 'An error occurred while processing the request.',
         error: error.message,
@@ -146,7 +151,7 @@ class AuthController {
         user.shipAddress = shipAddress;
         user.address = address;
         await user.save();
-        res
+        return res
           .status(200)
           .json({ success: true, message: 'Update user successfull', user });
       }

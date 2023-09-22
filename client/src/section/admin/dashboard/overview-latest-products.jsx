@@ -27,7 +27,7 @@ const OverviewLatestProducts = (props) => {
         {products.map((product, index) => {
           const hasDivider = index < products.length - 1;
           const updatedAt = new Date(product?.updatedAt);
-          const ago = formatDistanceToNow(updatedAt, { addSuffix: true });
+          const ago = formatDistanceToNow(updatedAt);
 
           return (
             <ListItem divider={hasDivider} key={product?._id}>

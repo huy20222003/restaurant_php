@@ -5,13 +5,30 @@ class EmployeeController {
   async getAllEmployees(req, res) {
     try {
       const employees = await Employees.find({});
-      res.status(200).json({
+      return res.status(200).json({
         success: true,
         message: 'Retrieve employee data successfully!',
         employees,
       });
     } catch (error) {
-      res.status(500).json({
+      return res.status(500).json({
+        success: false,
+        message: 'An error occurred while processing the request.',
+        error: error.message,
+      });
+    }
+  }
+
+  async getSingleEmployee(req, res) {
+    try {
+      const employee = await Employees.findById(req.params._id);
+      return res.status(200).json({
+        success: true,
+        message: 'Retrieve employee data successfully!',
+        employee,
+      });
+    } catch (error) {
+      return res.status(500).json({
         success: false,
         message: 'An error occurred while processing the request.',
         error: error.message,
@@ -31,19 +48,20 @@ class EmployeeController {
         !salary ||
         !password
       ) {
+        console.log(fullName, username, email, position, salary, password)
         return res
           .status(400)
           .json({ success: false, message: 'Required fields missing' });
       }
-  
+
       const roles = await Roles.findOne({ name: position });
-  
+
       if (!roles) {
         return res
           .status(400)
           .json({ success: false, message: 'Invalid position' });
       }
-  
+
       const newEmployee = new Employees({
         fullName,
         username,
@@ -53,16 +71,16 @@ class EmployeeController {
         password,
         roles: roles._id,
       });
-  
+
       await newEmployee.save();
-  
-      res.status(201).json({
+
+      return res.status(201).json({
         success: true,
         message: 'Employee added successfully!',
         employee: newEmployee,
       });
     } catch (error) {
-      res.status(500).json({
+      return res.status(500).json({
         success: false,
         message: 'An error occurred while processing the request.',
         error: error.message,
@@ -82,7 +100,6 @@ class EmployeeController {
           .status(404)
           .json({ success: false, message: 'Employee not found' });
       }
-      console.log(updatedEmployee);
 
       if (
         !updatedEmployee.fullName ||
@@ -94,15 +111,15 @@ class EmployeeController {
         return res
           .status(400)
           .json({ success: false, message: 'Required fields missing' });
+      } else {
+        return res.json({
+          success: true,
+          message: 'Employee updated successfully!',
+          employee: updatedEmployee,
+        });
       }
-
-      res.json({
-        success: true,
-        message: 'Employee updated successfully!',
-        data: updatedEmployee,
-      });
     } catch (error) {
-      res.status(500).json({
+      return res.status(500).json({
         success: false,
         message: 'An error occurred while processing the request.',
         error: error.message,
@@ -118,13 +135,13 @@ class EmployeeController {
           .status(404)
           .json({ success: false, message: 'Employee not found' });
       }
-      res.json({
+      return res.json({
         success: true,
         message: 'Employee deleted successfully!',
         data: deletedEmployee,
       });
     } catch (error) {
-      res.status(500).json({
+      return res.status(500).json({
         success: false,
         message: 'An error occurred while processing the request.',
         error: error.message,

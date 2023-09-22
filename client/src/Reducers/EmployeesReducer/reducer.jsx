@@ -1,4 +1,10 @@
-import { CREATE_EMPLOYEE, DELETE_EMPLOYEE, GET_ALL_EMPLOYEES } from './constants';
+import {
+  CREATE_EMPLOYEE,
+  DELETE_EMPLOYEE,
+  GET_ALL_EMPLOYEES,
+  GET_ONE_EMPLOYEE,
+  UPDATE_EMPLOYEE,
+} from './constants';
 
 export const initEmployeesState = {
   employee: null,
@@ -14,16 +20,32 @@ export const reducer = (state, action) => {
         ...state,
         employees: payload,
       };
-      case CREATE_EMPLOYEE:
-        return {
-          ...state,
-          employees: [...state.employees, payload],
-        };
-        case DELETE_EMPLOYEE:
-          return {
-            ...state,
-            employees: state.employees.filter((employee)=> employee._id !== payload),
-          };
+    case GET_ONE_EMPLOYEE:
+      return {
+        ...state,
+        employee: payload,
+      };
+    case CREATE_EMPLOYEE:
+      return {
+        ...state,
+        employees: [...state.employees, payload],
+      };
+    case UPDATE_EMPLOYEE:
+      const newEmployees = state.employees.map((employee) =>
+      employee._id === payload._id ? payload : employee
+    );
+
+    return {
+      ...state,
+      employees: newEmployees,
+    };
+    case DELETE_EMPLOYEE:
+      return {
+        ...state,
+        employees: state.employees.filter(
+          (employee) => employee._id !== payload
+        ),
+      };
     default:
       return {
         ...state,

@@ -6,6 +6,7 @@ import cartRouter from './cartRouter.mjs';
 import employeesRouter from './employeesRouter.mjs';
 import adminAuthRouter from './adminAuthRouter.mjs';
 import userRouter from './usersRouter.mjs';
+import ordersRouter from './ordersRouter.mjs';
 
 
 //------------------------------------------------------------
@@ -19,6 +20,7 @@ function routes(app) {
   app.use('/api/cart', cartRouter);
   app.use('/api/employee', employeesRouter);
   app.use('/api/user', userRouter);
+  app.use('/api/order', ordersRouter);
 }
 
 export default routes;

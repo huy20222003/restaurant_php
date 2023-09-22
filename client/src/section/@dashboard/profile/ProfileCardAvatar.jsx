@@ -14,13 +14,15 @@ import {
 import { toast } from 'react-toastify';
 //component
 import PreviewAvatar from './PreviewAvatar';
-
+//context
+import { useAuth } from '../../../hooks/context';
 //-------------------------------------------
 
-const ProfileCardAvatar = ({ user }) => {
+const ProfileCardAvatar = () => {
   const [open, setOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState('');
   const [previewAvatar, setPreviewAvatar] = useState('');
+  const {authState: {user}} = useAuth();
   const refImage = useRef();
 
   const handleChooseFile = () => {
@@ -46,7 +48,7 @@ const ProfileCardAvatar = ({ user }) => {
   }, []);
 
   return (
-    <Paper elevation={0}>
+    <Paper elevation={1}>
       <CardContent>
         <Box
           sx={{

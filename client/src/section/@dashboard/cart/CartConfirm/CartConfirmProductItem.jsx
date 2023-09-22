@@ -1,10 +1,13 @@
+import PropTypes from 'prop-types';
 //@mui
-
 import { Box, Divider, Stack, Typography } from '@mui/material';
 
 //-----------------------------------------
 
-const CartConfirmProductItem = () => {
+const CartConfirmProductItem = ({ item }) => {
+  const { product, quantity, property } = item;
+  console.log(item);
+
   return (
     <Stack
       sx={{
@@ -26,7 +29,7 @@ const CartConfirmProductItem = () => {
         <Stack sx={{ flexDirection: 'row', alignItems: 'center' }}>
           <Box
             component="img"
-            src="/assets/images/background/hero.jpg"
+            src={product?.image_url}
             sx={{
               width: '70px',
               height: '70px',
@@ -35,7 +38,7 @@ const CartConfirmProductItem = () => {
             }}
           ></Box>
           <Stack sx={{ pl: '0.5rem' }}>
-            <Typography variant="body1">Coca cola</Typography>
+            <Typography variant="body1">{product?.name}</Typography>
             <Stack
               sx={{
                 alignItems: 'center',
@@ -67,7 +70,7 @@ const CartConfirmProductItem = () => {
                   marginLeft: '4px',
                 }}
               >
-                6
+                {property?.size}
               </Box>
               <Divider orientation="vertical" variant="middle" flexItem />
               <Box
@@ -90,12 +93,18 @@ const CartConfirmProductItem = () => {
             width: '20%',
           }}
         >
-          <Typography variant="body2">x1</Typography>
-          <Typography variant="body2">22.000</Typography>
+          <Typography variant="body2">x{quantity}</Typography>
+          <Typography variant="body2">
+            {product?.priceSale ? product?.priceSale : product?.price}
+          </Typography>
         </Stack>
       </Stack>
     </Stack>
   );
+};
+
+CartConfirmProductItem.propTypes = {
+  item: PropTypes.object.isRequired,
 };
 
 export default CartConfirmProductItem;

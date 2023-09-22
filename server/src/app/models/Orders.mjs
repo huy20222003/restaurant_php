@@ -5,6 +5,11 @@ const Orders = new Schema(
     items: {
       type: Array,
     },
+    fullName: {
+      type: String,
+      default: '',
+      required: true,
+    },
     shipAddress: {
       type: String,
       default: '',
@@ -13,29 +18,33 @@ const Orders = new Schema(
     phoneNumber: {
       type: String,
       default: '',
-      required: true
+      required: true,
     },
     totalPrices: {
       type: Number,
-      default: 0,
+      default: 0.0,
     },
     status: {
-      type: String,
-      enum: ['Confirmed', 'Ordered', 'Delivering', 'Delivered', 'Canceled', 'Returns'],
-      default: 'Ordered',
+      type: Array,
+      default: ['ordered'],
     },
     shippingFee: {
       type: Number,
-      default: 0
+      default: 0.0,
     },
-    paymentMethods: {
+    shippingUnit: {
+      type: String,
+      default: '',
+      required: true,
+    },
+    paymentMethod: {
       type: String,
       default: '',
       required: true,
     },
     userOrder: {
       type: Schema.Types.ObjectId,
-      ref: 'users',
+      ref: "users",
     },
   },
   {

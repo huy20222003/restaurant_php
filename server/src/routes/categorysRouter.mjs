@@ -1,15 +1,17 @@
 import { Router } from 'express';
 const router = Router();
+//verify
 import authVerify from '../middleware/auth.mjs';
-import authorizeRoles from '../middleware/authorizeRoles.mjs';
+import cashbinMiddleware from '../middleware/cashbinMiddleware.mjs';
+//controller
+import CategorysController from '../app/controllers/CategorysController.mjs';
+//----------------------------------------------------------------------------
 
-
-import CategorysController from '../app/controllers/CategorysController.mjs'
-
-router.get('/', authVerify, authorizeRoles(['admin', 'employee']), CategorysController.getAllCategories);
-router.post('/create-category', authVerify, authorizeRoles(['admin', 'employee']), CategorysController.addCategory);
-router.put('/update-category/:_id', authVerify, authorizeRoles(['admin', 'employee']), CategorysController.updateCategory);
-router.delete('/delete-category/:_id', authVerify, authorizeRoles(['admin', 'employee']), CategorysController.deleteCategory);
+router.get('/', CategorysController.getAllCategories);
+router.get('/:_id', CategorysController.getSingleCategory);
+router.post('/create-category', authVerify, cashbinMiddleware, CategorysController.addCategory);
+router.put('/update-category/:_id', authVerify, cashbinMiddleware, CategorysController.updateCategory);
+router.delete('/delete-category/:_id', authVerify, cashbinMiddleware, CategorysController.deleteCategory);
 
 
 export default router;

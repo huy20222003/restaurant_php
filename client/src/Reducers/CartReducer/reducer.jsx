@@ -4,6 +4,7 @@ export const initCartState = {
     items: [], 
     totalPrices: 0, 
     userCart: null, 
+    property: []
   };
   
   export const reducer = (state, action) => {

@@ -1,0 +1,17 @@
+import express from 'express';
+import OrdersController from '../app/controllers/OrdersController.mjs';
+//verify
+import authVerify from '../middleware/auth.mjs';
+import cashbinMiddleware from '../middleware/cashbinMiddleware.mjs';
+//----------------------------------------------------------------
+
+const router = express.Router();
+
+router.get('/filter-order', OrdersController.filterOrderByStatus);
+router.get('/getAllById', authVerify, cashbinMiddleware, OrdersController.getAllOrdersById);
+router.get('/', authVerify, cashbinMiddleware, OrdersController.getAllOrders);
+router.get('/:_id', authVerify, cashbinMiddleware, OrdersController.getSingleOrder);
+router.post('/create-order', authVerify, cashbinMiddleware, OrdersController.createOrder);
+
+
+export default router;

@@ -3,6 +3,7 @@ import {Schema, model} from 'mongoose';
 const Carts = new Schema ({
     items: {
         type: Array,
+        default: [],
     },
     totalPrices: {
         type: Number,

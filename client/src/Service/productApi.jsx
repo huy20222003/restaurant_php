@@ -13,6 +13,10 @@ const productApi = {
         const url = '/products/create-product';
         return axiosConfig.post(url, data);
     },
+    updateProduct: (productId, data)=> {
+        const url = `/products/update-product/${productId}`;
+        return axiosConfig.put(url, data);
+    },
     deleteProduct: (productId)=> {
         const url = `/products/delete-product/${productId}`;
         return axiosConfig.delete(url);

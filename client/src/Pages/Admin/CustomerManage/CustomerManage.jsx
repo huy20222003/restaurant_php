@@ -1,7 +1,18 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 //@mui
-import { Box, Button, ButtonBase, Container, Paper, Stack, Typography, Popover, MenuItem, Menu } from '@mui/material';
+import {
+  Box,
+  Button,
+  ButtonBase,
+  Container,
+  Paper,
+  Stack,
+  Typography,
+  Popover,
+  MenuItem,
+  Menu,
+} from '@mui/material';
 //@mui icon
 import AddIcon from '@mui/icons-material/Add';
 import DataTable from '../../../Components/Admin/DataTable';
@@ -12,13 +23,14 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 //iconify
 import Iconify from '../../../Components/User/iconify';
 //context
-import {useCommon, useUser} from '../../../hooks/context';
+import { useCommon, useUser } from '../../../hooks/context';
 //component
 import FormDialogCustomer from '../../../Components/FormDialog/FormDialogCustomer';
 //toast
 import { toast } from 'react-toastify';
 //sweetalert
 import Swal from 'sweetalert2';
+//-------------------------------------------------------
 
 const CustomerManage = () => {
   const {
@@ -28,33 +40,27 @@ const CustomerManage = () => {
     handleGetOneUser,
   } = useUser();
 
-  const navigate = useNavigate();
-
   const { setOpenFormDialog } = useCommon();
+  const [formData, setFormData] = useState({});
+
+  const navigate = useNavigate();
 
   const columns = [
     { field: 'id', headerName: 'ID', type: 'String', width: 70 },
     {
-      field: 'username',
-      headerName: 'Username',
+      field: 'avatar',
+      headerName: '',
       type: 'String',
-      width: 200,
+      width: 80,
       renderCell: (params) => (
-        <div style={{ display: 'flex', alignItems: 'center' }}>
-          <img
-            src={params.row.avatar} 
-            alt="Avatar"
-            style={{
-              width: '32px',
-              height: '32px',
-              marginRight: '8px', 
-              borderRadius: '50%', 
-            }}
-          />
-          <span>{params.row.username}</span>{' '}
-        </div>
+        <img
+          src={params.value}
+          alt="Avatar"
+          style={{ width: '70%', height: '70%', borderRadius: '50%' }}
+        />
       ),
     },
+    { field: 'username', headerName: 'Username', type: 'String', width: 100 },
     { field: 'fullName', headerName: 'FullName', type: 'String', width: 160 },
     { field: 'email', headerName: 'Email', type: 'String', width: 130 },
     {
@@ -64,6 +70,7 @@ const CustomerManage = () => {
       width: 100,
     },
     { field: 'address', headerName: 'Địa chỉ', type: 'String', width: 200 },
+    { field: 'shipAddress', headerName: 'Địa chỉ nhận hàng', type: 'String', width: 200 },
     {
       field: 'actions',
       headerName: 'Hành động',
@@ -71,8 +78,6 @@ const CustomerManage = () => {
       renderCell: ActionsCell,
     },
   ];
-  
-  
 
   function ActionsCell(params) {
     const [anchorEl, setAnchorEl] = useState(null);
@@ -133,11 +138,13 @@ const CustomerManage = () => {
   const rows = users.map((user) => {
     return {
       id: user?._id,
-      fullName: user?.fullName,
+      avatar: user?.avatar,
       username: user?.username,
+      fullName: user?.fullName,
       email: user?.email,
       phoneNumber: user?.phoneNumber,
       address: user?.address,
+      shipAddress: user?.shipAddress,
     };
   });
 
@@ -164,11 +171,11 @@ const CustomerManage = () => {
       if (result.isConfirmed) {
         try {
           const response = await handleDeleteUser(userId);
-        if (response.success) {
-          Swal.fire('', 'Delete Successful!', 'success');
-        } else {
-          Swal.fire('', 'Delete failed!', 'error');
-        }
+          if (response.success) {
+            Swal.fire('', 'Delete Successful!', 'success');
+          } else {
+            Swal.fire('', 'Delete failed!', 'error');
+          }
         } catch (error) {
           Swal.fire('', 'Server error!', 'error');
         }
@@ -180,13 +187,13 @@ const CustomerManage = () => {
     setOpenFormDialog(true);
   };
 
-  const handleCreate = async (user) => {
+  const handleCreate = async () => {
     try {
-      const createData = await handleCreateUser(user);
+      const createData = await handleCreateUser(formData);
       if (!createData.success) {
-        toast.error(createData.message);
+        toast.error('Add customer failed!');
       } else {
-        toast.success(createData.message);
+        toast.success('Add customer successful');
       }
     } catch (error) {
       toast.error('Server Error');
@@ -204,7 +211,7 @@ const CustomerManage = () => {
         }}
       >
         <Box sx={{ flexGrow: 1, py: '64px' }}>
-          <Container sx={{pt: '40px'}}>
+          <Container sx={{ pt: '40px' }}>
             <Stack>
               <Stack
                 sx={{ flexDirection: 'row', justifyContent: 'space-between' }}
@@ -242,7 +249,12 @@ const CustomerManage = () => {
                   </Button>
                 </Stack>
               </Stack>
-              <FormDialogCustomer fields={fiels} handleCreate={handleCreate} />
+              <FormDialogCustomer
+                fields={fiels}
+                handleCreate={handleCreate}
+                formData={formData}
+                setFormData={setFormData}
+              />
               <Paper elevation={0} sx={{ margin: '32px 0 0' }}>
                 <DataTable columns={columns} rows={rows} />
               </Paper>

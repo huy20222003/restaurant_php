@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useEffect, useState } from 'react';
 //@mui
 import {
   Box,
@@ -24,8 +24,7 @@ import DataTable from '../../../Components/Admin/DataTable';
 import FormDialogEmployee from '../../../Components/FormDialog/FormDialogEmployee';
 import Iconify from '../../../Components/User/iconify';
 //context
-import { EmployeesContext } from '../../../Contexts/EmployeesContext';
-import { CommonContext } from '../../../Contexts/CommonContext';
+import { useCommon, useEmployee } from '../../../hooks/context';
 //toast
 import { toast } from 'react-toastify';
 //sweetalert
@@ -36,35 +35,38 @@ import Swal from 'sweetalert2';
 const EmployeeManage = () => {
   const {
     employeesState: { employees },
+    handleGetOneEmployee,
     handleCreateEmployee,
+    handleUpdateEmployee,
     handleDeleteEmployee,
-  } = useContext(EmployeesContext);
+  } = useEmployee();
 
-  const { setOpenFormDialog } = useContext(CommonContext);
+  const { setOpenFormDialog } = useCommon();
+  const [isEdit, setIsEdit] = useState(false);
+  const [formData, setFormData] = useState({});
+
+  useEffect(() => {
+    if (isEdit) {
+      setOpenFormDialog(true);
+    }
+  }, [isEdit, setOpenFormDialog]);
 
   const columns = [
     { field: 'id', headerName: 'ID', type: 'String', width: 70 },
     {
-      field: 'userame',
-      headerName: 'Username',
+      field: 'avatar',
+      headerName: '',
       type: 'String',
-      width: 160,
+      width: 80,
       renderCell: (params) => (
-        <div style={{ display: 'flex', alignItems: 'center' }}>
-          <img
-            src={params.row.avatar}
-            alt="Avatar"
-            style={{
-              width: '32px',
-              height: '32px',
-              marginRight: '8px', 
-              borderRadius: '50%',
-            }}
-          />
-          <span>{params.row.username}</span>{' '}
-        </div>
+        <img
+          src={params.value}
+          alt="Avatar"
+          style={{ width: '70%', height: '70%', borderRadius: '50%' }}
+        />
       ),
     },
+    { field: 'username', headerName: 'Username', type: 'String', width: 100 },
     { field: 'fullName', headerName: 'FullName', type: 'String', width: 160 },
     { field: 'email', headerName: 'Email', type: 'String', width: 130 },
     {
@@ -147,6 +149,8 @@ const EmployeeManage = () => {
   const rows = employees.map((employee) => {
     return {
       id: employee?._id,
+      avatar: employee?.avatar,
+      username: employee?.username,
       fullName: employee?.fullName,
       email: employee?.email,
       phoneNumber: employee?.phoneNumber,
@@ -156,12 +160,12 @@ const EmployeeManage = () => {
     };
   });
 
-  const fiels = [
-    { name: 'fullName', label: 'Họ và tên', type: 'text' },
-    { name: 'username', label: 'Tên người dùng', type: 'text' },
+  const fields = [
+    { name: 'fullName', label: 'FullName', type: 'text' },
+    { name: 'username', label: 'Username', type: 'text' },
     { name: 'email', label: 'Email', type: 'email' },
-    { name: 'salary', label: 'Lương', type: 'text' },
-    { name: 'password', label: 'Mật khẩu', type: 'password' },
+    { name: 'salary', label: 'Salary', type: 'text' },
+    { name: 'password', label: 'Password', type: 'password' },
   ];
 
   const handleOpenFormDialog = () => {
@@ -172,8 +176,12 @@ const EmployeeManage = () => {
     console.log(`View employee with ID: ${employeeId}`);
   };
 
-  const handleEdit = (employeeId) => {
-    console.log(`Edit employee with ID: ${employeeId}`);
+  const handleEdit = async (employeeId) => {
+    const response = await handleGetOneEmployee(employeeId);
+    if (response.success) {
+      setFormData(response.employee);
+    }
+    setIsEdit(true);
   };
 
   const handleDelete = async (employeeId) => {
@@ -199,16 +207,27 @@ const EmployeeManage = () => {
     });
   };
 
-  const handleCreate = async (employee) => {
+  const handleSave = async () => {
     try {
-      const createData = await handleCreateEmployee(employee);
-      if (!createData.success) {
-        toast.error(createData.message);
+      if (isEdit) {
+        const editData = await handleUpdateEmployee(formData?._id, formData);
+        if (!editData.success) {
+          toast.error('Employee update failed');
+        } else {
+          toast.success('Employee update successful');
+        }
       } else {
-        toast.success(createData.message);
+        const createData = await handleCreateEmployee(formData);
+        if (!createData.success) {
+          toast.error('Add Employee failed');
+        } else {
+          toast.success('Add Employee successful');
+        }
       }
+      setFormData({});
+      setOpenFormDialog(false);
     } catch (error) {
-      toast.error('Server Error');
+      toast.error('Lỗi máy chủ');
     }
   };
 
@@ -223,7 +242,7 @@ const EmployeeManage = () => {
         }}
       >
         <Box sx={{ flexGrow: 1, py: '64px' }}>
-          <Container sx={{pt: '40px'}}>
+          <Container sx={{ pt: '40px' }}>
             <Stack>
               <Stack
                 sx={{ flexDirection: 'row', justifyContent: 'space-between' }}
@@ -261,7 +280,13 @@ const EmployeeManage = () => {
                   </Button>
                 </Stack>
               </Stack>
-              <FormDialogEmployee fields={fiels} handleCreate={handleCreate} />
+              <FormDialogEmployee
+                fields={fields}
+                isEdit={isEdit}
+                formData={formData}
+                setFormData={setFormData}
+                handleSave={handleSave}
+              />
               <Paper elevation={0} sx={{ m: '32px 0 0' }}>
                 <DataTable columns={columns} rows={rows} />
               </Paper>

@@ -8,6 +8,7 @@ import {
 import { initProductsState, reducer } from '../Reducers/ProductsReducer/reducer';
 import {
   createProduct,
+  updateProduct,
   deleteProduct,
   getAll,
   getOne,
@@ -22,6 +23,7 @@ export const ProductsContext = createContext();
 export const ProductsProvider = (prop) => {
   const [productsState, dispatch] = useReducer(reducer, initProductsState);
   const [currentPage, setCurrentPage] = useState(1);
+  const [property, setProperty] = useState({});
   const [quantity, setQuantity] = useState(1);
 
   const handleError = (error) => {
@@ -81,6 +83,18 @@ export const ProductsProvider = (prop) => {
     }
   }, []);
 
+  const handleUpdateProduct = useCallback(async (productId, data) => {
+    try {
+      const response = await productApi.updateProduct(productId, data);
+      if (response.data.success) {
+        dispatch(updateProduct(response.data.product));
+      }
+      return response.data;
+    } catch (error) {
+      return handleError(error);
+    }
+  }, []);
+
   const handleDeleteProduct = useCallback(async (productId) => {
     try {
       const response = await productApi.deleteProduct(productId);
@@ -120,12 +134,15 @@ export const ProductsProvider = (prop) => {
   const ProductsData = {
     quantity,
     setQuantity,
+    property,
+    setProperty,
     productsState,
     handleGetAllProducts,
     handlePageChange,
     currentPage,
     handleGetOneProduct,
     handleCreateProduct,
+    handleUpdateProduct,
     handleDeleteProduct,
     handleSearchProduct,
     handleFilterProduct,

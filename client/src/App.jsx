@@ -16,6 +16,7 @@ import { UsersProvider } from './Contexts/UsersContext';
 import { EmployeesProvider } from './Contexts/EmployeesContext';
 import { CategoryProvider } from './Contexts/CategoryContext';
 import { CartProvider } from './Contexts/CartContext';
+import { OrdersProvider } from './Contexts/OrderContext';
 
 // ----------------------------------------------------------------------
 
@@ -33,7 +34,9 @@ export default function App() {
                   <EmployeesProvider>
                     <CategoryProvider>
                       <CartProvider>
-                        <Router />
+                        <OrdersProvider>
+                          <Router />
+                        </OrdersProvider>
                       </CartProvider>
                     </CategoryProvider>
                   </EmployeesProvider>

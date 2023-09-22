@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 import { useCallback, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-//@mui
 import {
   Box,
   Button,
@@ -13,19 +12,15 @@ import {
   Typography,
 } from '@mui/material';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
-//toast
 import { toast } from 'react-toastify';
-//component
 import Label from '../../../../Components/User/label';
 import ProductQuantity from './ProductQuantity';
 import ProductRating from '../ProductRating';
-//utils
 import { fCurrency } from '../../../../utils/formatNumber';
 import { useProduct, useCart } from '../../../../hooks/context';
-//-------------------------------------------------------------------
 
 const ProductInfo = ({ product }) => {
-  const { quantity, setQuantity } = useProduct();
+  const { quantity, setQuantity, property, setProperty } = useProduct();
   const navigate = useNavigate();
   const { handleUpdateCart } = useCart();
 
@@ -38,6 +33,7 @@ const ProductInfo = ({ product }) => {
       const updateData = await handleUpdateCart({
         productId: product?._id,
         quantity,
+        property,
       });
       if (updateData.success) {
         toast.success('Add to cart successful');
@@ -48,25 +44,17 @@ const ProductInfo = ({ product }) => {
     } catch (error) {
       toast.error('Server Error');
     }
-  }, [handleUpdateCart, product?._id, quantity, setQuantity]);
+  }, [handleUpdateCart, product?._id, property, quantity, setQuantity]);
 
-  const handleNavigateCheckout = () => {
+  const handleAddToCartAndNavigate = () => {
     handleUpdate();
-    navigate('/dashboard/order');
+    navigate('/dashboard/cart');
   };
 
-  const renderColor = () => {
-    return product?.color.map((color) => (
-      <MenuItem key={color} value={color}>
-        {color}
-      </MenuItem>
-    ));
-  };
-
-  const renderSize = () => {
-    return product?.size.map((size) => (
-      <MenuItem key={size} value={size}>
-        {size}
+  const renderSelectOptions = (options) => {
+    return options.map((option) => (
+      <MenuItem key={option} value={option}>
+        {option}
       </MenuItem>
     ));
   };
@@ -91,7 +79,7 @@ const ProductInfo = ({ product }) => {
       </Typography>
       <ProductRating rate={product?.rate} />
       <Typography variant="h6" sx={{ my: '1rem' }}>
-        {fCurrency(product?.priceSale ?? product?.price)}
+        {fCurrency(product?.priceSale || product?.price)}
       </Typography>
       <Typography variant="caption" sx={{ py: '2rem' }}>
         {product?.subDescription}
@@ -118,14 +106,20 @@ const ProductInfo = ({ product }) => {
       >
         <Typography>Colors</Typography>
         <FormControl sx={{ width: '80px' }}>
-          <InputLabel id="demo-simple-select-label">Colors</InputLabel>
+          <InputLabel id="color-label">Colors</InputLabel>
           <Select
-            labelId="demo-simple-select-label"
-            id="demo-simple-select"
-            label="Category"
-            value={product?.color}
+            labelId="color-label"
+            label="Colors"
+            size="small"
+            value={property.color || ''}
+            onChange={(e) =>
+              setProperty({
+                ...property,
+                color: e.target.value,
+              })
+            }
           >
-            {renderColor()}
+            {renderSelectOptions(product?.color || [])}
           </Select>
         </FormControl>
       </Stack>
@@ -139,24 +133,29 @@ const ProductInfo = ({ product }) => {
       >
         <Typography>Size</Typography>
         <FormControl sx={{ width: '80px' }}>
-          <InputLabel id="demo-simple-select-label">Size</InputLabel>
+          <InputLabel id="size-label">Size</InputLabel>
           <Select
-            labelId="demo-simple-select-label"
-            id="demo-simple-select"
-            label="Category"
-            value={product?.size}
+            id="size-label"
+            label="Size"
+            size="small"
+            value={property.size || ''}
+            onChange={(e) =>
+              setProperty({
+                ...property,
+                size: e.target.value,
+              })
+            }
           >
-            {renderSize()}
+            {renderSelectOptions(product?.size || [])}
           </Select>
         </FormControl>
       </Stack>
-
       <Box sx={{ my: '1rem' }}>
         <Button
           size="medium"
           variant="outlined"
           sx={{ mr: '1rem' }}
-          onClick={handleUpdate}
+          onClick={handleAddToCartAndNavigate}
           startIcon={<AddShoppingCartIcon />}
         >
           Add to cart
@@ -164,7 +163,7 @@ const ProductInfo = ({ product }) => {
         <Button
           size="medium"
           variant="contained"
-          onClick={handleNavigateCheckout}
+          onClick={handleAddToCartAndNavigate}
         >
           Buy now
         </Button>
@@ -183,8 +182,8 @@ ProductInfo.propTypes = {
     priceSale: PropTypes.number,
     subDescription: PropTypes.string,
     description: PropTypes.string,
-    color: PropTypes.arrayOf(PropTypes.string), // Đảm bảo color là một mảng chuỗi
-    size: PropTypes.arrayOf(PropTypes.string), // Đảm bảo size là một mảng chuỗi
+    color: PropTypes.arrayOf(PropTypes.string),
+    size: PropTypes.arrayOf(PropTypes.string),
   }),
 };
 

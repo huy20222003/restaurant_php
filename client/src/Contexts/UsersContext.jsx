@@ -30,7 +30,7 @@ export const UsersProvider = (prop) => {
     try {
         const response = await userApi.getOne(userId);
         dispatch(getOneUser(response.data.user));
-        sessionStorage.setItem('data', JSON.stringify(response.data.user));
+        return response.data;
     } catch (error) {
         return handleError(error);
     }

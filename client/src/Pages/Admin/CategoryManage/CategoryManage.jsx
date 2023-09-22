@@ -1,5 +1,4 @@
-import { useState } from 'react';
-//@mui
+import { useState, useEffect, useCallback } from 'react';
 import {
   Box,
   Button,
@@ -11,34 +10,110 @@ import {
   Stack,
   ButtonBase,
   Container,
+  IconButton,
 } from '@mui/material';
-//@mui icon
-import AddIcon from '@mui/icons-material/Add';
-import IconButton from '@mui/material/IconButton';
-import EditIcon from '@mui/icons-material/Edit';
-import DeleteIcon from '@mui/icons-material/Delete';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
-import VisibilityIcon from '@mui/icons-material/Visibility';
-//iconify
+import {
+  Add as AddIcon,
+  Edit as EditIcon,
+  Delete as DeleteIcon,
+  MoreVert as MoreVertIcon,
+  Visibility as VisibilityIcon,
+} from '@mui/icons-material';
 import Iconify from '../../../Components/User/iconify';
-//component
 import DataTable from '../../../Components/Admin/DataTable';
 import FormDialogCategory from '../../../Components/FormDialog/FormDialogCategory';
-//context
 import { useCategory, useCommon } from '../../../hooks/context';
-//toast
 import { toast } from 'react-toastify';
-//sweet alert
 import Swal from 'sweetalert2';
 
 const CategoryManage = () => {
   const {
     categoryState: { categories },
+    handleGetOneCategory,
     handleCreateCategory,
+    handleUpdateCategory,
     handleDeleteCategory,
   } = useCategory();
 
   const { setOpenFormDialog } = useCommon();
+  const [isEdit, setIsEdit] = useState(false);
+  const [formData, setFormData] = useState({});
+  const [anchorEl, setAnchorEl] = useState(null);
+
+  const handleOpenFormDialog = () => {
+    setOpenFormDialog(true);
+  };
+
+  const handleView = useCallback((categoryId) => {
+    console.log(`View category with ID: ${categoryId}`);
+  }, []);
+
+  const handleEdit = useCallback(
+    async (categoryId) => {
+      const response = await handleGetOneCategory(categoryId);
+      if (response.success) {
+        setFormData(response.category);
+      }
+      setIsEdit(true);
+    },
+    [handleGetOneCategory]
+  );
+
+  const handleSave = async () => {
+    try {
+      if (isEdit) {
+        const editData = await handleUpdateCategory(formData?._id, formData);
+        if (!editData.success) {
+          toast.error('Category update failed');
+        } else {
+          toast.success('Category update successful');
+        }
+      } else {
+        const createData = await handleCreateCategory(formData);
+        if (!createData.success) {
+          toast.error('Add category failed');
+        } else {
+          toast.success('Add category successful');
+        }
+      }
+      setFormData({});
+      setOpenFormDialog(false);
+    } catch (error) {
+      toast.error('Server Error');
+    }
+  };
+
+  const handleDelete = useCallback(
+    async (categoryId) => {
+      Swal.fire({
+        title: 'Delete this category?',
+        text: 'Would you like to delete this category?',
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, of course!',
+      }).then(async (result) => {
+        if (result.isConfirmed) {
+          try {
+            const response = await handleDeleteCategory(categoryId);
+            if (response.success) {
+              Swal.fire('', 'Delete Successful!', 'success');
+            } else {
+              Swal.fire('', 'Delete failed!', 'error');
+            }
+          } catch (error) {
+            Swal.fire('', 'Server error!', 'error');
+          }
+        }
+      });
+    },
+    [handleDeleteCategory]
+  );
+
+  useEffect(() => {
+    if (isEdit) {
+      setOpenFormDialog(true);
+    }
+  }, [isEdit, formData._id, setOpenFormDialog]);
 
   const columns = [
     { field: 'id', headerName: 'ID', type: 'String', width: 100 },
@@ -54,7 +129,6 @@ const CategoryManage = () => {
   ];
 
   function ActionsCell(params) {
-    const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
 
     const handleClick = (event) => {
@@ -115,66 +189,17 @@ const CategoryManage = () => {
 
   const rows =
     categories &&
-    categories.map((category) => {
-      return {
-        id: category?._id,
-        name: category?.name,
-        description: category?.description,
-      };
-    });
+    categories.map(({ _id, name, description }) => ({
+      id: _id,
+      name,
+      description,
+      quantity: categories.length,
+    }));
 
-  const handleOpenFormDialog = () => {
-    setOpenFormDialog(true);
-  };
-
-  const fiels = [
+  const fields = [
     { name: 'name', label: 'Tên', type: 'text', row: 1 },
     { name: 'description', label: 'Mô tả', type: 'text', row: 5 },
   ];
-
-  const handleView = (categoryId) => {
-    console.log(`View category with ID: ${categoryId}`);
-  };
-
-  const handleEdit = (categoryId) => {
-    console.log(`Edit category with ID: ${categoryId}`);
-  };
-
-  const handleDelete = async (categoryId) => {
-    Swal.fire({
-      title: 'Delete this category?',
-      text: 'Would you like to delete this category?',
-      icon: 'question',
-      showCancelButton: true,
-      confirmButtonText: 'Yes, of course!',
-    }).then(async (result) => {
-      if (result.isConfirmed) {
-        try {
-          const response = await handleDeleteCategory(categoryId);
-          if (response.success) {
-            Swal.fire('', 'Delete Successful!', 'success');
-          } else {
-            Swal.fire('', 'Delete failed!', 'error');
-          }
-        } catch (error) {
-          Swal.fire('', 'Server error!', 'error');
-        }
-      }
-    });
-  };
-
-  const handleCreate = async (category) => {
-    try {
-      const createData = await handleCreateCategory(category);
-      if (!createData.success) {
-        toast.error(createData.message);
-      } else {
-        toast.success(createData.message);
-      }
-    } catch (error) {
-      toast.error('Server Error');
-    }
-  };
 
   return (
     <Box sx={{ display: 'flex', flex: '1 1 auto', maxWidth: '100%' }}>
@@ -187,7 +212,7 @@ const CategoryManage = () => {
         }}
       >
         <Box sx={{ flexGrow: 1, py: '64px' }}>
-          <Container sx={{pt: '40px'}}>
+          <Container sx={{ pt: '40px' }}>
             <Stack>
               <Stack
                 sx={{ flexDirection: 'row', justifyContent: 'space-between' }}
@@ -225,7 +250,13 @@ const CategoryManage = () => {
                   </Button>
                 </Stack>
               </Stack>
-              <FormDialogCategory fields={fiels} handleCreate={handleCreate} />
+              <FormDialogCategory
+                fields={fields}
+                isEdit={isEdit}
+                formData={formData}
+                setFormData={setFormData}
+                handleSave={handleSave}
+              />
               <Paper elevation={0} sx={{ m: '32px 0 0' }}>
                 <DataTable columns={columns} rows={rows} />
               </Paper>

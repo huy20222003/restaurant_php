@@ -33,7 +33,6 @@ const ProductPageDetail = () => {
 
     fetchData();
   }, [_id, handleGetOneProduct]);
-  console.log(productInfo)
 
   return (
     <>

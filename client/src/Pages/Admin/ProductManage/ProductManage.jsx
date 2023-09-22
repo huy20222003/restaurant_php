@@ -27,6 +27,8 @@ import { useProduct } from '../../../hooks/context';
 import Iconify from '../../../Components/User/iconify';
 //sweetalert
 import Swal from 'sweetalert2';
+//htmlparse
+import HTMLReactParser from 'html-react-parser';
 //---------------------------------------------------------
 
 const ProductManage = () => {
@@ -46,9 +48,9 @@ const ProductManage = () => {
       width: 100,
       renderCell: (params) => (
         <img
-          src={params.value} 
+          src={params.value}
           alt="Product"
-          style={{ width: '60%', height: '60%' }} 
+          style={{ width: '60%', height: '60%' }}
         />
       ),
     },
@@ -126,11 +128,17 @@ const ProductManage = () => {
   }
 
   const rows = products.map((product) => {
+    const description = HTMLReactParser(
+      product?.description && typeof product.description === 'string'
+        ? product.description
+        : ''
+    );
+
     return {
       id: product?._id,
       image_url: product?.image_url,
       name: product?.name,
-      description: product?.description,
+      description: description.props.children,
       category: product?.category,
       price: product?.price,
       rate: product?.rate,
@@ -142,7 +150,7 @@ const ProductManage = () => {
   };
 
   const handleEdit = (productId) => {
-    console.log(`Edit product with ID: ${productId}`);
+    navigate(`/admin/product-manage/edit/${productId}`);
   };
 
   const handleDelete = async (productId) => {
@@ -183,7 +191,7 @@ const ProductManage = () => {
         }}
       >
         <Box sx={{ flexGrow: 1, py: '64px' }}>
-          <Container sx={{pt: '40px'}}>
+          <Container sx={{ pt: '40px' }}>
             <Stack>
               <Stack
                 sx={{ flexDirection: 'row', justifyContent: 'space-between' }}

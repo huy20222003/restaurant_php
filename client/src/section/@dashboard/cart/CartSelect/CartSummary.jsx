@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 //@mui
 import {
   ButtonBase,
@@ -12,43 +13,82 @@ import {
   TextField,
   Typography,
 } from '@mui/material';
-import styled from '@emotion/styled';
 //context
-import { useCart, useCommon } from '../../../../hooks/context';
+import { useCommon } from '../../../../hooks/context';
 
-//-------------------------------
+// Define CSS constants
+const buttonBaseBuyStyle = {
+  fontWeight: 700,
+  lineHeight: 1.71429,
+  fontSize: '0.875rem',
+  textTransform: 'capitalize',
+  fontFamily: '__Public_Sans_66e638, __Public_Sans_Fallback_66e638, Helvetica, Arial, sans-serif',
+  minWidth: '64px',
+  width: '100%',
+  padding: '6px 12px',
+  borderRadius: '8px',
+  transition: 'background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
+  boxShadow: 'none',
+  color: 'rgb(255, 255, 255)',
+  backgroundColor: 'rgb(33, 43, 54)',
+};
 
-const StyledButtonBaseBuy = styled(ButtonBase)`
-  && {
-    font-weight: 700;
-    line-height: 1.71429;
-    font-size: 0.875rem;
-    text-transform: capitalize;
-    font-family: __Public_Sans_66e638, __Public_Sans_Fallback_66e638, Helvetica,
-      Arial, sans-serif;
-    min-width: 64px;
-    width: 100%;
-    padding: 6px 12px;
-    border-radius: 8px;
-    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
-      box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
-      border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
-      color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-    box-shadow: none;
-    color: rgb(255, 255, 255);
-    background-color: rgb(33, 43, 54);
-  }
-`;
-
-const CartSummary = () => {
-  const {
-    cartState: { totalPrices },
-  } = useCart();
-  const {setActiveStep} = useCommon();
+const CartSummary = ({ orderData, selectedProducts }) => {
+  const { setActiveStep } = useCommon();
 
   const handleNext = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    if(selectedProducts.length > 0) {
+      setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    } else {
+      alert('you need choose Product');
+    }
   };
+
+  const renderSubTotal = (orderData) => (
+    <Stack sx={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+      <Typography variant="body2" sx={{ color: 'rgb(99, 115, 129)' }}>
+        Sub Total
+      </Typography>
+      <Typography sx={{ fontSize: '0.875rem', fontWeight: 600 }}>
+        {orderData?.totalPrices}
+      </Typography>
+    </Stack>
+  );
+
+  const renderDiscount = () => (
+    <Stack sx={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+      <Typography variant="body2" sx={{ color: 'rgb(99, 115, 129)' }}>
+        Discount
+      </Typography>
+      <Typography sx={{ fontSize: '0.875rem', fontWeight: 600 }}>_</Typography>
+    </Stack>
+  );
+
+  const renderShipping = () => (
+    <Stack sx={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+      <Typography variant="body2" sx={{ color: 'rgb(99, 115, 129)' }}>
+        Shipping
+      </Typography>
+      <Typography sx={{ fontSize: '0.875rem', fontWeight: 600 }}>Free</Typography>
+    </Stack>
+  );
+
+  const renderTotal = (orderData) => (
+    <Stack sx={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+      <Typography variant="body2" sx={{ color: 'rgb(99, 115, 129)' }}>
+        Total
+      </Typography>
+      <Typography
+        sx={{
+          fontSize: '1rem',
+          color: 'rgb(255, 86, 48)',
+          fontWeight: 600,
+        }}
+      >
+        {orderData?.totalPrices}
+      </Typography>
+    </Stack>
+  );
 
   return (
     <>
@@ -58,53 +98,11 @@ const CartSummary = () => {
         </CardHeader>
         <CardContent>
           <Stack sx={{ gap: '16px' }}>
-            <Stack
-              sx={{ flexDirection: 'row', justifyContent: 'space-between' }}
-            >
-              <Typography variant="body2" sx={{ color: 'rgb(99, 115, 129)' }}>
-                Sub Total
-              </Typography>
-              <Typography sx={{ fontSize: '0.875rem', fontWeight: 600 }}>
-                {totalPrices}
-              </Typography>
-            </Stack>
-            <Stack
-              sx={{ flexDirection: 'row', justifyContent: 'space-between' }}
-            >
-              <Typography variant="body2" sx={{ color: 'rgb(99, 115, 129)' }}>
-                Discount
-              </Typography>
-              <Typography sx={{ fontSize: '0.875rem', fontWeight: 600 }}>
-                _
-              </Typography>
-            </Stack>
-            <Stack
-              sx={{ flexDirection: 'row', justifyContent: 'space-between' }}
-            >
-              <Typography variant="body2" sx={{ color: 'rgb(99, 115, 129)' }}>
-                Shipping
-              </Typography>
-              <Typography sx={{ fontSize: '0.875rem', fontWeight: 600 }}>
-                Free
-              </Typography>
-            </Stack>
+            {renderSubTotal(orderData)}
+            {renderDiscount()}
+            {renderShipping()}
             <Divider />
-            <Stack
-              sx={{ flexDirection: 'row', justifyContent: 'space-between' }}
-            >
-              <Typography variant="body2" sx={{ color: 'rgb(99, 115, 129)' }}>
-                Total
-              </Typography>
-              <Typography
-                sx={{
-                  fontSize: '1rem',
-                  color: 'rgb(255, 86, 48)',
-                  fontWeight: 600,
-                }}
-              >
-                {totalPrices}
-              </Typography>
-            </Stack>
+            {renderTotal(orderData)}
             <FormControl fullWidth>
               <TextField
                 name="discount"
@@ -124,9 +122,16 @@ const CartSummary = () => {
           </Stack>
         </CardContent>
       </Paper>
-      <StyledButtonBaseBuy onClick={handleNext}>Check out</StyledButtonBaseBuy>
+      <ButtonBase sx={buttonBaseBuyStyle} onClick={handleNext}>
+        Check out
+      </ButtonBase>
     </>
   );
+};
+
+CartSummary.propTypes = {
+  orderData: PropTypes.object.isRequired,
+  selectedProducts: PropTypes.array.isRequired,
 };
 
 export default CartSummary;

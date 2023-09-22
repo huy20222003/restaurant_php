@@ -17,7 +17,7 @@ const ProductFormDetail = ({ productData, setProductData }) => {
           name="name"
           label="Product Name"
           fullWidth
-          value={productData.name}
+          value={productData?.name || ''}
           onChange={(e) => {
             setProductData({ ...productData, name: e.target.value });
           }}
@@ -29,7 +29,7 @@ const ProductFormDetail = ({ productData, setProductData }) => {
           fullWidth
           multiline
           rows={4}
-          value={productData.subDescription}
+          value={productData?.subDescription || ''}
           onChange={(e) => {
             setProductData({ ...productData, subDescription: e.target.value });
           }}

@@ -11,7 +11,6 @@ class AuthController {
   async getUserProfile(req, res) {
     try {
       const user = await Users.findById(req.user._id).select('-password');
-      console.log();
       if (!user) {
         return res
           .status(404)
@@ -23,7 +22,7 @@ class AuthController {
         user,
       });
     } catch (error) {
-      res.status(500).json({
+      return res.status(500).json({
         success: false,
         message: 'An error occurred while processing the request.',
         error: error.message,
@@ -74,7 +73,7 @@ class AuthController {
         refreshToken,
       });
     } catch (error) {
-      res.status(500).json({
+      return res.status(500).json({
         success: false,
         message: 'An error occurred while processing the request.',
         error: error.message,
@@ -120,7 +119,7 @@ class AuthController {
         refreshToken,
       });
     } catch (error) {
-      res.status(500).json({
+      return res.status(500).json({
         success: false,
         message: 'An error occurred while processing the request.',
         error: error.message,
@@ -166,7 +165,7 @@ class AuthController {
         });
       }
     } catch (error) {
-      res.status(500).json({
+      return res.status(500).json({
         success: false,
         message: 'An error occurred while processing the request.',
         error: error.message,

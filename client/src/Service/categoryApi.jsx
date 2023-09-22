@@ -13,6 +13,10 @@ const categoryApi = {
         const url = '/category/create-category';
         return axiosConfig.post(url, data);
     },
+    updateCategory: (categoryId, data)=> {
+        const url = `/category/update-category/${categoryId}`;
+        return axiosConfig.put(url, data);
+    },
     deleteCategory: (categoryId)=> {
         const url = `/category/delete-category/${categoryId}`;
         return axiosConfig.delete(url);

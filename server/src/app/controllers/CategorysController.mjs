@@ -4,15 +4,30 @@ class CategoryController {
   async getAllCategories(req, res) {
     try {
       const categories = await Categorys.find({});
-      res
-        .status(200)
-        .json({
-          success: true,
-          message: 'Retrieve category data successfully!',
-          categories,
-        });
+      return res.status(200).json({
+        success: true,
+        message: 'Retrieve category data successfully!',
+        categories,
+      });
     } catch (error) {
-      res.status(500).json({
+      return res.status(500).json({
+        success: false,
+        message: 'An error occurred while processing the request.',
+        error: error.message,
+      });
+    }
+  }
+
+  async getSingleCategory(req, res) {
+    try {
+      const category = await Categorys.findById(req.params._id);
+      return res.status(200).json({
+        success: true,
+        message: 'Retrieve category data successfully!',
+        category: category,
+      });
+    } catch (error) {
+      return res.status(500).json({
         success: false,
         message: 'An error occurred while processing the request.',
         error: error.message,
@@ -31,15 +46,13 @@ class CategoryController {
       }
 
       const savedCategory = await newCategory.save();
-      res
-        .status(201)
-        .json({
-          success: true,
-          message: 'Category added successfully!',
-          category: savedCategory,
-        });
+      return res.status(201).json({
+        success: true,
+        message: 'Category added successfully!',
+        category: savedCategory,
+      });
     } catch (error) {
-      res.status(500).json({
+      return res.status(500).json({
         success: false,
         message: 'An error occurred while processing the request.',
         error: error.message,
@@ -64,17 +77,15 @@ class CategoryController {
         return res
           .status(400)
           .json({ success: false, error: 'Category name is required' });
-      }
-
-      res
-        .status(201)
-        .json({
+      } else {
+        return res.status(201).json({
           success: true,
           message: 'Category updated successfully!',
-          updatedCategory,
+          category: updatedCategory,
         });
+      }
     } catch (error) {
-      res.status(500).json({
+      return res.status(500).json({
         success: false,
         message: 'An error occurred while processing the request.',
         error: error.message,
@@ -90,15 +101,13 @@ class CategoryController {
           .status(404)
           .json({ success: false, error: 'Category not found' });
       }
-      res
-        .status(201)
-        .json({
-          success: true,
-          message: 'Category deleted successfully!',
-          deletedCategory,
-        });
+      return res.status(201).json({
+        success: true,
+        message: 'Category deleted successfully!',
+        deletedCategory,
+      });
     } catch (error) {
-      res.status(500).json({
+      return res.status(500).json({
         success: false,
         message: 'An error occurred while processing the request.',
         error: error.message,

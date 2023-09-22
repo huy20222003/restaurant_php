@@ -1,4 +1,4 @@
-import { CREATE_PRODUCT, DELETE_PRODUCT, FILTER_PRODUCT, GET_ALL_PRODUCT, GET_ONE_PRODUCT, SEARCH_PRODUCT, SET_PAGE } from "./constants";
+import { CREATE_PRODUCT, DELETE_PRODUCT, FILTER_PRODUCT, GET_ALL_PRODUCT, GET_ONE_PRODUCT, SEARCH_PRODUCT, SET_PAGE, UPDATE_PRODUCT } from "./constants";
 
 export const getAll = (payload)=> {
     return {
@@ -24,6 +24,13 @@ export const setPage = (payload)=> {
 export const createProduct = (payload)=> {
     return {
         type: CREATE_PRODUCT,
+        payload
+    }
+}
+
+export const updateProduct = (payload)=> {
+    return {
+        type: UPDATE_PRODUCT,
         payload
     }
 }
