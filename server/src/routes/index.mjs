@@ -13,14 +13,14 @@ import ordersRouter from './ordersRouter.mjs';
 
 
 function routes(app) {
-  app.use('/api/auth', authRouter);
-  app.use('/api/auth/admin', adminAuthRouter);
-  app.use('/api/products', productsRouter);
-  app.use('/api/category', categorysRouter);
-  app.use('/api/cart', cartRouter);
-  app.use('/api/employee', employeesRouter);
-  app.use('/api/user', userRouter);
-  app.use('/api/order', ordersRouter);
+  app.use('/api/v1/auth', authRouter);
+  app.use('/api/v1/auth/admin', adminAuthRouter);
+  app.use('/api/v1/products', productsRouter);
+  app.use('/api/v1/category', categorysRouter);
+  app.use('/api/v1/cart', cartRouter);
+  app.use('/api/v1/employee', employeesRouter);
+  app.use('/api/v1/user', userRouter);
+  app.use('/api/v1/order', ordersRouter);
 }
 
 export default routes;
