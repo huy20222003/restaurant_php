@@ -105,7 +105,7 @@ const ProductForm = () => {
         }
       }
     } catch (error) {
-      toast.error('Server Error');
+      Swal.fire('Failed', 'Server Error', 'error');
     }
   };
   

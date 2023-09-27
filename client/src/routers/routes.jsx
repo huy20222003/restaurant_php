@@ -1,34 +1,42 @@
+import { Suspense, lazy } from 'react';
 import { Navigate, useRoutes } from 'react-router-dom';
 // layouts
 import DashboardLayout from '../layouts/dashboard';
 import SimpleLayout from '../layouts/simple';
 import HomeLayout from '../layouts/home';
 //user page
-import HomePage from '../Pages/User/HomePage';
-import LoginPage from '../Pages/User/Auth/Login';
-import RegisterPage from '../Pages/User/Auth/Register';
-import Page404 from '../Pages/Page404';
-import { ProductsPage, ProductPageDetail } from '../Pages/User/ProductsPage';
-import DashboardAppPage from '../Pages/User/DashboardAppPage';
-import CartPage from '../Pages/User/CartPages';
-import {
-  OrderPage,
-  OrderSuccessPage,
-  OrderPageDetail,
-} from '../Pages/User/OrderPage';
-import ProfilePage from '../Pages/User/ProfilePage';
-import FAQPage from '../Pages/User/FAQPage';
-import AboutPage from '../Pages/User/AboutPage';
+const HomePage = lazy(() => import('../Pages/User/HomePage'));
+const LoginPage = lazy(() => import('../Pages/User/Auth/Login'));
+const RegisterPage = lazy(()=> import('../Pages/User/Auth/Register'));
+const Page404 = lazy(()=> import('../Pages/Page404'));
+const ProductsPage = lazy(() => import('../Pages/User/ProductsPage/ProductsPage'));
+const ProductPageDetail = lazy(() => import('../Pages/User/ProductsPage/ProductPageDetail'));
+const DashboardAppPage = lazy(() => import('../Pages/User/DashboardAppPage'));
+const CartPage = lazy(() => import('../Pages/User/CartPages'));
+const OrderPage = lazy(() => import('../Pages/User/OrderPage/OrderPage'));
+const OrderPageDetail = lazy(() => import('../Pages/User/OrderPage/OrderPageDetail'));
+const ProfilePage = lazy(() => import('../Pages/User/ProfilePage'));
+const FAQPage = lazy(() => import('../Pages/User/FAQPage'));
+const AboutPage = lazy(() => import('../Pages/User/AboutPage'));
+const SettingPage = lazy(() => import('../Pages/User/SettingPage'));
 //Admin Page
-import AdminLogin from '../Pages/Admin/Auth/AdminLogin';
-import AdminDashboard from '../Pages/Admin/AdminDashboard';
-import DashboardLayoutAdmin from '../layouts/admin/DashboardLayoutAdmin';
-import CategoryManage from '../Pages/Admin/CategoryManage';
-import { CustomerManage, CustomerDetail } from '../Pages/Admin/CustomerManage';
-import { ProductManage, ProductForm } from '../Pages/Admin/ProductManage';
-import EmployeeManage from '../Pages/Admin/EmployeeManage';
-import OrderManage from '../Pages/Admin/OrderManage';
-
+const AdminLogin = lazy(() => import('../Pages/Admin/Auth/AdminLogin'));
+const AdminDashboard = lazy(() => import('../Pages/Admin/AdminDashboard'));
+const DashboardLayoutAdmin = lazy(() => import('../layouts/admin/DashboardLayoutAdmin'));
+const CategoryManage = lazy(() => import('../Pages/Admin/CategoryManage/CategoryManage'));
+const CategoryDetail = lazy(() => import('../Pages/Admin/CategoryManage/CategoryDetail'));
+const CustomerManage = lazy(() => import('../Pages/Admin/CustomerManage/CustomerManage'));
+const CustomerDetail = lazy(() => import('../Pages/Admin/CustomerManage/CustomerDetail'));
+const ProductManage = lazy(() => import('../Pages/Admin/ProductManage/ProductManage'));
+const ProductForm = lazy(() => import('../Pages/Admin/ProductManage/ProductForm'));
+const EmployeeManage = lazy(() => import('../Pages/Admin/EmployeeManage/EmployeeManage'));
+const EmployeeDetail = lazy(() => import('../Pages/Admin/EmployeeManage/EmployeeDetail'));
+const OrderManage = lazy(() => import('../Pages/Admin/OrderManage/OrderManage'));
+const OrderDetail = lazy(() => import('../Pages/Admin/OrderManage/OrderDetail'));
+const ProfileAdminPage = lazy(() => import('../Pages/Admin/Profile'));
+const SettingAdminPage = lazy(() => import('../Pages/Admin/Setting'));
+//loader
+import Loader from '../Components/Loader';
 // ----------------------------------------------------------------------
 
 export default function Router() {
@@ -51,10 +59,10 @@ export default function Router() {
         { path: 'products', element: <ProductsPage /> },
         { path: 'products/:_id', element: <ProductPageDetail /> },
         { path: 'cart', element: <CartPage /> },
-        { path: 'cart/order-success', element: <OrderSuccessPage /> },
         { path: 'order', element: <OrderPage /> },
         { path: 'order/:_id', element: <OrderPageDetail /> },
         { path: 'profile', element: <ProfilePage /> },
+        { path: 'setting', element: <SettingPage /> },
       ],
     },
     { path: 'faq', element: <FAQPage /> },
@@ -75,14 +83,19 @@ export default function Router() {
       element: <DashboardLayoutAdmin />,
       children: [
         { path: '/admin', element: <AdminDashboard /> },
-        { path: '/admin/customer-manage', element: <CustomerManage /> },
-        { path: '/admin/customer-manage/:_id', element: <CustomerDetail /> },
-        { path: '/admin/employee-manage', element: <EmployeeManage /> },
-        { path: '/admin/product-manage', element: <ProductManage /> },
-        { path: '/admin/product-manage/create', element: <ProductForm /> },
-        { path: '/admin/product-manage/edit/:_id', element: <ProductForm /> },
-        { path: '/admin/category-manage', element: <CategoryManage /> },
-        { path: '/admin/order-manage', element: <OrderManage /> },
+        { path: 'customer-manage', element: <CustomerManage /> },
+        { path: 'customer-manage/:_id', element: <CustomerDetail /> },
+        { path: 'employee-manage', element: <EmployeeManage /> },
+        { path: 'employee-manage/:_id', element: <EmployeeDetail /> },
+        { path: 'product-manage', element: <ProductManage /> },
+        { path: 'product-manage/create', element: <ProductForm /> },
+        { path: 'product-manage/edit/:_id', element: <ProductForm /> },
+        { path: 'category-manage', element: <CategoryManage /> },
+        { path: 'category-manage/:_id', element: <CategoryDetail /> },
+        { path: 'order-manage', element: <OrderManage /> },
+        { path: 'order-manage/:_id', element: <OrderDetail /> },
+        { path: 'profile', element: <ProfileAdminPage /> },
+        { path: 'setting', element: <SettingAdminPage /> },
       ],
     },
     {
@@ -99,5 +112,5 @@ export default function Router() {
     },
   ]);
 
-  return routes;
+  return <Suspense fallback={<Loader />}>{routes}</Suspense>;
 }

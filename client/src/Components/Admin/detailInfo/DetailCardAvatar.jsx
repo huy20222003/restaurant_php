@@ -44,7 +44,7 @@ const DetailCardAvatar = ({ data }) => {
         <input type="file" name="avatarUpdate" accept="image/*" hidden={true} />
         <FormControlLabel
           disabled
-          control={<Switch defaultChecked color="primary" />}
+          control={<Switch defaultChecked color="success" />}
           label="Verify"
         />
       </CardActions>
@@ -57,7 +57,7 @@ DetailCardAvatar.propTypes = {
     avatar: PropTypes.string.isRequired,
     fullName: PropTypes.string.isRequired,
     username: PropTypes.string.isRequired,
-  }).isRequired,
+  }),
 };
 
 export default DetailCardAvatar;

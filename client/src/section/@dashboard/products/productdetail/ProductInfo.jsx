@@ -13,11 +13,14 @@ import {
 } from '@mui/material';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import { toast } from 'react-toastify';
+//component
 import Label from '../../../../Components/User/label';
 import ProductQuantity from './ProductQuantity';
 import ProductRating from '../ProductRating';
+//ulti
 import { fCurrency } from '../../../../utils/formatNumber';
 import { useProduct, useCart } from '../../../../hooks/context';
+//-------------------------------------------------------------
 
 const ProductInfo = ({ product }) => {
   const { quantity, setQuantity, property, setProperty } = useProduct();
@@ -46,7 +49,7 @@ const ProductInfo = ({ product }) => {
     }
   }, [handleUpdateCart, product?._id, property, quantity, setQuantity]);
 
-  const handleAddToCartAndNavigate = () => {
+  const handleNavigateCart = () => {
     handleUpdate();
     navigate('/dashboard/cart');
   };
@@ -68,12 +71,15 @@ const ProductInfo = ({ product }) => {
             width: '3rem',
             height: '1.5rem',
             mb: '0.8rem',
-            color: product?.status === 'sale' ? 'error' : 'info',
+            color: '#fff',
+            backgroundColor:
+              product?.status === 'sale' ? 'error.main' : 'info.main',
           }}
         >
           {product?.status}
         </Label>
       )}
+
       <Typography variant="h6" sx={{ mb: '0.8rem' }}>
         {product?.name}
       </Typography>
@@ -155,16 +161,12 @@ const ProductInfo = ({ product }) => {
           size="medium"
           variant="outlined"
           sx={{ mr: '1rem' }}
-          onClick={handleAddToCartAndNavigate}
+          onClick={handleUpdate}
           startIcon={<AddShoppingCartIcon />}
         >
           Add to cart
         </Button>
-        <Button
-          size="medium"
-          variant="contained"
-          onClick={handleAddToCartAndNavigate}
-        >
+        <Button size="medium" variant="contained" onClick={handleNavigateCart}>
           Buy now
         </Button>
       </Box>

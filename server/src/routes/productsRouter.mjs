@@ -7,10 +7,9 @@ import cashbinMiddleware from '../middleware/cashbinMiddleware.mjs';
 
 const router = express.Router();
 
+router.get('/search-product', ProductsController.searchProduct);
 router.get('/', ProductsController.getAllProducts);
 router.get('/:_id', ProductsController.getSingleProduct);
-router.get('/search-product', ProductsController.deleteProduct);
-router.get('/filter-product', ProductsController.filterProduct);
 
 router.post('/create-product', authVerify, cashbinMiddleware,  ProductsController.addProduct);
 router.put('/update-product/:_id', authVerify, cashbinMiddleware, ProductsController.updateProduct);

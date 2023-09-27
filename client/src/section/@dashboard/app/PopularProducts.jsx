@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 //@mui
 import { Box, Typography } from '@mui/material';
 import { ProductList } from '../.././@dashboard/products';
@@ -8,13 +9,21 @@ import { useProduct } from '../../../hooks/context';
 const PopularProducts = () => {
   const {
     productsState: { products },
+    handleGetAllProducts,
   } = useProduct();
+
+  useEffect(()=> {
+    handleGetAllProducts();
+  }, [handleGetAllProducts]);
+
   const productsArray = products.filter((product) => {
     return product?.rate >= 4.0;
   });
   return (
     <Box sx={{ p: '40px 0' }}>
-      <Typography variant="h5" sx={{pb: '40px'}}>Popular Products</Typography>
+      <Typography variant="h5" sx={{ pb: '40px' }}>
+        Popular Products
+      </Typography>
       <Box>
         <ProductList products={productsArray} />
       </Box>

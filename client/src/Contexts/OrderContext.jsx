@@ -1,4 +1,4 @@
-import { createContext, useCallback, useEffect, useReducer } from 'react';
+import { createContext, useCallback, useReducer } from 'react';
 import { initOrdersState, reducer } from '../Reducers/OrderReducer/reducer';
 import {
   getAll,
@@ -44,16 +44,6 @@ export const OrdersProvider = (prop) => {
     }
   }, []);
 
-  useEffect(() => {
-    handleGetAllOrdersById();
-  }, [handleGetAllOrdersById]);
-
-  useEffect(() => {
-    if(window.location.href.includes('admin')){
-      handleGetAllOrders();
-    }
-  }, [handleGetAllOrders]);
-
   const handleGetOneOrder = useCallback(async (OrderId) => {
     try {
       const response = await orderApi.getOne(OrderId);
@@ -80,7 +70,7 @@ export const OrdersProvider = (prop) => {
 
   const handleFilterOrderByStatus = useCallback(async (status) => {
     try {
-      if (status == 'all') {
+      if (status == 'All') {
         await handleGetAllOrdersById();
       } else {
         const response = await orderApi.filterOrderByStatus(status);
@@ -96,6 +86,8 @@ export const OrdersProvider = (prop) => {
 
   const OrdersData = {
     ordersState,
+    handleGetAllOrders,
+    handleGetAllOrdersById,
     handleGetOneOrder,
     handleCreateOrder,
     handleFilterOrderByStatus,

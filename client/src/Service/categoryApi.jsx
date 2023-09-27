@@ -20,6 +20,10 @@ const categoryApi = {
     deleteCategory: (categoryId)=> {
         const url = `/category/delete-category/${categoryId}`;
         return axiosConfig.delete(url);
+    },
+    addProductToCategory: (data)=> {
+        const url = '/category/add-product';
+        return axiosConfig.patch(url, data);
     }
 }
 

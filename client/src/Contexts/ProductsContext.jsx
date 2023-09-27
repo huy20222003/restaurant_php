@@ -1,11 +1,12 @@
+//date
+import { parseISO, compareDesc } from 'date-fns';
+//react
+import { createContext, useCallback, useReducer, useState } from 'react';
+//reducer
 import {
-  createContext,
-  useCallback,
-  useEffect,
-  useReducer,
-  useState,
-} from 'react';
-import { initProductsState, reducer } from '../Reducers/ProductsReducer/reducer';
+  initProductsState,
+  reducer,
+} from '../Reducers/ProductsReducer/reducer';
 import {
   createProduct,
   updateProduct,
@@ -15,8 +16,11 @@ import {
   setPage,
   searchProduct,
   filterProduct,
+  sortProduct,
 } from '../Reducers/ProductsReducer/action';
+//api
 import productApi from '../Service/productApi';
+//------------------------------------------------
 
 export const ProductsContext = createContext();
 
@@ -54,10 +58,6 @@ export const ProductsProvider = (prop) => {
       return handleError(error);
     }
   }, [currentPage]);
-
-  useEffect(() => {
-    handleGetAllProducts();
-  }, [handleGetAllProducts]);
 
   const handleGetOneProduct = useCallback(async (productId) => {
     try {
@@ -119,17 +119,33 @@ export const ProductsProvider = (prop) => {
     }
   }, []);
 
-  const handleFilterProduct = useCallback(async (categoryValue, priceValue, starValue) => {
-    try {
-      const response = await productApi.filterProduct(categoryValue, priceValue, starValue);
-      if (response.data.success) {
-        dispatch(filterProduct(response.data.products));
-      }
-      return response.data;
-    } catch (error) {
-      return handleError(error);
-    }
+  const handleFilterProduct = useCallback(async (filteredProducts) => {
+    dispatch(filterProduct(filteredProducts));
   }, []);
+
+  const handleSortProduct = (type) => {
+    let sortedProducts = [];
+
+    switch (type) {
+      case 'newest':
+        sortedProducts = [...productsState.products].sort((a, b) =>
+          compareDesc(parseISO(a.createdAt), parseISO(b.createdAt))
+        );
+        break;
+      case 'priceAsc':
+        sortedProducts = [...productsState.products].sort(
+          (a, b) => b.price - a.price
+        );
+        break;
+      case 'priceDesc':
+        sortedProducts = [...productsState.products].sort(
+          (a, b) => a.price - b.price
+        );
+        break;
+    }
+
+    dispatch(sortProduct(sortedProducts));
+  };
 
   const ProductsData = {
     quantity,
@@ -145,6 +161,7 @@ export const ProductsProvider = (prop) => {
     handleUpdateProduct,
     handleDeleteProduct,
     handleSearchProduct,
+    handleSortProduct,
     handleFilterProduct,
   };
 

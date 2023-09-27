@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Box, Button, Divider, Paper, Stack, Typography } from '@mui/material';
 //component
 import Iconify from '../../../Components/User/iconify';
+import Label from '../../../Components/User/label';
 //context
 import { useOrder } from '../../../hooks/context';
 //-------------------------------------------------------------
@@ -22,13 +23,26 @@ const OrderTabPanel = () => {
         <Paper
           key={order._id}
           elevation={3}
-          sx={{ p: '12px', cursor: 'pointer' }}
+          sx={{ p: '12px', cursor: 'pointer', my: '1rem' }}
           onClick={() => handleNavigate(order._id)}
         >
-          <Box sx={{ display: 'flex', pb: '12px' }}>
-            <Iconify icon="material-symbols:check" sx={{ mr: '6px' }} />
-            <Typography variant="body2">{order?.status[0]}</Typography>
-          </Box>
+          {order?.status && (
+            <Label
+              variant="filled"
+              sx={{
+                width: '3rem',
+                height: '1.5rem',
+                p: '0.5rem',
+                mb: '0.8rem',
+                color: '#fff',
+                backgroundColor:
+                  order?.status === 'Ordered' ? 'success.main' : 'info.main',
+              }}
+            >
+              <Iconify icon="material-symbols:check" sx={{ mr: '6px' }} />
+              {order?.status}
+            </Label>
+          )}
           <Divider />
           <Box sx={{ p: '16px 0' }}>
             <Stack
@@ -105,7 +119,9 @@ const OrderTabPanel = () => {
           <Divider />
           <Stack sx={{ mt: '12px', alignItems: 'flex-end' }}>
             <Box>
-              <Typography variant="body2">Total: {order?.totalPrices}</Typography>
+              <Typography variant="body2">
+                Total: {order?.totalPrices}
+              </Typography>
             </Box>
             <Stack sx={{ flexDirection: 'row', mt: '12px' }}>
               <Button size="medium" variant="outlined">

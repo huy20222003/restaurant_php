@@ -1,24 +1,17 @@
 import { Helmet } from 'react-helmet-async';
+import { Link } from 'react-router-dom';
 // @mui
 import { styled } from '@mui/material/styles';
-import {
-  Container,
-  Typography,
-  Divider,
-  Stack,
-  Button,
-} from '@mui/material';
-import {Link} from 'react-router-dom';
-import { useContext } from 'react';
+import { Container, Typography, Divider, Stack, Button } from '@mui/material';
 // hooks
 import useResponsive from '../../../../hooks/useReponsive';
 // components
-import Logo from '../../../../Components/User/logo';
+// import Logo from '../../../../Components/User/logo';
 import Iconify from '../../../../Components/User/iconify';
 // sections
 import LoginForm from '../../../../section/auth/LoginForm';
 //Context
-import { CommonContext } from '../../../../Contexts/CommonContext';
+import { useCommon } from '../../../../hooks/context';
 
 // ----------------------------------------------------------------------
 
@@ -50,47 +43,58 @@ const StyledContent = styled('div')(({ theme }) => ({
 
 // ----------------------------------------------------------------------
 
-const Login = ()=> {
+const Login = () => {
   const mdUp = useResponsive('up', 'md');
-  const {handleEvolvingFunctionality} = useContext(CommonContext);
+  const { handleEvolvingFunctionality } = useCommon();
 
   return (
     <>
       <Helmet>
-        <title> Đăng nhập </title>
+        <title> Signin </title>
       </Helmet>
 
       <StyledRoot>
-        <Logo
+        {/* <Logo
           sx={{
             position: 'fixed',
             top: { xs: 16, sm: 24, md: 40 },
             left: { xs: 16, sm: 24, md: 40 },
           }}
-        />
+        /> */}
 
         {mdUp && (
           <StyledSection>
             <Typography variant="h3" sx={{ px: 5, mt: 10, mb: 5 }}>
               Hi, Welcome Back
             </Typography>
-            <img src="/assets/illustrations/illustration_login.png" alt="login" />
+            <img
+              src="/assets/illustrations/illustration_login.png"
+              alt="signin"
+            />
           </StyledSection>
         )}
 
         <Container maxWidth="sm">
           <StyledContent>
             <Typography variant="h4" gutterBottom>
-              Đăng nhập
+              Sigin
             </Typography>
 
             <Typography variant="body2" sx={{ mb: 5 }}>
-              Bạn chưa có tài khoản? {''}
-              <Link to='/auth/register' style={{textDecoration: 'none'}}>Đăng ký</Link>
+              Do not have an account? {''}
+              <Link to="/auth/register" style={{ textDecoration: 'none' }}>
+                Signup
+              </Link>
             </Typography>
 
             <Stack direction="row" spacing={2}>
-              <Button fullWidth size="large" color="inherit" variant="outlined" onClick={handleEvolvingFunctionality}>
+              <Button
+                fullWidth
+                size="large"
+                color="inherit"
+                variant="outlined"
+                onClick={handleEvolvingFunctionality}
+              >
                 <Iconify
                   icon="eva:google-fill"
                   color="#DF3E30"
@@ -99,7 +103,13 @@ const Login = ()=> {
                 />
               </Button>
 
-              <Button fullWidth size="large" color="inherit" variant="outlined" onClick={handleEvolvingFunctionality}>
+              <Button
+                fullWidth
+                size="large"
+                color="inherit"
+                variant="outlined"
+                onClick={handleEvolvingFunctionality}
+              >
                 <Iconify
                   icon="eva:facebook-fill"
                   color="#1877F2"
@@ -108,7 +118,13 @@ const Login = ()=> {
                 />
               </Button>
 
-              <Button fullWidth size="large" color="inherit" variant="outlined" onClick={handleEvolvingFunctionality}>
+              <Button
+                fullWidth
+                size="large"
+                color="inherit"
+                variant="outlined"
+                onClick={handleEvolvingFunctionality}
+              >
                 <Iconify
                   icon="eva:twitter-fill"
                   color="#1C9CEA"
@@ -120,7 +136,7 @@ const Login = ()=> {
 
             <Divider sx={{ my: 3 }}>
               <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                Hoặc
+                OR
               </Typography>
             </Divider>
 
@@ -130,6 +146,6 @@ const Login = ()=> {
       </StyledRoot>
     </>
   );
-}
+};
 
 export default Login;

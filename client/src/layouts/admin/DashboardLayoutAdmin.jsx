@@ -109,7 +109,7 @@ const DashboardLayoutAdmin = () => {
       navigate('/admin');
     } else if (data == 'profile') {
       navigate('/admin/profile');
-    } else if(data == 'setting') {
+    } else if (data == 'setting') {
       navigate('/admin/setting');
     }
     handleClose();
@@ -122,7 +122,8 @@ const DashboardLayoutAdmin = () => {
         <AppBar position="absolute" open={open}>
           <Toolbar
             sx={{
-              pr: '24px', // keep right padding when drawer closed
+              pr: '24px',
+              backgroundColor: '#fff'
             }}
           >
             <IconButton
@@ -135,7 +136,7 @@ const DashboardLayoutAdmin = () => {
                 ...(open && { display: 'none' }),
               }}
             >
-              <MenuIcon />
+              <MenuIcon sx={{color: '#000'}} />
             </IconButton>
             <Typography
               component="h1"
@@ -188,6 +189,7 @@ const DashboardLayoutAdmin = () => {
               alignItems: 'center',
               justifyContent: 'flex-end',
               px: [1],
+              backgroundColor: 'rgb(47, 101, 203)',
             }}
           >
             <IconButton onClick={toggleDrawer}>
@@ -195,9 +197,9 @@ const DashboardLayoutAdmin = () => {
             </IconButton>
           </Toolbar>
           <Divider />
-          <List component="nav">
+          <List component="nav" sx={{ backgroundColor: 'rgb(55, 111, 208)' }}>
             <MainListItems />
-            <Divider sx={{ my: 1 }} />
+            <Divider sx={{ my: 1, borderColor: '#fff' }} />
             <SecondaryListItems />
           </List>
         </Drawer>

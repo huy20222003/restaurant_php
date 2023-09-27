@@ -43,8 +43,8 @@ class AuthController {
   }
 
   async createUser(req, res) {
-    const { fullName, username, email, password } = req.body;
-    if (!username || !fullName || !email || !password) {
+    const { fullName, username, email } = req.body;
+    if (!username || !fullName || !email) {
       return res.status(400).json({
         success: false,
         message: 'Please provide all required information.',
@@ -65,9 +65,10 @@ class AuthController {
           fullName,
           username,
           email,
-          password,
           roles: userRole._id,
         });
+
+        await newUser.save();
 
         return res.status(200).json({
           success: true,
@@ -155,6 +156,40 @@ class AuthController {
           .status(200)
           .json({ success: true, message: 'Update user successfull', user });
       }
+    } catch (error) {
+      return res.status(500).json({
+        success: false,
+        message: 'An error occurred while processing the request.',
+        error: error.message,
+      });
+    }
+  }
+
+  async UpdatePassword(req, res) {
+    try {
+      const { newPassword } = req.body;
+
+      if (!newPassword) {
+        return res
+          .status(400)
+          .json({ success: false, message: 'Invalid new password!' });
+      }
+
+      const hashPassword = await bcryptjs.hash(newPassword, 10);
+
+      const employee = await Users.findByIdAndUpdate(req.user._id, {
+        password: hashPassword,
+      });
+
+      if (!employee) {
+        return res
+          .status(404)
+          .json({ success: false, message: 'Employee not found!' });
+      }
+
+      return res
+        .status(200)
+        .json({ success: true, message: 'Update password success!' });
     } catch (error) {
       return res.status(500).json({
         success: false,

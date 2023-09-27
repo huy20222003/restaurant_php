@@ -20,7 +20,11 @@ const dishApi = {
     deleteEmployee: (employeeId)=> {
         const url = `/employee/delete-employee/${employeeId}`;
         return axiosConfig.delete(url);
-    }
+    },
+    updatePassword: (data)=> {
+        const url = `/employee/update-employee/password`;
+        return axiosConfig.patch(url, data);
+    },
 }
 
 export default dishApi;

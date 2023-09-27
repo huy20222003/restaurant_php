@@ -11,12 +11,13 @@ import { LoadingButton } from '@mui/lab';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import LockIcon from '@mui/icons-material/Lock';
 import EmailIcon from '@mui/icons-material/Email';
+//cookie
 import Cookies from 'js-cookie';
-import { toast } from 'react-toastify';
 // components
 import Iconify from '../../../Components/User/iconify';
 import { AuthContext } from '../../../Contexts/AuthContext';
-
+//sweetalert
+import Swal from 'sweetalert2';
 // ----------------------------------------------------------------------
 
 export default function LoginForm() {
@@ -39,12 +40,12 @@ export default function LoginForm() {
 
   const handleSubmit = async () => {
     if (registerFormData.password !== registerFormData.confirmPassword) {
-      toast.error('Mật khẩu không khớp');
+      Swal.fire('Error', 'Password do not match!', 'error');
     } else {
       try {
         const registerData = await registerUser(registerFormData);
         if (!registerData.success) {
-          toast.warning('Vui lòng kiểm tra lại thông tin!');
+          Swal.fire('Failed', 'Please check the information again!', 'error');
         } else {
           const expiration = new Date();
           expiration.setTime(expiration.getTime() + 15 * 60 * 1000);
@@ -52,11 +53,11 @@ export default function LoginForm() {
             expires: expiration,
           });
           Cookies.set('refresh', registerData.refreshToken, { expires: 365 });
-          toast.success('Đăng ký tài khoản thành công!');
+          Swal.fire('Success', 'Sign up Success!', 'success');
           navigate('/auth/login');
         }
       } catch (error) {
-        toast.success('Máy chủ đã xảy ra lỗi!');
+        Swal.fire('Error', 'Server Error', 'error');
       }
     }
   };
@@ -69,7 +70,7 @@ export default function LoginForm() {
           required
           fullWidth
           id="fullName"
-          label="Tên đầy đủ"
+          label="FullName"
           name="fullName"
           autoComplete="fullName"
           autoFocus
@@ -88,7 +89,7 @@ export default function LoginForm() {
           required
           fullWidth
           id="username"
-          label="Tên đăng nhập"
+          label="Username"
           name="username"
           autoComplete="username"
           autoFocus
@@ -124,7 +125,7 @@ export default function LoginForm() {
 
         <TextField
           name="password"
-          label="Mật khẩu"
+          label="Password"
           required
           fullWidth
           value={registerFormData.password}
@@ -152,7 +153,7 @@ export default function LoginForm() {
         />
         <TextField
           name="confirmPassword"
-          label="Nhập lại mật khẩu"
+          label="Confirm Password"
           required
           fullWidth
           value={registerFormData.confirmPassword}
@@ -195,7 +196,7 @@ export default function LoginForm() {
         variant="contained"
         onClick={handleSubmit}
       >
-        Đăng ký
+        Signup
       </LoadingButton>
     </>
   );

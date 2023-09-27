@@ -1,4 +1,4 @@
-import { createContext, useCallback, useEffect, useReducer } from 'react';
+import { createContext, useCallback, useReducer } from 'react';
 import { initUsersState, reducer } from '../Reducers/UsersReducer/reducer';
 import { getAllUsers, createUser, deleteUser, getOneUser } from '../Reducers/UsersReducer/action';
 import userApi from '../Service/userApi';
@@ -35,13 +35,6 @@ export const UsersProvider = (prop) => {
         return handleError(error);
     }
   }, []);
-
-
-  useEffect(()=>{
-    if(window.location.href.includes('admin')) {
-      handleGetAllUser();
-    }
-  }, [handleGetAllUser]);
 
   const handleCreateUser = useCallback(async(data)=> {
     try {
@@ -81,13 +74,24 @@ export const UsersProvider = (prop) => {
     }
   }, []);
 
+  const handleUpdatePasswordUser = useCallback(async (newPassword) => {
+    try {
+      const response = await userApi.updatePassword(newPassword);
+      return response.data;
+    } catch (error) {
+      return handleError(error);
+    }
+  }, []);
+
   const UsersContextData = {
     usersState,
+    handleGetAllUser,
     handleCreateUser,
     handleGetOneUser,
     handleDeleteUser,
     handleUpdateAvatar,
     handleUpdateDetail,
+    handleUpdatePasswordUser,
   };
 
   return (

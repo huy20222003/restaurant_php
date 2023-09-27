@@ -1,17 +1,19 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 //@mui
 import {
   Box,
   Button,
   ButtonBase,
   Container,
-  Paper,
   Stack,
   Typography,
   Menu,
   MenuItem,
   Popover,
+  Paper,
 } from '@mui/material';
+import styled from '@emotion/styled';
 //icon
 import AddIcon from '@mui/icons-material/Add';
 import IconButton from '@mui/material/IconButton';
@@ -25,25 +27,36 @@ import FormDialogEmployee from '../../../Components/FormDialog/FormDialogEmploye
 import Iconify from '../../../Components/User/iconify';
 //context
 import { useCommon, useEmployee } from '../../../hooks/context';
-//toast
-import { toast } from 'react-toastify';
 //sweetalert
 import Swal from 'sweetalert2';
 
 //----------------------------------------------------------------------
 
+const StyledPaper = styled(Paper)(({theme})=> ({
+  boxShadow: theme.customShadows.card,
+  marginTop: '4rem',
+  borderRadius: '0.75rem',
+}));
+
 const EmployeeManage = () => {
   const {
     employeesState: { employees },
+    handleGetAll,
     handleGetOneEmployee,
     handleCreateEmployee,
     handleUpdateEmployee,
     handleDeleteEmployee,
   } = useEmployee();
 
+  const navigate = useNavigate();
+
   const { setOpenFormDialog } = useCommon();
   const [isEdit, setIsEdit] = useState(false);
   const [formData, setFormData] = useState({});
+
+  useEffect(() => {
+    handleGetAll();
+}, [handleGetAll]);
 
   useEffect(() => {
     if (isEdit) {
@@ -165,7 +178,6 @@ const EmployeeManage = () => {
     { name: 'username', label: 'Username', type: 'text' },
     { name: 'email', label: 'Email', type: 'email' },
     { name: 'salary', label: 'Salary', type: 'text' },
-    { name: 'password', label: 'Password', type: 'password' },
   ];
 
   const handleOpenFormDialog = () => {
@@ -173,7 +185,7 @@ const EmployeeManage = () => {
   };
 
   const handleView = (employeeId) => {
-    console.log(`View employee with ID: ${employeeId}`);
+    navigate(`/admin/employee-manage/${employeeId}`);
   };
 
   const handleEdit = async (employeeId) => {
@@ -212,27 +224,54 @@ const EmployeeManage = () => {
       if (isEdit) {
         const editData = await handleUpdateEmployee(formData?._id, formData);
         if (!editData.success) {
-          toast.error('Employee update failed');
+          Swal.fire({
+            title: 'Update employee failed!',
+            icon: 'error',
+            showCancelButton: true,
+            confirmButtonText: 'OK',
+          });
         } else {
-          toast.success('Employee update successful');
+          Swal.fire({
+            title: 'Update employee successful!',
+            icon: 'success',
+            showCancelButton: true,
+            confirmButtonText: 'OK',
+          });
         }
       } else {
         const createData = await handleCreateEmployee(formData);
         if (!createData.success) {
-          toast.error('Add Employee failed');
+          Swal.fire({
+            title: 'Add employee failed!',
+            icon: 'error',
+            showCancelButton: true,
+            confirmButtonText: 'OK',
+          });
         } else {
-          toast.success('Add Employee successful');
+          Swal.fire({
+            title: 'Add employee Successful!',
+            text: 'Default password is 1234567',
+            icon: 'success',
+            showCancelButton: true,
+            confirmButtonText: 'OK',
+          });
         }
       }
       setFormData({});
       setOpenFormDialog(false);
     } catch (error) {
-      toast.error('Lỗi máy chủ');
+      Swal.fire({
+        title: 'Server Error',
+        icon: 'error',
+        showCancelButton: true,
+        confirmButtonText: 'OK',
+      });
     }
   };
 
   return (
-    <Box sx={{ display: 'flex', flex: '1 1 auto', maxWidth: '100%' }}>
+    <StyledPaper>
+      <Box sx={{ display: 'flex', flex: '1 1 auto', maxWidth: '100%' }}>
       <Box
         sx={{
           display: 'flex',
@@ -241,29 +280,29 @@ const EmployeeManage = () => {
           flexDirection: 'column',
         }}
       >
-        <Box sx={{ flexGrow: 1, py: '64px' }}>
-          <Container sx={{ pt: '40px' }}>
+        <Box sx={{ flexGrow: 1, py: '2.5rem' }}>
+          <Container>
             <Stack>
               <Stack
-                sx={{ flexDirection: 'row', justifyContent: 'space-between' }}
+                sx={{ flexDirection: 'row', justifyContent: 'space-between',  mb: '1rem' }}
               >
                 <Stack>
-                  <Typography variant="h4">Employees</Typography>
+                  <Typography variant="h5" color='primary'>Employees</Typography>
                   <Stack
                     sx={{
                       flexDirection: 'row',
                       alignItems: 'center',
-                      mt: '8px',
+                      mt: '0.5rem',
                     }}
                   >
-                    <ButtonBase sx={{ p: '7px 12px' }}>
+                    <ButtonBase sx={{p: '0.2rem'}}>
                       <Iconify
                         icon="material-symbols:upload"
                         sx={{ mr: '0.3rem' }}
                       />
                       Upload
                     </ButtonBase>
-                    <ButtonBase sx={{ p: '7px 12px' }}>
+                    <ButtonBase sx={{p: '0.2rem'}}>
                       <Iconify icon="uil:import" sx={{ mr: '0.3rem' }} />
                       Export
                     </ButtonBase>
@@ -273,7 +312,7 @@ const EmployeeManage = () => {
                   <Button
                     variant="contained"
                     startIcon={<AddIcon />}
-                    sx={{ borderRadius: '12px' }}
+                    sx={{ borderRadius: '0.375rem' }}
                     onClick={handleOpenFormDialog}
                   >
                     Add
@@ -287,14 +326,13 @@ const EmployeeManage = () => {
                 setFormData={setFormData}
                 handleSave={handleSave}
               />
-              <Paper elevation={0} sx={{ m: '32px 0 0' }}>
-                <DataTable columns={columns} rows={rows} />
-              </Paper>
+              <DataTable columns={columns} rows={rows} />
             </Stack>
           </Container>
         </Box>
       </Box>
     </Box>
+    </StyledPaper>
   );
 };
 

@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 //@mui
 import { Box, Typography } from '@mui/material';
 import { ProductList } from '../.././@dashboard/products';
@@ -7,8 +8,13 @@ import { useProduct } from '../../../hooks/context';
 
 const RecentlyProducts = () => {
   const {
-    productsState: { products },
+    productsState: { products }, handleGetAllProducts
   } = useProduct();
+
+  useEffect(()=> {
+    handleGetAllProducts();
+  }, [handleGetAllProducts]);
+
   const productsArray = products.slice(products.length - 30);
   return (
     <Box sx={{ p: '40px 0' }}>

@@ -32,17 +32,18 @@ const CartTable = ({
   const {
     cartState: { items },
   } = useCart();
-  console.log(selectedProducts);
 
   const handleProductSelect = (product) => {
-    setSelectedProducts((prevSelectedProducts) => {
-      const productIds = prevSelectedProducts.map((p) => p._id);
-      if (productIds.includes(product._id)) {
-        return prevSelectedProducts.filter((p) => p._id !== product._id);
-      } else {
-        return [...prevSelectedProducts, product];
-      }
-    });
+    const productIndex = selectedProducts.findIndex(
+      (p) => p.product._id === product.product._id
+    );
+    if (productIndex === -1) {
+      setSelectedProducts([...selectedProducts, product]);
+    } else {
+      const updatedSelectedProducts = [...selectedProducts];
+      updatedSelectedProducts.splice(productIndex, 1);
+      setSelectedProducts(updatedSelectedProducts);
+    }
   };
 
   const calculateTotalPrice = () => {
@@ -50,7 +51,7 @@ const CartTable = ({
     for (const selectedProduct of selectedProducts) {
       const { product, quantity } = selectedProduct;
       const price = product?.priceSale ? product?.priceSale : product?.price;
-      totalPrice += price * quantity;
+      totalPrice += (price * quantity) + orderData.shippingFee;
     }
     return totalPrice;
   };
@@ -109,9 +110,9 @@ const CartTable = ({
                   <CartTableItem
                     key={item._id}
                     item={item}
-                    onSelect={handleProductSelect}
+                    onSelect={() => handleProductSelect(item)}
                     isSelected={selectedProducts.some(
-                      (p) => p._id === item._id
+                      (p) => p.product._id === item.product._id
                     )}
                     orderData={orderData}
                     setOrderData={setOrderData}

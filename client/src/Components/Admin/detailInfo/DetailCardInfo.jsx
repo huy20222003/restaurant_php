@@ -5,14 +5,16 @@ import {
   CardContent,
   CardHeader,
   Grid,
-  InputLabel, 
+  InputLabel,
   Paper,
   TextField,
   Typography,
+  CardActions,
+  Button,
 } from '@mui/material';
 //-------------------------------------------------------
 
-const DetailCardInfo = ({ fields, data }) => {
+const DetailCardInfo = ({ fields, data, handleDelete }) => {
   return (
     <Box component="form" noValidate autoComplete="off">
       <Paper elevation={1}>
@@ -28,7 +30,7 @@ const DetailCardInfo = ({ fields, data }) => {
                   <InputLabel>{field.label}</InputLabel>
                   <TextField
                     required
-                    value={data && data[field.name]}
+                    value={data && data[field.name] || ''}
                     name={field.name}
                     fullWidth
                   />
@@ -37,6 +39,11 @@ const DetailCardInfo = ({ fields, data }) => {
             </Grid>
           </Box>
         </CardContent>
+        <CardActions sx={{justifyContent: 'flex-end'}}>
+          <Button variant="contained" size="medium" color="error" onClick={handleDelete}>
+            Delete
+          </Button>
+        </CardActions>
       </Paper>
     </Box>
   );
@@ -47,10 +54,6 @@ DetailCardInfo.propTypes = {
     PropTypes.shape({
       name: PropTypes.string.isRequired,
       label: PropTypes.string.isRequired,
-      gridItemProps: PropTypes.shape({
-        sm: PropTypes.number.isRequired,
-        md: PropTypes.number.isRequired,
-      }).isRequired,
     })
   ).isRequired,
   data: PropTypes.shape({
@@ -61,6 +64,7 @@ DetailCardInfo.propTypes = {
     shipAddress: PropTypes.string,
     address: PropTypes.string,
   }),
+  handleDelete: PropTypes.func.isRequired,
 };
 
 export default DetailCardInfo;

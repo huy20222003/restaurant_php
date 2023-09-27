@@ -8,7 +8,8 @@ import CartConfirmProductItem from './CartConfirmProductItem';
 import Iconify from '../../../../Components/User/iconify';
 //context
 import { useCommon, useOrder } from '../../../../hooks/context';
-
+//sweetalert
+import Swal from 'sweetalert2';
 //---------------------------------------------------------------
 
 const StyledButtonBaseConfirm = styled(ButtonBase)`
@@ -46,16 +47,14 @@ const CartConfirm = ({ orderData }) => {
     try {
       const createData = await handleCreateOrder(orderData);
       if (!createData.success) {
-        console.log(createData.message);
-        console.log(createData.success);
+        Swal.fire('Faield', 'Order failed!', 'error');
       } else {
-        console.log(createData.message);
-
+        Swal.fire('Success', 'Order Success!', 'success');
         navigate('/dashboard/cart');
         setActiveStep(0);
       }
     } catch (error) {
-      console.log(error);
+      Swal.fire('Error', 'Server Error', 'error');
     }
   };
 
@@ -140,7 +139,7 @@ const CartConfirm = ({ orderData }) => {
           >
             <Typography variant="body1">Sub Total Prices</Typography>
             <Typography variant="body2" sx={{ fontWeight: 600 }}>
-              {orderData?.totalPrices}
+              {orderData?.totalPrices - orderData?.shippingFee}
             </Typography>
           </Stack>
           <Stack
@@ -168,7 +167,7 @@ const CartConfirm = ({ orderData }) => {
           >
             <Typography variant="body1">Total Prices</Typography>
             <Typography variant="body2" sx={{ fontWeight: 600 }}>
-              {orderData?.totalPrices + orderData?.shippingFee}
+              {orderData?.totalPrices}
             </Typography>
           </Stack>
         </Stack>

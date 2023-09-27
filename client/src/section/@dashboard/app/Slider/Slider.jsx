@@ -3,7 +3,10 @@ import { Box } from '@mui/material';
 //swipper
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
-
+//component
+import SliderItem from './SliderItem';
+//config
+import SliderConfig from './SliderConfig';
 //--------------------------------------------------
 
 const Slider = () => {
@@ -22,30 +25,13 @@ const Slider = () => {
         navigation={true}
         modules={[Autoplay, Pagination, Navigation]}
       >
-        <SwiperSlide>
-          <Box
-            component={'img'}
-            src="/assets/images/background/hero.jpg"
-            sx={{
-              maxHeight: '13rem',
-              width: '100%',
-              borderRadius: '1rem',
-              objectFit: 'cover',
-            }}
-          ></Box>
-        </SwiperSlide>
-        <SwiperSlide>
-          <Box
-            component={'img'}
-            src="/assets/images/background/hero.jpg"
-            sx={{
-              maxHeight: '13rem',
-              width: '100%',
-              borderRadius: '1rem',
-              objectFit: 'cover',
-            }}
-          ></Box>
-        </SwiperSlide>
+        {SliderConfig.map((slider) => {
+          return (
+            <SwiperSlide key={slider}>
+              <SliderItem image={slider} />
+            </SwiperSlide>
+          );
+        })}
       </Swiper>
     </Box>
   );

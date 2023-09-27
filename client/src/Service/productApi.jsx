@@ -25,10 +25,6 @@ const productApi = {
         const url = `/products/search-product?q=${searchValue}`;
         return axiosConfig.get(url);
     },
-    filterProduct: (categoryValue, priceValue, starValue)=> {
-        const url = `/products/filter-product?category=${categoryValue}&price=${priceValue}&star=${starValue}`;
-        return axiosConfig.get(url);
-    }
 }
 
 export default productApi;

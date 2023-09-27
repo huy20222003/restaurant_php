@@ -1,5 +1,6 @@
 import Employees from '../models/Employees.mjs';
 import Roles from '../models/Roles.mjs';
+import bcryptjs from 'bcryptjs';
 
 class EmployeeController {
   async getAllEmployees(req, res) {
@@ -40,15 +41,7 @@ class EmployeeController {
     try {
       const { fullName, username, email, position, salary, password } =
         req.body;
-      if (
-        !fullName ||
-        !username ||
-        !email ||
-        !position ||
-        !salary ||
-        !password
-      ) {
-        console.log(fullName, username, email, position, salary, password)
+      if (!fullName || !username || !email || !position || !salary) {
         return res
           .status(400)
           .json({ success: false, message: 'Required fields missing' });
@@ -140,6 +133,40 @@ class EmployeeController {
         message: 'Employee deleted successfully!',
         data: deletedEmployee,
       });
+    } catch (error) {
+      return res.status(500).json({
+        success: false,
+        message: 'An error occurred while processing the request.',
+        error: error.message,
+      });
+    }
+  }
+
+  async UpdatePassword(req, res) {
+    try {
+      const { newPassword } = req.body;
+
+      if (!newPassword) {
+        return res
+          .status(400)
+          .json({ success: false, message: 'Invalid new password!' });
+      }
+
+      const hashPassword = await bcryptjs.hash(newPassword, 10);
+
+      const employee = await Employees.findByIdAndUpdate(req.user._id, {
+        password: hashPassword,
+      });
+
+      if (!employee) {
+        return res
+          .status(404)
+          .json({ success: false, message: 'Employee not found!' });
+      }
+
+      return res
+        .status(200)
+        .json({ success: true, message: 'Update password success!' });
     } catch (error) {
       return res.status(500).json({
         success: false,

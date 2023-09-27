@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 //@mui
 import {
@@ -6,13 +6,14 @@ import {
   Button,
   ButtonBase,
   Container,
-  Paper,
   Stack,
   Typography,
   Popover,
   MenuItem,
   Menu,
+  Paper,
 } from '@mui/material';
+import styled from '@emotion/styled';
 //icon
 import AddIcon from '@mui/icons-material/Add';
 import DataTable from '../../../Components/Admin/DataTable';
@@ -22,7 +23,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 //context
-import { useProduct } from '../../../hooks/context';
+import { useProduct, useCategory } from '../../../hooks/context';
 //component
 import Iconify from '../../../Components/User/iconify';
 //sweetalert
@@ -31,19 +32,34 @@ import Swal from 'sweetalert2';
 import HTMLReactParser from 'html-react-parser';
 //---------------------------------------------------------
 
+const StyledPaper = styled(Paper)(({theme})=> ({
+  boxShadow: theme.customShadows.card,
+  marginTop: '4rem',
+  borderRadius: '0.75rem',
+}));
+
 const ProductManage = () => {
   const {
     productsState: { products },
     handleDeleteProduct,
+    handleGetAllProducts,
   } = useProduct();
 
+  const {
+    categoryState: { categories },
+  } = useCategory();
+
   const navigate = useNavigate();
+
+  useEffect(() => {
+    handleGetAllProducts();
+  }, [handleGetAllProducts]);
 
   const columns = [
     { field: 'id', headerName: 'ID', type: 'String', width: 90 },
     {
       field: 'image_url',
-      headerName: 'Ảnh',
+      headerName: 'Image',
       type: 'String',
       width: 100,
       renderCell: (params) => (
@@ -54,14 +70,19 @@ const ProductManage = () => {
         />
       ),
     },
-    { field: 'name', headerName: 'Tên', type: 'String', width: 160 },
-    { field: 'description', headerName: 'Mô tả', type: 'String', width: 200 },
-    { field: 'category', headerName: 'Danh mục', type: 'String', width: 160 },
-    { field: 'price', headerName: 'Giá', type: 'Number', width: 100 },
-    { field: 'rate', headerName: 'Đánh giá', type: 'Number', width: 70 },
+    { field: 'name', headerName: 'Name', type: 'String', width: 160 },
+    {
+      field: 'description',
+      headerName: 'Description',
+      type: 'String',
+      width: 200,
+    },
+    { field: 'category', headerName: 'Category', type: 'String', width: 160 },
+    { field: 'price', headerName: 'Price', type: 'Number', width: 100 },
+    { field: 'rate', headerName: 'Rate', type: 'Number', width: 70 },
     {
       field: 'actions',
-      headerName: 'Hành động',
+      headerName: 'Actions',
       width: 90,
       renderCell: ActionsCell,
     },
@@ -111,15 +132,15 @@ const ProductManage = () => {
           >
             <MenuItem onClick={() => handleView(params.row.id)}>
               <VisibilityIcon sx={{ paddingRight: '0.5rem' }} />
-              Xem
+              View
             </MenuItem>
             <MenuItem onClick={() => handleEdit(params.row.id)}>
               <EditIcon sx={{ paddingRight: '0.5rem' }} />
-              Sửa
+              Edit
             </MenuItem>
             <MenuItem onClick={() => handleDelete(params.row.id)}>
               <DeleteIcon sx={{ paddingRight: '0.5rem' }} />
-              Xoá
+              Delete
             </MenuItem>
           </Menu>
         </Popover>
@@ -133,13 +154,14 @@ const ProductManage = () => {
         ? product.description
         : ''
     );
+    const categoryName = categories.find((item)=> item?._id == product?.category);
 
     return {
       id: product?._id,
       image_url: product?.image_url,
       name: product?.name,
       description: description.props.children,
-      category: product?.category,
+      category: categoryName?.name,
       price: product?.price,
       rate: product?.rate,
     };
@@ -181,7 +203,8 @@ const ProductManage = () => {
   };
 
   return (
-    <Box sx={{ display: 'flex', flex: '1 1 auto', maxWidth: '100%' }}>
+    <StyledPaper>
+      <Box sx={{ display: 'flex', flex: '1 1 auto', maxWidth: '100%' }}>
       <Box
         sx={{
           display: 'flex',
@@ -190,29 +213,29 @@ const ProductManage = () => {
           flexDirection: 'column',
         }}
       >
-        <Box sx={{ flexGrow: 1, py: '64px' }}>
-          <Container sx={{ pt: '40px' }}>
+        <Box sx={{ flexGrow: 1, py: '2.5rem' }}>
+          <Container maxWidth='xl'>
             <Stack>
               <Stack
-                sx={{ flexDirection: 'row', justifyContent: 'space-between' }}
+                sx={{ flexDirection: 'row', justifyContent: 'space-between', mb: '1rem' }}
               >
                 <Stack>
-                  <Typography variant="h4">Products</Typography>
+                  <Typography variant="h5" color='primary'>Products</Typography>
                   <Stack
                     sx={{
                       flexDirection: 'row',
                       alignItems: 'center',
-                      mt: '8px',
+                      mt: '0.5rem',
                     }}
                   >
-                    <ButtonBase sx={{ p: '7px 12px' }}>
+                    <ButtonBase sx={{p: '0.2rem'}}>
                       <Iconify
                         icon="material-symbols:upload"
                         sx={{ mr: '0.3rem' }}
                       />
                       Upload
                     </ButtonBase>
-                    <ButtonBase sx={{ p: '7px 12px' }}>
+                    <ButtonBase sx={{p: '0.2rem'}}>
                       <Iconify icon="uil:import" sx={{ mr: '0.3rem' }} />
                       Export
                     </ButtonBase>
@@ -222,21 +245,20 @@ const ProductManage = () => {
                   <Button
                     variant="contained"
                     startIcon={<AddIcon />}
-                    sx={{ borderRadius: '12px' }}
+                    sx={{ borderRadius: '0.375rem' }}
                     onClick={handleNavigateCreateProductPage}
                   >
                     Add
                   </Button>
                 </Stack>
               </Stack>
-              <Paper elevation={0} sx={{ m: '32px 0 0' }}>
-                <DataTable columns={columns} rows={rows} />
-              </Paper>
+              <DataTable columns={columns} rows={rows} />
             </Stack>
           </Container>
         </Box>
       </Box>
     </Box>
+    </StyledPaper>
   );
 };
 

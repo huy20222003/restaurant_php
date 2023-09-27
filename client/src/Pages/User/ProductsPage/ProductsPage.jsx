@@ -1,25 +1,33 @@
+import { useEffect, useState, Suspense, lazy } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { useState } from 'react';
 // @mui
-import { Box, Container, Stack, Typography } from '@mui/material';
+import { Container, Stack, Typography } from '@mui/material';
 // components
 import {
   ProductSort,
-  ProductList,
   ProductCartWidget,
   ProductFilterSidebar,
   ProductPagnition,
 } from '../../../section/@dashboard/products';
+const ProductList = lazy(() =>
+  import('../../../section/@dashboard/products/ProductList')
+);
 // context
-import {useProduct} from '../../../hooks/context';
-
+import { useProduct } from '../../../hooks/context';
+//Loader
+import Loader from '../../../Components/Loader';
 // ----------------------------------------------------------------------
 
 export default function ProductsPage() {
   const [openFilter, setOpenFilter] = useState(false);
   const {
     productsState: { products },
+    handleGetAllProducts,
   } = useProduct();
+
+  useEffect(() => {
+    handleGetAllProducts();
+  }, [handleGetAllProducts]);
 
   const handleOpenFilter = () => {
     setOpenFilter(true);
@@ -57,7 +65,9 @@ export default function ProductsPage() {
           </Stack>
         </Stack>
 
-        <ProductList products={products} />
+        <Suspense fallback={<Loader />}>
+          <ProductList products={products} />
+        </Suspense>
         <ProductCartWidget />
         {/* <Box sx={{mt: '0.8rem'}}>
           <ProductPagnition />
@@ -66,4 +76,3 @@ export default function ProductsPage() {
     </>
   );
 }
-

@@ -160,11 +160,13 @@ const CartStepper = () => {
     shipAddress: '',
     items: [],
     totalPrices: 0,
-    status: 'Ordered',
+    status: ['Ordered'],
     shippingFee: 0,
     shippingUnit: '',
     paymentMethod: '',
   });
+
+  console.log(orderData);
 
   const components = [
     <CartSelect key="cart-select" orderData={orderData} setOrderData={setOrderData} />,

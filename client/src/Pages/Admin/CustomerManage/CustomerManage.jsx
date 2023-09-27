@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 //@mui
 import {
@@ -6,13 +6,14 @@ import {
   Button,
   ButtonBase,
   Container,
-  Paper,
   Stack,
   Typography,
   Popover,
   MenuItem,
   Menu,
+  Paper,
 } from '@mui/material';
+import styled from '@emotion/styled';
 //@mui icon
 import AddIcon from '@mui/icons-material/Add';
 import DataTable from '../../../Components/Admin/DataTable';
@@ -26,24 +27,37 @@ import Iconify from '../../../Components/User/iconify';
 import { useCommon, useUser } from '../../../hooks/context';
 //component
 import FormDialogCustomer from '../../../Components/FormDialog/FormDialogCustomer';
-//toast
-import { toast } from 'react-toastify';
 //sweetalert
 import Swal from 'sweetalert2';
 //-------------------------------------------------------
 
+const StyledPaper = styled(Paper)(({theme})=> ({
+  boxShadow: theme.customShadows.card,
+  marginTop: '4rem',
+  borderRadius: '0.75rem',
+}));
+
 const CustomerManage = () => {
   const {
     usersState: { users },
+    handleGetAllUser,
     handleCreateUser,
     handleDeleteUser,
     handleGetOneUser,
   } = useUser();
 
   const { setOpenFormDialog } = useCommon();
-  const [formData, setFormData] = useState({});
+  const [formData, setFormData] = useState({
+    fullName: '',
+    username: '',
+    email: '',
+  });
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    handleGetAllUser();
+  }, [handleGetAllUser]);
 
   const columns = [
     { field: 'id', headerName: 'ID', type: 'String', width: 70 },
@@ -65,15 +79,20 @@ const CustomerManage = () => {
     { field: 'email', headerName: 'Email', type: 'String', width: 130 },
     {
       field: 'phoneNumber',
-      headerName: 'Số điện thoại',
+      headerName: 'Phone Number',
       type: 'String',
-      width: 100,
+      width: 130,
     },
-    { field: 'address', headerName: 'Địa chỉ', type: 'String', width: 200 },
-    { field: 'shipAddress', headerName: 'Địa chỉ nhận hàng', type: 'String', width: 200 },
+    { field: 'address', headerName: 'Address', type: 'String', width: 200 },
+    {
+      field: 'shipAddress',
+      headerName: 'Ship Address',
+      type: 'String',
+      width: 200,
+    },
     {
       field: 'actions',
-      headerName: 'Hành động',
+      headerName: 'Actions',
       width: 90,
       renderCell: ActionsCell,
     },
@@ -123,11 +142,11 @@ const CustomerManage = () => {
           >
             <MenuItem onClick={() => handleView(params.row.id)}>
               <VisibilityIcon sx={{ paddingRight: '0.5rem' }} />
-              Xem
+              View
             </MenuItem>
             <MenuItem onClick={() => handleDelete(params.row.id)}>
               <DeleteIcon sx={{ paddingRight: '0.5rem' }} />
-              Xoá
+              Delete
             </MenuItem>
           </Menu>
         </Popover>
@@ -149,10 +168,9 @@ const CustomerManage = () => {
   });
 
   const fiels = [
-    { name: 'fullName', label: 'Họ và tên', type: 'text' },
-    { name: 'username', label: 'Tên người dùng', type: 'text' },
+    { name: 'fullName', label: 'FullName', type: 'text' },
+    { name: 'username', label: 'Username', type: 'text' },
     { name: 'email', label: 'Email', type: 'email' },
-    { name: 'password', label: 'Mật khẩu', type: 'password' },
   ];
 
   const handleView = (userId) => {
@@ -191,78 +209,98 @@ const CustomerManage = () => {
     try {
       const createData = await handleCreateUser(formData);
       if (!createData.success) {
-        toast.error('Add customer failed!');
+        Swal.fire({
+          title: 'Add user failed!',
+          icon: 'error',
+          showCancelButton: true,
+          confirmButtonText: 'OK',
+        });
       } else {
-        toast.success('Add customer successful');
+        Swal.fire({
+          title: 'Add user Successful!',
+          text: 'Default password is 1234567',
+          icon: 'success',
+          showCancelButton: true,
+          confirmButtonText: 'OK',
+        });
       }
+      setOpenFormDialog(false);
+      setFormData({});
     } catch (error) {
-      toast.error('Server Error');
+      Swal.fire({
+        title: 'Server Error',
+        icon: 'error',
+        showCancelButton: true,
+        confirmButtonText: 'OK',
+      });
     }
   };
 
   return (
-    <Box sx={{ display: 'flex', flex: '1 1 auto', maxWidth: '100%' }}>
-      <Box
-        sx={{
-          display: 'flex',
-          flex: '1 1 auto',
-          width: '100%',
-          flexDirection: 'column',
-        }}
-      >
-        <Box sx={{ flexGrow: 1, py: '64px' }}>
-          <Container sx={{ pt: '40px' }}>
-            <Stack>
-              <Stack
-                sx={{ flexDirection: 'row', justifyContent: 'space-between' }}
-              >
-                <Stack>
-                  <Typography variant="h4">Customers</Typography>
-                  <Stack
-                    sx={{
-                      flexDirection: 'row',
-                      alignItems: 'center',
-                      mt: '8px',
-                    }}
-                  >
-                    <ButtonBase sx={{ p: '7px 12px' }}>
-                      <Iconify
-                        icon="material-symbols:upload"
-                        sx={{ mr: '0.3rem' }}
-                      />
-                      Upload
-                    </ButtonBase>
-                    <ButtonBase sx={{ p: '7px 12px' }}>
-                      <Iconify icon="uil:import" sx={{ mr: '0.3rem' }} />
-                      Export
-                    </ButtonBase>
+    <StyledPaper>
+      <Box sx={{ display: 'flex', flex: '1 1 auto', maxWidth: '100%' }}>
+        <Box
+          sx={{
+            display: 'flex',
+            flex: '1 1 auto',
+            width: '100%',
+            flexDirection: 'column',
+          }}
+        >
+          <Box sx={{ flexGrow: 1, py: '2.5rem' }}>
+            <Container>
+              <Stack>
+                <Stack
+                  sx={{ flexDirection: 'row', justifyContent: 'space-between', mb: '1rem' }}
+                >
+                  <Stack>
+                    <Typography variant="h5" color="primary">
+                      Customers
+                    </Typography>
+                    <Stack
+                      sx={{
+                        flexDirection: 'row',
+                        alignItems: 'center',
+                        mt: '0.5rem',
+                      }}
+                    >
+                      <ButtonBase sx={{p: '0.2rem'}}>
+                        <Iconify
+                          icon="material-symbols:upload"
+                          sx={{ mr: '0.3rem' }}
+                        />
+                        Upload
+                      </ButtonBase>
+                      <ButtonBase sx={{p: '0.2rem'}}>
+                        <Iconify icon="uil:import" sx={{ mr: '0.3rem' }} />
+                        Export
+                      </ButtonBase>
+                    </Stack>
+                  </Stack>
+                  <Stack sx={{ flexDirection: 'row', alignItems: 'center' }}>
+                    <Button
+                      variant="contained"
+                      startIcon={<AddIcon />}
+                      sx={{ borderRadius: '0.375rem' }}
+                      onClick={handleOpenFormDialog}
+                    >
+                      Add
+                    </Button>
                   </Stack>
                 </Stack>
-                <Stack sx={{ flexDirection: 'row', alignItems: 'center' }}>
-                  <Button
-                    variant="contained"
-                    startIcon={<AddIcon />}
-                    sx={{ borderRadius: '12px' }}
-                    onClick={handleOpenFormDialog}
-                  >
-                    Add
-                  </Button>
-                </Stack>
-              </Stack>
-              <FormDialogCustomer
-                fields={fiels}
-                handleCreate={handleCreate}
-                formData={formData}
-                setFormData={setFormData}
-              />
-              <Paper elevation={0} sx={{ margin: '32px 0 0' }}>
+                <FormDialogCustomer
+                  fields={fiels}
+                  handleCreate={handleCreate}
+                  formData={formData}
+                  setFormData={setFormData}
+                />
                 <DataTable columns={columns} rows={rows} />
-              </Paper>
-            </Stack>
-          </Container>
+              </Stack>
+            </Container>
+          </Box>
         </Box>
       </Box>
-    </Box>
+    </StyledPaper>
   );
 };
 

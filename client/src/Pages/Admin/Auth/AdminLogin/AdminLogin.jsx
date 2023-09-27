@@ -1,3 +1,5 @@
+import { useNavigate } from 'react-router-dom';
+//mui
 import {
   Avatar,
   Button,
@@ -11,19 +13,22 @@ import {
   Typography,
   Container,
 } from '@mui/material';
+//mui icon
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
+//cookie
 import Cookies from 'js-cookie';
-import {toast} from 'react-toastify';
-import { AuthContext } from '../../../../Contexts/AuthContext';
+//context
+import {useAuth} from '../../../../hooks/context';
+//sweetalert
+import Swal from 'sweetalert2';
+//-----------------------------------------------------------------------------
 
 const defaultTheme = createTheme();
 
 const AdminLogin = () => {
-  document.title = 'Đăng nhập tài khoản Admin';
-    const { loginAdmin } = useContext(AuthContext);
+  document.title = 'Login';
+    const { loginAdmin } = useAuth();
     const navigate = useNavigate();
   
     const handleSubmit = async (e) => {
@@ -36,17 +41,17 @@ const AdminLogin = () => {
       try {
         const loginData = await loginAdmin(loginForm);
         if (!loginData.success) {
-          toast.error(loginData.message);
+          Swal.fire('Failed', 'Login Failed', 'error');
         } else {
           const expiration = new Date();
           expiration.setTime(expiration.getTime() + 15 * 60 * 1000);
           Cookies.set('user', loginData.accessToken, { expires: expiration });
           Cookies.set('refresh', loginData.refreshToken, { expires: 365 });
-          toast.success(loginData.message);
+          Swal.fire('Successful', 'Login Successful', 'success');
           navigate('/admin');
         }
       } catch (error) {
-        toast.error('Server Error');
+        Swal.fire('Error', 'Server Error', 'error');
       }
     };
 

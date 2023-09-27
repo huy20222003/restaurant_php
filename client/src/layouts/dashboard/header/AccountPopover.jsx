@@ -42,6 +42,8 @@ export default function AccountPopover() {
       navigate('/dashboard/app');
     } else if(data == 'profile') {
       navigate('/dashboard/profile');
+    } else if(data == 'setting') {
+      navigate('/dashboard/setting');
     }
     handleClose();
   }
@@ -101,7 +103,7 @@ export default function AccountPopover() {
         <Stack sx={{ p: 1 }}>
           <MenuItem onClick={()=>handleNavigate('dashboard')}>Dashboard</MenuItem>
           <MenuItem onClick={()=>handleNavigate('profile')}>Profile</MenuItem>
-          <MenuItem>Setting</MenuItem>
+          <MenuItem onClick={()=>handleNavigate('setting')}>Setting</MenuItem>
         </Stack>
 
         <Divider sx={{ borderStyle: 'dashed' }} />

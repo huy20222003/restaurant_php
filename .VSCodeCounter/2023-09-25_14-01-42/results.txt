@@ -1,0 +1,72 @@
+Date : 2023-09-25 14:01:42
+Directory : c:\Users\21H1 HNQA\Documents\mern_web\restaurants\server
+Total : 34 files,  4814 codes, 29 comments, 221 blanks, all 5064 lines
+
+Languages
++------------+------------+------------+------------+------------+------------+
+| language   | files      | code       | comment    | blank      | total      |
++------------+------------+------------+------------+------------+------------+
+| JSON       |          3 |      3,039 |          0 |          2 |      3,041 |
+| JavaScript |         30 |      1,767 |         29 |        215 |      2,011 |
+| Properties |          1 |          8 |          0 |          4 |         12 |
++------------+------------+------------+------------+------------+------------+
+
+Directories
++------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                 | files      | code       | comment    | blank      | total      |
++------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                    |         34 |      4,814 |         29 |        221 |      5,064 |
+| . (Files)                                                                                            |          2 |      3,033 |          0 |          2 |      3,035 |
+| src                                                                                                  |         32 |      1,781 |         29 |        219 |      2,029 |
+| src (Files)                                                                                          |          2 |         33 |          5 |         10 |         48 |
+| src\app                                                                                              |         16 |      1,541 |          0 |        147 |      1,688 |
+| src\app\controllers                                                                                  |          8 |      1,122 |          0 |        114 |      1,236 |
+| src\app\models                                                                                       |          8 |        419 |          0 |         33 |        452 |
+| src\config                                                                                           |          3 |         34 |          0 |         10 |         44 |
+| src\config\cashbinConfig                                                                             |          1 |          8 |          0 |          4 |         12 |
+| src\config\cloudinary                                                                                |          1 |          9 |          0 |          3 |         12 |
+| src\config\database                                                                                  |          1 |         17 |          0 |          3 |         20 |
+| src\middleware                                                                                       |          2 |         47 |          2 |         10 |         59 |
+| src\routes                                                                                           |          9 |        126 |         22 |         42 |        190 |
++------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| filename                                                                                             | language   | code       | comment    | blank      | total      |
++------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurants\server\package-lock.json                           | JSON       |      2,989 |          0 |          1 |      2,990 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurants\server\package.json                                | JSON       |         44 |          0 |          1 |         45 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurants\server\src\.prettierrc                             | JSON       |          6 |          0 |          0 |          6 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurants\server\src\app\controllers\AdminAuthController.mjs | JavaScript |        112 |          0 |         13 |        125 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurants\server\src\app\controllers\AuthController.mjs      | JavaScript |        157 |          0 |         21 |        178 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurants\server\src\app\controllers\CartsController.mjs     | JavaScript |         98 |          0 |         17 |        115 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurants\server\src\app\controllers\CategorysController.mjs | JavaScript |        134 |          0 |         11 |        145 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurants\server\src\app\controllers\EmployeesController.mjs | JavaScript |        139 |          0 |         13 |        152 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurants\server\src\app\controllers\OrdersController.mjs    | JavaScript |        138 |          0 |          9 |        147 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurants\server\src\app\controllers\ProductsController.mjs  | JavaScript |        185 |          0 |         19 |        204 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurants\server\src\app\controllers\UsersController.mjs     | JavaScript |        159 |          0 |         11 |        170 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurants\server\src\app\models\Carts.mjs                    | JavaScript |         18 |          0 |          3 |         21 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurants\server\src\app\models\Categorys.mjs                | JavaScript |         18 |          0 |          3 |         21 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurants\server\src\app\models\DiscountCode.mjs             | JavaScript |          9 |          0 |          3 |         12 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurants\server\src\app\models\Employees.mjs                | JavaScript |        110 |          0 |          7 |        117 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurants\server\src\app\models\Orders.mjs                   | JavaScript |         53 |          0 |          3 |         56 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurants\server\src\app\models\Products.mjs                 | JavaScript |         88 |          0 |          4 |         92 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurants\server\src\app\models\Roles.mjs                    | JavaScript |         14 |          0 |          3 |         17 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurants\server\src\app\models\Users.mjs                    | JavaScript |        109 |          0 |          7 |        116 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurants\server\src\config\cashbinConfig\cashbinConfig.conf | Properties |          8 |          0 |          4 |         12 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurants\server\src\config\cloudinary\index.mjs             | JavaScript |          9 |          0 |          3 |         12 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurants\server\src\config\database\index.mjs               | JavaScript |         17 |          0 |          3 |         20 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurants\server\src\index.mjs                               | JavaScript |         27 |          5 |         10 |         42 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurants\server\src\middleware\auth.mjs                     | JavaScript |         21 |          2 |          4 |         27 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurants\server\src\middleware\cashbinMiddleware.mjs        | JavaScript |         26 |          0 |          6 |         32 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurants\server\src\routes\adminAuthRouter.mjs              | JavaScript |          9 |          3 |          4 |         16 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurants\server\src\routes\authRouter.mjs                   | JavaScript |         10 |          3 |          4 |         17 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurants\server\src\routes\cartRouter.mjs                   | JavaScript |          9 |          2 |          5 |         16 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurants\server\src\routes\categorysRouter.mjs              | JavaScript |         32 |          3 |          3 |         38 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurants\server\src\routes\employeesRouter.mjs              | JavaScript |         11 |          3 |          4 |         18 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurants\server\src\routes\index.mjs                        | JavaScript |         19 |          2 |          6 |         27 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurants\server\src\routes\ordersRouter.mjs                 | JavaScript |         11 |          2 |          5 |         18 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurants\server\src\routes\productsRouter.mjs               | JavaScript |         13 |          2 |          5 |         20 |
+| c:\Users\21H1 HNQA\Documents\mern_web\restaurants\server\src\routes\usersRouter.mjs                  | JavaScript |         12 |          2 |          6 |         20 |
+| Total                                                                                                |            |      4,814 |         29 |        221 |      5,064 |
++------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+

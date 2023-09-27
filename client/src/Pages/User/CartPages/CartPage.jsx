@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 //@mui
 import { Box, Container, Typography } from '@mui/material';
@@ -13,7 +14,13 @@ import { useCart } from '../../../hooks/context';
 const CartPage = () => {
   const {
     cartState: { items },
+    handleGetCart,
   } = useCart();
+  
+  useEffect(() => {
+    handleGetCart();
+  }, [handleGetCart]);
+
   return (
     <>
       <Helmet>

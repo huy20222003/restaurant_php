@@ -15,6 +15,9 @@ import {
 } from '@mui/material';
 //context
 import { useCommon } from '../../../../hooks/context';
+//sweetalert
+import Swal from 'sweetalert2';
+//-----------------------------------------
 
 // Define CSS constants
 const buttonBaseBuyStyle = {
@@ -22,12 +25,14 @@ const buttonBaseBuyStyle = {
   lineHeight: 1.71429,
   fontSize: '0.875rem',
   textTransform: 'capitalize',
-  fontFamily: '__Public_Sans_66e638, __Public_Sans_Fallback_66e638, Helvetica, Arial, sans-serif',
+  fontFamily:
+    '__Public_Sans_66e638, __Public_Sans_Fallback_66e638, Helvetica, Arial, sans-serif',
   minWidth: '64px',
   width: '100%',
   padding: '6px 12px',
   borderRadius: '8px',
-  transition: 'background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
+  transition:
+    'background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
   boxShadow: 'none',
   color: 'rgb(255, 255, 255)',
   backgroundColor: 'rgb(33, 43, 54)',
@@ -37,10 +42,10 @@ const CartSummary = ({ orderData, selectedProducts }) => {
   const { setActiveStep } = useCommon();
 
   const handleNext = () => {
-    if(selectedProducts.length > 0) {
+    if (selectedProducts.length > 0) {
       setActiveStep((prevActiveStep) => prevActiveStep + 1);
     } else {
-      alert('you need choose Product');
+      Swal.fire('Error', 'You must choose one product', 'error');
     }
   };
 
@@ -69,7 +74,9 @@ const CartSummary = ({ orderData, selectedProducts }) => {
       <Typography variant="body2" sx={{ color: 'rgb(99, 115, 129)' }}>
         Shipping
       </Typography>
-      <Typography sx={{ fontSize: '0.875rem', fontWeight: 600 }}>Free</Typography>
+      <Typography sx={{ fontSize: '0.875rem', fontWeight: 600 }}>
+        Free
+      </Typography>
     </Stack>
   );
 

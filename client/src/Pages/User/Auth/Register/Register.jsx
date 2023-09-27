@@ -1,17 +1,17 @@
+import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 // @mui
 import { styled } from '@mui/material/styles';
 import { Container, Typography, Divider, Stack, Button } from '@mui/material';
-import { Link } from 'react-router-dom';
-import { toast } from 'react-toastify';
 // hooks
 import useResponsive from '../../../../hooks/useReponsive';
 // components
-import Logo from '../../../../Components/User/logo';
+// import Logo from '../../../../Components/User/logo';
 import Iconify from '../../../../Components/User/iconify';
 // sections
 import RegisterForm from '../../../../section/auth/RegisterForm';
-
+//context
+import { useCommon } from '../../../../hooks/context';
 // ----------------------------------------------------------------------
 
 const StyledRoot = styled('div')(({ theme }) => ({
@@ -44,45 +44,45 @@ const StyledContent = styled('div')(({ theme }) => ({
 
 const Register = () => {
   const mdUp = useResponsive('up', 'md');
-
-  const handleClick = () => {
-    toast.info('Chức năng đang được phát triển');
-  };
+  const { handleEvolvingFunctionality } = useCommon();
 
   return (
     <>
       <Helmet>
-        <title> Đăng ký </title>
+        <title> Signup </title>
       </Helmet>
 
       <StyledRoot>
-        <Logo
+        {/* <Logo
           sx={{
             position: 'fixed',
             top: { xs: 16, sm: 24, md: 40 },
             left: { xs: 16, sm: 24, md: 40 },
           }}
-        />
+        /> */}
 
         {mdUp && (
           <StyledSection>
             <Typography variant="h3" sx={{ px: 5, mt: 5, mb: 5 }}>
               Hi, Welcome to Restaurant
             </Typography>
-            <img src="/assets/illustrations/illustration_login.png" alt="login" />
+            <img
+              src="/assets/illustrations/illustration_login.png"
+              alt="login"
+            />
           </StyledSection>
         )}
 
         <Container maxWidth="sm">
           <StyledContent>
             <Typography variant="h4" gutterBottom>
-              Đăng ký
+              Signup
             </Typography>
 
             <Typography variant="body2" sx={{ mb: 5 }}>
-              Bạn đã có tài khoản? {''}
+            Do you already have an account? {''}
               <Link to="/auth/login" style={{ textDecoration: 'none' }}>
-                Đăng nhập
+                Signin
               </Link>
             </Typography>
 
@@ -92,7 +92,7 @@ const Register = () => {
                 size="large"
                 color="inherit"
                 variant="outlined"
-                onClick={handleClick}
+                onClick={handleEvolvingFunctionality}
               >
                 <Iconify
                   icon="eva:google-fill"
@@ -107,7 +107,7 @@ const Register = () => {
                 size="large"
                 color="inherit"
                 variant="outlined"
-                onClick={handleClick}
+                onClick={handleEvolvingFunctionality}
               >
                 <Iconify
                   icon="eva:facebook-fill"
@@ -122,7 +122,7 @@ const Register = () => {
                 size="large"
                 color="inherit"
                 variant="outlined"
-                onClick={handleClick}
+                onClick={handleEvolvingFunctionality}
               >
                 <Iconify
                   icon="eva:twitter-fill"
@@ -135,7 +135,7 @@ const Register = () => {
 
             <Divider sx={{ my: 3 }}>
               <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                Hoặc
+                OR
               </Typography>
             </Divider>
 

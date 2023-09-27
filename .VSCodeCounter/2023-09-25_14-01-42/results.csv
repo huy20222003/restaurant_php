@@ -1,0 +1,36 @@
+"filename", "language", "JavaScript", "Properties", "JSON", "comment", "blank", "total"
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\server\package-lock.json", "JSON", 0, 0, 2989, 0, 1, 2990
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\server\package.json", "JSON", 0, 0, 44, 0, 1, 45
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\server\src\.prettierrc", "JSON", 0, 0, 6, 0, 0, 6
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\server\src\app\controllers\AdminAuthController.mjs", "JavaScript", 112, 0, 0, 0, 13, 125
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\server\src\app\controllers\AuthController.mjs", "JavaScript", 157, 0, 0, 0, 21, 178
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\server\src\app\controllers\CartsController.mjs", "JavaScript", 98, 0, 0, 0, 17, 115
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\server\src\app\controllers\CategorysController.mjs", "JavaScript", 134, 0, 0, 0, 11, 145
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\server\src\app\controllers\EmployeesController.mjs", "JavaScript", 139, 0, 0, 0, 13, 152
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\server\src\app\controllers\OrdersController.mjs", "JavaScript", 138, 0, 0, 0, 9, 147
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\server\src\app\controllers\ProductsController.mjs", "JavaScript", 185, 0, 0, 0, 19, 204
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\server\src\app\controllers\UsersController.mjs", "JavaScript", 159, 0, 0, 0, 11, 170
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\server\src\app\models\Carts.mjs", "JavaScript", 18, 0, 0, 0, 3, 21
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\server\src\app\models\Categorys.mjs", "JavaScript", 18, 0, 0, 0, 3, 21
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\server\src\app\models\DiscountCode.mjs", "JavaScript", 9, 0, 0, 0, 3, 12
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\server\src\app\models\Employees.mjs", "JavaScript", 110, 0, 0, 0, 7, 117
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\server\src\app\models\Orders.mjs", "JavaScript", 53, 0, 0, 0, 3, 56
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\server\src\app\models\Products.mjs", "JavaScript", 88, 0, 0, 0, 4, 92
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\server\src\app\models\Roles.mjs", "JavaScript", 14, 0, 0, 0, 3, 17
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\server\src\app\models\Users.mjs", "JavaScript", 109, 0, 0, 0, 7, 116
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\server\src\config\cashbinConfig\cashbinConfig.conf", "Properties", 0, 8, 0, 0, 4, 12
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\server\src\config\cloudinary\index.mjs", "JavaScript", 9, 0, 0, 0, 3, 12
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\server\src\config\database\index.mjs", "JavaScript", 17, 0, 0, 0, 3, 20
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\server\src\index.mjs", "JavaScript", 27, 0, 0, 5, 10, 42
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\server\src\middleware\auth.mjs", "JavaScript", 21, 0, 0, 2, 4, 27
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\server\src\middleware\cashbinMiddleware.mjs", "JavaScript", 26, 0, 0, 0, 6, 32
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\server\src\routes\adminAuthRouter.mjs", "JavaScript", 9, 0, 0, 3, 4, 16
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\server\src\routes\authRouter.mjs", "JavaScript", 10, 0, 0, 3, 4, 17
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\server\src\routes\cartRouter.mjs", "JavaScript", 9, 0, 0, 2, 5, 16
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\server\src\routes\categorysRouter.mjs", "JavaScript", 32, 0, 0, 3, 3, 38
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\server\src\routes\employeesRouter.mjs", "JavaScript", 11, 0, 0, 3, 4, 18
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\server\src\routes\index.mjs", "JavaScript", 19, 0, 0, 2, 6, 27
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\server\src\routes\ordersRouter.mjs", "JavaScript", 11, 0, 0, 2, 5, 18
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\server\src\routes\productsRouter.mjs", "JavaScript", 13, 0, 0, 2, 5, 20
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\server\src\routes\usersRouter.mjs", "JavaScript", 12, 0, 0, 2, 6, 20
+"Total", "-", 1767, 8, 3039, 29, 221, 5064

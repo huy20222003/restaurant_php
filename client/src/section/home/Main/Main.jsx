@@ -105,7 +105,7 @@ const Main = () => {
           backgroundRepeat: 'no-repeat',
           backgroundPosition: 'center center',
           overflow: 'hidden',
-          height: { md: 'calc(100vh - 80px)' },
+          height: '100%',
         }}
       >
         <Container maxWidth="lg">
@@ -138,11 +138,11 @@ const Main = () => {
                 }}
               >
                 <Typography variant="h2">
-                  Wellcome To <br /> My Restaurant
+                  Wellcome To <br /> Goc Bep Nho
                 </Typography>
                 <Typography variant="body2">
                   {' '}
-                  Welcome to my restaurant. This is a great place for you.
+                  Welcome to Goc Bep Nho. This is a great place for you.
                 </Typography>
                 <StyledButtonBaseBuy>
                   <Link
@@ -186,11 +186,11 @@ const Main = () => {
                   >
                     <Box
                       component="img"
-                      src="/assets/images/cover_10.png"
+                      src="/assets/images/background/eating_sushi.svg"
                       alt="home_hero"
                       sx={{
                         width: '100%',
-                        height: '580px',
+                        height: '40rem',
                         objectFit: 'cover',
                         verticalAlign: 'bottom',
                         borderRadius: '4px'

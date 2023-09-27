@@ -4,7 +4,6 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import PeopleIcon from '@mui/icons-material/People';
-import BarChartIcon from '@mui/icons-material/BarChart';
 import LogoutIcon from '@mui/icons-material/Logout';
 import PersonIcon from '@mui/icons-material/Person';
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
@@ -22,7 +21,7 @@ const NavLinkCustom = styled(NavLink)`
     letter-spacing: 0.00938em;
     display: block;
     text-decoration: none;
-    color: black;
+    color: #fff;
   }
 `;
 
@@ -32,7 +31,7 @@ const MainListItems = () => {
       <NavLinkCustom to="/admin">
         <ListItemButton>
           <ListItemIcon>
-            <DashboardIcon />
+            <DashboardIcon sx={{ color: '#fff' }} />
           </ListItemIcon>
           <ListItemText sx={{ fontSize: '0.7rem' }} primary="Trang chủ" />
         </ListItemButton>
@@ -40,7 +39,7 @@ const MainListItems = () => {
       <NavLinkCustom to="customer-manage">
         <ListItemButton>
           <ListItemIcon>
-            <PersonIcon />
+            <PersonIcon sx={{ color: '#fff' }} />
           </ListItemIcon>
           <ListItemText primary="Quản lý khách hàng" />
         </ListItemButton>
@@ -48,7 +47,7 @@ const MainListItems = () => {
       <NavLinkCustom to="employee-manage">
         <ListItemButton>
           <ListItemIcon>
-            <PeopleIcon />
+            <PeopleIcon sx={{ color: '#fff' }} />
           </ListItemIcon>
           <ListItemText primary="Quản lý nhân viên" />
         </ListItemButton>
@@ -56,7 +55,7 @@ const MainListItems = () => {
       <NavLinkCustom to="product-manage">
         <ListItemButton>
           <ListItemIcon>
-            <FastfoodIcon />
+            <FastfoodIcon sx={{ color: '#fff' }} />
           </ListItemIcon>
           <ListItemText primary="Quản lý sản phẩm" />
         </ListItemButton>
@@ -64,7 +63,7 @@ const MainListItems = () => {
       <NavLinkCustom to="category-manage">
         <ListItemButton>
           <ListItemIcon>
-            <FormatListBulletedIcon />
+            <FormatListBulletedIcon sx={{ color: '#fff' }} />
           </ListItemIcon>
           <ListItemText primary="Quản lý danh mục" />
         </ListItemButton>
@@ -72,17 +71,9 @@ const MainListItems = () => {
       <NavLinkCustom to="order-manage">
         <ListItemButton>
           <ListItemIcon>
-            <AddShoppingCartIcon />
+            <AddShoppingCartIcon sx={{ color: '#fff' }} />
           </ListItemIcon>
           <ListItemText primary="Quản lý đơn hàng" />
-        </ListItemButton>
-      </NavLinkCustom>
-      <NavLinkCustom to="chart">
-        <ListItemButton>
-          <ListItemIcon>
-            <BarChartIcon />
-          </ListItemIcon>
-          <ListItemText primary="Biểu đồ" />
         </ListItemButton>
       </NavLinkCustom>
     </>
@@ -95,7 +86,7 @@ const SecondaryListItems = () => {
       <NavLinkCustom to="/auth/admin/login">
         <ListItemButton>
           <ListItemIcon>
-            <LogoutIcon />
+            <LogoutIcon sx={{ color: '#fff' }} />
           </ListItemIcon>
           <ListItemText primary="Đăng xuất" />
         </ListItemButton>

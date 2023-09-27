@@ -1,33 +1,43 @@
 const AccordionItems = [
   {
-    title: 'Accordion 1',
+    title: 'What is the name of your restaurant?',
     content:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.',
+      'Our restaurant is named Goc Bep Nho.',
   },
   {
-    title: 'Accordion 2',
+    title: 'What are your opening hours and closing hours?',
     content:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.',
+      'We are open from 7:00am to 10:00pm.',
   },
   {
-    title: 'Accordion 3',
+    title: 'Do you serve lunch and dinner?',
     content:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.',
+      'We serve both lunch and dinner.',
   },
   {
-    title: 'Accordion 4',
+    title: 'Do you have an online menu for customers to view?',
     content:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.',
+      'Yes, we have an online menu that you can view on our website.',
   },
   {
-    title: 'Accordion 5',
+    title: 'Do you have a special menu for vegetarians?',
     content:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.',
+      'Yes, we offer a special vegetarian menu for our vegetarian customers.',
   },
   {
-    title: 'Accordion 6',
+    title: 'Do you provide delivery services? If so, how can customers place orders, and what is the delivery fee?',
     content:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.',
+      'Yes, we offer delivery services. To place an order, please go to Cart Page. The delivery fee is Free.',
+  },
+  {
+    title: 'How can customers contact your restaurant if they have questions or special requests?',
+    content:
+      'If you have any questions or special requests, please feel free to contact us at Contact Page.',
+  },
+  {
+    title: 'Do you provide gift cards or vouchers?',
+    content:
+      'Yes, we offer gift cards and vouchers. You can purchase them on our website and redeem them in our restaurant.',
   },
 ];
 

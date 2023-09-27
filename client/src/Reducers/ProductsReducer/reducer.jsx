@@ -7,6 +7,7 @@ import {
   SET_PAGE,
   FILTER_PRODUCT,
   UPDATE_PRODUCT,
+  SORT_PRODUCT,
 } from './constants';
 
 export const initProductsState = {
@@ -66,6 +67,11 @@ export const reducer = (state, action) => {
         ...state,
         products: payload,
       };
+      case SORT_PRODUCT:
+        return {
+          ...state,
+          products: payload,
+        };
     default:
       return {
         ...state,

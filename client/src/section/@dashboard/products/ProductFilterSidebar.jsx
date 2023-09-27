@@ -16,12 +16,10 @@ import {
 // components
 import Iconify from '../../../Components/User/iconify';
 import Scrollbar from '../../../Components/User/scrollbar';
-//toast
-import { toast } from 'react-toastify';
 //
-import { useState, useContext } from 'react';
+import { useEffect, useState } from 'react';
 //context
-import { ProductsContext } from '../../../Contexts/ProductsContext';
+import { useProduct, useCategory } from '../../../hooks/context';
 
 // ----------------------------------------------------------------------
 
@@ -60,7 +58,18 @@ export default function ShopFilterSidebar({
   const [categoryValue, setCategoryValue] = useState();
   const [priceValue, setPriceValue] = useState();
   const [starValue, setStarValue] = useState();
-  const { handleFilterProduct } = useContext(ProductsContext);
+  const {
+    productsState: { products },
+    handleFilterProduct,
+  } = useProduct();
+  const {
+    categoryState: { categories },
+    handleGetAllCategory,
+  } = useCategory();
+
+  useEffect(()=> {
+    handleGetAllCategory();
+  }, [handleGetAllCategory]);
 
   const handleChangeCategoryValue = (e) => {
     setCategoryValue(e.target.value);
@@ -77,21 +86,47 @@ export default function ShopFilterSidebar({
     handleFilter();
   };
 
-  const handleFilter = async () => {
-    try {
-      const filterRes = await handleFilterProduct(
-        categoryValue,
-        priceValue,
-        starValue
+  const handleFilter = () => {
+    let filteredProducts = [...products];
+    const categoryName = products.map((product) => {
+      const category = categories.find(
+        (item) => {
+          console.log(item?._id === product?.category);
+        }
       );
-      if (!filterRes.success) {
-        toast.error(filterRes.message);
-      } else {
-        toast.success(filterRes.message);
+      if (category) {
+        return {
+          ...product,
+          category: category.name,
+        };
       }
-    } catch (error) {
-      toast.error('Server Error');
+      return product;
+    });
+
+    if (categoryValue) {
+      filteredProducts = categoryName.filter(
+        (product) => product.category === categoryValue
+      );
     }
+
+    if (priceValue) {
+      filteredProducts = filteredProducts.filter((product) => {
+        if (priceValue === 'below') {
+          return product.price < 100000;
+        } else if (priceValue === 'between') {
+          return product.price >= 100000 && product.price <= 200000;
+        } else if (priceValue === 'above') {
+          return product.price > 200000;
+        }
+      });
+    }
+
+    if (starValue) {
+      filteredProducts = filteredProducts.filter(
+        (product) => product.rating >= parseInt(starValue)
+      );
+    }
+    handleFilterProduct(filteredProducts);
   };
 
   return (

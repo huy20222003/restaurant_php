@@ -23,10 +23,12 @@ p, user, /api/cart/update-cart/delete-product/:_id, DELETE
 p, admin, /api/category/create-category, POST
 p, admin, /api/category/update-category/*, PUT
 p, admin, /api/category/delete-category/:_id, DELETE
+p, admin, /api/category/add-product, PATCH
 
 p, employee, /api/category/create-category, POST
 p, employee, /api/category/update-category/:_id, PUT
 p, employee, /api/category/delete-category/:_id, DELETE
+p, employee, /api/category/add-product, PATCH
 
 #employee router
 p, admin, /api/employee, GET
@@ -34,9 +36,11 @@ p, admin, /api/employee/:_id, GET
 p, admin, /api/employee/create-emloyee, POST
 p, admin, /api/employee/update-employee/:_id, PUT
 p, admin, /api/employee/delete-employee/:_id, DELETE
+p, admin, /api/employee/update-employee/password, PATCH
 
 p, employee, /api/employee, GET
 p, employee, /api/employee/:_id, GET
+p, employee, /api/employee/update-employee/password, PATCH
 
 #order router
 p, admin, /api/order, GET
@@ -62,3 +66,4 @@ p, employee, /api/user/delete-user/:_id, DELETE
 
 p, user, /api/user/update-user/avatar, PATCH
 p, user, /api/user/update-user/detail, PUT
+p, user, /api/user/update-user/password, PATCH

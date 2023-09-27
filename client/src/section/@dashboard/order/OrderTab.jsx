@@ -10,7 +10,7 @@ import { useOrder } from '../../../hooks/context';
 //------------------------------------------------------
 
 const OrderTab = () => {
-  const [value, setValue] = useState('all');
+  const [value, setValue] = useState('All');
   const { handleFilterOrderByStatus } = useOrder();
 
   const handleChange = (event, newValue) => {
@@ -35,27 +35,27 @@ const OrderTab = () => {
             textColor="secondary"
             indicatorColor="secondary"
           >
-            <Tab value="all" label="All" onClick={handleFilter} />
-            <Tab value="ordered" label="Ordered" onClick={handleFilter} />
-            <Tab value="delivering" label="Delivering" onClick={handleFilter} />
-            <Tab value="delivered" label="Delivered" onClick={handleFilter} />
-            <Tab value="canceled" label="Canceled" onClick={handleFilter} />
+            <Tab value="All" label="All" onClick={handleFilter} />
+            <Tab value="Ordered" label="Ordered" onClick={handleFilter} />
+            <Tab value="Delivering" label="Delivering" onClick={handleFilter} />
+            <Tab value="Delivered" label="Delivered" onClick={handleFilter} />
+            <Tab value="Canceled" label="Canceled" onClick={handleFilter} />
           </TabList>
         </Paper>
 
-        <TabPanel sx={{ p: '24px 0' }} value="all">
+        <TabPanel sx={{ p: '24px 0' }} value="All">
           <OrderTabPanel />
         </TabPanel>
-        <TabPanel sx={{ p: '24px 0' }} value="ordered">
+        <TabPanel sx={{ p: '24px 0' }} value="Ordered">
           <OrderTabPanel />
         </TabPanel>
-        <TabPanel sx={{ p: '24px 0' }} value="delivering">
+        <TabPanel sx={{ p: '24px 0' }} value="Delivering">
           <OrderTabPanel />
         </TabPanel>
-        <TabPanel sx={{ p: '24px 0' }} value="delivered">
+        <TabPanel sx={{ p: '24px 0' }} value="Delivered">
           <OrderTabPanel />
         </TabPanel>
-        <TabPanel sx={{ p: '24px 0' }} value="canceled">
+        <TabPanel sx={{ p: '24px 0' }} value="Canceled">
           <OrderTabPanel />
         </TabPanel>
       </TabContext>

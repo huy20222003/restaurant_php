@@ -1,4 +1,4 @@
-import { createContext, useCallback, useEffect, useReducer } from 'react';
+import { createContext, useCallback, useReducer } from 'react';
 import {
   initEmployeesState,
   reducer,
@@ -33,12 +33,6 @@ export const EmployeesProvider = (prop) => {
       return handleError(error);
     }
   }, []);
-
-  useEffect(() => {
-    if (window.location.href.includes('admin')) {
-      handleGetAll();
-    }
-  }, [handleGetAll]);
 
   const handleGetOneEmployee = useCallback(async (employeeId) => {
     try {
@@ -84,12 +78,23 @@ export const EmployeesProvider = (prop) => {
     }
   }, []);
 
+  const handleUpdatePasswordEmployee = useCallback(async (newPassword) => {
+    try {
+      const response = await employeeApi.updatePassword(newPassword);
+      return response.data;
+    } catch (error) {
+      return handleError(error);
+    }
+  }, []);
+
   const EmployeesData = {
     employeesState,
+    handleGetAll,
     handleGetOneEmployee,
     handleCreateEmployee,
     handleUpdateEmployee,
     handleDeleteEmployee,
+    handleUpdatePasswordEmployee,
   };
 
   return (

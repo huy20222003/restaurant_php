@@ -1,0 +1,24 @@
+"filename", "language", "JavaScript JSX", "CSS", "comment", "blank", "total"
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\client\src\Components\Admin\DataTable\DataTable.jsx", "JavaScript JSX", 3, 0, 0, 0, 3
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\client\src\Components\FormDialog\FormDialogAddProduct.jsx", "JavaScript JSX", 2, 0, 1, 0, 3
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\client\src\Components\Loader\Loader.jsx", "JavaScript JSX", 18, 0, 0, 3, 21
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\client\src\Components\Loader\Loader.module.css", "CSS", 0, 16, 0, 1, 17
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\client\src\Components\Loader\index.jsx", "JavaScript JSX", 1, 0, 0, 0, 1
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\client\src\Contexts\CartContext.jsx", "JavaScript JSX", -4, 0, 0, -1, -5
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\client\src\Contexts\CategoryContext.jsx", "JavaScript JSX", 7, 0, 0, -3, 4
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\client\src\Contexts\EmployeesContext.jsx", "JavaScript JSX", -4, 0, 0, -1, -5
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\client\src\Contexts\OrderContext.jsx", "JavaScript JSX", -6, 0, 0, -2, -8
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\client\src\Contexts\ProductsContext.jsx", "JavaScript JSX", -4, 0, 0, -1, -5
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\client\src\Contexts\UsersContext.jsx", "JavaScript JSX", -4, 0, 0, -2, -6
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\client\src\Pages\Admin\CategoryManage\CategoryDetail.jsx", "JavaScript JSX", 24, 0, 0, 0, 24
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\client\src\Pages\Admin\CategoryManage\CategoryManage.jsx", "JavaScript JSX", 4, 0, 0, 1, 5
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\client\src\Pages\Admin\CustomerManage\CustomerManage.jsx", "JavaScript JSX", 20, 0, 0, 2, 22
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\client\src\Pages\Admin\EmployeeManage\EmployeeManage.jsx", "JavaScript JSX", 4, 0, 0, 1, 5
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\client\src\Pages\Admin\OrderManage\OrderManage.jsx", "JavaScript JSX", 4, 0, 0, 1, 5
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\client\src\Pages\User\CartPages\CartPage.jsx", "JavaScript JSX", 5, 0, 0, 2, 7
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\client\src\Pages\User\OrderPage\OrderPage.jsx", "JavaScript JSX", 6, 0, 1, 2, 9
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\client\src\Pages\User\OrderPage\OrderSuccessPage.jsx", "JavaScript JSX", -6, 0, -2, -3, -11
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\client\src\Pages\User\ProductsPage\ProductsPage.jsx", "JavaScript JSX", 9, 0, 1, -1, 9
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\client\src\routers\routes.jsx", "JavaScript JSX", 4, 0, 1, -1, 4
+"c:\Users\21H1 HNQA\Documents\mern_web\restaurants\client\src\section\admin\category\ProductItem.jsx", "JavaScript JSX", 2, 0, 0, 0, 2
+"Total", "-", 85, 16, 2, -2, 101

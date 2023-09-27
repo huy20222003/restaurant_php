@@ -68,7 +68,6 @@ class ProductsController {
         !name ||
         !price ||
         !description ||
-        !category ||
         !status ||
         !image_url
       ) {
@@ -170,6 +169,7 @@ class ProductsController {
 
   async searchProduct(req, res) {
     const q = req.query.q;
+    console.log("q", q);
 
     try {
       const products = await Products.find({
@@ -179,18 +179,6 @@ class ProductsController {
       return res
         .status(200)
         .json({ success: true, message: 'Products found.', products });
-    } catch (error) {
-      return res.status(500).json({
-        success: false,
-        message: 'An error occurred while processing the request.',
-        error: error.message,
-      });
-    }
-  }
-
-  async filterProduct(req, res) {
-    try {
-      const { categoryValue, priceValue, starValue } = req.query;
     } catch (error) {
       return res.status(500).json({
         success: false,

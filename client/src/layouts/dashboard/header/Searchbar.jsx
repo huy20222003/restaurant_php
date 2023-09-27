@@ -1,7 +1,14 @@
-import { useState, useContext } from 'react';
+import { useState, useContext, startTransition } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { styled } from '@mui/material/styles';
-import { Input, Slide, Button, IconButton, InputAdornment, ClickAwayListener } from '@mui/material';
+import {
+  Input,
+  Slide,
+  Button,
+  IconButton,
+  InputAdornment,
+  ClickAwayListener,
+} from '@mui/material';
 import { bgBlur } from '../../../utils/cssStyles';
 import Iconify from '../../../Components/User/iconify';
 import { ProductsContext } from '../../../Contexts/ProductsContext';
@@ -42,15 +49,22 @@ export default function Searchbar() {
   };
 
   const handleChangeSearchValue = (e) => {
-    setSearchValue(e.target.value);
+    startTransition(() => setSearchValue(e.target.value));
   };
 
-  const handleSearch = () => {
-    if (searchValue.trim() !== '') {
-      navigate('products'); // Use the correct route path
-      handleSearchProduct(searchValue);
-      setSearchValue('');
-      handleClose();
+  const handleSearch = async () => {
+    try {
+      const response = await handleSearchProduct(searchValue);
+      if (!response.success) {
+        console.log(response.message);
+      } else {
+        console.log(response.message);
+        navigate('products');
+        setSearchValue('');
+        handleClose();
+      }
+    } catch (error) {
+      console.log('Error');
     }
   };
 
@@ -74,7 +88,10 @@ export default function Searchbar() {
                 onChange={handleChangeSearchValue}
                 startAdornment={
                   <InputAdornment position="start">
-                    <Iconify icon="eva:search-fill" sx={{ color: 'text.disabled', width: 20, height: 20 }} />
+                    <Iconify
+                      icon="eva:search-fill"
+                      sx={{ color: 'text.disabled', width: 20, height: 20 }}
+                    />
                   </InputAdornment>
                 }
                 sx={{ mr: 1, fontWeight: 'fontWeightBold' }}

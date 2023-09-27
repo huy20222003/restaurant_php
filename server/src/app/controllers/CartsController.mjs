@@ -55,11 +55,6 @@ class CartController {
         });
       }
 
-      cart.totalPrices = cart.items.reduce((total, item) => {
-        const productPrice = item.product.price;
-        return total + productPrice * item.quantity;
-      }, 0);
-
       await cart.save();
 
       return res.json({

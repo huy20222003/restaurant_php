@@ -1,4 +1,4 @@
-import { createContext, useCallback, useEffect, useReducer } from 'react';
+import { createContext, useCallback, useReducer } from 'react';
 import { initCartState, reducer } from '../Reducers/CartReducer/reducer';
 import { getCart, updateCart } from '../Reducers/CartReducer/action';
 import cartApi from '../Service/cartApi';
@@ -27,12 +27,6 @@ export const CartProvider = (prop) => {
     }
   }, []);
 
-  useEffect(() => {
-    if(!window.location.href.includes('admin')){
-      handleGetCart();
-    }
-  }, [handleGetCart]);
-
   const handleUpdateCart = useCallback(async(data)=> {
     try {
       const response = await cartApi.updateCart(data);
@@ -59,6 +53,7 @@ export const CartProvider = (prop) => {
 
   const CartData = {
     cartState,
+    handleGetCart,
     handleUpdateCart,
     handleDeleteProductFromCart
   };

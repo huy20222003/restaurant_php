@@ -1,28 +1,25 @@
-//@mui
-
 import { Box, Stack, Typography } from '@mui/material';
+import PropTypes from 'prop-types'; // Import PropType
 
-//-----------------------------------------
-
-const CategoryItem = () => {
+const CategoryItem = ({ name, image }) => {
   return (
-    <Stack
-      sx={{
-        gap: '12px',
-        alignItems: 'center',
-        p: '1rem',
-        border: '1px solid #c7bbbb',
-        borderRadius: '8px',
-      }}
-    >
-      <Box
-        component="img"
-        src="https://down-vn.img.susercontent.com/file/687f3967b7c2fe6a134a2c11894eea4b_tn"
-        sx={{ width: '100%', height: '4.5rem' }}
-      ></Box>
-      <Typography variant='body2'>Thời trang nam</Typography>
-    </Stack>
+    <Box>
+      <Stack sx={{ alignItems: 'center', gap: '0.75rem' }}>
+        <Box
+          component={'img'}
+          src={image}
+          sx={{ width: '3rem', height: '3rem' }}
+          alt={name}
+        ></Box>
+        <Typography variant='body1'>{name}</Typography>
+      </Stack>
+    </Box>
   );
+};
+
+CategoryItem.propTypes = {
+  name: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
 };
 
 export default CategoryItem;

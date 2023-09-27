@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 // @mui
 import {
@@ -10,21 +10,24 @@ import {
   Checkbox,
   Box,
 } from '@mui/material';
+//mui icon
 import { LoadingButton } from '@mui/lab';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import LockIcon from '@mui/icons-material/Lock';
+//cookie
 import Cookies from 'js-cookie';
-import { toast } from 'react-toastify';
 // components
 import Iconify from '../../../Components/User/iconify';
-import { AuthContext } from '../../../Contexts/AuthContext';
-
+//context
+import {useAuth} from '../../../hooks/context'
+//sweetalert
+import Swal from 'sweetalert2';
 // ----------------------------------------------------------------------
 
 export default function LoginForm() {
   const navigate = useNavigate();
-  document.title = 'Đăng nhập tài khoản';
-  const { loginUser } = useContext(AuthContext);
+  document.title = 'Login';
+  const { loginUser } = useAuth();
   const [loginFormData, setLoginFormData] = useState({
     username: '',
     password: '',
@@ -40,17 +43,17 @@ export default function LoginForm() {
     try {
       const loginData = await loginUser(loginFormData);
       if (!loginData.success) {
-        toast.warning('Vui lòng kiểm tra lại thông tin!');
+        Swal.fire('Failed', 'Login Failed', 'error');
       } else {
         const expiration = new Date();
         expiration.setTime(expiration.getTime() + 15 * 60 * 1000);
         Cookies.set('user', loginData.accessToken, { expires: expiration });
         Cookies.set('refresh', loginData.refreshToken, { expires: 365 });
-        toast.success('Đăng nhập tài khoản thành công!');
+        Swal.fire('Success', 'Login Success!', 'success');
         navigate('/dashboard/app');
       }
     } catch (error) {
-      toast.error('Máy chủ đã xảy ra lỗi!');
+      Swal.fire('Error', 'Server Error', 'error');
     }
   };
 
@@ -62,7 +65,7 @@ export default function LoginForm() {
           required
           fullWidth
           id="username"
-          label="Tên đăng nhập"
+          label="Username"
           name="username"
           autoComplete="username"
           autoFocus
@@ -79,7 +82,7 @@ export default function LoginForm() {
 
         <TextField
           name="password"
-          label="Mật khẩu"
+          label="Password"
           required
           fullWidth
           value={loginFormData.password}
@@ -113,9 +116,9 @@ export default function LoginForm() {
         justifyContent="space-between"
         sx={{ my: 2 }}
       >
-        <Box><Checkbox name="remember" label="Remember me" />Nhớ tôi</Box>
+        <Box><Checkbox name="remember" label="Remember me" />Remember me</Box>
         <Link variant="subtitle2" underline="hover">
-          Quên mật khẩu?
+          Forgot password?
         </Link>
       </Stack>
 

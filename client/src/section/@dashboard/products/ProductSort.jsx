@@ -1,8 +1,8 @@
-import { useState, useContext } from 'react';
+import { useState } from 'react';
 import { Menu, Button, MenuItem, Typography } from '@mui/material';
 import Iconify from '../../../Components/User/iconify';
 //context
-import {ProductsContext} from '../../../Contexts/ProductsContext';
+import { useProduct } from '../../../hooks/context';
 
 const SORT_BY_OPTIONS = [
   { value: 'newest', label: 'Newest' },
@@ -13,8 +13,7 @@ const SORT_BY_OPTIONS = [
 export default function ShopProductSort() {
   const [anchorEl, setAnchorEl] = useState(null);
   const [selectValue, setSelectValue] = useState('newest');
-  const {productsState: {products}} = useContext(ProductsContext);
-  const [product, setProduct] = useState(products);
+  const { handleSortProduct } = useProduct();
 
   const handleOpen = (event) => {
     setAnchorEl(event.currentTarget);
@@ -26,14 +25,7 @@ export default function ShopProductSort() {
 
   const handleChangeSelectValue = (value) => {
     setSelectValue(value);
-     // Sắp xếp danh sách sản phẩm dựa trên giá
-     if (value === 'priceDesc') {
-      const sortedProducts = [...products].sort((a, b) => b.price - a.price);
-      setProduct(sortedProducts);
-    } else if (value === 'priceAsc') {
-      const sortedProducts = [...products].sort((a, b) => a.price - b.price);
-      setProduct(sortedProducts);
-    }
+    handleSortProduct(selectValue);
     handleClose();
   };
 
@@ -43,10 +35,18 @@ export default function ShopProductSort() {
         color="inherit"
         disableRipple
         onClick={handleOpen}
-        endIcon={<Iconify icon={anchorEl ? 'eva:chevron-up-fill' : 'eva:chevron-down-fill'} />}
+        endIcon={
+          <Iconify
+            icon={anchorEl ? 'eva:chevron-up-fill' : 'eva:chevron-down-fill'}
+          />
+        }
       >
         Sort By:&nbsp;
-        <Typography component="span" variant="subtitle2" sx={{ color: 'text.secondary' }}>
+        <Typography
+          component="span"
+          variant="subtitle2"
+          sx={{ color: 'text.secondary' }}
+        >
           {selectValue}
         </Typography>
       </Button>

@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 //@mui
 import {
@@ -12,14 +13,18 @@ import {
   TextField,
 } from '@mui/material';
 //context
-import { useCategory } from '../../../hooks/context';
+import { useCategory} from '../../../hooks/context';
 
 //-----------------------------------------------------------
 
 const ProductFormProperty = ({ productData, setProductData }) => {
   const {
-    categoryState: { categories },
+    categoryState: { categories }, handleGetAllCategory
   } = useCategory();
+
+  useEffect(()=> {
+    handleGetAllCategory();
+  }, [handleGetAllCategory]);
 
   const renderCategories = () => {
     return categories.map((category) => (

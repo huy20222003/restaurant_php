@@ -72,16 +72,20 @@ const CartTableItem = ({
   const handleIncrease = useCallback(() => {
     const newQuantity = quantity + 1;
     updateCartItem(newQuantity);
-    setOrderData({ ...orderData, totalPrices: totalPrices });
-  }, [orderData, quantity, setOrderData, totalPrices, updateCartItem]);
+  
+    const newTotalPrices = (product?.priceSale || product?.price) * newQuantity;
+    setOrderData({ ...orderData, totalPrices: newTotalPrices });
+  }, [orderData, product?.price, product?.priceSale, quantity, setOrderData, updateCartItem]);
 
   const handleDecrease = useCallback(() => {
     if (quantity > 1) {
       const newQuantity = quantity - 1;
       updateCartItem(newQuantity);
+  
+      const newTotalPrices = (product?.priceSale || product?.price) * newQuantity;
+      setOrderData({ ...orderData, totalPrices: newTotalPrices });
     }
-    setOrderData({ ...orderData, totalPrices: totalPrices });
-  }, [orderData, quantity, setOrderData, totalPrices, updateCartItem]);
+  }, [orderData, product?.price, product?.priceSale, quantity, setOrderData, updateCartItem]);
 
   const handleDeleteProduct = (productId) => {
     Swal.fire({
@@ -107,7 +111,6 @@ const CartTableItem = ({
   };
 
   const itemId = item ? item._id : null;
-  console.log(isSelected);
 
   return (
     <TableRow key={itemId}>

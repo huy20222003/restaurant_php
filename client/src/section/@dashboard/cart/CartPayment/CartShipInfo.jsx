@@ -17,7 +17,8 @@ import {
 import Iconify from '../../../../Components/User/iconify';
 //context
 import { useCommon, useAuth } from '../../../../hooks/context';
-import { useEffect } from 'react';
+//sweetalert
+import Swal from 'sweetalert2';
 //-----------------------------------------------------------------
 
 const StyledButtonBaseBuy = styled(ButtonBase)`
@@ -140,29 +141,28 @@ const CartShipInfo = ({ orderData, setOrderData }) => {
   } = useAuth();
 
   const handleNext = () => {
-    if(orderData?.shippingUnit !== '' && orderData.paymentMethod !== '') {
+    if (orderData?.shippingUnit !== '' && orderData.paymentMethod !== '') {
+      const newTotalPrices = orderData?.totalPrices + orderData?.shippingFee;
+      setOrderData({
+        ...orderData,
+        fullName: user?.fullName,
+        phoneNumber: user?.phoneNumber,
+        shipAddress: user?.shipAddress,
+        totalPrices: newTotalPrices,
+      });
       setActiveStep((prevActiveStep) => prevActiveStep + 1);
     } else {
-      alert('You do not choose shipping unit or paymentMethod');
+      Swal.fire(
+        'Error',
+        'You must choose one delivery and shipping unit',
+        'error'
+      );
     }
   };
 
   const handleBack = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
-
-  const updateOrderData = () => {
-    setOrderData({
-      ...orderData,
-      fullName: user?.fullName,
-      phoneNumber: user?.phoneNumber,
-      shipAddress: user?.shipAddress,
-    });
-  };
-
-  useEffect(() => {
-    updateOrderData();
-  }, [user]);
 
   return (
     <>

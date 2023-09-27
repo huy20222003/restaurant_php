@@ -15,5 +15,6 @@ router.post('/create-user', authVerify, cashbinMiddleware, UsersController.creat
 router.delete('/delete-user/:_id', authVerify, cashbinMiddleware, UsersController.deleteUserById);
 router.patch('/update-user/avatar', authVerify, cashbinMiddleware, UsersController.updateAvatar);
 router.put('/update-user/detail', authVerify, cashbinMiddleware, UsersController.updateInfo);
+router.patch('/update-user/password', authVerify, cashbinMiddleware, UsersController.UpdatePassword);
 
 export default router;

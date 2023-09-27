@@ -1,8 +1,9 @@
 import { useState, useEffect, useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
+//@mui
 import {
   Box,
   Button,
-  Paper,
   Typography,
   Popover,
   Menu,
@@ -11,7 +12,10 @@ import {
   ButtonBase,
   Container,
   IconButton,
+  Paper,
 } from '@mui/material';
+import styled from '@emotion/styled';
+//mui icon
 import {
   Add as AddIcon,
   Edit as EditIcon,
@@ -19,116 +23,77 @@ import {
   MoreVert as MoreVertIcon,
   Visibility as VisibilityIcon,
 } from '@mui/icons-material';
+//component
 import Iconify from '../../../Components/User/iconify';
 import DataTable from '../../../Components/Admin/DataTable';
 import FormDialogCategory from '../../../Components/FormDialog/FormDialogCategory';
-import { useCategory, useCommon } from '../../../hooks/context';
-import { toast } from 'react-toastify';
+//context
+import { useCategory, useCommon, useProduct } from '../../../hooks/context';
+//sweetalert
 import Swal from 'sweetalert2';
+//------------------------------------------------------------------------
+
+const StyledPaper = styled(Paper)(({ theme }) => ({
+  boxShadow: theme.customShadows.card,
+  marginTop: '4rem',
+  borderRadius: '0.75rem',
+}));
 
 const CategoryManage = () => {
+  let countProduct = 0;
   const {
     categoryState: { categories },
+    handleGetAllCategory,
     handleGetOneCategory,
     handleCreateCategory,
     handleUpdateCategory,
     handleDeleteCategory,
   } = useCategory();
 
-  const { setOpenFormDialog } = useCommon();
-  const [isEdit, setIsEdit] = useState(false);
-  const [formData, setFormData] = useState({});
-  const [anchorEl, setAnchorEl] = useState(null);
-
-  const handleOpenFormDialog = () => {
-    setOpenFormDialog(true);
-  };
-
-  const handleView = useCallback((categoryId) => {
-    console.log(`View category with ID: ${categoryId}`);
-  }, []);
-
-  const handleEdit = useCallback(
-    async (categoryId) => {
-      const response = await handleGetOneCategory(categoryId);
-      if (response.success) {
-        setFormData(response.category);
-      }
-      setIsEdit(true);
-    },
-    [handleGetOneCategory]
-  );
-
-  const handleSave = async () => {
-    try {
-      if (isEdit) {
-        const editData = await handleUpdateCategory(formData?._id, formData);
-        if (!editData.success) {
-          toast.error('Category update failed');
-        } else {
-          toast.success('Category update successful');
-        }
-      } else {
-        const createData = await handleCreateCategory(formData);
-        if (!createData.success) {
-          toast.error('Add category failed');
-        } else {
-          toast.success('Add category successful');
-        }
-      }
-      setFormData({});
-      setOpenFormDialog(false);
-    } catch (error) {
-      toast.error('Server Error');
-    }
-  };
-
-  const handleDelete = useCallback(
-    async (categoryId) => {
-      Swal.fire({
-        title: 'Delete this category?',
-        text: 'Would you like to delete this category?',
-        icon: 'question',
-        showCancelButton: true,
-        confirmButtonText: 'Yes, of course!',
-      }).then(async (result) => {
-        if (result.isConfirmed) {
-          try {
-            const response = await handleDeleteCategory(categoryId);
-            if (response.success) {
-              Swal.fire('', 'Delete Successful!', 'success');
-            } else {
-              Swal.fire('', 'Delete failed!', 'error');
-            }
-          } catch (error) {
-            Swal.fire('', 'Server error!', 'error');
-          }
-        }
-      });
-    },
-    [handleDeleteCategory]
-  );
+  const {
+    productsState: { products },
+    handleGetAllProducts
+  } = useProduct();
 
   useEffect(() => {
-    if (isEdit) {
-      setOpenFormDialog(true);
-    }
-  }, [isEdit, formData._id, setOpenFormDialog]);
+    handleGetAllProducts();
+  }, [handleGetAllProducts]);
+
+  useEffect(() => {
+    handleGetAllCategory();
+  }, [handleGetAllCategory]);
+
+  const { setOpenFormDialog } = useCommon();
+  const [formData, setFormData] = useState({});
+  const [isEdit, setIsEdit] = useState(false);
+
+  const navigate = useNavigate();
 
   const columns = [
     { field: 'id', headerName: 'ID', type: 'String', width: 100 },
-    { field: 'name', headerName: 'Tên', type: 'String', width: 130 },
-    { field: 'description', headerName: 'Mô tả', type: 'String', width: 160 },
-    { field: 'quantity', headerName: 'Số lượng', type: 'number', width: 100 },
+    { field: 'name', headerName: 'Name', type: 'String', width: 200 },
+    {
+      field: 'description',
+      headerName: 'Description',
+      type: 'String',
+      width: 300,
+    },
+    {
+      field: 'quantity',
+      headerName: 'The number of products',
+      type: 'number',
+      width: 120,
+    },
     {
       field: 'actions',
-      headerName: 'Hành động',
+      headerName: 'Actions',
       width: 90,
       renderCell: ActionsCell,
     },
   ];
 
   function ActionsCell(params) {
+    const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
 
     const handleClick = (event) => {
@@ -171,15 +136,15 @@ const CategoryManage = () => {
           >
             <MenuItem onClick={() => handleView(params.row.id)}>
               <VisibilityIcon sx={{ paddingRight: '0.5rem' }} />
-              Xem
+              View
             </MenuItem>
             <MenuItem onClick={() => handleEdit(params.row.id)}>
               <EditIcon sx={{ paddingRight: '0.5rem' }} />
-              Sửa
+              Edit
             </MenuItem>
             <MenuItem onClick={() => handleDelete(params.row.id)}>
               <DeleteIcon sx={{ paddingRight: '0.5rem' }} />
-              Xoá
+              Delete
             </MenuItem>
           </Menu>
         </Popover>
@@ -189,82 +154,192 @@ const CategoryManage = () => {
 
   const rows =
     categories &&
-    categories.map(({ _id, name, description }) => ({
-      id: _id,
-      name,
-      description,
-      quantity: categories.length,
-    }));
+    categories.map((category) => {
+      const countItem = products.find((item) => item.category == category._id);
+      if (countItem) {
+        countProduct++;
+      }
+
+      return {
+        id: category?._id,
+        name: category?.name,
+        description: category?.description,
+        quantity: countProduct,
+      };
+    });
 
   const fields = [
     { name: 'name', label: 'Tên', type: 'text', row: 1 },
     { name: 'description', label: 'Mô tả', type: 'text', row: 5 },
   ];
 
+  const handleView = useCallback(
+    (categoryId) => {
+      navigate(`/admin/category-manage/${categoryId}`);
+    },
+    [navigate]
+  );
+
+  const handleDelete = useCallback(
+    async (categoryId) => {
+      Swal.fire({
+        title: 'Delete this category?',
+        text: 'Would you like to delete this category?',
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, of course!',
+      }).then(async (result) => {
+        if (result.isConfirmed) {
+          try {
+            const response = await handleDeleteCategory(categoryId);
+            if (response.success) {
+              Swal.fire('', 'Delete Successful!', 'success');
+            } else {
+              Swal.fire('', 'Delete failed!', 'error');
+            }
+          } catch (error) {
+            Swal.fire('', 'Server error!', 'error');
+          }
+        }
+      });
+    },
+    [handleDeleteCategory]
+  );
+
+  const handleOpenFormDialog = () => {
+    setOpenFormDialog(true);
+  };
+
+  const handleEdit = useCallback(
+    async (categoryId) => {
+      const response = await handleGetOneCategory(categoryId);
+      if (response.success) {
+        setFormData(response.category);
+      }
+      setIsEdit(true);
+    },
+    [handleGetOneCategory]
+  );
+
+  const handleSave = async () => {
+    try {
+      if (isEdit) {
+        const editData = await handleUpdateCategory(formData?._id, formData);
+        if (!editData.success) {
+          Swal.fire({
+            title: 'Update category failed!',
+            icon: 'error',
+            showCancelButton: true,
+            confirmButtonText: 'OK',
+          });
+        } else {
+          Swal.fire({
+            title: 'Update category successful!',
+            icon: 'success',
+            showCancelButton: true,
+            confirmButtonText: 'OK',
+          });
+        }
+      } else {
+        const createData = await handleCreateCategory(formData);
+        if (!createData.success) {
+          Swal.fire({
+            title: 'Add category failed!',
+            icon: 'error',
+            showCancelButton: true,
+            confirmButtonText: 'OK',
+          });
+        } else {
+          Swal.fire({
+            title: 'Add category Successful!',
+            icon: 'success',
+            showCancelButton: true,
+            confirmButtonText: 'OK',
+          });
+        }
+      }
+      setFormData({});
+      setOpenFormDialog(false);
+    } catch (error) {
+      Swal.fire({
+        title: 'Server Error',
+        icon: 'error',
+        showCancelButton: true,
+        confirmButtonText: 'OK',
+      });
+    }
+  };
+
+  useEffect(() => {
+    if (isEdit) {
+      setOpenFormDialog(true);
+    }
+  }, [isEdit, formData._id, setOpenFormDialog]);
+
   return (
-    <Box sx={{ display: 'flex', flex: '1 1 auto', maxWidth: '100%' }}>
-      <Box
-        sx={{
-          display: 'flex',
-          flex: '1 1 auto',
-          width: '100%',
-          flexDirection: 'column',
-        }}
-      >
-        <Box sx={{ flexGrow: 1, py: '64px' }}>
-          <Container sx={{ pt: '40px' }}>
-            <Stack>
-              <Stack
-                sx={{ flexDirection: 'row', justifyContent: 'space-between' }}
-              >
-                <Stack>
-                  <Typography variant="h4">Categories</Typography>
-                  <Stack
-                    sx={{
-                      flexDirection: 'row',
-                      alignItems: 'center',
-                      mt: '8px',
-                    }}
-                  >
-                    <ButtonBase sx={{ p: '7px 12px' }}>
-                      <Iconify
-                        icon="material-symbols:upload"
-                        sx={{ mr: '0.3rem' }}
-                      />
-                      Upload
-                    </ButtonBase>
-                    <ButtonBase sx={{ p: '7px 12px' }}>
-                      <Iconify icon="uil:import" sx={{ mr: '0.3rem' }} />
-                      Export
-                    </ButtonBase>
+    <StyledPaper>
+      <Box sx={{ display: 'flex', flex: '1 1 auto', maxWidth: '100%' }}>
+        <Box
+          sx={{
+            display: 'flex',
+            flex: '1 1 auto',
+            width: '100%',
+            flexDirection: 'column',
+          }}
+        >
+          <Box sx={{ flexGrow: 1, py: '2.5rem' }}>
+            <Container>
+              <Stack>
+                <Stack
+                  sx={{ flexDirection: 'row', justifyContent: 'space-between',  mb: '1rem' }}
+                >
+                  <Stack>
+                    <Typography variant="h5" color='primary'>Categories</Typography>
+                    <Stack
+                      sx={{
+                        flexDirection: 'row',
+                        alignItems: 'center',
+                        mt: '0.5rem',
+                      }}
+                    >
+                      <ButtonBase sx={{ p: '0.2rem' }}>
+                        <Iconify
+                          icon="material-symbols:upload"
+                          sx={{ mr: '0.3rem' }}
+                        />
+                        Upload
+                      </ButtonBase>
+                      <ButtonBase sx={{ p: '0.2rem' }}>
+                        <Iconify icon="uil:import" sx={{ mr: '0.3rem' }} />
+                        Export
+                      </ButtonBase>
+                    </Stack>
+                  </Stack>
+                  <Stack sx={{ flexDirection: 'row', alignItems: 'center' }}>
+                    <Button
+                      variant="contained"
+                      startIcon={<AddIcon />}
+                      sx={{ borderRadius: '0.375rem' }}
+                      onClick={handleOpenFormDialog}
+                    >
+                      Add
+                    </Button>
                   </Stack>
                 </Stack>
-                <Stack sx={{ flexDirection: 'row', alignItems: 'center' }}>
-                  <Button
-                    variant="contained"
-                    startIcon={<AddIcon />}
-                    sx={{ borderRadius: '12px' }}
-                    onClick={handleOpenFormDialog}
-                  >
-                    Add
-                  </Button>
-                </Stack>
-              </Stack>
-              <FormDialogCategory
-                fields={fields}
-                isEdit={isEdit}
-                formData={formData}
-                setFormData={setFormData}
-                handleSave={handleSave}
-              />
-              <Paper elevation={0} sx={{ m: '32px 0 0' }}>
+                <FormDialogCategory
+                  fields={fields}
+                  isEdit={isEdit}
+                  formData={formData}
+                  setFormData={setFormData}
+                  handleSave={handleSave}
+                />
                 <DataTable columns={columns} rows={rows} />
-              </Paper>
-            </Stack>
-          </Container>
+              </Stack>
+            </Container>
+          </Box>
         </Box>
       </Box>
-    </Box>
+    </StyledPaper>
   );
 };
 

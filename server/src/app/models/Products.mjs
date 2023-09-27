@@ -35,7 +35,7 @@ const Products = new Schema(
     },
     category: {
       type: Schema.Types.ObjectId,
-      required: true
+      default: '',
     },
     size: {
       type: Array,
@@ -64,6 +64,7 @@ const Products = new Schema(
 );
 
 Products.statics.uploadFileToCloudinary  = async function (image_url) {
+  console.log(image_url);
   try {
     if (!image_url) {
       return {

@@ -1,9 +1,9 @@
 import { Helmet } from 'react-helmet-async';
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 //@mui
 import { Container, Typography, Grid, Stack, ButtonBase } from '@mui/material';
-//mui 
+//mui
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 //component
 import {
@@ -12,20 +12,24 @@ import {
 } from '../../../Components/Admin/detailInfo';
 //context
 import { useUser } from '../../../hooks/context';
+//swall
+import Swal from 'sweetalert2';
 //----------------------------------------------------
 
 const CustomerDetail = () => {
   const {
-    usersState: { user }, handleGetOneUser
+    usersState: { user },
+    handleGetOneUser,
+    handleDeleteUser,
   } = useUser();
   const [userInfo, setUserInfo] = useState(user);
-  const {_id} = useParams();
+  const { _id } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await handleGetOneUser(_id);
-        console.log(response);
         setUserInfo(response.user);
       } catch (error) {
         console.error('Error fetching product:', error);
@@ -35,9 +39,33 @@ const CustomerDetail = () => {
     fetchData();
   }, [_id, handleGetOneUser]);
 
-  const handleBack = ()=> {
+  const handleBack = () => {
     history.back();
-  }
+  };
+
+  const handleDelete = async () => {
+    Swal.fire({
+      title: 'Delete this user?',
+      text: 'Would you like to delete this user?',
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, of course!',
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        try {
+          const response = await handleDeleteUser(_id);
+          if (response.success) {
+            Swal.fire('', 'Delete Successful!', 'success');
+            navigate('/admin/customer-manage');
+          } else {
+            Swal.fire('', 'Delete failed!', 'error');
+          }
+        } catch (error) {
+          Swal.fire('', 'Server error!', 'error');
+        }
+      }
+    });
+  };
 
   return (
     <>
@@ -45,7 +73,14 @@ const CustomerDetail = () => {
         <title>{'Profile'}</title>
       </Helmet>
       <Container maxWidth="lg">
-      <Stack sx={{ gap: '8px', alignItems: 'center', flexDirection: 'row', p: '80px 0 60px 0' }}>
+        <Stack
+          sx={{
+            gap: '8px',
+            alignItems: 'center',
+            flexDirection: 'row',
+            p: '80px 0 60px 0',
+          }}
+        >
           <ButtonBase onClick={handleBack}>
             <ArrowBackIosIcon sx={{ fontSize: '12px' }} />
           </ButtonBase>
@@ -53,7 +88,7 @@ const CustomerDetail = () => {
             <Stack
               sx={{ flexDirection: 'row', gap: '8px', alignItems: 'center' }}
             >
-              <Typography variant="h5">User #9999</Typography>
+              <Typography variant="h5">User #{_id}</Typography>
               <Typography
                 variant="overline"
                 sx={{
@@ -87,12 +122,21 @@ const CustomerDetail = () => {
                 { name: 'fullName', label: 'Full Name', gridItemProps: 6 },
                 { name: 'username', label: 'Username', gridItemProps: 6 },
                 { name: 'email', label: 'Email', gridItemProps: 6 },
-                { name: 'phoneNumber', label: 'Phone Number', gridItemProps: 6 },
+                {
+                  name: 'phoneNumber',
+                  label: 'Phone Number',
+                  gridItemProps: 6,
+                },
                 { name: 'address', label: 'Address', gridItemProps: 12 },
-                { name: 'shipAddress', label: 'Ship Address', gridItemProps: 12 },
+                {
+                  name: 'shipAddress',
+                  label: 'Ship Address',
+                  gridItemProps: 12,
+                },
               ]}
               gridItemProps={{ sm: 6, md: 6 }}
               data={userInfo}
+              handleDelete={handleDelete}
             />
           </Grid>
         </Grid>
