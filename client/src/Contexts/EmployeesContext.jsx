@@ -11,11 +11,15 @@ import {
   deleteEmployee,
 } from '../Reducers/EmployeesReducer/action';
 import employeeApi from '../Service/employeeApi';
+//context
+import { useAuth } from '../hooks/context';
+//--------------------------------------------------
 
 export const EmployeesContext = createContext();
 
 export const EmployeesProvider = (prop) => {
   const [employeesState, dispatch] = useReducer(reducer, initEmployeesState);
+  const { loadUser } = useAuth();
 
   const handleError = (error) => {
     if (error.response && error.response.data) {
@@ -81,11 +85,22 @@ export const EmployeesProvider = (prop) => {
   const handleUpdatePasswordEmployee = useCallback(async (newPassword) => {
     try {
       const response = await employeeApi.updatePassword(newPassword);
+      await loadUser();
       return response.data;
     } catch (error) {
       return handleError(error);
     }
-  }, []);
+  }, [loadUser]);
+
+  const handleUpdateAvatar = useCallback(async (avatarUpdate) => {
+    try {
+      const response = await employeeApi.updateAvatar(avatarUpdate);
+      await loadUser();
+      return response.data;
+    } catch (error) {
+      return handleError(error);
+    }
+  }, [loadUser]);
 
   const EmployeesData = {
     employeesState,
@@ -95,6 +110,7 @@ export const EmployeesProvider = (prop) => {
     handleUpdateEmployee,
     handleDeleteEmployee,
     handleUpdatePasswordEmployee,
+    handleUpdateAvatar,
   };
 
   return (

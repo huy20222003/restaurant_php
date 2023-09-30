@@ -10,7 +10,6 @@ const SliderConfig = [
   Slider2,
   Slider3,
   Slider4,
-  Slider4,
   Slider5,
   Slider6,
 ];

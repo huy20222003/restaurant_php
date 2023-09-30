@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { Box, Button, Divider, Paper, Stack, Typography } from '@mui/material';
 //component
 import Iconify from '../../../Components/User/iconify';
-import Label from '../../../Components/User/label';
 //context
 import { useOrder } from '../../../hooks/context';
 //-------------------------------------------------------------
@@ -27,24 +26,27 @@ const OrderTabPanel = () => {
           onClick={() => handleNavigate(order._id)}
         >
           {order?.status && (
-            <Label
+            <Stack
               variant="filled"
               sx={{
-                width: '3rem',
-                height: '1.5rem',
+                height: '1.8rem',
                 p: '0.5rem',
-                mb: '0.8rem',
+                mb: '0.4rem',
+                flexDirection: 'row',
+                alignItems: 'center',
+                borderRadius: '0.25rem',
+                display: 'inline-flex',
                 color: '#fff',
                 backgroundColor:
-                  order?.status === 'Ordered' ? 'success.main' : 'info.main',
+                  order?.status[0] === 'Ordered' ? 'success.main' : 'info.main',
               }}
             >
-              <Iconify icon="material-symbols:check" sx={{ mr: '6px' }} />
-              {order?.status}
-            </Label>
+              <Iconify icon="material-symbols:check" sx={{mr: '0.2rem'}} />
+              <Typography variant='body2'>{order?.status}</Typography>
+            </Stack>
           )}
           <Divider />
-          <Box sx={{ p: '16px 0' }}>
+          <Box sx={{ p: '1rem 0' }}>
             <Stack
               sx={{
                 flexDirection: 'row',

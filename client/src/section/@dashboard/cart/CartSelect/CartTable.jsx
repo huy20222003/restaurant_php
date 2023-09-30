@@ -108,7 +108,7 @@ const CartTable = ({
               <TableBody>
                 {items.map((item) => (
                   <CartTableItem
-                    key={item._id}
+                    key={item}
                     item={item}
                     onSelect={() => handleProductSelect(item)}
                     isSelected={selectedProducts.some(

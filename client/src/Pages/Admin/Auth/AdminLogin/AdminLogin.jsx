@@ -28,7 +28,7 @@ const defaultTheme = createTheme();
 
 const AdminLogin = () => {
   document.title = 'Login';
-    const { loginAdmin } = useAuth();
+    const { loginAdmin, loadUser } = useAuth();
     const navigate = useNavigate();
   
     const handleSubmit = async (e) => {
@@ -47,6 +47,7 @@ const AdminLogin = () => {
           expiration.setTime(expiration.getTime() + 15 * 60 * 1000);
           Cookies.set('user', loginData.accessToken, { expires: expiration });
           Cookies.set('refresh', loginData.refreshToken, { expires: 365 });
+          await loadUser();
           Swal.fire('Successful', 'Login Successful', 'success');
           navigate('/admin');
         }

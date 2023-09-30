@@ -55,7 +55,7 @@ export const reducer = (state, action) => {
     case DELETE_PRODUCT:
       return {
         ...state,
-        products: state.products.filter((PRODUCT) => PRODUCT._id !== payload),
+        products: state.products.filter((product) => product._id !== payload),
       };
     case SEARCH_PRODUCT:
       return {

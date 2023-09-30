@@ -158,7 +158,7 @@ const ProductManage = () => {
 
     return {
       id: product?._id,
-      image_url: product?.image_url,
+      image_url: product?.image_url[0],
       name: product?.name,
       description: description.props.children,
       category: categoryName?.name,

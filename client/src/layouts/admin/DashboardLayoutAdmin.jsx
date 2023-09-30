@@ -1,5 +1,6 @@
 import { useState, useContext } from 'react';
 import { useNavigate, Outlet } from 'react-router-dom';
+//@mui
 import { styled, createTheme, ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import MuiDrawer from '@mui/material/Drawer';
@@ -26,6 +27,9 @@ import {
 import NotificationsPopover from './header/NotificationsPopover';
 //context
 import { AuthContext } from '../../Contexts/AuthContext';
+//utils
+// utils
+import { bgBlur } from '../../utils/cssStyles';
 //--------------------------------------------------------------
 
 const drawerWidth = 240;
@@ -33,6 +37,7 @@ const drawerWidth = 240;
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== 'open',
 })(({ theme, open }) => ({
+  ...bgBlur({ color: theme.palette.background.default }),
   zIndex: theme.zIndex.drawer + 1,
   transition: theme.transitions.create(['width', 'margin'], {
     easing: theme.transitions.easing.sharp,
@@ -46,6 +51,8 @@ const AppBar = styled(MuiAppBar, {
       duration: theme.transitions.duration.enteringScreen,
     }),
   }),
+  opacity: 0.95,
+  boxShadow: theme.customShadows.z1,
 }));
 
 const Drawer = styled(MuiDrawer, {

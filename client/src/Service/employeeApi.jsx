@@ -25,6 +25,10 @@ const dishApi = {
         const url = `/employee/update-employee/password`;
         return axiosConfig.patch(url, data);
     },
+    updateAvatar: (data)=> {
+        const url = `/employee/update-employee/avatar`;
+        return axiosConfig.patch(url, data);
+    },
 }
 
 export default dishApi;

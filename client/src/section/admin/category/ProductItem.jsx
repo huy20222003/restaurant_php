@@ -21,6 +21,7 @@ const CustomBox = styled(Box)(({ theme }) => ({
   boxShadow: theme.customShadows.card,
   cursor: 'pointer',
   position: 'relative',
+  overflowY: 'auto',
 
   '&:hover .add-button': {
     opacity: 1,

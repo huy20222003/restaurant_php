@@ -1,78 +1,102 @@
 import PropTypes from 'prop-types';
-import { useRef, useState } from 'react';
-//@mui
+import { useCallback, useState } from 'react';
+import { useDropzone } from 'react-dropzone';
 import { Box, Stack, Typography } from '@mui/material';
 
+const ProductFormImageItem = ({ imageUrl }) => {
+  return (
+    <Stack
+      sx={{
+        justifyContent: 'center',
+        alignItems: 'center',
+        margin: '4px',
+        width: '80px',
+        height: '80px',
+        borderRadius: '10px',
+        overflow: 'hidden',
+        position: 'relative',
+        border: '1px solid rgba(145, 158, 171, 0.16)',
+      }}
+    >
+      <Stack
+        component={'span'}
+        sx={{
+          flexShrink: 0,
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+      >
+        <Box
+          component={'img'}
+          src={imageUrl}
+          sx={{
+            width: '100%',
+            height: '100%',
+            flexShrink: 0,
+            objectFit: 'cover',
+            position: 'absolute',
+          }}
+        ></Box>
+      </Stack>
+    </Stack>
+  );
+};
+
 const ProductFormImage = ({ setProductData }) => {
-  const [previewImg, setPreviewImg] = useState([]);
-  const fileInputRef = useRef(null);
+  const [imageUrls, setImageUrls] = useState([]);
 
-  const handleChooseFile = () => {
-    fileInputRef.current.click();
-  };
-  console.log(previewImg);
+  const createImageUrls = useCallback(
+    (files) => {
+      const promises = files.map((file) => {
+        return new Promise((resolve) => {
+          const reader = new FileReader();
 
-  const handleChangeFile = (e) => {
-    const files = e.target.files;
-    const imageFiles = Array.from(files);
-  
-    const promises = imageFiles.map((file) => {
-      return new Promise((resolve) => {
-        const reader = new FileReader();
-  
-        reader.onload = (e) => {
-          const base64Data = e.target.result;
-          resolve(base64Data);
-        };
-  
-        reader.readAsDataURL(file);
+          reader.onload = () => {
+            const base64Data = reader.result;
+            resolve(base64Data);
+          };
+
+          reader.readAsDataURL(file);
+        });
       });
-    });
-  
-    Promise.all(promises)
-      .then((base64Images) => {
-        setPreviewImg((prevImages) => [...prevImages, ...base64Images]);
-        setProductData((prevData) => ({
-          ...prevData,
-          image_url: [...prevData.image_url, ...base64Images],
-        }));
-      })
-      .catch((error) => {
-        console.error('Error converting images to base64:', error);
-      });
-  };
-  
+
+      Promise.all(promises)
+        .then((base64Images) => {
+          setProductData((prevData) => ({
+            ...prevData,
+            image_url: [...prevData.image_url, ...base64Images],
+          }));
+        })
+        .catch((error) => {
+          console.error('Error converting images to base64:', error);
+        });
+
+        const validFiles = files.filter((file) => file.type.startsWith('image/'));
+        const urls = validFiles.map((file) => URL.createObjectURL(file));
+        setImageUrls((prevImageUrls) => [...prevImageUrls, ...urls]);
+    },
+    [setProductData]
+  );
+  const onDrop = useCallback(
+    (acceptedFiles) => {
+      createImageUrls(acceptedFiles);
+    },
+    [createImageUrls]
+  );
+
+  const { getRootProps, getInputProps } = useDropzone({
+    onDrop,
+    accept: 'image/*',
+    multiple: true,
+  });
 
   return (
     <>
       <Stack sx={{ gap: '12px', p: '1rem' }}>
         <Typography variant="subtitle2">Images</Typography>
-        <Box
-          sx={{ width: '100%', position: 'relative' }}
-          onClick={handleChooseFile}
-        >
-          <Box
-            sx={{
-              padding: '40px',
-              outline: 'none',
-              borderRadius: '8px',
-              cursor: 'pointer',
-              overflow: 'hidden',
-              position: 'relative',
-              backgroundColor: 'rgba(145, 158, 171, 0.08)',
-              border: '1px dashed rgba(145, 158, 171, 0.2)',
-              transition:
-                'opacity 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, padding 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
-            }}
-          >
-            <input
-              accept="image/*"
-              multiple
-              type="file"
-              hidden
-              ref={fileInputRef}
-              onChange={handleChangeFile}
-            />
+        <Box sx={{ width: '100%', position: 'relative' }}>
+          <div {...getRootProps()} style={dropzoneStyle}>
+            <input {...getInputProps()} />
             <Stack
               sx={{
                 flexFlow: 'column',
@@ -92,46 +116,21 @@ const ProductFormImage = ({ setProductData }) => {
                 </Typography>
               </Stack>
             </Stack>
-          </Box>
-          {previewImg.length > 0 ? (
-            <Box sx={{ my: '24px' }}>
-              <Stack
-                sx={{
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  margin: '4px',
-                  width: '80px',
-                  height: '80px',
-                  borderRadius: '10px',
-                  overflow: 'hidden',
-                  position: 'relative',
-                  border: '1px solid rgba(145, 158, 171, 0.16)',
-                }}
-              >
-                {previewImg.map((image, index) => (
-                  <Stack
-                    key={index}
-                    component={'span'}
-                    sx={{
-                      flexShrink: 0,
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                    }}
-                  >
-                    <Box
-                      component={'img'}
-                      src={image}
-                      sx={{
-                        width: '100%',
-                        height: '100%',
-                        flexShrink: 0,
-                        objectFit: 'cover',
-                        position: 'absolute',
-                      }}
-                    ></Box>
-                  </Stack>
-                ))}
-              </Stack>
+          </div>
+          {imageUrls.length > 0 ? (
+            <Box
+              sx={{
+                my: '1.5rem',
+                display: 'flex',
+                gap: '0.75rem',
+                alignItems: 'center',
+                flexWrap: 'wrap',
+                flex: 1
+              }}
+            >
+              {imageUrls.map((imageUrl) => (
+                <ProductFormImageItem key={imageUrl} imageUrl={imageUrl} />
+              ))}
             </Box>
           ) : (
             ''
@@ -142,9 +141,23 @@ const ProductFormImage = ({ setProductData }) => {
   );
 };
 
+const dropzoneStyle = {
+  border: '2px dashed #cccccc',
+  borderRadius: '8px',
+  padding: '40px',
+  outline: 'none',
+  cursor: 'pointer',
+  backgroundColor: 'rgba(145, 158, 171, 0.08)',
+  transition:
+    'opacity 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, padding 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
+};
+
 ProductFormImage.propTypes = {
-  productData: PropTypes.object.isRequired,
-  setProductData: PropTypes.func.isRequired,
+  setProductData: PropTypes.func,
+};
+
+ProductFormImageItem.propTypes = {
+  imageUrl: PropTypes.string,
 };
 
 export default ProductFormImage;

@@ -37,11 +37,12 @@ const Category = () => {
                 style={{
                   display: 'flex',
                   flexDirection: 'row',
-                  gap: '1rem',
+                  gap: '1.5rem',
                   alignItems: 'center',
                   padding: '1rem',
                   flexWrap: 'wrap',
-                  justifyContent: 'space-evenly',
+                  justifyContent: 'space-between',
+                  px: '1rem'
                 }}
               >
                 {chunk.map((category) => (

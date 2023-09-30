@@ -74,17 +74,17 @@ export default function ShopProductCard({ product }) {
               component="span"
               variant="body1"
               sx={{
-                color: 'text.disabled',
-                textDecoration: 'line-through',
+                color: priceSale ? 'text.disabled' : '#000',
+                textDecoration: priceSale ? 'line-through' : 'none',
               }}
             >
-              {priceSale && fCurrency(priceSale)}
+              {fCurrency(price)}
             </Typography>
             &nbsp;
-            {fCurrency(price)}
+            {priceSale && fCurrency(priceSale)}
           </Typography>
         </Stack>
-        <ProductRating rate={rate}/>
+        <ProductRating rate={rate} />
       </Stack>
     </Card>
   );

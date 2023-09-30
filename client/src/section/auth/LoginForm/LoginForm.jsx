@@ -27,7 +27,7 @@ import Swal from 'sweetalert2';
 export default function LoginForm() {
   const navigate = useNavigate();
   document.title = 'Login';
-  const { loginUser } = useAuth();
+  const { loginUser, loadUser } = useAuth();
   const [loginFormData, setLoginFormData] = useState({
     username: '',
     password: '',
@@ -49,6 +49,7 @@ export default function LoginForm() {
         expiration.setTime(expiration.getTime() + 15 * 60 * 1000);
         Cookies.set('user', loginData.accessToken, { expires: expiration });
         Cookies.set('refresh', loginData.refreshToken, { expires: 365 });
+        await loadUser();
         Swal.fire('Success', 'Login Success!', 'success');
         navigate('/dashboard/app');
       }

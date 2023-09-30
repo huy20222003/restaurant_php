@@ -80,11 +80,11 @@ const ProductInfo = ({ product }) => {
         </Label>
       )}
 
-      <Typography variant="h6" sx={{ mb: '0.8rem' }}>
+      <Typography variant="subtitle1" sx={{ mb: '0.8rem' }}>
         {product?.name}
       </Typography>
       <ProductRating rate={product?.rate} />
-      <Typography variant="h6" sx={{ my: '1rem' }}>
+      <Typography variant="subtitle1" sx={{ my: '1rem' }}>
         {fCurrency(product?.priceSale || product?.price)}
       </Typography>
       <Typography variant="caption" sx={{ py: '2rem' }}>
@@ -102,60 +102,68 @@ const ProductInfo = ({ product }) => {
         </Typography>
         <ProductQuantity />
       </Stack>
-      <Stack
-        sx={{
-          flexDirection: 'row',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          my: '1rem',
-        }}
-      >
-        <Typography>Colors</Typography>
-        <FormControl sx={{ width: '80px' }}>
-          <InputLabel id="color-label">Colors</InputLabel>
-          <Select
-            labelId="color-label"
-            label="Colors"
-            size="small"
-            value={property.color || ''}
-            onChange={(e) =>
-              setProperty({
-                ...property,
-                color: e.target.value,
-              })
-            }
-          >
-            {renderSelectOptions(product?.color || [])}
-          </Select>
-        </FormControl>
-      </Stack>
-      <Stack
-        sx={{
-          flexDirection: 'row',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          my: '1rem',
-        }}
-      >
-        <Typography>Size</Typography>
-        <FormControl sx={{ width: '80px' }}>
-          <InputLabel id="size-label">Size</InputLabel>
-          <Select
-            id="size-label"
-            label="Size"
-            size="small"
-            value={property.size || ''}
-            onChange={(e) =>
-              setProperty({
-                ...property,
-                size: e.target.value,
-              })
-            }
-          >
-            {renderSelectOptions(product?.size || [])}
-          </Select>
-        </FormControl>
-      </Stack>
+      {product?.color.length > 0 ? (
+        <Stack
+          sx={{
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            my: '1rem',
+          }}
+        >
+          <Typography>Colors</Typography>
+          <FormControl sx={{ width: '80px' }}>
+            <InputLabel id="color-label">Colors</InputLabel>
+            <Select
+              labelId="color-label"
+              label="Colors"
+              size="small"
+              value={property.color || ''}
+              onChange={(e) =>
+                setProperty({
+                  ...property,
+                  color: e.target.value,
+                })
+              }
+            >
+              {renderSelectOptions(product?.color || [])}
+            </Select>
+          </FormControl>
+        </Stack>
+      ) : (
+        ''
+      )}
+      {product?.size.length > 0 ? (
+        <Stack
+          sx={{
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            my: '1rem',
+          }}
+        >
+          <Typography>Size</Typography>
+          <FormControl sx={{ width: '80px' }}>
+            <InputLabel id="size-label">Size</InputLabel>
+            <Select
+              id="size-label"
+              label="Size"
+              size="small"
+              value={property.size || ''}
+              onChange={(e) =>
+                setProperty({
+                  ...property,
+                  size: e.target.value,
+                })
+              }
+            >
+              {renderSelectOptions(product?.size || [])}
+            </Select>
+          </FormControl>
+        </Stack>
+      ) : (
+        ''
+      )}
       <Box sx={{ my: '1rem' }}>
         <Button
           size="medium"

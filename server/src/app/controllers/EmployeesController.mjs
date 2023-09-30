@@ -142,7 +142,7 @@ class EmployeeController {
     }
   }
 
-  async UpdatePassword(req, res) {
+  async updatePassword(req, res) {
     try {
       const { newPassword } = req.body;
 
@@ -167,6 +167,37 @@ class EmployeeController {
       return res
         .status(200)
         .json({ success: true, message: 'Update password success!' });
+    } catch (error) {
+      return res.status(500).json({
+        success: false,
+        message: 'An error occurred while processing the request.',
+        error: error.message,
+      });
+    }
+  }
+
+  async updateAvatar(req, res) {
+    try {
+      const { avatarUpdate } = req.body;
+      const employee = await Employees.findById(req.user._id);
+      if (!employee) {
+        return res
+          .status(404)
+          .json({ success: false, message: 'Employee not found' });
+      } else {
+        const uploadResult = await Employees.uploadFileToCloudinary(avatarUpdate);
+        if (!uploadResult.status) {
+          return res
+            .status(500)
+            .json({ success: false, message: 'Error uploading image_url' });
+        } else {
+          employee.avatar = uploadResult.imageUrl;
+          await employee.save();
+          return res
+            .status(200)
+            .json({ success: true, message: 'Update avatar successfull' });
+        }
+      }
     } catch (error) {
       return res.status(500).json({
         success: false,

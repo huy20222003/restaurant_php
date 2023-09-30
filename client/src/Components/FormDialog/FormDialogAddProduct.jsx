@@ -14,7 +14,6 @@ import SearchIcon from '@mui/icons-material/Search';
 import { useCommon, useProduct } from '../../hooks/context';
 //component
 import { ProductItem } from '../../section/admin/category';
-import Scrolllbar from '../User/scrollbar';
 //Loader
 import Loader from '../../Components/Loader';
 //----------------------------------------------------------------------
@@ -77,13 +76,7 @@ const FormDialogAddProduct = () => {
           productsSearch.map((product) => {
             return (
               <div key={product?._id}>
-                {isPending ? (
-                  <Loader />
-                ) : (
-                  <Scrolllbar>
-                    <ProductItem product={product} />
-                  </Scrolllbar>
-                )}
+                {isPending ? <Loader /> : <ProductItem product={product} />}
               </div>
             );
           })}

@@ -1,9 +1,8 @@
 import axios from 'axios';
 import Cookies from 'js-cookie';
 
-
 const axiosConfig = axios.create({
-  baseURL: 'https://restaurant-vh35.onrender.com/api/v1', 
+  baseURL: 'https://restaurant-vh35.onrender.com/api/v1',
   timeout: 10000,
   headers: {
     'Content-Type': 'application/json',
@@ -26,11 +25,15 @@ axiosConfig.interceptors.response.use(
       if (refreshToken) {
         try {
           let response;
-     
-          if(!window.location.href.includes('admin')) {
-            response = await axiosConfig.post('/auth/refresh',  {refreshToken} );
+
+          if (!window.location.href.includes('admin')) {
+            response = await axiosConfig.post('/auth/refresh', {
+              refreshToken,
+            });
           } else {
-            response = await axiosConfig.post('/auth/admin/refresh',  {refreshToken} );
+            response = await axiosConfig.post('/auth/admin/refresh', {
+              refreshToken,
+            });
           }
           const newToken = response.data.accessToken;
 
@@ -47,15 +50,24 @@ axiosConfig.interceptors.response.use(
         } catch (refreshError) {
           console.error('Lỗi khi làm mới token:', refreshError);
           Cookies.remove('refresh');
+          if (window.location.href.includes('admin')) {
+            location.replace('/auth/admin/login');
+          } else {
+            location.replace('/auth/login');
+          }
         }
       } else {
         Cookies.remove('user');
         Cookies.remove('refresh');
+        if (window.location.href.includes('admin')) {
+          location.replace('/auth/admin/login');
+        } else {
+          location.replace('/auth/login');
+        }
       }
     }
     return Promise.reject(error);
   }
 );
-
 
 export default axiosConfig;

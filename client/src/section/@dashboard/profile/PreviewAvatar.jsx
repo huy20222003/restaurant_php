@@ -1,4 +1,5 @@
 import { memo } from 'react';
+import PropTypes from 'prop-types'; // Import PropTypes
 //@mui
 import {
   Avatar,
@@ -21,19 +22,26 @@ const PreviewAvatar = ({ previewAvatar, open, setOpen, avatarUpdate }) => {
   const handleClose = () => {
     setOpen(false);
   };
-  const handleUpdate = async ()=> {
+
+  const handleUpdate = async () => {
     try {
+      if (!avatarUpdate) {
+        toast.error('Please upload an avatar before saving.');
+        return;
+      } else {
         const updateData = await handleUpdateAvatar({avatarUpdate});
-        if(!updateData.success) {
-            toast.error('Error update avatar');
+
+        if (!updateData.success) {
+          toast.error('Error updating avatar.');
         } else {
-            toast.success('Update avatar successfull!');
+          toast.success('Avatar updated successfully!');
         }
         handleClose();
+      }
     } catch (error) {
-        toast.error('Server Error');
+      toast.error('Server Error');
     }
-  }
+  };
 
   return (
     <Dialog open={open} onClose={handleClose}>
@@ -55,6 +63,14 @@ const PreviewAvatar = ({ previewAvatar, open, setOpen, avatarUpdate }) => {
       </DialogActions>
     </Dialog>
   );
+};
+
+// Define PropTypes for your component
+PreviewAvatar.propTypes = {
+  previewAvatar: PropTypes.string,
+  open: PropTypes.bool,
+  setOpen: PropTypes.func,
+  avatarUpdate: PropTypes.string,
 };
 
 export default memo(PreviewAvatar);

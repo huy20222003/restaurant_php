@@ -10,13 +10,13 @@ const ProductDescription = ({ product }) => {
 
   return (
     <Box sx={{ width: '100%' }}>
-      <Typography variant="h6">Product Information</Typography>
+      <Typography variant="subtitle1">Product Information</Typography>
       <List>
         <ListItem>
           <Typography variant="body2">Product code: {product?._id}</Typography>
         </ListItem>
       </List>
-      <Typography variant="h6">Product Detail</Typography>
+      <Typography variant="subtitle1">Product Detail</Typography>
       <Typography variant="caption">
         {HTMLReactParser(description)}
       </Typography>

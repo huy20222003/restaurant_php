@@ -63,16 +63,15 @@ const Products = new Schema(
   }
 );
 
-Products.statics.uploadFileToCloudinary  = async function (image_url) {
-  console.log(image_url);
+Products.statics.uploadFileToCloudinary = async function (file) {
   try {
-    if (!image_url) {
+    if (!file) {
       return {
         status: false,
         message: 'Missing information',
       };
     } else {
-      const result = await cloudinary.uploader.upload(image_url, {
+      const result = await cloudinary.uploader.upload(file, {
         upload_preset: process.env.UPLOAD_PRESET,
       });
       return {

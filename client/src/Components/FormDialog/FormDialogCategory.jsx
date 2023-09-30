@@ -1,3 +1,4 @@
+import { useCallback } from 'react';
 import PropTypes from 'prop-types';
 //@mui
 import {
@@ -10,8 +11,15 @@ import {
 } from '@mui/material';
 //context
 import { useCommon } from '../../hooks/context';
+//---------------------------------------------------------------------
 
-const FormDialogCategory = ({ fields, formData, setFormData, handleSave, isEdit }) => {
+const FormDialogCategory = ({
+  fields,
+  formData,
+  setFormData,
+  handleSave,
+  isEdit,
+}) => {
   const { openFormDialog, setOpenFormDialog } = useCommon();
 
   const handleClose = () => {
@@ -26,7 +34,25 @@ const FormDialogCategory = ({ fields, formData, setFormData, handleSave, isEdit 
     }));
   };
 
-  
+  const handleChangeFile = useCallback(
+    async (e) => {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = () => {
+          setFormData((prevData) => ({
+            ...prevData,
+            imageUrl: reader.result,
+          }));
+        };
+        reader.onerror = () => {
+          console.error('Error occurred while reading the file.');
+        };
+        reader.readAsDataURL(file);
+      }
+    },
+    [setFormData]
+  );
 
   return (
     <Dialog open={openFormDialog} onClose={handleClose}>
@@ -51,6 +77,12 @@ const FormDialogCategory = ({ fields, formData, setFormData, handleSave, isEdit 
             rows={field.row}
           />
         ))}
+        <input
+          type="file"
+          name="imageUrl"
+          accept="image/*"
+          onChange={handleChangeFile}
+        />
       </DialogContent>
       <DialogActions>
         <Button

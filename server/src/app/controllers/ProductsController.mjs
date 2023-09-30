@@ -69,33 +69,49 @@ class ProductsController {
         !price ||
         !description ||
         !status ||
-        !image_url
+        !image_url ||
+        image_url.length === 0
       ) {
         return res
           .status(400)
           .json({ success: false, message: 'Required fields missing' });
+      } else {
+        const uploadedImageUrls = [];
+
+        for (const imageUrl of image_url) {
+          const uploadResult = await Products.uploadFileToCloudinary(imageUrl);
+          if (!uploadResult.status) {
+            return res
+              .status(500)
+              .json({
+                success: false,
+                message: 'Error uploading one or more images',
+              });
+          }
+          uploadedImageUrls.push(uploadResult.imageUrl);
+        }
+
+        const newProduct = new Products({
+          name,
+          subDescription,
+          description,
+          price,
+          priceSale,
+          status,
+          size,
+          color,
+          quantity,
+          category,
+          image_url: uploadedImageUrls,
+        });
+        await newProduct.save();
+
+        return res.status(201).json({
+          success: true,
+          message: 'Product added successfully!',
+          product: newProduct,
+        });
       }
-
-      const newProduct = new Products({
-        name,
-        subDescription,
-        description,
-        price,
-        priceSale,
-        status,
-        size,
-        color,
-        quantity,
-        category,
-        image_url,
-      });
-      await newProduct.save();
-
-      return res.status(201).json({
-        success: true,
-        message: 'Product added successfully!',
-        product: newProduct,
-      });
     } catch (error) {
       return res.status(500).json({
         success: false,
@@ -169,7 +185,7 @@ class ProductsController {
 
   async searchProduct(req, res) {
     const q = req.query.q;
-    console.log("q", q);
+    console.log('q', q);
 
     try {
       const products = await Products.find({

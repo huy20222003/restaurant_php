@@ -15,7 +15,7 @@ const ProductService = () => {
             width={24}
             height={24}
           />
-          <Typography variant="h6">100% Original</Typography>
+          <Typography variant="subtitle1">100% Original</Typography>
           <Typography variant="body2">
             Chocolate bar candy canes ice cream toffee cookie halvah.
           </Typography>
@@ -29,7 +29,7 @@ const ProductService = () => {
             width={24}
             height={24}
           />
-          <Typography variant="h6">100% Original</Typography>
+          <Typography variant="subtitle1">100% Original</Typography>
           <Typography variant="body2">
             Chocolate bar candy canes ice cream toffee cookie halvah.
           </Typography>
@@ -43,7 +43,7 @@ const ProductService = () => {
             width={24}
             height={24}
           />
-          <Typography variant="h6">100% Original</Typography>
+          <Typography variant="subtitle1">100% Original</Typography>
           <Typography variant="body2">
             Chocolate bar candy canes ice cream toffee cookie halvah.
           </Typography>

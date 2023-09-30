@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { memo } from 'react';
 //@mui
 import {
@@ -11,12 +12,12 @@ import {
 //toast
 import { toast } from 'react-toastify';
 //context
-import { useUser } from '../../../hooks/context';
+import { useEmployee } from '../../../hooks/context';
 
 //------------------------------------------------------
 
 const PreviewAvatar = ({ previewAvatar, open, setOpen, avatarUpdate }) => {
-  const { handleUpdateAvatar } = useUser();
+  const { handleUpdateAvatar } = useEmployee();
 
   const handleClose = () => {
     setOpen(false);
@@ -55,6 +56,13 @@ const PreviewAvatar = ({ previewAvatar, open, setOpen, avatarUpdate }) => {
       </DialogActions>
     </Dialog>
   );
+};
+
+PreviewAvatar.propTypes = {
+  previewAvatar: PropTypes.string.isRequired, 
+  open: PropTypes.bool.isRequired, 
+  setOpen: PropTypes.func.isRequired, 
+  avatarUpdate: PropTypes.object.isRequired, 
 };
 
 export default memo(PreviewAvatar);

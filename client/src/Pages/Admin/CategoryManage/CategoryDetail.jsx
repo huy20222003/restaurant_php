@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useCallback, useEffect, useState } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 //@mui
 import {
   Box,
@@ -21,6 +21,8 @@ import FormDialogAddProduct from '../../../Components/FormDialog/FormDialogAddPr
 import { useCommon, useProduct, useCategory } from '../../../hooks/context';
 //htmlparse
 import HTMLReactParser from 'html-react-parser';
+//sweetalert2
+import Swal from 'sweetalert2';
 //-----------------------------------------------------------------
 
 const StyledPaper = styled(Paper)(({ theme }) => ({
@@ -39,11 +41,14 @@ const CategoryDetail = () => {
     categoryState: { categories, category },
     handleGetAllCategory,
     handleGetOneCategory,
+    handleDeleteCategory,
   } = useCategory();
 
   useEffect(() => {
     handleGetAllCategory();
   }, [handleGetAllCategory]);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     handleGetAllProducts();
@@ -103,7 +108,7 @@ const CategoryDetail = () => {
     {
       field: 'actions',
       headerName: 'Actions',
-      width: 90,
+      width: 120,
       renderCell: ActionsCell,
     },
   ];
@@ -137,18 +142,41 @@ const CategoryDetail = () => {
     return (
       <Button
         variant="text"
-        color="error"
+        color="info"
         size="small"
         onClick={() => handleDelete(params.row.id)}
       >
-        Delete
+        Switch
       </Button>
     );
   }
 
-  const handleDelete = (id) => {
-    console.log(id);
-  };
+  const handleDelete = useCallback(
+    async () => {
+      Swal.fire({
+        title: 'Delete this category?',
+        text: 'Would you like to delete this category?',
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, of course!',
+      }).then(async (result) => {
+        if (result.isConfirmed) {
+          try {
+            const response = await handleDeleteCategory(_id);
+            if (response.success) {
+              Swal.fire('', 'Delete Successful!', 'success');
+              navigate('/admin/category-manage');
+            } else {
+              Swal.fire('', 'Delete failed!', 'error');
+            }
+          } catch (error) {
+            Swal.fire('', 'Server error!', 'error');
+          }
+        }
+      });
+    },
+    [_id, handleDeleteCategory, navigate]
+  );
 
   return (
     <Box sx={{ pt: '64px' }}>
@@ -169,7 +197,7 @@ const CategoryDetail = () => {
               <Stack
                 sx={{ flexDirection: 'row', gap: '8px', alignItems: 'center' }}
               >
-                <Typography variant="h5">
+                <Typography variant="h6">
                   Category #{categoryInfo?._id}
                 </Typography>
               </Stack>
@@ -193,7 +221,7 @@ const CategoryDetail = () => {
               <Stack sx={{ flexDirection: 'row', gap: '12px' }}>
                 <Button
                   startIcon={<AddIcon />}
-                  variant="outlined"
+                  variant="contained"
                   color="primary"
                   onClick={handleOpenFormDialog}
                 >
@@ -203,6 +231,7 @@ const CategoryDetail = () => {
                   startIcon={<DeleteIcon />}
                   variant="outlined"
                   color="error"
+                  onClick={handleDelete}
                 >
                   Delete
                 </Button>

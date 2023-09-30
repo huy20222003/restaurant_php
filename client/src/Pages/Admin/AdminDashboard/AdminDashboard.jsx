@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Box, Container, Unstable_Grid2 as Grid } from '@mui/material';
 import {
@@ -12,13 +13,18 @@ import {
   AppWebsiteVisits,
 } from '../../../section/admin/dashboard';
 //context hook
-import useProduct from '../../../hooks/context/useProduct';
+import { useProduct } from '../../../hooks/context';
 //------------------------------------------------------------------
 
 const AdminDashboard = () => {
   const {
     productsState: { products },
+    handleGetAllProducts,
   } = useProduct();
+
+  useEffect(()=> {
+    handleGetAllProducts();
+  }, [handleGetAllProducts]);
   return (
     <>
       <Helmet>
@@ -116,13 +122,13 @@ const AdminDashboard = () => {
                 ]}
               />
             </Grid>
-            <Grid xs={12} md={6} lg={4}>
+            <Grid xs={12} md={12} lg={12}>
               <OverviewLatestProducts
                 products={products}
                 sx={{ height: '100%' }}
               />
             </Grid>
-            <Grid xs={12} md={6} lg={8}>
+            <Grid xs={12} md={12} lg={12}>
               <OverviewLatestOrders
                 orders={[
                   {

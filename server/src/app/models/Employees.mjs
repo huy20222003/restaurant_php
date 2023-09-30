@@ -73,8 +73,7 @@ Employees.pre('save', async function (next) {
   next();
 });
 
-Employees.methods.uploadFileToCloudinary = async function (file) {
-  const user = this;
+Employees.statics.uploadFileToCloudinary = async function (file) {
   try {
     if (!file) {
       return {
@@ -85,8 +84,6 @@ Employees.methods.uploadFileToCloudinary = async function (file) {
       const result = await cloudinary.uploader.upload(file, {
         upload_preset: process.env.UPLOAD_PRESET,
       });
-      user.avatar = result.secure_url;
-      await user.save();
       return {
         status: true,
         message: 'Upload successful',

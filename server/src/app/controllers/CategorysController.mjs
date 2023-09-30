@@ -38,20 +38,31 @@ class CategoryController {
 
   async addCategory(req, res) {
     try {
-      const newCategory = new Categorys(req.body);
-
-      if (!newCategory.name) {
+      const { name, description, imageUrl } = req.body;
+      if (!name || !imageUrl) {
         return res
           .status(400)
-          .json({ success: false, error: 'Category name is required' });
+          .json({ success: false, message: 'Required fields missing' });
+      } else {
+        const uploadResult = await Categorys.uploadFileToCloudinary(imageUrl);
+        if (!uploadResult.status) {
+          return res
+            .status(500)
+            .json({ success: false, message: 'Error uploading imageUrl' });
+        } else {
+          const newCategory = new Categorys({
+            name,
+            description,
+            imageUrl: uploadResult.imageUrl,
+          });
+          await newCategory.save();
+          return res.status(201).json({
+            success: true,
+            message: 'Category added successfully!',
+            category: newCategory,
+          });
+        }
       }
-
-      const savedCategory = await newCategory.save();
-      return res.status(201).json({
-        success: true,
-        message: 'Category added successfully!',
-        category: savedCategory,
-      });
     } catch (error) {
       return res.status(500).json({
         success: false,

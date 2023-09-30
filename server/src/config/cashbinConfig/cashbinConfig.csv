@@ -1,69 +1,82 @@
 #auth admin Router
-p, admin, /api/auth/admin/account, GET
-p, employee, /api/auth/admin/account, GET
+p, admin, /api/v1/auth/admin/account, GET
+p, employee, /api/v1/auth/admin/account, GET
 
 #auth user router
-p, user, /api/auth/account, GET
+p, user, /api/v1/auth/account, GET
 
 #product router
-p, admin, /api/products/create-product, POST
-p, admin, /api/products/update-product/:_id, PUT
-p, admin, /api/products/delete-product/:_id, DELETE
+p, admin, /api/v1/products/create-product, POST
+p, admin, /api/v1/products/update-product/:_id, PUT
+p, admin, /api/v1/products/delete-product/:_id, DELETE
 
-p, employee, /api/products/create-product, POST
-p, employee, /api/products/update-product/:_id, PUT
-p, employee, /api/products/delete-product/:_id, DELETE
+p, employee, /api/v1/products/create-product, POST
+p, employee, /api/v1/products/update-product/:_id, PUT
+p, employee, /api/v1/products/delete-product/:_id, DELETE
 
 #cart router
-p, user, /api/cart, GET
-p, user, /api/cart/update-cart, PUT
-p, user, /api/cart/update-cart/delete-product/:_id, DELETE
+p, user, /api/v1/cart, GET
+p, user, /api/v1/cart/update-cart, PUT
+p, user, /api/v1/cart/update-cart/delete-product/:_id, DELETE
 
 #category router
-p, admin, /api/category/create-category, POST
-p, admin, /api/category/update-category/*, PUT
-p, admin, /api/category/delete-category/:_id, DELETE
-p, admin, /api/category/add-product, PATCH
+p, admin, /api/v1/category/create-category, POST
+p, admin, /api/v1/category/update-category/*, PUT
+p, admin, /api/v1/category/delete-category/:_id, DELETE
+p, admin, /api/v1/category/add-product, PATCH
 
-p, employee, /api/category/create-category, POST
-p, employee, /api/category/update-category/:_id, PUT
-p, employee, /api/category/delete-category/:_id, DELETE
-p, employee, /api/category/add-product, PATCH
+p, employee, /api/v1/category/create-category, POST
+p, employee, /api/v1/category/update-category/:_id, PUT
+p, employee, /api/v1/category/delete-category/:_id, DELETE
+p, employee, /api/v1/category/add-product, PATCH
 
 #employee router
-p, admin, /api/employee, GET
-p, admin, /api/employee/:_id, GET
-p, admin, /api/employee/create-emloyee, POST
-p, admin, /api/employee/update-employee/:_id, PUT
-p, admin, /api/employee/delete-employee/:_id, DELETE
-p, admin, /api/employee/update-employee/password, PATCH
+p, admin, /api/v1/employee, GET
+p, admin, /api/v1/employee/:_id, GET
+p, admin, /api/v1/employee/create-emloyee, POST
+p, admin, /api/v1/employee/update-employee/:_id, PUT
+p, admin, /api/v1/employee/delete-employee/:_id, DELETE
+p, admin, /api/v1/employee/update-employee/password, PATCH
+p, admin, /api/v1/employee/update-employee/avatar, PATCH
 
-p, employee, /api/employee, GET
-p, employee, /api/employee/:_id, GET
-p, employee, /api/employee/update-employee/password, PATCH
+p, employee, /api/v1/employee, GET
+p, employee, /api/v1/employee/:_id, GET
+p, employee, /api/v1/employee/update-employee/password, PATCH
+p, employee, /api/v1/employee/update-employee/avatar, PATCH
 
 #order router
-p, admin, /api/order, GET
-p, admin, /api/order/:_id, GET
+p, admin, /api/v1/order, GET
+p, admin, /api/v1/order/:_id, GET
 
-p, employee, /api/order, GET
-p, employee, /api/order/:_id, GET
+p, employee, /api/v1/order, GET
+p, employee, /api/v1/order/:_id, GET
 
-p, user, /api/order/getAllById, GET
-p, user, /api/order/:_id, GET
-p, user, /api/order/create-order, POST
+p, user, /api/v1/order/getAllById, GET
+p, user, /api/v1/order/:_id, GET
+p, user, /api/v1/order/create-order, POST
 
 #user router
-p, admin, /api/user, GET
-p, admin, /api/user/:_id, GET
-p, admin, /api/user/create-user, POST
-p, admin, /api/user/delete-user/:_id, DELETE
+p, admin, /api/v1/user, GET
+p, admin, /api/v1/user/:_id, GET
+p, admin, /api/v1/user/create-user, POST
+p, admin, /api/v1/user/delete-user/:_id, DELETE
 
-p, employee, /api/user, GET
-p, employee, /api/user/:_id, GET
-p, employee, /api/user/create-user, POST
-p, employee, /api/user/delete-user/:_id, DELETE
+p, employee, /api/v1/user, GET
+p, employee, /api/v1/user/:_id, GET
+p, employee, /api/v1/user/create-user, POST
+p, employee, /api/v1/user/delete-user/:_id, DELETE
 
-p, user, /api/user/update-user/avatar, PATCH
-p, user, /api/user/update-user/detail, PUT
-p, user, /api/user/update-user/password, PATCH
+p, user, /api/v1/user/update-user/avatar, PATCH
+p, user, /api/v1/user/update-user/detail, PUT
+p, user, /api/v1/user/update-user/password, PATCH
+
+#role router
+p, admin, /api/v1/role, GET
+p, admin, /api/v1/role/create-role, POST
+p, admin, /api/v1/role/update-role/:_id, PATCH
+p, admin, /api/v1/role/delete-role/:_id, DELETE
+
+p, employee, /api/v1/role, GET
+p, employee, /api/v1/role/create-role, POST
+p, employee, /api/v1/role/update-role/:_id, PATCH
+p, employee, /api/v1/role/delete-role/:_id, DELETE

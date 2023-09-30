@@ -54,7 +54,7 @@ const Users = new Schema(
     },
     status: {
       type: String,
-      default: 'Verify',
+      default: 'Verified',
     },
     roles: {
       type: Schema.Types.ObjectId,
@@ -75,7 +75,6 @@ Users.pre('save', async function (next) {
 });
 
 Users.statics.uploadFileToCloudinary = async function (file) {
-  const user = this;
   try {
     if (!file) {
       return {

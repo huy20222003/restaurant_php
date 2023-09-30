@@ -6,4 +6,4 @@ export { default as useAuth } from './useAuth';
 export { default as useCategory } from './useCategory';
 export { default as useOrder } from './useOrder';
 export { default as useEmployee } from './useEmployee';
-
+export { default as useRole } from './useRole';

@@ -1,7 +1,12 @@
+import { useNavigate } from 'react-router-dom';
+//date format
 import { formatDistanceToNow } from 'date-fns';
+//propType
 import PropTypes from 'prop-types';
+//hero icon
 import ArrowRightIcon from '@heroicons/react/24/solid/ArrowRightIcon';
 import EllipsisVerticalIcon from '@heroicons/react/24/solid/EllipsisVerticalIcon';
+//@mui
 import {
   Box,
   Button,
@@ -16,9 +21,15 @@ import {
   ListItemText,
   SvgIcon,
 } from '@mui/material';
+//--------------------------------------------------------------------------
 
 const OverviewLatestProducts = (props) => {
   const { products = [], sx } = props;
+  const navigate = useNavigate();
+
+  const handleNavigate = () => {
+    navigate('product-manage');
+  };
 
   return (
     <Card sx={sx}>
@@ -79,6 +90,7 @@ const OverviewLatestProducts = (props) => {
           }
           size="small"
           variant="text"
+          onClick={handleNavigate}
         >
           View all
         </Button>

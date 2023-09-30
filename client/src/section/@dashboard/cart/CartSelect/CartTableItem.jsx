@@ -237,24 +237,24 @@ const CartTableItem = ({
 
 CartTableItem.propTypes = {
   item: PropTypes.shape({
-    _id: PropTypes.string.isRequired,
+    _id: PropTypes.string,
     product: PropTypes.shape({
-      _id: PropTypes.string.isRequired,
-      image_url: PropTypes.array.isRequired,
-      name: PropTypes.string.isRequired,
+      _id: PropTypes.string,
+      image_url: PropTypes.array,
+      name: PropTypes.string,
       priceSale: PropTypes.number,
-      price: PropTypes.number.isRequired,
-    }).isRequired,
-    quantity: PropTypes.number.isRequired,
+      price: PropTypes.number,
+    }),
+    quantity: PropTypes.number,
     property: PropTypes.shape({
-      color: PropTypes.string.isRequired,
-      size: PropTypes.string.isRequired,
-    }).isRequired,
-  }).isRequired,
-  onSelect: PropTypes.func.isRequired,
-  isSelected: PropTypes.bool.isRequired,
-  orderData: PropTypes.object.isRequired,
-  setOrderData: PropTypes.func.isRequired,
+      color: PropTypes.string,
+      size: PropTypes.string,
+    }),
+  }),
+  onSelect: PropTypes.func,
+  isSelected: PropTypes.bool,
+  orderData: PropTypes.object,
+  setOrderData: PropTypes.func,
 };
 
 export default CartTableItem;

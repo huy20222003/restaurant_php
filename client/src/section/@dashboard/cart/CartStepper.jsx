@@ -166,8 +166,6 @@ const CartStepper = () => {
     paymentMethod: '',
   });
 
-  console.log(orderData);
-
   const components = [
     <CartSelect key="cart-select" orderData={orderData} setOrderData={setOrderData} />,
     <CartPayment key="cart-payment" orderData={orderData} setOrderData={setOrderData} />,

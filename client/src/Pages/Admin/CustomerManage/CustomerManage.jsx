@@ -14,24 +14,22 @@ import {
   Paper,
 } from '@mui/material';
 import styled from '@emotion/styled';
-//@mui icon
 import AddIcon from '@mui/icons-material/Add';
 import DataTable from '../../../Components/Admin/DataTable';
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import VisibilityIcon from '@mui/icons-material/Visibility';
-//iconify
+//component
 import Iconify from '../../../Components/User/iconify';
+import FormDialogCustomer from '../../../Components/FormDialog/FormDialogCustomer';
 //context
 import { useCommon, useUser } from '../../../hooks/context';
-//component
-import FormDialogCustomer from '../../../Components/FormDialog/FormDialogCustomer';
-//sweetalert
+//sweetalert2
 import Swal from 'sweetalert2';
-//-------------------------------------------------------
+//-------------------------------------------------------------
 
-const StyledPaper = styled(Paper)(({theme})=> ({
+const StyledPaper = styled(Paper)(({ theme }) => ({
   boxShadow: theme.customShadows.card,
   marginTop: '4rem',
   borderRadius: '0.75rem',
@@ -89,6 +87,28 @@ const CustomerManage = () => {
       headerName: 'Ship Address',
       type: 'String',
       width: 200,
+    },
+    {
+      field: 'status',
+      headerName: 'Status',
+      type: 'String',
+      width: 100,
+      renderCell: (params) => (
+        <Box
+          sx={{
+            backgroundColor:
+              params.value === 'Verified'
+                ? 'success.light'
+                : params.value === 'Banned'
+                ? 'error.light'
+                : 'info.light',
+            p: '0.25rem 0.5rem',
+            borderRadius: '0.25rem',
+          }}
+        >
+          <Typography sx={{ color: '#fff' }}>{params.value}</Typography>
+        </Box>
+      ),
     },
     {
       field: 'actions',
@@ -164,10 +184,11 @@ const CustomerManage = () => {
       phoneNumber: user?.phoneNumber,
       address: user?.address,
       shipAddress: user?.shipAddress,
+      status: user?.status,
     };
   });
 
-  const fiels = [
+  const fields = [
     { name: 'fullName', label: 'FullName', type: 'text' },
     { name: 'username', label: 'Username', type: 'text' },
     { name: 'email', label: 'Email', type: 'email' },
@@ -251,7 +272,11 @@ const CustomerManage = () => {
             <Container>
               <Stack>
                 <Stack
-                  sx={{ flexDirection: 'row', justifyContent: 'space-between', mb: '1rem' }}
+                  sx={{
+                    flexDirection: 'row',
+                    justifyContent: 'space-between',
+                    mb: '1rem',
+                  }}
                 >
                   <Stack>
                     <Typography variant="h5" color="primary">
@@ -264,14 +289,14 @@ const CustomerManage = () => {
                         mt: '0.5rem',
                       }}
                     >
-                      <ButtonBase sx={{p: '0.2rem'}}>
+                      <ButtonBase sx={{ p: '0.2rem' }}>
                         <Iconify
                           icon="material-symbols:upload"
                           sx={{ mr: '0.3rem' }}
                         />
                         Upload
                       </ButtonBase>
-                      <ButtonBase sx={{p: '0.2rem'}}>
+                      <ButtonBase sx={{ p: '0.2rem' }}>
                         <Iconify icon="uil:import" sx={{ mr: '0.3rem' }} />
                         Export
                       </ButtonBase>
@@ -289,7 +314,7 @@ const CustomerManage = () => {
                   </Stack>
                 </Stack>
                 <FormDialogCustomer
-                  fields={fiels}
+                  fields={fields}
                   handleCreate={handleCreate}
                   formData={formData}
                   setFormData={setFormData}

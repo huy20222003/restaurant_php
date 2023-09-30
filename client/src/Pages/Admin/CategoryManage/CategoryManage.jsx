@@ -71,6 +71,19 @@ const CategoryManage = () => {
 
   const columns = [
     { field: 'id', headerName: 'ID', type: 'String', width: 100 },
+    {
+      field: 'imageUrl',
+      headerName: 'Image',
+      type: 'String',
+      width: 100,
+      renderCell: (params) => (
+        <img
+          src={params.value}
+          alt="Category"
+          style={{ width: '60%', height: '60%' }}
+        />
+      ),
+    },
     { field: 'name', headerName: 'Name', type: 'String', width: 200 },
     {
       field: 'description',
@@ -162,6 +175,7 @@ const CategoryManage = () => {
 
       return {
         id: category?._id,
+        imageUrl: category?.imageUrl,
         name: category?.name,
         description: category?.description,
         quantity: countProduct,
