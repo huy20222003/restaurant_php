@@ -102,6 +102,16 @@ export const EmployeesProvider = (prop) => {
     }
   }, [loadUser]);
 
+  const handleUpdateDetail = useCallback(async(updateForm)=> {
+    try {
+      const response = await employeeApi.updateDetail(updateForm);
+      await loadUser();
+      return response.data;
+    } catch (error) {
+      return handleError(error);
+    }
+  }, [loadUser]);
+
   const EmployeesData = {
     employeesState,
     handleGetAll,
@@ -111,6 +121,7 @@ export const EmployeesProvider = (prop) => {
     handleDeleteEmployee,
     handleUpdatePasswordEmployee,
     handleUpdateAvatar,
+    handleUpdateDetail,
   };
 
   return (

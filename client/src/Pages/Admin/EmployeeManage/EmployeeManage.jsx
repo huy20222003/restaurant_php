@@ -29,7 +29,10 @@ import Iconify from '../../../Components/User/iconify';
 import { useCommon, useEmployee } from '../../../hooks/context';
 //sweetalert
 import Swal from 'sweetalert2';
-
+//yup
+import * as yup from 'yup';
+//formik
+import {useFormik} from 'formik';
 //----------------------------------------------------------------------
 
 const StyledPaper = styled(Paper)(({theme})=> ({
@@ -52,7 +55,6 @@ const EmployeeManage = () => {
 
   const { setOpenFormDialog } = useCommon();
   const [isEdit, setIsEdit] = useState(false);
-  const [formData, setFormData] = useState({});
 
   useEffect(() => {
     handleGetAll();
@@ -63,6 +65,78 @@ const EmployeeManage = () => {
       setOpenFormDialog(true);
     }
   }, [isEdit, setOpenFormDialog]);
+
+  const formik = useFormik({
+    initialValues: {
+      _id: '',
+      fullName: '',
+      username: '',
+      email: '',
+      salary: '',
+      position: 'employee',
+    },
+    validationSchema: yup.object({
+      fullName: yup
+        .string()
+        .required('FullName is required')
+        .max(200, 'Maximum characters are 200'),
+      username: yup
+        .string()
+        .required('Username is required')
+        .max(100, 'Maximum characters are 100'),
+      email: yup.string().required('Email is required').email(),
+      salary: yup.number().required('Salary is required'),
+      position: yup.string().required('Position is required'),
+    }),
+    onSubmit: async (values)=> {
+      try {
+        if (isEdit) {
+          const editData = await handleUpdateEmployee(values._id, values);
+          if (!editData.success) {
+            Swal.fire({
+              title: 'Update employee failed!',
+              icon: 'error',
+              showCancelButton: true,
+              confirmButtonText: 'OK',
+            });
+          } else {
+            Swal.fire({
+              title: 'Update employee successful!',
+              icon: 'success',
+              showCancelButton: true,
+              confirmButtonText: 'OK',
+            });
+          }
+        } else {
+          const createData = await handleCreateEmployee(values);
+          if (!createData.success) {
+            Swal.fire({
+              title: 'Add employee failed!',
+              icon: 'error',
+              showCancelButton: true,
+              confirmButtonText: 'OK',
+            });
+          } else {
+            Swal.fire({
+              title: 'Add employee Successful!',
+              text: 'Default password is 1234567',
+              icon: 'success',
+              showCancelButton: true,
+              confirmButtonText: 'OK',
+            });
+          }
+        }
+        setOpenFormDialog(false);
+      } catch (error) {
+        Swal.fire({
+          title: 'Server Error',
+          icon: 'error',
+          showCancelButton: true,
+          confirmButtonText: 'OK',
+        });
+      }
+    }
+  });
 
   const columns = [
     { field: 'id', headerName: 'ID', type: 'String', width: 70 },
@@ -191,7 +265,7 @@ const EmployeeManage = () => {
   const handleEdit = async (employeeId) => {
     const response = await handleGetOneEmployee(employeeId);
     if (response.success) {
-      setFormData(response.employee);
+      formik.setValues(response.employee);
     }
     setIsEdit(true);
   };
@@ -217,56 +291,6 @@ const EmployeeManage = () => {
         }
       }
     });
-  };
-
-  const handleSave = async () => {
-    try {
-      if (isEdit) {
-        const editData = await handleUpdateEmployee(formData?._id, formData);
-        if (!editData.success) {
-          Swal.fire({
-            title: 'Update employee failed!',
-            icon: 'error',
-            showCancelButton: true,
-            confirmButtonText: 'OK',
-          });
-        } else {
-          Swal.fire({
-            title: 'Update employee successful!',
-            icon: 'success',
-            showCancelButton: true,
-            confirmButtonText: 'OK',
-          });
-        }
-      } else {
-        const createData = await handleCreateEmployee(formData);
-        if (!createData.success) {
-          Swal.fire({
-            title: 'Add employee failed!',
-            icon: 'error',
-            showCancelButton: true,
-            confirmButtonText: 'OK',
-          });
-        } else {
-          Swal.fire({
-            title: 'Add employee Successful!',
-            text: 'Default password is 1234567',
-            icon: 'success',
-            showCancelButton: true,
-            confirmButtonText: 'OK',
-          });
-        }
-      }
-      setFormData({});
-      setOpenFormDialog(false);
-    } catch (error) {
-      Swal.fire({
-        title: 'Server Error',
-        icon: 'error',
-        showCancelButton: true,
-        confirmButtonText: 'OK',
-      });
-    }
   };
 
   return (
@@ -322,9 +346,8 @@ const EmployeeManage = () => {
               <FormDialogEmployee
                 fields={fields}
                 isEdit={isEdit}
-                formData={formData}
-                setFormData={setFormData}
-                handleSave={handleSave}
+                formik = {formik}
+                handleSave={formik.handleSubmit}
               />
               <DataTable columns={columns} rows={rows} />
             </Stack>

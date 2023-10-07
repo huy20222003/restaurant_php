@@ -81,7 +81,7 @@ const OverviewLatestOrders = (props) => {
   );
 };
 
-OverviewLatestOrders.prototype = {
+OverviewLatestOrders.propTypes = {
   orders: PropTypes.array,
   sx: PropTypes.object,
 };

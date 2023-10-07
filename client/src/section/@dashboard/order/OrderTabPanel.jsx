@@ -38,7 +38,7 @@ const OrderTabPanel = () => {
                 display: 'inline-flex',
                 color: '#fff',
                 backgroundColor:
-                  order?.status[0] === 'Ordered' ? 'success.main' : 'info.main',
+                  order?.status[0] === 'ordered' ? 'success.main' : 'info.main',
               }}
             >
               <Iconify icon="material-symbols:check" sx={{mr: '0.2rem'}} />

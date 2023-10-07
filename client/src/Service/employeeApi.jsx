@@ -29,6 +29,10 @@ const dishApi = {
         const url = `/employee/update-employee/avatar`;
         return axiosConfig.patch(url, data);
     },
+    updateDetail: (data)=> {
+        const url = 'employee/update-employee/detail';
+        return axiosConfig.put(url, data);
+    },
 }
 
 export default dishApi;

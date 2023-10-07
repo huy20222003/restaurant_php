@@ -9,7 +9,9 @@ import PersonIcon from '@mui/icons-material/Person';
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 import FastfoodIcon from '@mui/icons-material/Fastfood';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import PaymentIcon from '@mui/icons-material/Payment';
 import styled from '@emotion/styled';
+//-------------------------------------------------------------
 
 const NavLinkCustom = styled(NavLink)`
   && {
@@ -74,6 +76,14 @@ const MainListItems = () => {
             <AddShoppingCartIcon sx={{ color: '#fff' }} />
           </ListItemIcon>
           <ListItemText primary="Quản lý đơn hàng" />
+        </ListItemButton>
+      </NavLinkCustom>
+      <NavLinkCustom to="payment-manage">
+        <ListItemButton>
+          <ListItemIcon>
+            <PaymentIcon sx={{ color: '#fff' }} />
+          </ListItemIcon>
+          <ListItemText primary="Thanh toan" />
         </ListItemButton>
       </NavLinkCustom>
     </>

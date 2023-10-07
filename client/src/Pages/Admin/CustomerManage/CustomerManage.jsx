@@ -27,6 +27,10 @@ import FormDialogCustomer from '../../../Components/FormDialog/FormDialogCustome
 import { useCommon, useUser } from '../../../hooks/context';
 //sweetalert2
 import Swal from 'sweetalert2';
+//yup
+import * as yup from 'yup';
+//formik
+import { useFormik } from 'formik';
 //-------------------------------------------------------------
 
 const StyledPaper = styled(Paper)(({ theme }) => ({
@@ -45,17 +49,60 @@ const CustomerManage = () => {
   } = useUser();
 
   const { setOpenFormDialog } = useCommon();
-  const [formData, setFormData] = useState({
-    fullName: '',
-    username: '',
-    email: '',
-  });
 
   const navigate = useNavigate();
 
   useEffect(() => {
     handleGetAllUser();
   }, [handleGetAllUser]);
+
+  const formik = useFormik({
+    initialValues: {
+      fullName: '',
+      username: '',
+      email: '',
+    },
+    validationSchema: yup.object({
+      fullName: yup
+        .string()
+        .required('FullName is required')
+        .max(200, 'Maximum characters are 200'),
+      username: yup
+        .string()
+        .required('Username is required')
+        .max(100, 'Maximum characters are 100'),
+      email: yup.string().required('Email is required').email(),
+    }),
+    onSubmit: async (values)=> {
+      try {
+        const createData = await handleCreateUser(values);
+        if (!createData.success) {
+          Swal.fire({
+            title: 'Add user failed!',
+            icon: 'error',
+            showCancelButton: true,
+            confirmButtonText: 'OK',
+          });
+        } else {
+          Swal.fire({
+            title: 'Add user Successful!',
+            text: 'Default password is 1234567',
+            icon: 'success',
+            showCancelButton: true,
+            confirmButtonText: 'OK',
+          });
+        }
+        setOpenFormDialog(false);
+      } catch (error) {
+        Swal.fire({
+          title: 'Server Error',
+          icon: 'error',
+          showCancelButton: true,
+          confirmButtonText: 'OK',
+        });
+      }
+    }
+  });
 
   const columns = [
     { field: 'id', headerName: 'ID', type: 'String', width: 70 },
@@ -226,37 +273,6 @@ const CustomerManage = () => {
     setOpenFormDialog(true);
   };
 
-  const handleCreate = async () => {
-    try {
-      const createData = await handleCreateUser(formData);
-      if (!createData.success) {
-        Swal.fire({
-          title: 'Add user failed!',
-          icon: 'error',
-          showCancelButton: true,
-          confirmButtonText: 'OK',
-        });
-      } else {
-        Swal.fire({
-          title: 'Add user Successful!',
-          text: 'Default password is 1234567',
-          icon: 'success',
-          showCancelButton: true,
-          confirmButtonText: 'OK',
-        });
-      }
-      setOpenFormDialog(false);
-      setFormData({});
-    } catch (error) {
-      Swal.fire({
-        title: 'Server Error',
-        icon: 'error',
-        showCancelButton: true,
-        confirmButtonText: 'OK',
-      });
-    }
-  };
-
   return (
     <StyledPaper>
       <Box sx={{ display: 'flex', flex: '1 1 auto', maxWidth: '100%' }}>
@@ -315,9 +331,8 @@ const CustomerManage = () => {
                 </Stack>
                 <FormDialogCustomer
                   fields={fields}
-                  handleCreate={handleCreate}
-                  formData={formData}
-                  setFormData={setFormData}
+                  handleCreate={formik.handleSubmit}
+                  formik={formik}
                 />
                 <DataTable columns={columns} rows={rows} />
               </Stack>

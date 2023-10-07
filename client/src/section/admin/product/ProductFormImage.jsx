@@ -1,7 +1,10 @@
+import { useState } from 'react';
 import PropTypes from 'prop-types';
-import { useCallback, useState } from 'react';
-import { useDropzone } from 'react-dropzone';
+//@mui
 import { Box, Stack, Typography } from '@mui/material';
+//dropzone
+import { useDropzone } from 'react-dropzone';
+//--------------------------------------------------
 
 const ProductFormImageItem = ({ imageUrl }) => {
   return (
@@ -42,47 +45,40 @@ const ProductFormImageItem = ({ imageUrl }) => {
   );
 };
 
-const ProductFormImage = ({ setProductData }) => {
+const ProductFormImage = ({ formik }) => {
+  const { values, setFieldValue } = formik;
   const [imageUrls, setImageUrls] = useState([]);
 
-  const createImageUrls = useCallback(
-    (files) => {
-      const promises = files.map((file) => {
-        return new Promise((resolve) => {
-          const reader = new FileReader();
+  const createImageUrls = (files) => {
+    const promises = files.map((file) => {
+      return new Promise((resolve) => {
+        const reader = new FileReader();
 
-          reader.onload = () => {
-            const base64Data = reader.result;
-            resolve(base64Data);
-          };
+        reader.onload = () => {
+          const base64Data = reader.result;
+          resolve(base64Data);
+        };
 
-          reader.readAsDataURL(file);
-        });
+        reader.readAsDataURL(file);
+      });
+    });
+
+    Promise.all(promises)
+      .then((base64Images) => {
+        setFieldValue('image_url', [...values.image_url, ...base64Images]);
+      })
+      .catch((error) => {
+        console.error('Error converting images to base64:', error);
       });
 
-      Promise.all(promises)
-        .then((base64Images) => {
-          setProductData((prevData) => ({
-            ...prevData,
-            image_url: [...prevData.image_url, ...base64Images],
-          }));
-        })
-        .catch((error) => {
-          console.error('Error converting images to base64:', error);
-        });
+    const validFiles = files.filter((file) => file.type.startsWith('image/'));
+    const urls = validFiles.map((file) => URL.createObjectURL(file));
+    setImageUrls((prevImageUrls) => [...prevImageUrls, ...urls]);
+  };
 
-        const validFiles = files.filter((file) => file.type.startsWith('image/'));
-        const urls = validFiles.map((file) => URL.createObjectURL(file));
-        setImageUrls((prevImageUrls) => [...prevImageUrls, ...urls]);
-    },
-    [setProductData]
-  );
-  const onDrop = useCallback(
-    (acceptedFiles) => {
-      createImageUrls(acceptedFiles);
-    },
-    [createImageUrls]
-  );
+  const onDrop = (acceptedFiles) => {
+    createImageUrls(acceptedFiles);
+  };
 
   const { getRootProps, getInputProps } = useDropzone({
     onDrop,
@@ -125,7 +121,7 @@ const ProductFormImage = ({ setProductData }) => {
                 gap: '0.75rem',
                 alignItems: 'center',
                 flexWrap: 'wrap',
-                flex: 1
+                flex: 1,
               }}
             >
               {imageUrls.map((imageUrl) => (
@@ -153,7 +149,7 @@ const dropzoneStyle = {
 };
 
 ProductFormImage.propTypes = {
-  setProductData: PropTypes.func,
+  formik: PropTypes.object,
 };
 
 ProductFormImageItem.propTypes = {

@@ -6,7 +6,7 @@ import {
   OverviewLatestOrders,
   OverviewLatestProducts,
   OverviewSales,
-  OverviewTasksProgress,
+  OverviewTotalOrder,
   OverviewTotalCustomers,
   OverviewTotalProfit,
   OverviewTraffic,
@@ -56,7 +56,7 @@ const AdminDashboard = () => {
               />
             </Grid>
             <Grid xs={12} sm={6} lg={3}>
-              <OverviewTasksProgress sx={{ height: '100%' }} value={75.5} />
+              <OverviewTotalOrder sx={{ height: '100%' }} />
             </Grid>
             <Grid xs={12} sm={6} lg={3}>
               <OverviewTotalProfit sx={{ height: '100%' }} value="$15k" />
@@ -102,22 +102,22 @@ const AdminDashboard = () => {
                 ]}
                 chartData={[
                   {
-                    name: 'Team A',
+                    name: 'Viet Nam',
                     type: 'column',
                     fill: 'solid',
-                    data: [23, 11, 22, 27, 13, 22, 37, 21, 44, 22, 30],
+                    data: [2300, 1100, 2200, 2723, 1332, 2245, 3721, 2156, 4467, 2232, 3054],
                   },
                   {
-                    name: 'Team B',
+                    name: 'USA',
                     type: 'area',
                     fill: 'gradient',
-                    data: [44, 55, 41, 67, 22, 43, 21, 41, 56, 27, 43],
+                    data: [4443, 5543, 4165, 7667, 2872, 4983, 9821, 4991, 5766, 2877, 4973],
                   },
                   {
-                    name: 'Team C',
+                    name: 'Orther',
                     type: 'line',
                     fill: 'solid',
-                    data: [30, 25, 36, 30, 45, 35, 64, 52, 59, 36, 39],
+                    data: [3405, 6525, 3765, 3760, 8459, 3435, 5634, 5532, 2159, 3546, 3649],
                   },
                 ]}
               />

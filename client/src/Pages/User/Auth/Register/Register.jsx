@@ -67,8 +67,8 @@ const Register = () => {
               Hi, Welcome to Restaurant
             </Typography>
             <img
-              src="/assets/illustrations/illustration_login.png"
-              alt="login"
+              src="/assets/illustrations/illustration_register.svg"
+              alt="register"
             />
           </StyledSection>
         )}

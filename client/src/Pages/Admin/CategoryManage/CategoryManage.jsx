@@ -31,6 +31,10 @@ import FormDialogCategory from '../../../Components/FormDialog/FormDialogCategor
 import { useCategory, useCommon, useProduct } from '../../../hooks/context';
 //sweetalert
 import Swal from 'sweetalert2';
+//yup
+import * as yup from 'yup';
+//formik
+import { useFormik } from 'formik';
 //------------------------------------------------------------------------
 
 const StyledPaper = styled(Paper)(({ theme }) => ({
@@ -52,7 +56,7 @@ const CategoryManage = () => {
 
   const {
     productsState: { products },
-    handleGetAllProducts
+    handleGetAllProducts,
   } = useProduct();
 
   useEffect(() => {
@@ -64,10 +68,73 @@ const CategoryManage = () => {
   }, [handleGetAllCategory]);
 
   const { setOpenFormDialog } = useCommon();
-  const [formData, setFormData] = useState({});
   const [isEdit, setIsEdit] = useState(false);
 
   const navigate = useNavigate();
+
+  const formik = useFormik({
+    initialValues: {
+      name: '',
+      description: '',
+      imageUrl: '',
+    },
+    validationSchema: yup.object({
+      name: yup
+        .string()
+        .required('Username is required')
+        .max(100, 'Maximum characters are 100'),
+      description: yup.string().max(3000, 'Maximum characters are 3000'),
+      imageUrl: yup.string().required('Image is required'),
+    }),
+    onSubmit: async (values) => {
+      try {
+        if (isEdit) {
+          const editData = await handleUpdateCategory(values._id, values);
+          if (!editData.success) {
+            Swal.fire({
+              title: 'Update category failed!',
+              icon: 'error',
+              showCancelButton: true,
+              confirmButtonText: 'OK',
+            });
+          } else {
+            Swal.fire({
+              title: 'Update category successful!',
+              icon: 'success',
+              showCancelButton: true,
+              confirmButtonText: 'OK',
+            });
+          }
+        } else {
+          const createData = await handleCreateCategory(values);
+          if (!createData.success) {
+            Swal.fire({
+              title: 'Add category failed!',
+              icon: 'error',
+              showCancelButton: true,
+              confirmButtonText: 'OK',
+            });
+          } else {
+            Swal.fire({
+              title: 'Add category Successful!',
+              icon: 'success',
+              showCancelButton: true,
+              confirmButtonText: 'OK',
+            });
+          }
+        }
+        formik.setValues({});
+        setOpenFormDialog(false);
+      } catch (error) {
+        Swal.fire({
+          title: 'Server Error',
+          icon: 'error',
+          showCancelButton: true,
+          confirmButtonText: 'OK',
+        });
+      }
+    },
+  });
 
   const columns = [
     { field: 'id', headerName: 'ID', type: 'String', width: 100 },
@@ -228,67 +295,18 @@ const CategoryManage = () => {
     async (categoryId) => {
       const response = await handleGetOneCategory(categoryId);
       if (response.success) {
-        setFormData(response.category);
+        formik.setValues(response.category);
       }
       setIsEdit(true);
     },
-    [handleGetOneCategory]
+    [formik, handleGetOneCategory]
   );
-
-  const handleSave = async () => {
-    try {
-      if (isEdit) {
-        const editData = await handleUpdateCategory(formData?._id, formData);
-        if (!editData.success) {
-          Swal.fire({
-            title: 'Update category failed!',
-            icon: 'error',
-            showCancelButton: true,
-            confirmButtonText: 'OK',
-          });
-        } else {
-          Swal.fire({
-            title: 'Update category successful!',
-            icon: 'success',
-            showCancelButton: true,
-            confirmButtonText: 'OK',
-          });
-        }
-      } else {
-        const createData = await handleCreateCategory(formData);
-        if (!createData.success) {
-          Swal.fire({
-            title: 'Add category failed!',
-            icon: 'error',
-            showCancelButton: true,
-            confirmButtonText: 'OK',
-          });
-        } else {
-          Swal.fire({
-            title: 'Add category Successful!',
-            icon: 'success',
-            showCancelButton: true,
-            confirmButtonText: 'OK',
-          });
-        }
-      }
-      setFormData({});
-      setOpenFormDialog(false);
-    } catch (error) {
-      Swal.fire({
-        title: 'Server Error',
-        icon: 'error',
-        showCancelButton: true,
-        confirmButtonText: 'OK',
-      });
-    }
-  };
 
   useEffect(() => {
     if (isEdit) {
       setOpenFormDialog(true);
     }
-  }, [isEdit, formData._id, setOpenFormDialog]);
+  }, [isEdit, setOpenFormDialog]);
 
   return (
     <StyledPaper>
@@ -305,10 +323,16 @@ const CategoryManage = () => {
             <Container>
               <Stack>
                 <Stack
-                  sx={{ flexDirection: 'row', justifyContent: 'space-between',  mb: '1rem' }}
+                  sx={{
+                    flexDirection: 'row',
+                    justifyContent: 'space-between',
+                    mb: '1rem',
+                  }}
                 >
                   <Stack>
-                    <Typography variant="h5" color='primary'>Categories</Typography>
+                    <Typography variant="h5" color="primary">
+                      Categories
+                    </Typography>
                     <Stack
                       sx={{
                         flexDirection: 'row',
@@ -343,9 +367,8 @@ const CategoryManage = () => {
                 <FormDialogCategory
                   fields={fields}
                   isEdit={isEdit}
-                  formData={formData}
-                  setFormData={setFormData}
-                  handleSave={handleSave}
+                  formik={formik}
+                  handleSave={formik.handleSubmit}
                 />
                 <DataTable columns={columns} rows={rows} />
               </Stack>

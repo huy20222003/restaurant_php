@@ -13,7 +13,6 @@ import {
 import { toast } from 'react-toastify';
 //context
 import { useUser } from '../../../hooks/context';
-
 //------------------------------------------------------
 
 const PreviewAvatar = ({ previewAvatar, open, setOpen, avatarUpdate }) => {

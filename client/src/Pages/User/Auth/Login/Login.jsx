@@ -68,7 +68,7 @@ const Login = () => {
               Hi, Welcome Back
             </Typography>
             <img
-              src="/assets/illustrations/illustration_login.png"
+              src="/assets/illustrations/illustration_login.svg"
               alt="signin"
             />
           </StyledSection>

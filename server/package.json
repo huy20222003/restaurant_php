@@ -1,47 +1,13 @@
 {
-  "name": "restaurant",
-  "version": "1.0.0",
-  "description": "This is an api for restaurant include MongoDB, ExpressJS, NodeJS, ReactJS",
-  "main": "index.mjs",
-  "type": "module",
-  "scripts": {
-    "start": "nodemon src/index.mjs",
-    "build": "npm i",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/huy20222003/restaurant.git"
-  },
-  "keywords": [
-    "api",
-    "api",
-    "for",
-    "restaurant",
-    "restaurant"
-  ],
-  "author": "huynguyen",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/huy20222003/restaurant/issues"
-  },
-  "homepage": "https://github.com/huy20222003/restaurant#readme",
-  "dependencies": {
-    "acl": "^0.4.11",
-    "bcryptjs": "^2.4.3",
-    "casbin": "^5.27.0",
-    "cloudinary": "^1.40.0",
-    "cors": "^2.8.5",
-    "dateformat": "^5.0.3",
-    "dotenv": "^16.3.1",
-    "express": "^4.18.2",
-    "jsonwebtoken": "^9.0.1",
-    "moment": "^2.29.4",
-    "mongoose": "^7.4.4",
-    "multer": "^1.4.5-lts.1"
-  },
-  "devDependencies": {
-    "morgan": "^1.10.0",
-    "nodemon": "^3.0.1"
-  }
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build"
+    },
+    "devDependencies": {
+        "axios": "^1.1.2",
+        "laravel-vite-plugin": "^0.8.0",
+        "vite": "^4.0.0"
+    }
 }

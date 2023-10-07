@@ -5,7 +5,6 @@ import {
   ButtonBase,
   Card,
   CardContent,
-  CardHeader,
   Paper,
   Table,
   TableCell,
@@ -14,6 +13,7 @@ import {
   TableRow,
   TableBody,
   Typography,
+  Box,
 } from '@mui/material';
 //component
 import CartTableItem from './CartTableItem';
@@ -69,17 +69,17 @@ const CartTable = ({
   return (
     <>
       <Paper component={Card} sx={{ mb: '24px' }} elevation={0}>
-        <CardHeader>
+        {/* <Box>
           <Typography variant="body1">
             Cart
             <Typography
               variant="body2"
               sx={{ m: 0, color: 'rgb(99, 115, 129)' }}
             >
-              ({items.length} items)
+              ({items?.length} items)
             </Typography>
           </Typography>
-        </CardHeader>
+        </Box> */}
         <CardContent>
           <TableContainer
             sx={{

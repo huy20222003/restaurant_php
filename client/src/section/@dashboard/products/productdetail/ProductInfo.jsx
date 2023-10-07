@@ -12,7 +12,6 @@ import {
   Typography,
 } from '@mui/material';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
-import { toast } from 'react-toastify';
 //component
 import Label from '../../../../Components/User/label';
 import ProductQuantity from './ProductQuantity';
@@ -20,6 +19,8 @@ import ProductRating from '../ProductRating';
 //ulti
 import { fCurrency } from '../../../../utils/formatNumber';
 import { useProduct, useCart } from '../../../../hooks/context';
+//sweetalert
+import Swal from 'sweetalert2';
 //-------------------------------------------------------------
 
 const ProductInfo = ({ product }) => {
@@ -39,13 +40,20 @@ const ProductInfo = ({ product }) => {
         property,
       });
       if (updateData.success) {
-        toast.success('Add to cart successful');
+        Swal.fire({
+          title: 'Success',
+          icon: 'success',
+          showCancelButton: true,
+          text: 'Add to cart success',
+          confirmButtonText:
+            '<a href="/dashboard/cart" style={{color: "#fff", text-decoration: "none"}}>Go to Cart page</a>',
+        });
       } else {
-        toast.error('Add to cart failed!');
+        Swal.fire('', 'Add to cart failed!', 'error');
       }
       setQuantity(1);
     } catch (error) {
-      toast.error('Server Error');
+      Swal.fire('', 'Server Error', 'error');
     }
   }, [handleUpdateCart, product?._id, property, quantity, setQuantity]);
 

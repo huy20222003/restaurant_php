@@ -25,7 +25,7 @@ import { useEffect, useState } from 'react';
 
 //----------------------------------------------------------------------
 
-const StyledPaper = styled(Paper)(({theme})=> ({
+const StyledPaper = styled(Paper)(({ theme }) => ({
   boxShadow: theme.customShadows.card,
   marginTop: '4rem',
   borderRadius: '0.75rem',
@@ -40,7 +40,7 @@ const OrderManage = () => {
 
   useEffect(() => {
     handleGetAllOrders();
-}, [handleGetAllOrders]);
+  }, [handleGetAllOrders]);
 
   const columns = [
     { field: 'id', headerName: 'ID', type: 'String', width: 70 },
@@ -63,7 +63,28 @@ const OrderManage = () => {
       type: 'Number',
       width: 130,
     },
-    { field: 'status', headerName: 'Status', type: 'String', width: 100 },
+    {
+      field: 'status',
+      headerName: 'Status',
+      type: 'String',
+      width: 100,
+      renderCell: (params) => (
+        <Box
+          sx={{
+            backgroundColor:
+              params.value === 'ordered' || params.value === 'return'
+                ? 'success.light'
+                : params.value === 'cancelled'
+                ? 'error.light'
+                : 'info.light',
+            p: '0.25rem 0.5rem',
+            borderRadius: '0.25rem',
+          }}
+        >
+          <Typography sx={{ color: '#fff' }}>{params.value}</Typography>
+        </Box>
+      ),
+    },
     {
       field: 'shippingFee',
       headerName: 'Shipping Fee',
@@ -97,7 +118,7 @@ const OrderManage = () => {
       phoneNumber: order?.phoneNumber,
       shipAddress: order?.shipAddress,
       totalPrices: order?.totalPrices,
-      status: order?.status,
+      status: order?.status[order?.status.length - 1],
       shippingFee: order?.shippingFee,
       shippingUnit: order?.shippingUnit,
       paymentMethod: order?.paymentMethod,
@@ -163,50 +184,56 @@ const OrderManage = () => {
   return (
     <StyledPaper>
       <Box sx={{ display: 'flex', flex: '1 1 auto', maxWidth: '100%' }}>
-      <Box
-        sx={{
-          display: 'flex',
-          flex: '1 1 auto',
-          width: '100%',
-          flexDirection: 'column',
-        }}
-      >
-        <Box sx={{ flexGrow: 1, py: '40px' }}>
-          <Container>
-            <Stack>
-              <Stack
-                sx={{ flexDirection: 'row', justifyContent: 'space-between',  mb: '1rem' }}
-              >
-                <Stack>
-                  <Typography variant="h5" color='primary'>Orders</Typography>
-                  <Stack
-                    sx={{
-                      flexDirection: 'row',
-                      alignItems: 'center',
-                      mt: '8px',
-                    }}
-                  >
-                    <ButtonBase sx={{p: '0.2rem'}}>
-                      <Iconify
-                        icon="material-symbols:upload"
-                        sx={{ mr: '0.3rem' }}
-                      />
-                      Upload
-                    </ButtonBase>
-                    <ButtonBase sx={{p: '0.2rem'}}>
-                      <Iconify icon="uil:import" sx={{ mr: '0.3rem' }} />
-                      Export
-                    </ButtonBase>
+        <Box
+          sx={{
+            display: 'flex',
+            flex: '1 1 auto',
+            width: '100%',
+            flexDirection: 'column',
+          }}
+        >
+          <Box sx={{ flexGrow: 1, py: '40px' }}>
+            <Container>
+              <Stack>
+                <Stack
+                  sx={{
+                    flexDirection: 'row',
+                    justifyContent: 'space-between',
+                    mb: '1rem',
+                  }}
+                >
+                  <Stack>
+                    <Typography variant="h5" color="primary">
+                      Orders
+                    </Typography>
+                    <Stack
+                      sx={{
+                        flexDirection: 'row',
+                        alignItems: 'center',
+                        mt: '8px',
+                      }}
+                    >
+                      <ButtonBase sx={{ p: '0.2rem' }}>
+                        <Iconify
+                          icon="material-symbols:upload"
+                          sx={{ mr: '0.3rem' }}
+                        />
+                        Upload
+                      </ButtonBase>
+                      <ButtonBase sx={{ p: '0.2rem' }}>
+                        <Iconify icon="uil:import" sx={{ mr: '0.3rem' }} />
+                        Export
+                      </ButtonBase>
+                    </Stack>
                   </Stack>
                 </Stack>
-              </Stack>
 
-              <DataTable columns={columns} rows={rows} />
-            </Stack>
-          </Container>
+                <DataTable columns={columns} rows={rows} />
+              </Stack>
+            </Container>
+          </Box>
         </Box>
       </Box>
-    </Box>
     </StyledPaper>
   );
 };
