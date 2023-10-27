@@ -33,6 +33,10 @@ const dishApi = {
         const url = 'employee/update-employee/detail';
         return axiosConfig.put(url, data);
     },
+    updateRole: (data)=> {
+        const url = 'employee/update-employee/role';
+        return axiosConfig.patch(url, data);
+    }
 }
 
 export default dishApi;

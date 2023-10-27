@@ -73,7 +73,6 @@ export default function LoginForm() {
           label="Username"
           name="username"
           autoComplete="username"
-          autoFocus
           error={!!(formik.touched.username && formik.errors.username)}
           helperText={formik.touched.username && formik.errors.username}
           {...formik.getFieldProps('username')}

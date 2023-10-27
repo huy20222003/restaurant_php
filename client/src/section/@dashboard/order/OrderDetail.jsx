@@ -209,6 +209,7 @@ const OrderDetail = ({ orderInfo }) => {
                   <Button
                     variant="outlined"
                     color="error"
+                    disabled={Array.isArray(orderInfo) && orderInfo.length > 0 && orderInfo[orderInfo.length - 1] === 'Confirm'}
                     onClick={() => handleUpdate('return')}
                   >
                     Return
@@ -216,6 +217,8 @@ const OrderDetail = ({ orderInfo }) => {
                   <Button
                     variant="contained"
                     color="primary"
+                    disabled
+                    //disabled={Array.isArray(orderInfo) && orderInfo.length > 0 && orderInfo[orderInfo.length - 1] === 'confirm'}
                     onClick={() => handleUpdate('delivered')}
                   >
                     Delivered

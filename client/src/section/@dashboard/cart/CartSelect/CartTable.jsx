@@ -30,8 +30,12 @@ const CartTable = ({
   setSelectedProducts,
 }) => {
   const {
-    cartState: { items },
+    cartState: { items }, handleGetCart,
   } = useCart();
+
+  useEffect(()=> {
+    handleGetCart();
+  }, [handleGetCart]);
 
   const handleProductSelect = (product) => {
     const productIndex = selectedProducts.findIndex(

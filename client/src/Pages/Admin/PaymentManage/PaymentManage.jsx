@@ -22,6 +22,8 @@ import Iconify from '../../../Components/User/iconify';
 //context
 import { usePayment } from '../../../hooks/context';
 import { useEffect, useState } from 'react';
+//util
+import { fDateTime } from '../../../utils/formatTime';
 
 //----------------------------------------------------------------------
 
@@ -89,7 +91,19 @@ const PaymentManage = () => {
       field: 'userPayment',
       headerName: 'User Payment',
       type: 'String',
-      width: 100,
+      width: 150,
+    },
+    {
+      field: 'createdAt',
+      headerName: 'Create Date',
+      type: 'String',
+      width: 200,
+    },
+    {
+      field: 'updatedAt',
+      headerName: 'Update Date',
+      type: 'String',
+      width: 200,
     },
     {
       field: 'actions',
@@ -108,6 +122,8 @@ const PaymentManage = () => {
       status: payment?.status,
       paymentMethod: payment?.paymentMethod,
       userPayment: payment?.userPayment,
+      createdAt: fDateTime(payment?.createdAt),
+      updatedAt: fDateTime(payment?.updatedAt),
     };
   });
 

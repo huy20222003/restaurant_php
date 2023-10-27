@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 //@mui
 import {
@@ -12,6 +12,9 @@ import {
   MenuItem,
   Popover,
   Paper,
+  FormControl,
+  InputLabel,
+  Select,
 } from '@mui/material';
 import styled from '@emotion/styled';
 //icon
@@ -26,16 +29,18 @@ import DataTable from '../../../Components/Admin/DataTable';
 import FormDialogEmployee from '../../../Components/FormDialog/FormDialogEmployee';
 import Iconify from '../../../Components/User/iconify';
 //context
-import { useCommon, useEmployee } from '../../../hooks/context';
+import { useCommon, useEmployee, useRole } from '../../../hooks/context';
 //sweetalert
 import Swal from 'sweetalert2';
 //yup
 import * as yup from 'yup';
 //formik
-import {useFormik} from 'formik';
+import { useFormik } from 'formik';
+//util
+import { fDateTime } from '../../../utils/formatTime';
 //----------------------------------------------------------------------
 
-const StyledPaper = styled(Paper)(({theme})=> ({
+const StyledPaper = styled(Paper)(({ theme }) => ({
   boxShadow: theme.customShadows.card,
   marginTop: '4rem',
   borderRadius: '0.75rem',
@@ -49,16 +54,70 @@ const EmployeeManage = () => {
     handleCreateEmployee,
     handleUpdateEmployee,
     handleDeleteEmployee,
+    handleUpdateRole,
   } = useEmployee();
 
   const navigate = useNavigate();
 
   const { setOpenFormDialog } = useCommon();
   const [isEdit, setIsEdit] = useState(false);
+  const [roleData, setRoleData] = useState({ id: null, roleId: null });
 
   useEffect(() => {
     handleGetAll();
-}, [handleGetAll]);
+  }, [handleGetAll]);
+
+  const {
+    roleState: { roles },
+    handleGetAllRole,
+  } = useRole();
+
+  useEffect(() => {
+    handleGetAllRole();
+  }, [handleGetAllRole]);
+
+  const renderRoles = () => {
+    return roles.map((role) => (
+      <MenuItem key={role._id} value={role._id}>
+        {role.name}
+      </MenuItem>
+    ));
+  };
+
+  const handleChangeRole = (e, rowData) => {
+    setRoleData({ id: rowData.id, roleId: e.target.value });
+    updateRole();
+  };
+
+  const updateRole = useCallback(() => {
+    Swal.fire({
+      title: 'Update',
+      text: 'Are you sure you want to update?',
+      icon: 'question',
+      showCancelButton: true,
+      showConfirmButton: true,
+      confirmButtonText: 'Yes',
+    })
+      .then(async (result) => {
+        if (result.isConfirmed) {
+          try {
+            const response = await handleUpdateRole(roleData);
+            if (!response.success) {
+              Swal.fire('', 'Update role failed', 'error');
+            } else {
+              Swal.fire('', 'Updated role successful', 'success');
+            }
+          } catch (error) {
+            Swal.fire('', 'Server Error', 'error');
+          }
+        } else {
+          Swal.fire('', 'Update role failed', 'error');
+        }
+      })
+      .catch(() => {
+        Swal.fire('', 'Server Error', 'error');
+      });
+  }, [handleUpdateRole, roleData]);
 
   useEffect(() => {
     if (isEdit) {
@@ -88,7 +147,7 @@ const EmployeeManage = () => {
       salary: yup.number().required('Salary is required'),
       position: yup.string().required('Position is required'),
     }),
-    onSubmit: async (values)=> {
+    onSubmit: async (values) => {
       try {
         if (isEdit) {
           const editData = await handleUpdateEmployee(values._id, values);
@@ -135,16 +194,16 @@ const EmployeeManage = () => {
           confirmButtonText: 'OK',
         });
       }
-    }
+    },
   });
 
   const columns = [
     { field: 'id', headerName: 'ID', type: 'String', width: 70 },
     {
       field: 'avatar',
-      headerName: '',
+      headerName: 'Ảnh đại diện',
       type: 'String',
-      width: 80,
+      width: 90,
       renderCell: (params) => (
         <img
           src={params.value}
@@ -155,19 +214,50 @@ const EmployeeManage = () => {
     },
     { field: 'username', headerName: 'Username', type: 'String', width: 100 },
     { field: 'fullName', headerName: 'FullName', type: 'String', width: 160 },
-    { field: 'email', headerName: 'Email', type: 'String', width: 130 },
+    { field: 'email', headerName: 'Email', type: 'String', width: 150 },
     {
       field: 'phoneNumber',
-      headerName: 'Số điện thoại',
+      headerName: 'Phone Number',
       type: 'String',
-      width: 90,
+      width: 120,
     },
-    { field: 'address', headerName: 'Địa chỉ', type: 'String', width: 160 },
-    { field: 'position', headerName: 'Vị trí', type: 'String', width: 130 },
-    { field: 'salary', headerName: 'Lương', type: 'Number', width: 100 },
+    { field: 'address', headerName: 'Address', type: 'String', width: 160 },
+    { field: 'position', headerName: 'Position', type: 'String', width: 130 },
+    { field: 'salary', headerName: 'Salary', type: 'Number', width: 100 },
+    {
+      field: 'role',
+      headerName: 'Role',
+      type: 'String',
+      width: 150,
+      renderCell: (params) => (
+        <FormControl fullWidth size="small">
+          <InputLabel id="role-label">Role</InputLabel>
+          <Select
+            label="Role"
+            labelId="role-label"
+            value={params.value}
+            onChange={(e) => handleChangeRole(e, params)}
+          >
+            {renderRoles()}
+          </Select>
+        </FormControl>
+      ),
+    },
+    {
+      field: 'createdAt',
+      headerName: 'Create Date',
+      type: 'String',
+      width: 200,
+    },
+    {
+      field: 'updatedAt',
+      headerName: 'Update Date',
+      type: 'String',
+      width: 200,
+    },
     {
       field: 'actions',
-      headerName: 'Hành động',
+      headerName: 'Actions',
       width: 90,
       renderCell: ActionsCell,
     },
@@ -244,6 +334,9 @@ const EmployeeManage = () => {
       address: employee?.address,
       position: employee?.position,
       salary: employee?.salary,
+      role: employee?.roles,
+      createdAt: fDateTime(employee?.createdAt),
+      updatedAt: fDateTime(employee?.updatedAt),
     };
   });
 
@@ -296,65 +389,71 @@ const EmployeeManage = () => {
   return (
     <StyledPaper>
       <Box sx={{ display: 'flex', flex: '1 1 auto', maxWidth: '100%' }}>
-      <Box
-        sx={{
-          display: 'flex',
-          flex: '1 1 auto',
-          width: '100%',
-          flexDirection: 'column',
-        }}
-      >
-        <Box sx={{ flexGrow: 1, py: '2.5rem' }}>
-          <Container>
-            <Stack>
-              <Stack
-                sx={{ flexDirection: 'row', justifyContent: 'space-between',  mb: '1rem' }}
-              >
-                <Stack>
-                  <Typography variant="h5" color='primary'>Employees</Typography>
-                  <Stack
-                    sx={{
-                      flexDirection: 'row',
-                      alignItems: 'center',
-                      mt: '0.5rem',
-                    }}
-                  >
-                    <ButtonBase sx={{p: '0.2rem'}}>
-                      <Iconify
-                        icon="material-symbols:upload"
-                        sx={{ mr: '0.3rem' }}
-                      />
-                      Upload
-                    </ButtonBase>
-                    <ButtonBase sx={{p: '0.2rem'}}>
-                      <Iconify icon="uil:import" sx={{ mr: '0.3rem' }} />
-                      Export
-                    </ButtonBase>
+        <Box
+          sx={{
+            display: 'flex',
+            flex: '1 1 auto',
+            width: '100%',
+            flexDirection: 'column',
+          }}
+        >
+          <Box sx={{ flexGrow: 1, py: '2.5rem' }}>
+            <Container>
+              <Stack>
+                <Stack
+                  sx={{
+                    flexDirection: 'row',
+                    justifyContent: 'space-between',
+                    mb: '1rem',
+                  }}
+                >
+                  <Stack>
+                    <Typography variant="h5" color="primary">
+                      Employees
+                    </Typography>
+                    <Stack
+                      sx={{
+                        flexDirection: 'row',
+                        alignItems: 'center',
+                        mt: '0.5rem',
+                      }}
+                    >
+                      <ButtonBase sx={{ p: '0.2rem' }}>
+                        <Iconify
+                          icon="material-symbols:upload"
+                          sx={{ mr: '0.3rem' }}
+                        />
+                        Upload
+                      </ButtonBase>
+                      <ButtonBase sx={{ p: '0.2rem' }}>
+                        <Iconify icon="uil:import" sx={{ mr: '0.3rem' }} />
+                        Export
+                      </ButtonBase>
+                    </Stack>
+                  </Stack>
+                  <Stack sx={{ flexDirection: 'row', alignItems: 'center' }}>
+                    <Button
+                      variant="contained"
+                      startIcon={<AddIcon />}
+                      sx={{ borderRadius: '0.375rem' }}
+                      onClick={handleOpenFormDialog}
+                    >
+                      Add
+                    </Button>
                   </Stack>
                 </Stack>
-                <Stack sx={{ flexDirection: 'row', alignItems: 'center' }}>
-                  <Button
-                    variant="contained"
-                    startIcon={<AddIcon />}
-                    sx={{ borderRadius: '0.375rem' }}
-                    onClick={handleOpenFormDialog}
-                  >
-                    Add
-                  </Button>
-                </Stack>
+                <FormDialogEmployee
+                  fields={fields}
+                  isEdit={isEdit}
+                  formik={formik}
+                  handleSave={formik.handleSubmit}
+                />
+                <DataTable columns={columns} rows={rows} />
               </Stack>
-              <FormDialogEmployee
-                fields={fields}
-                isEdit={isEdit}
-                formik = {formik}
-                handleSave={formik.handleSubmit}
-              />
-              <DataTable columns={columns} rows={rows} />
-            </Stack>
-          </Container>
+            </Container>
+          </Box>
         </Box>
       </Box>
-    </Box>
     </StyledPaper>
   );
 };

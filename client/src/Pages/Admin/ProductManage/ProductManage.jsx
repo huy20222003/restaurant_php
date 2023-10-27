@@ -30,6 +30,8 @@ import Iconify from '../../../Components/User/iconify';
 import Swal from 'sweetalert2';
 //htmlparse
 import HTMLReactParser from 'html-react-parser';
+//util
+import { fDateTime } from '../../../utils/formatTime';
 //---------------------------------------------------------
 
 const StyledPaper = styled(Paper)(({ theme }) => ({
@@ -79,7 +81,20 @@ const ProductManage = () => {
     },
     { field: 'category', headerName: 'Category', type: 'String', width: 160 },
     { field: 'price', headerName: 'Price', type: 'Number', width: 100 },
+    { field: 'priceSale', headerName: 'Price Sale', type: 'Number', width: 100 },
     { field: 'rate', headerName: 'Rate', type: 'Number', width: 70 },
+    {
+      field: 'createdAt',
+      headerName: 'Create Date',
+      type: 'String',
+      width: 200,
+    },
+    {
+      field: 'updatedAt',
+      headerName: 'Update Date',
+      type: 'String',
+      width: 200,
+    },
     {
       field: 'actions',
       headerName: 'Actions',
@@ -165,7 +180,10 @@ const ProductManage = () => {
       description: description.props.children,
       category: categoryName?.name,
       price: product?.price,
+      priceSale: product?.priceSale,
       rate: product?.rate,
+      createdAt: fDateTime(product?.createdAt),
+      updatedAt: fDateTime(product?.updatedAt),
     };
   });
 

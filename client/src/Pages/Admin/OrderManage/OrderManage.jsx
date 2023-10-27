@@ -22,6 +22,8 @@ import Iconify from '../../../Components/User/iconify';
 //context
 import { useOrder } from '../../../hooks/context';
 import { useEffect, useState } from 'react';
+//util
+import { fDateTime } from '../../../utils/formatTime';
 
 //----------------------------------------------------------------------
 
@@ -72,7 +74,7 @@ const OrderManage = () => {
         <Box
           sx={{
             backgroundColor:
-              params.value === 'ordered' || params.value === 'return'
+              params.value === 'delivered' || params.value === 'return'
                 ? 'success.light'
                 : params.value === 'cancelled'
                 ? 'error.light'
@@ -104,6 +106,18 @@ const OrderManage = () => {
       width: 200,
     },
     {
+      field: 'createdAt',
+      headerName: 'Order Date',
+      type: 'String',
+      width: 200,
+    },
+    {
+      field: 'updatedAt',
+      headerName: 'Update Date',
+      type: 'String',
+      width: 200,
+    },
+    {
       field: 'actions',
       headerName: 'Actions',
       width: 90,
@@ -122,6 +136,8 @@ const OrderManage = () => {
       shippingFee: order?.shippingFee,
       shippingUnit: order?.shippingUnit,
       paymentMethod: order?.paymentMethod,
+      createdAt: fDateTime(order?.createdAt),
+      updatedAt: fDateTime(order?.updatedAt),
     };
   });
 

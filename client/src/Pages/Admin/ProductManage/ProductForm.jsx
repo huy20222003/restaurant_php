@@ -85,10 +85,12 @@ const ProductForm = () => {
       image_url: yup.array().required('Image is required'),
       quantity: yup.number().required('Quantity is required'),
       category: yup.string().required('Category is required'),
-      size: yup.string(),
-      color: yup.string(),
+      size: yup.string().nullable(),
+      color: yup.string().nullable(),
       price: yup.number().required('Price is required'),
-      priceSale: yup.number(),
+      priceSale: yup.number().nullable().when('price', (price, schema) => {
+        return schema.lessThan(price, 'Price Sale must be less than Price');
+      }),
       status: yup.string().required('Status is required'),
     }),
     onSubmit: async (values) => {
@@ -130,7 +132,7 @@ const ProductForm = () => {
     };
 
     fetchData();
-  }, [_id, formik, handleGetOneProduct]);
+  }, [_id, handleGetOneProduct]);
 
   return (
     <form style={{ marginTop: '2rem' }} onSubmit={formik.handleSubmit}>

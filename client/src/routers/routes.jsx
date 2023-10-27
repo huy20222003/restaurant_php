@@ -21,6 +21,9 @@ const OrderPage = lazy(() => import('../Pages/User/OrderPage/OrderPage'));
 const OrderPageDetail = lazy(() =>
   import('../Pages/User/OrderPage/OrderPageDetail')
 );
+const Reservation = lazy(() =>
+  import('../Pages/User/Reservation/Reservation')
+);
 const ProfilePage = lazy(() => import('../Pages/User/ProfilePage'));
 const FAQPage = lazy(() => import('../Pages/User/FAQPage'));
 const AboutPage = lazy(() => import('../Pages/User/AboutPage'));
@@ -62,6 +65,7 @@ const OrderDetail = lazy(() =>
   import('../Pages/Admin/OrderManage/OrderDetail')
 );
 const PaymentManage = lazy(() => import('../Pages/Admin/PaymentManage/PaymentManage'));
+const ReservationManage = lazy(() => import('../Pages/Admin/ReservationManage/ReservationManage'));
 const ProfileAdminPage = lazy(() => import('../Pages/Admin/Profile'));
 const SettingAdminPage = lazy(() => import('../Pages/Admin/Setting'));
 //loader
@@ -99,6 +103,12 @@ export default function Router() {
           path: 'order',
           element: (
             <PrivateRouter element={<OrderPage />} redirectTo="/auth/login" />
+          ),
+        },
+        {
+          path: 'reservation',
+          element: (
+            <PrivateRouter element={<Reservation />} redirectTo="/auth/login" />
           ),
         },
         {
@@ -254,6 +264,15 @@ export default function Router() {
           element: (
             <PrivateRouter
               element={<PaymentManage />}
+              redirectTo="/auth/admin/login"
+            />
+          ),
+        },
+        {
+          path: 'reservation-manage',
+          element: (
+            <PrivateRouter
+              element={<ReservationManage />}
               redirectTo="/auth/admin/login"
             />
           ),

@@ -1,12 +1,16 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 //@mui
-import { Box, Stack, Typography } from '@mui/material';
+import { Box, ButtonBase, Stack, Typography } from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
 //dropzone
 import { useDropzone } from 'react-dropzone';
 //--------------------------------------------------
 
-const ProductFormImageItem = ({ imageUrl }) => {
+const ProductFormImageItem = ({ imageUrl, index, handleDeleteImage }) => {
+  const onDeleteImage = () => {
+    handleDeleteImage(index); // Gọi hàm onDelete để xoá ảnh
+  };
   return (
     <Stack
       sx={{
@@ -41,6 +45,21 @@ const ProductFormImageItem = ({ imageUrl }) => {
           }}
         ></Box>
       </Stack>
+      <ButtonBase
+        sx={{
+          position: 'absolute',
+          top: '0.25rem',
+          right: '0.25rem',
+          p: '0.25rem',
+          color: 'rgb(255, 255, 255)',
+          backgroundColor: 'rgba(22, 28, 36, 0.48)',
+          fontSize: '1.125rem',
+          borderRadius: '50%',
+        }}
+        onClick={onDeleteImage}
+      >
+        <CloseIcon sx={{ width: '1rem', height: '1rem' }} />
+      </ButtonBase>
     </Stack>
   );
 };
@@ -86,6 +105,15 @@ const ProductFormImage = ({ formik }) => {
     multiple: true,
   });
 
+  const handleDeleteImage = (index) => {
+    const newImageUrls = [...imageUrls];
+    newImageUrls.splice(index, 1);
+    setImageUrls(newImageUrls);
+    const newImageUrlsInFormik = [...values.image_url];
+    newImageUrlsInFormik.splice(index, 1);
+    setFieldValue('image_url', newImageUrlsInFormik);
+  };
+
   return (
     <>
       <Stack sx={{ gap: '12px', p: '1rem' }}>
@@ -124,8 +152,13 @@ const ProductFormImage = ({ formik }) => {
                 flex: 1,
               }}
             >
-              {imageUrls.map((imageUrl) => (
-                <ProductFormImageItem key={imageUrl} imageUrl={imageUrl} />
+              {imageUrls.map((imageUrl, index) => (
+                <ProductFormImageItem
+                  key={imageUrl}
+                  imageUrl={imageUrl}
+                  handleDeleteImage={handleDeleteImage}
+                  index={index}
+                />
               ))}
             </Box>
           ) : (
@@ -154,6 +187,8 @@ ProductFormImage.propTypes = {
 
 ProductFormImageItem.propTypes = {
   imageUrl: PropTypes.string,
+  index: PropTypes.number,
+  handleDeleteImage: PropTypes.func,
 };
 
 export default ProductFormImage;

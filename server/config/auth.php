@@ -40,8 +40,12 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+     
+        'api' => [
+            'driver' => 'passport',
+            'provider' => 'users',
+        ],
     ],
-
     /*
     |--------------------------------------------------------------------------
     | User Providers
@@ -111,5 +115,12 @@ return [
     */
 
     'password_timeout' => 10800,
+
+    'passport' => [
+        'tokens_expire_in' => [
+            'access' => 3600, // Thời gian tồn tại của access token (giây)
+            'refresh' => 1209600, // Thời gian sống của refresh token (giây)
+        ],
+    ],
 
 ];

@@ -81,6 +81,11 @@ export default function Nav({ openNav, onCloseNav }) {
       path: 'order',
       icon: icon('ic_cart'),
     },
+    isAuthenticated && {
+      title: 'Reservation',
+      path: 'reservation',
+      icon: icon('ic_reservation'),
+    },
   ];
 
   const renderContent = (

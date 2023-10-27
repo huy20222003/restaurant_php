@@ -35,6 +35,8 @@ import Swal from 'sweetalert2';
 import * as yup from 'yup';
 //formik
 import { useFormik } from 'formik';
+//util
+import { fDateTime } from '../../../utils/formatTime';
 //------------------------------------------------------------------------
 
 const StyledPaper = styled(Paper)(({ theme }) => ({
@@ -165,6 +167,18 @@ const CategoryManage = () => {
       width: 120,
     },
     {
+      field: 'createdAt',
+      headerName: 'Create Date',
+      type: 'String',
+      width: 200,
+    },
+    {
+      field: 'updatedAt',
+      headerName: 'Update Date',
+      type: 'String',
+      width: 200,
+    },
+    {
       field: 'actions',
       headerName: 'Actions',
       width: 90,
@@ -246,12 +260,14 @@ const CategoryManage = () => {
         name: category?.name,
         description: category?.description,
         quantity: countProduct,
+        createdAt: fDateTime(category?.createdAt),
+        updatedAt: fDateTime(category?.updatedAt),
       };
     });
 
   const fields = [
-    { name: 'name', label: 'Tên', type: 'text', row: 1 },
-    { name: 'description', label: 'Mô tả', type: 'text', row: 5 },
+    { name: 'name', label: 'Name', type: 'text', row: 1 },
+    { name: 'description', label: 'Description', type: 'text', row: 5 },
   ];
 
   const handleView = useCallback(

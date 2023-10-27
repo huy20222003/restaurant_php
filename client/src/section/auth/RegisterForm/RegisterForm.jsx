@@ -29,6 +29,7 @@ export default function LoginForm() {
       fullName: '',
       username: '',
       email: '',
+      phoneNumber: '',
       password: '',
       confirmPassword: '',
     },
@@ -45,6 +46,7 @@ export default function LoginForm() {
         .string()
         .required('Email is required')
         .matches(/^\S+@\S+\.\S+$/, 'Invalid email'),
+      phoneNumber: yup.string().max(10, 'Maximum phone number is 10 characters'),
       password: yup
         .string()
         .required('Password is required')
@@ -83,6 +85,24 @@ export default function LoginForm() {
     },
   });
 
+  const handleCheck = () => {
+    Swal.fire({
+      title: 'Question',
+      text: 'Hoang Sa and Truong Sa belong to which country?',
+      icon: 'question',
+      showConfirmButton: true,
+      showCancelButton: true,
+      confirmButtonText: 'Viet Nam',
+      cancelButtonText: 'Orthers',
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        formik.handleSubmit();
+      } else {
+        Swal.fire('', 'Resgister failed!', 'error');
+      }
+    });
+  };
+
   const [showPassword, setShowPassword] = useState(false);
 
   return (
@@ -98,7 +118,6 @@ export default function LoginForm() {
           error={!!(formik.touched.fullName && formik.errors.fullName)}
           helperText={formik.touched.fullName && formik.errors.fullName}
           autoComplete="fullName"
-          autoFocus
           {...formik.getFieldProps('fullName')}
           InputProps={{
             startAdornment: (
@@ -118,7 +137,6 @@ export default function LoginForm() {
           error={!!(formik.touched.username && formik.errors.username)}
           helperText={formik.touched.username && formik.errors.username}
           autoComplete="username"
-          autoFocus
           {...formik.getFieldProps('username')}
           InputProps={{
             startAdornment: (
@@ -138,8 +156,26 @@ export default function LoginForm() {
           error={!!(formik.touched.email && formik.errors.email)}
           helperText={formik.touched.email && formik.errors.email}
           autoComplete="email"
-          autoFocus
           {...formik.getFieldProps('email')}
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <EmailIcon />
+              </InputAdornment>
+            ),
+          }}
+        />
+        <TextField
+          margin="normal"
+          required
+          fullWidth
+          id="phoneNumber"
+          label="Phone Number"
+          name="phoneNumber"
+          error={!!(formik.touched.phoneNumber && formik.errors.phoneNumber)}
+          helperText={formik.touched.phoneNumber && formik.errors.phoneNumber}
+          autoComplete="phoneNumber"
+          {...formik.getFieldProps('phoneNumber')}
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
@@ -227,7 +263,7 @@ export default function LoginForm() {
         size="large"
         type="submit"
         variant="contained"
-        onClick={formik.handleSubmit}
+        onClick={handleCheck}
       >
         Signup
       </LoadingButton>

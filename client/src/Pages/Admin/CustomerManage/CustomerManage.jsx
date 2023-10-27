@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 //@mui
 import {
@@ -12,6 +12,9 @@ import {
   MenuItem,
   Menu,
   Paper,
+  FormControl,
+  Select,
+  InputLabel,
 } from '@mui/material';
 import styled from '@emotion/styled';
 import AddIcon from '@mui/icons-material/Add';
@@ -24,14 +27,16 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import Iconify from '../../../Components/User/iconify';
 import FormDialogCustomer from '../../../Components/FormDialog/FormDialogCustomer';
 //context
-import { useCommon, useUser } from '../../../hooks/context';
+import { useCommon, useUser, useRole } from '../../../hooks/context';
 //sweetalert2
 import Swal from 'sweetalert2';
 //yup
 import * as yup from 'yup';
 //formik
 import { useFormik } from 'formik';
-//-------------------------------------------------------------
+//util
+import { fDateTime } from '../../../utils/formatTime';
+//------------------------------------------------------
 
 const StyledPaper = styled(Paper)(({ theme }) => ({
   boxShadow: theme.customShadows.card,
@@ -46,9 +51,63 @@ const CustomerManage = () => {
     handleCreateUser,
     handleDeleteUser,
     handleGetOneUser,
+    handleUpdateRole,
   } = useUser();
 
   const { setOpenFormDialog } = useCommon();
+
+  const {
+    roleState: { roles },
+    handleGetAllRole,
+  } = useRole();
+  const [roleData, setRoleData] = useState({ id: null, roleId: null });
+
+  useEffect(() => {
+    handleGetAllRole();
+  }, [handleGetAllRole]);
+
+  const renderRoles = () => {
+    return roles.map((role) => (
+      <MenuItem key={role?._id} value={role?._id}>
+        {role?.name}
+      </MenuItem>
+    ));
+  };
+
+  const handleChangeRole = (e, rowData) => {
+    setRoleData({ id: rowData.id, roleId: e.target.value });
+    updateRole();
+  };
+
+  const updateRole = useCallback(() => {
+    Swal.fire({
+      title: 'Update',
+      text: 'Are you sure you want to update?',
+      icon: 'question',
+      showCancelButton: true,
+      showConfirmButton: true,
+      confirmButtonText: 'Yes',
+    })
+      .then(async (result) => {
+        if (result.isConfirmed) {
+          try {
+            const response = await handleUpdateRole(roleData);
+            if (!response.success) {
+              Swal.fire('', 'Update role failed', 'error');
+            } else {
+              Swal.fire('', 'Updated role successful', 'success');
+            }
+          } catch (error) {
+            Swal.fire('', 'Server Error', 'error');
+          }
+        } else {
+          Swal.fire('', 'Update role failed', 'error');
+        }
+      })
+      .catch(() => {
+        Swal.fire('', 'Server Error', 'error');
+      });
+  }, [handleUpdateRole, roleData]);
 
   const navigate = useNavigate();
 
@@ -73,7 +132,7 @@ const CustomerManage = () => {
         .max(100, 'Maximum characters are 100'),
       email: yup.string().required('Email is required').email(),
     }),
-    onSubmit: async (values)=> {
+    onSubmit: async (values) => {
       try {
         const createData = await handleCreateUser(values);
         if (!createData.success) {
@@ -101,7 +160,7 @@ const CustomerManage = () => {
           confirmButtonText: 'OK',
         });
       }
-    }
+    },
   });
 
   const columns = [
@@ -136,6 +195,27 @@ const CustomerManage = () => {
       width: 200,
     },
     {
+      field: 'role',
+      headerName: 'Role',
+      type: 'String',
+      width: 150,
+      renderCell: (params) => {
+        return (
+          <FormControl fullWidth size="small">
+            <InputLabel id="role-label">Role</InputLabel>
+            <Select
+              label="Role"
+              labelId="role-label"
+              value={params.value}
+              onChange={(e) => handleChangeRole(e, params)}
+            >
+              {renderRoles()}
+            </Select>
+          </FormControl>
+        );
+      },
+    },
+    {
       field: 'status',
       headerName: 'Status',
       type: 'String',
@@ -156,6 +236,18 @@ const CustomerManage = () => {
           <Typography sx={{ color: '#fff' }}>{params.value}</Typography>
         </Box>
       ),
+    },
+    {
+      field: 'createdAt',
+      headerName: 'Create Date',
+      type: 'String',
+      width: 200,
+    },
+    {
+      field: 'updatedAt',
+      headerName: 'Update Date',
+      type: 'String',
+      width: 200,
     },
     {
       field: 'actions',
@@ -231,7 +323,10 @@ const CustomerManage = () => {
       phoneNumber: user?.phoneNumber,
       address: user?.address,
       shipAddress: user?.shipAddress,
+      role: user?.roles,
       status: user?.status,
+      createdAt: fDateTime(user?.createdAt),
+      updatedAt: fDateTime(user?.updatedAt),
     };
   });
 
