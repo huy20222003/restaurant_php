@@ -115,7 +115,7 @@ const PaymentManage = () => {
 
   const rows = payments.map((payment) => {
     return {
-      id: payment?._id,
+      id: payment?.id,
       sender: payment?.sender,
       description: payment?.description,
       amount: payment?.amount,

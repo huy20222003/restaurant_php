@@ -36,13 +36,13 @@ const CustomBox = styled(Box)(({ theme }) => ({
 const ProductItem = ({ product }) => {
   const { handleAddProductToCategory } = useCategory();
   const {setOpenFormDialog} = useCommon();
-  const { _id } = useParams();
+  const { id } = useParams();
 
   const handleAddProduct = async() => {
     try {
       const response = await handleAddProductToCategory({
-        productId: product?._id,
-        categoryId: _id,
+        productId: product?.id,
+        categoryId: id,
       });
       if (!response.success) {
         Swal.fire('Faield', 'Add Faield', 'error');
@@ -118,7 +118,7 @@ const ProductItem = ({ product }) => {
 
 ProductItem.propTypes = {
   product: PropTypes.shape({
-    _id: PropTypes.string,
+    id: PropTypes.string,
     image_url: PropTypes.array,
     name: PropTypes.string,
   }),

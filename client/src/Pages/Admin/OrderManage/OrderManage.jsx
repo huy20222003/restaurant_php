@@ -127,17 +127,17 @@ const OrderManage = () => {
 
   const rows = orders.map((order) => {
     return {
-      id: order?._id,
+      id: order?.id,
       fullName: order?.fullName,
       phoneNumber: order?.phoneNumber,
       shipAddress: order?.shipAddress,
       totalPrices: order?.totalPrices,
-      status: order?.status[order?.status.length - 1],
+      status: order?.status,
       shippingFee: order?.shippingFee,
       shippingUnit: order?.shippingUnit,
       paymentMethod: order?.paymentMethod,
-      createdAt: fDateTime(order?.createdAt),
-      updatedAt: fDateTime(order?.updatedAt),
+      createdAt: fDateTime(order?.created_at),
+      updatedAt: fDateTime(order?.updated_at),
     };
   });
 

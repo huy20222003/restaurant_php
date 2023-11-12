@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { memo, useCallback } from 'react';
 import { useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -5,35 +6,88 @@ import PropTypes from 'prop-types';
 import { Box, Button, Divider, Paper, Stack, Typography } from '@mui/material';
 //component
 import OrderTimeLine from './OrderTimeLine';
+import FormDialogReview from '../../../Components/FormDialog/FormDialogReview';
 //context
-import { useOrder } from '../../../hooks/context';
+import { useOrder, useCommon, useReview } from '../../../hooks/context';
 //sweetalert
 import Swal from 'sweetalert2';
+//formik
+import { useFormik } from 'formik';
+//yup
+import * as yup from 'yup';
 //-------------------------------------------------
 
 const OrderDetail = ({ orderInfo }) => {
   const { handleUpdateOrder } = useOrder();
-  const { _id } = useParams();
+  const { setOpenFormDialog } = useCommon();
+  const { handleCreateReview, handleUpdateOrderAfterReview } = useReview();
+  const { id } = useParams();
+
+  const { totalPrices, shippingFee, status, order_details } = orderInfo;
+
   const handleUpdate = useCallback(
     async (type) => {
       if (!type) {
         return;
       }
 
-      const response = await handleUpdateOrder(_id, { status: type });
+      const response = await handleUpdateOrder(id, { status: type });
       if (!response.success) {
         Swal.fire('', `${type} failed`, 'error');
       } else {
         Swal.fire('', `${type} success`, 'success');
       }
     },
-    [_id, handleUpdateOrder]
+    [id, handleUpdateOrder]
   );
+
+  const formik = useFormik({
+    initialValues: {
+      rate: 1,
+      review: '',
+      productId: '',
+      orderId: id,
+    },
+    validationSchema: yup.object({
+      rate: yup.number('Rate must be a number').required('Rate is required'),
+      review: yup.string().max(1000, 'The maximum character limit is 1000'),
+      productId: yup.string().required('Product Id is required'),
+      orderId: yup.string().required('Order Id is required'),
+    }),
+    onSubmit: async (values) => {
+      try {
+        const response = await handleCreateReview(values);
+        if (!response.success) {
+          Swal.fire('', 'Add review failed', 'error');
+        } else {
+          const updateData = await handleUpdateOrderAfterReview({
+            orderId: formik.values.orderId,
+            productId: formik.values.productId,
+          });
+          if (!updateData.success) {
+            Swal.fire('', 'Add review failed', 'error');
+          } else {
+            Swal.fire('', 'Add review successful', 'success');
+          }
+        }
+      } catch (error) {
+        Swal.fire('Error', 'Server Error', 'error');
+      }
+      //setTimeout(()=>window.location.reload(), 3000);
+      setOpenFormDialog(false);
+      formik.resetForm();
+    },
+  });
+
   if (!orderInfo) {
     return null;
   }
+  const fields = [{ name: 'review', label: 'Review', type: 'text', row: 5 }];
 
-  const { items, totalPrices, shippingFee, status } = orderInfo;
+  const handleOpenFormDialog = (order) => {
+    setOpenFormDialog(true);
+    formik.setFieldValue('productId', order?.product.id);
+  };
 
   return (
     <Box>
@@ -51,87 +105,107 @@ const OrderDetail = ({ orderInfo }) => {
           <Typography variant="h6">Details</Typography>
           <Stack sx={{ flexDirection: 'row', justifyContent: 'space-between' }}>
             <Box sx={{ p: '16px 0', width: '100%' }}>
-              {items.map((item) => (
-                <Stack
-                  key={item.product.name}
-                  sx={{
-                    flexDirection: 'row',
-                    justifyContent: 'space-between',
-                    alignItems: 'center',
-                    my: '1rem',
-                  }}
-                >
-                  <Box sx={{ display: 'flex' }}>
-                    <Box
-                      sx={{
-                        flexShrink: 0,
-                        width: '80px',
-                        height: '80px',
-                        borderRadius: '4px',
-                        border: '0.5px solid rgb(238, 238, 238)',
-                        backgroundImage: `url(${item?.product?.image_url[0]})`,
-                        backgroundPosition: 'center center',
-                        backgroundRepeat: 'no-repeat',
-                        backgroundSize: '100%',
-                        objectFit: 'cover',
-                        position: 'relative',
-                      }}
-                    >
-                      <Typography
-                        variant="body2"
+              {order_details.map((order) => (
+                <Box key={order?.id}>
+                  <Stack
+                    sx={{
+                      flexDirection: 'row',
+                      justifyContent: 'space-between',
+                      alignItems: 'center',
+                      my: '1rem',
+                    }}
+                  >
+                    <Box sx={{ display: 'flex' }}>
+                      <Box
                         sx={{
-                          position: 'absolute',
-                          right: 0,
-                          bottom: 0,
-                          color: 'rgb(128, 128, 137)',
-                          backgroundColor: 'rgb(235, 235, 240)',
-                          width: '28px',
-                          height: '28px',
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          borderTopLeftRadius: '10px',
+                          flexShrink: 0,
+                          width: '80px',
+                          height: '80px',
+                          borderRadius: '4px',
+                          border: '0.5px solid rgb(238, 238, 238)',
+                          backgroundImage: `url(${order?.product?.image_products[0]?.imageUrl})`,
+                          backgroundPosition: 'center center',
+                          backgroundRepeat: 'no-repeat',
+                          backgroundSize: '100%',
+                          objectFit: 'cover',
+                          position: 'relative',
                         }}
                       >
-                        x{item?.quantity}
-                      </Typography>
-                    </Box>
-                    <Stack sx={{ mx: '12px' }}>
-                      <Typography variant="body2">
-                        {item?.product?.name}
-                      </Typography>
-                      <Stack
-                        sx={{
-                          flexDirection: 'row',
-                          alignItems: 'center',
-                          gap: '6px',
-                        }}
-                      >
-                        {item?.property?.size && (
-                          <Typography
-                            variant="caption"
-                            sx={{ color: 'rgb(128, 128, 137)' }}
-                          >
-                            size: {item?.property?.size}
-                          </Typography>
-                        )}
-                        {item?.property?.color && (
-                          <Typography
-                            variant="caption"
-                            sx={{ color: 'rgb(128, 128, 137)' }}
-                          >
-                            color: {item?.property?.color}
-                          </Typography>
-                        )}
+                        <Typography
+                          variant="body2"
+                          sx={{
+                            position: 'absolute',
+                            right: 0,
+                            bottom: 0,
+                            color: 'rgb(128, 128, 137)',
+                            backgroundColor: 'rgb(235, 235, 240)',
+                            width: '28px',
+                            height: '28px',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            borderTopLeftRadius: '10px',
+                          }}
+                        >
+                          x{order?.quantity}
+                        </Typography>
+                      </Box>
+                      <Stack sx={{ mx: '12px' }}>
+                        <Typography variant="body2">
+                          {order?.product?.name}
+                        </Typography>
+                        <Stack
+                          sx={{
+                            flexDirection: 'row',
+                            alignItems: 'center',
+                            gap: '6px',
+                          }}
+                        >
+                          {order?.size && (
+                            <Typography
+                              variant="caption"
+                              sx={{ color: 'rgb(128, 128, 137)' }}
+                            >
+                              size: {order?.size}
+                            </Typography>
+                          )}
+                          {order?.color && (
+                            <Typography
+                              variant="caption"
+                              sx={{ color: 'rgb(128, 128, 137)' }}
+                            >
+                              color: {order?.color}
+                            </Typography>
+                          )}
+                        </Stack>
                       </Stack>
-                    </Stack>
-                  </Box>
-                  <Box>
-                    <Typography variant="body2">
-                      {item?.product?.priceSale || item?.product?.price}
-                    </Typography>
-                  </Box>
-                </Stack>
+                    </Box>
+                    <Box>
+                      <Typography variant="body2">
+                        {order?.product?.priceSale || order?.product?.price}
+                      </Typography>
+                      {order.isReview === 0 && status === 'delivered' ? (
+                        <Button
+                          variant="contained"
+                          color="warning"
+                          size="medium"
+                          sx={{ color: '#fff' }}
+                          onClick={() => handleOpenFormDialog(order)}
+                        >
+                          Review
+                        </Button>
+                      ) : (
+                        ''
+                      )}
+                    </Box>
+                  </Stack>
+                  <FormDialogReview
+                    fields={fields}
+                    formik={formik}
+                    handleSave={formik.handleSubmit}
+                    order={order}
+                  />
+                </Box>
               ))}
             </Box>
           </Stack>
@@ -148,7 +222,7 @@ const OrderDetail = ({ orderInfo }) => {
               >
                 <Typography variant="subtitle2">Sub Total:</Typography>
                 <Typography variant="subtitle2">
-                  {parseFloat(totalPrices - shippingFee)}
+                  {parseFloat(totalPrices)}
                 </Typography>
               </Stack>
               <Stack
@@ -194,10 +268,10 @@ const OrderDetail = ({ orderInfo }) => {
               >
                 <Typography variant="subtitle2">Total:</Typography>
                 <Typography variant="subtitle2">
-                  {parseFloat(totalPrices)}
+                  {parseFloat(totalPrices + shippingFee)}
                 </Typography>
               </Stack>
-              {status[0] !== 'return' ? (
+              {status !== 'return' ? (
                 <Stack
                   sx={{
                     flexDirection: 'row',
@@ -206,23 +280,26 @@ const OrderDetail = ({ orderInfo }) => {
                     pt: '1rem',
                   }}
                 >
-                  <Button
-                    variant="outlined"
-                    color="error"
-                    disabled={Array.isArray(orderInfo) && orderInfo.length > 0 && orderInfo[orderInfo.length - 1] === 'Confirm'}
-                    onClick={() => handleUpdate('return')}
-                  >
-                    Return
-                  </Button>
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    disabled
-                    //disabled={Array.isArray(orderInfo) && orderInfo.length > 0 && orderInfo[orderInfo.length - 1] === 'confirm'}
-                    onClick={() => handleUpdate('delivered')}
-                  >
-                    Delivered
-                  </Button>
+                  {status !== 'delivered' && (
+                    <Button
+                      variant="outlined"
+                      color="error"
+                      disabled={orderInfo?.status !== 'confirmed'}
+                      onClick={() => handleUpdate('return')}
+                    >
+                      Return
+                    </Button>
+                  )}
+                  {status !== 'delivered' && (
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      disabled={orderInfo?.status !== 'confirmed'}
+                      onClick={() => handleUpdate('delivered')}
+                    >
+                      Delivered
+                    </Button>
+                  )}
                 </Stack>
               ) : (
                 <Button variant="outlined" color="error">
@@ -243,7 +320,7 @@ const OrderDetail = ({ orderInfo }) => {
           p: '1rem',
         }}
       >
-        <OrderTimeLine status={orderInfo.status} />
+        <OrderTimeLine orderInfo={orderInfo} />
       </Paper>
     </Box>
   );
@@ -251,24 +328,19 @@ const OrderDetail = ({ orderInfo }) => {
 
 OrderDetail.propTypes = {
   orderInfo: PropTypes.shape({
-    items: PropTypes.arrayOf(
-      PropTypes.shape({
-        product: PropTypes.shape({
-          name: PropTypes.string,
-          priceSale: PropTypes.number,
-          price: PropTypes.number,
-          image_url: PropTypes.arrayOf(PropTypes.string),
-        }),
-        property: PropTypes.shape({
-          size: PropTypes.string,
-          color: PropTypes.string,
-        }),
-        quantity: PropTypes.number,
-      })
-    ),
+    product: PropTypes.shape({
+      name: PropTypes.string,
+      priceSale: PropTypes.number,
+      price: PropTypes.number,
+      image_products: PropTypes.arrayOf(PropTypes.string),
+    }),
+    size: PropTypes.string,
+    color: PropTypes.string,
+    quantity: PropTypes.number,
     totalPrices: PropTypes.number,
     shippingFee: PropTypes.number,
-    status: PropTypes.array,
+    status: PropTypes.string,
+    isReview: PropTypes.bool,
   }),
 };
 

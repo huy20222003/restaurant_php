@@ -9,8 +9,8 @@ import {
   DialogContent,
   DialogTitle,
 } from '@mui/material';
-//toast
-import { toast } from 'react-toastify';
+//sweetalert2
+import Swal from 'sweetalert2';
 //context
 import { useEmployee } from '../../../hooks/context';
 
@@ -22,19 +22,19 @@ const PreviewAvatar = ({ previewAvatar, open, setOpen, avatarUpdate }) => {
   const handleClose = () => {
     setOpen(false);
   };
-  const handleUpdate = async ()=> {
+  const handleUpdate = async () => {
     try {
-        const updateData = await handleUpdateAvatar({avatarUpdate});
-        if(!updateData.success) {
-            toast.error('Error update avatar');
-        } else {
-            toast.success('Update avatar successfull!');
-        }
-        handleClose();
+      const updateData = await handleUpdateAvatar({ avatarUpdate });
+      if (!updateData.success) {
+        Swal.fire('', 'Error update avatar', 'error');
+      } else {
+        Swal.fire('', 'Update avatar successfull!', 'success');
+      }
+      handleClose();
     } catch (error) {
-        toast.error('Server Error');
+      Swal.fire('', 'Server Error', 'error');
     }
-  }
+  };
 
   return (
     <Dialog open={open} onClose={handleClose}>
@@ -59,10 +59,10 @@ const PreviewAvatar = ({ previewAvatar, open, setOpen, avatarUpdate }) => {
 };
 
 PreviewAvatar.propTypes = {
-  previewAvatar: PropTypes.string.isRequired, 
-  open: PropTypes.bool.isRequired, 
-  setOpen: PropTypes.func.isRequired, 
-  avatarUpdate: PropTypes.object.isRequired, 
+  previewAvatar: PropTypes.string.isRequired,
+  open: PropTypes.bool.isRequired,
+  setOpen: PropTypes.func.isRequired,
+  avatarUpdate: PropTypes.object.isRequired,
 };
 
 export default memo(PreviewAvatar);

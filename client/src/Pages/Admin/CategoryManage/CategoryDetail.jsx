@@ -56,14 +56,14 @@ const CategoryDetail = () => {
 
   const [categoryInfo, setCategoryInfo] = useState(category);
 
-  const { _id } = useParams();
+  const { id } = useParams();
 
   const { setOpenFormDialog } = useCommon();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await handleGetOneCategory(_id);
+        const response = await handleGetOneCategory(id);
         setCategoryInfo(response.category);
       } catch (error) {
         console.error('Error fetching order:', error);
@@ -71,7 +71,7 @@ const CategoryDetail = () => {
     };
 
     fetchData();
-  }, [_id, handleGetOneCategory]);
+  }, [id, handleGetOneCategory]);
 
   const handleOpenFormDialog = () => {
     setOpenFormDialog(true);
@@ -114,7 +114,7 @@ const CategoryDetail = () => {
   ];
 
   const productsFilter = products.filter((product) => {
-    return product.category === _id;
+    return product.category === id;
   });
 
   const rows = productsFilter.map((product) => {
@@ -124,11 +124,11 @@ const CategoryDetail = () => {
         : ''
     );
     const categoryName = categories.find(
-      (item) => item?._id == product?.category
+      (item) => item?.id == product?.category
     );
 
     return {
-      id: product?._id,
+      id: product?.id,
       image_url: product?.image_url,
       name: product?.name,
       description: description.props.children,
@@ -162,7 +162,7 @@ const CategoryDetail = () => {
       }).then(async (result) => {
         if (result.isConfirmed) {
           try {
-            const response = await handleDeleteCategory(_id);
+            const response = await handleDeleteCategory(id);
             if (response.success) {
               Swal.fire('', 'Delete Successful!', 'success');
               navigate('/admin/category-manage');
@@ -175,7 +175,7 @@ const CategoryDetail = () => {
         }
       });
     },
-    [_id, handleDeleteCategory, navigate]
+    [id, handleDeleteCategory, navigate]
   );
 
   return (
@@ -198,7 +198,7 @@ const CategoryDetail = () => {
                 sx={{ flexDirection: 'row', gap: '8px', alignItems: 'center' }}
               >
                 <Typography variant="h6">
-                  Category #{categoryInfo?._id}
+                  Category #{categoryInfo?.id}
                 </Typography>
               </Stack>
             </Stack>

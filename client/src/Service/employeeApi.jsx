@@ -10,7 +10,7 @@ const dishApi = {
         return axiosConfig.get(url);
     },
     createEmployee: (data)=> {
-        const url = '/employee/create-emloyee';
+        const url = '/employee/create-employee';
         return axiosConfig.post(url, data);
     },
     updateEmployee: (employeeId, data)=> {

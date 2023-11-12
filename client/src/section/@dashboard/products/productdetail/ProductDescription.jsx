@@ -13,7 +13,7 @@ const ProductDescription = ({ product }) => {
       <Typography variant="subtitle1">Product Information</Typography>
       <List>
         <ListItem>
-          <Typography variant="body2">Product code: {product?._id}</Typography>
+          <Typography variant="body2">Product code: {product?.id}</Typography>
         </ListItem>
       </List>
       <Typography variant="subtitle1">Product Detail</Typography>
@@ -26,7 +26,7 @@ const ProductDescription = ({ product }) => {
 
 ProductDescription.propTypes = {
   product: PropTypes.shape({
-    _id: PropTypes.string,
+    id: PropTypes.number,
     description: PropTypes.string,
   }),
 };

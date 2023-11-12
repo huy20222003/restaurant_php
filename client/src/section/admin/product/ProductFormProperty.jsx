@@ -36,7 +36,7 @@ const ProductFormProperty = ({ formik }) => {
 
   const renderCategories = () => {
     return categories.map((category) => (
-      <MenuItem key={category._id} value={category._id}>
+      <MenuItem key={category.id} value={category.id}>
         {category.name}
       </MenuItem>
     ));
@@ -85,18 +85,18 @@ const ProductFormProperty = ({ formik }) => {
                 <InputLabel id="category">Category</InputLabel>
                 <Select
                   labelId="category"
-                  id="category"
+                  id="categoryId"
                   label="Category"
-                  name="category"
-                  value={values.category}
+                  name="categoryId"
+                  value={values.categoryId}
                   onBlur={handleBlur}
                   onChange={handleChange}
-                  error={!!(touched.category && errors.category)}
+                  error={!!(touched.categoryId && errors.categoryId)}
                 >
                   {renderCategories()}
                 </Select>
-                {touched.category && errors.category && (
-                  <span style={{ color: 'red' }}>{errors.category}</span>
+                {touched.categoryId && errors.categoryId && (
+                  <span style={{ color: 'red' }}>{errors.categoryId}</span>
                 )}
               </FormControl>
             </Grid>

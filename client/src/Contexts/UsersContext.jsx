@@ -43,21 +43,23 @@ export const UsersProvider = (prop) => {
     try {
       const response = await userApi.createUser(data);
       dispatch(createUser(response.data.user));
+      await handleGetAllUser();
       return response.data;
   } catch (error) {
       return handleError(error);
   }
-  }, []);
+  }, [handleGetAllUser]);
 
   const handleDeleteUser = useCallback(async(userId)=> {
     try {
       const response = await userApi.deleteUser(userId);
       dispatch(deleteUser(userId));
+      await handleGetAllUser();
       return response.data;
   } catch (error) {
       return handleError(error);
   }
-  }, []);
+  }, [handleGetAllUser]);
 
   const handleUpdateAvatar = useCallback(async(avatarUpdate)=> {
     try {

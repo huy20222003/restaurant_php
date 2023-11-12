@@ -60,7 +60,7 @@ const ProductManage = () => {
   const columns = [
     { field: 'id', headerName: 'ID', type: 'String', width: 90 },
     {
-      field: 'image_url',
+      field: 'imageUrl',
       headerName: 'Image',
       type: 'String',
       width: 100,
@@ -170,20 +170,20 @@ const ProductManage = () => {
         : ''
     );
     const categoryName = categories.find(
-      (item) => item?._id == product?.category
+      (item) => item?.id == product?.category
     );
 
     return {
-      id: product?._id,
-      image_url: product?.image_url[0],
+      id: product?.id,
+      imageUrl: product?.image_products[0]?.imageUrl,
       name: product?.name,
       description: description.props.children,
       category: categoryName?.name,
       price: product?.price,
       priceSale: product?.priceSale,
       rate: product?.rate,
-      createdAt: fDateTime(product?.createdAt),
-      updatedAt: fDateTime(product?.updatedAt),
+      createdAt: fDateTime(product?.created_at),
+      updatedAt: fDateTime(product?.updated_at),
     };
   });
 

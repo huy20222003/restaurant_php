@@ -18,11 +18,9 @@ class OrderDetail extends Authenticatable
         'quantity',
         'color',
         'size',
-        'totalPrices',
     ];
 
-    public function products()
-    {
-        return $this->belongsTo(Product::class, 'productId');
+    public function product() {
+        return $this->belongsTo(Product::class, 'productId','id');
     }
 }

@@ -1,6 +1,6 @@
 import { createContext, useCallback, useReducer } from 'react';
 import { initReservationsState, reducer } from '../Reducers/ReservationReducer/reducer';
-import { getAll, createTable, createReservation } from '../Reducers/ReservationReducer/action';
+import { getAll, createReservation, filterReservation } from '../Reducers/ReservationReducer/action';
 import reservationApi from '../Service/reservationApi';
 
 export const ReservationContext = createContext();
@@ -27,15 +27,16 @@ export const ReservationProvider = (prop) => {
     }
   }, []);
 
-  const handleCreateTable = async(data)=> {
+  const handleGetAllReservationsById = useCallback(async () => {
     try {
-      const response = await reservationApi.createTable(data);
-      dispatch(createTable(response.data.reservation));
-      return response.data;
+      const response = await reservationApi.getAllById();
+      if (response.data.success) {
+        dispatch(getAll(response.data.reservations));
+      }
     } catch (error) {
       return handleError(error);
     }
-  }
+  }, []);
 
   const handleCreateReservation = async(data)=> {
     try {
@@ -47,12 +48,23 @@ export const ReservationProvider = (prop) => {
     }
   }
 
+  const handleFilterReservation = async(data)=> {
+    try {
+      const response = await reservationApi.filterReservation(data);
+      dispatch(filterReservation(response.data.reservations));
+      return response.data;
+    } catch (error) {
+      return handleError(error);
+    }
+  }
+
 
   const reservationData = {
     reservationState,
     handleGetAllReservations,
-    handleCreateTable,
-    handleCreateReservation
+    handleGetAllReservationsById,
+    handleCreateReservation,
+    handleFilterReservation,
   };
 
   return (

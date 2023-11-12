@@ -41,7 +41,7 @@ export default function CartWidget() {
 
   return (
     <StyledRoot>
-      <Badge showZero badgeContent={items.length} color="error" max={99} onClick={handleNavigateToCartPage}>
+      <Badge showZero badgeContent={items?.length} color="error" max={99} onClick={handleNavigateToCartPage}>
         <Iconify icon="eva:shopping-cart-fill" width={24} height={24} />
       </Badge>
     </StyledRoot>

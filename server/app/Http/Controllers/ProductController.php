@@ -8,7 +8,6 @@ use Exception;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 
 class ProductController extends Controller
 {
@@ -16,11 +15,11 @@ class ProductController extends Controller
     {
         try {
             // Lấy tất cả sản phẩm kèm theo hình ảnh của mỗi sản phẩm
-            $products = Product::with('imageProducts')->get();
+            $products = Product::with('imageProducts')->orderBy('created_at', 'desc')->get();
 
             return response()->json(['success' => true, 'message' => 'Retrieve data successfully', 'products' => $products]);
         } catch (Exception $exception) {
-            return response()->json(['success' => false, 'message' => 'Retrieve data failed!', 'error' => $exception], 500);
+            return response()->json(['success' => false, 'message' => 'An error occurred while processing the request.', 'error' => $exception->getMessage()], 500);
         }
     }
 
@@ -32,13 +31,13 @@ class ProductController extends Controller
                 'subDescription' => 'string',
                 'description' => 'required|string',
                 'price' => 'required|numeric',
-                'priceSale' => 'numeric',
+                'priceSale' => 'numeric|nullable',
                 'status' => 'required|string',
                 'categoryId' => 'required|numeric',
                 'size' => 'string',
                 'color' => 'string',
                 'quantity' => 'numeric|required',
-                'imageUrl' => 'array|required',
+                'image_products' => 'array|required',
                 'rate' => 'numeric',
             ]);
 
@@ -55,38 +54,26 @@ class ProductController extends Controller
                 'priceSale' => $request->priceSale,
                 'categoryId' => $request->categoryId,
                 'status' => $request->status,
-                'size' => $request->size,
-                'color' => $request->color,
+                'size' => json_encode($request->size),
+                'color' => json_encode($request->color),
                 'quantity' => $request->quantity,
-                'rate' => $request->rate,
+                'rate' => 0,
             ]);
 
-            // Lặp qua mảng hình ảnh và tải lên chúng lên Cloudinary
-            $imageUrls = [];
+            foreach ($request->image_products as $image) {
 
-            foreach ($request->imageUrl as $image) {
-                $uploadedImage = Cloudinary::upload($image->getRealPath());
-
-                // Lấy URL của hình ảnh đã tải lên
-                $imageUrl = $uploadedImage->getSecurePath();
-
-                // Tạo một bản ghi trong bảng ImageProduct cho mỗi hình ảnh và liên kết với sản phẩm
+                $response = cloudinary()->upload($image, ['folder' => 'restaurant_php'])->getSecurePath();
                 ImageProduct::create([
                     'productId' => $product->id,
-                    'imageUrl' => $imageUrl,
+                    'imageUrl' => $response,
                 ]);
-
-                // Thêm URL vào mảng
-                $imageUrls[] = $imageUrl;
             }
 
-            // Cập nhật trường imageUrl trong sản phẩm với danh sách URL
-            $product->imageUrl = $imageUrls;
             $product->save();
 
             return response()->json(['success' => true, 'message' => 'Product created successfully', 'product' => $product], 201);
         } catch (Exception $exception) {
-            return response()->json(['success' => false, 'message' => 'Product creation failed', 'error' => $exception], 500);
+            return response()->json(['success' => false, 'message' => 'An error occurred while processing the request.', 'error' => $exception->getMessage()], 500);
         }
     }
 
@@ -94,11 +81,18 @@ class ProductController extends Controller
     public function getProduct(Product $product)
     {
         try {
-            return response()->json(['success' => true, 'message' => 'Retrieve data successfully', 'product' => $product]);
+            $productWithImages = Product::with('imageProducts')->find($product->id);
+
+            if ($productWithImages) {
+                return response()->json(['success' => true, 'message' => 'Retrieve data successfully', 'product' => $productWithImages]);
+            } else {
+                return response()->json(['success' => false, 'message' => 'Product not found'], 404);
+            }
         } catch (Exception $exception) {
-            return response()->json(['success' => false, 'message' => 'Retrieve data failed', 'error' => $exception], 500);
+            return response()->json(['success' => false, 'message' => 'An error occurred while processing the request.', 'error' => $exception->getMessage()], 500);
         }
     }
+
 
     public function updateProduct(Request $request, Product $product)
     {
@@ -108,18 +102,26 @@ class ProductController extends Controller
                 'subDescription' => 'string',
                 'description' => 'required|string',
                 'price' => 'required|numeric',
-                'priceSale' => 'numeric',
+                'priceSale' => 'numeric|nullable',
                 'status' => 'required|string',
                 'categoryId' => 'required|numeric',
                 'size' => 'string',
                 'color' => 'string',
                 'quantity' => 'numeric|required',
-                'imageUrl' => 'string|required',
-
+                'image_products' => 'array|required',
             ]);
 
             if ($validator->fails()) {
                 return response()->json(['success' => false, 'message' => $validator->errors()], 400);
+            }
+
+            foreach ($request->image_products as $image) {
+
+                $response = cloudinary()->upload($image, ['folder' => 'restaurant_php'])->getSecurePath();
+                ImageProduct::create([
+                    'productId' => $product->id,
+                    'imageUrl' => $response,
+                ]);
             }
 
             $product->name = $request->input('name');
@@ -128,40 +130,43 @@ class ProductController extends Controller
             $product->price = $request->input('price');
             $product->priceSale = $request->input('priceSale');
             $product->categoryId = $request->input('categoryId');
-            $product->size = $request->input('size');
-            $product->color = $request->input('color');
+            $product->size = json_encode($request->input('size'));
+            $product->color = json_encode($request->input('color'));
             $product->quantity = $request->input('quantity');
-            $product->imageUrl = $request->input('imageUrl');
             $product->save();
 
             return response()->json(['success' => true, 'message' => 'Product updated successfully', 'product' => $product]);
         } catch (Exception $exception) {
-            return response()->json(['success' => false, 'message' => 'Retrieve data failed', 'error' => $exception], 500);
+            return response()->json(['success' => false, 'message' => 'An error occurred while processing the request.', 'error' => $exception->getMessage()], 500);
         }
     }
 
     public function deleteProduct(Product $product)
     {
         try {
+            // Delete records in ImageProduct where productId matches $product->id
+            ImageProduct::where('productId', $product->id)->delete();
+
+            // Delete the product record itself
             $product->delete();
 
-            return response()->json(['success' => true, 'message' => 'Product deleted successfully', 'product' => $product]);
+            return response()->json(['success' => true, 'message' => 'Product and related images deleted successfully']);
         } catch (Exception $exception) {
-            return response()->json(['success' => false, 'message' => 'Retrieve data failed', 'error' => $exception], 500);
+            return response()->json(['success' => false, 'message' => 'An error occurred while processing the request.', 'error' => $exception->getMessage()], 500);
         }
     }
 
     public function searchProduct(Request $request)
     {
         try {
-            //$keyword = $request->input('à');
+            dd($request->q);
+            $keyword = $request->input('q');
 
-            //$products = Product::where('name', 'like', '%' . $keyword . '%')->get();
-            dd($request);
+            $products = Product::where('name', 'like', '%' . $keyword . '%')->get();
 
-            //return response()->json(['success' => true, 'message' => 'Retrieve data successfully', 'products' => $products]);
+            return response()->json(['success' => true, 'message' => 'Retrieve data successfully', 'products' => $products]);
         } catch (Exception $exception) {
-            return response()->json(['success' => false, 'message' => 'Retrieve data failed', 'error' => $exception], 500);
+            return response()->json(['success' => false, 'message' => 'An error occurred while processing the request.', 'error' => $exception->getMessage()], 500);
         }
     }
 }

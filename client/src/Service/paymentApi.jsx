@@ -5,6 +5,10 @@ const paymentApi = {
         const url = '/payment';
         return axiosConfig.get(url);
     },
+    getOne: (paymentId)=> {
+        const url = `/payment/${paymentId}`;
+        return axiosConfig.get(url);
+    },
     createPayment: (data)=> {
         const url = '/payment/create-payment';
         return axiosConfig.post(url, data);

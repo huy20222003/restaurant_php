@@ -50,9 +50,9 @@ export default function LoginForm() {
       password: yup
         .string()
         .required('Password is required')
-        .min(7)
+        .min(8)
         .matches(
-          /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@#$%^&+=]).{7,}$/,
+          /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@#$%^&+=]).{8,}$/,
           'Minimum password consists of 7 characters, with uppercase letters, lowercase letters, numbers and special characters'
         ),
       confirmPassword: yup

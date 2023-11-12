@@ -1,6 +1,6 @@
 import { createContext, useCallback, useReducer } from 'react';
 import { initPaymentsState, reducer } from '../Reducers/PaymentReducer/reducer';
-import { getAll } from '../Reducers/PaymentReducer/action';
+import { getAll, getOne } from '../Reducers/PaymentReducer/action';
 import paymentApi from '../Service/paymentApi';
 
 export const PaymentContext = createContext();
@@ -27,6 +27,18 @@ export const PaymentsProvider = (prop) => {
     }
   }, []);
 
+  const handleGetOnePayment = useCallback(async (paymentId) => {
+    try {
+      const response = await paymentApi.getOne(paymentId);
+      if (response.data.success) {
+        dispatch(getOne(response.data.payment));
+      }
+      return response.data;
+    } catch (error) {
+      return handleError(error);
+    }
+  }, []);
+
   const handleCreatePayment = async(data)=> {
     try {
       const response = await paymentApi.createPayment(data);
@@ -48,6 +60,7 @@ export const PaymentsProvider = (prop) => {
   const paymentsData = {
     paymentState,
     handleGetAllPayments,
+    handleGetOnePayment,
     handleCreatePayment,
     handlePaymentWithVnPay,
   };

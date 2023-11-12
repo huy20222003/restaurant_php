@@ -5,9 +5,10 @@ import { Tab, Box } from '@mui/material';
 import { TabContext, TabPanel, TabList } from '@mui/lab';
 //component
 import ProductDescription from './ProductDescription';
+import { ReviewList, ReviewSumary } from '../../reviews';
 //-----------------------------------------------
 
-const ProductTabs = ({product}) => {
+const ProductTabs = ({ product }) => {
   const [value, setValue] = useState('1');
 
   const handleChange = (event, newValue) => {
@@ -30,7 +31,12 @@ const ProductTabs = ({product}) => {
         <TabPanel value="1">
           <ProductDescription product={product} />
         </TabPanel>
-        <TabPanel value="2">5 sao</TabPanel>
+        <TabPanel value="2">
+          <Box>
+            <ReviewSumary productId={product?.id} />
+            <ReviewList productId={product?.id} />
+          </Box>
+        </TabPanel>
       </TabContext>
     </Box>
   );
@@ -38,7 +44,7 @@ const ProductTabs = ({product}) => {
 
 ProductTabs.propTypes = {
   product: PropTypes.shape({
-    _id: PropTypes.string,
+    id: PropTypes.number,
   }),
 };
 

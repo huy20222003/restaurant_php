@@ -23,13 +23,13 @@ const CustomerDetail = () => {
     handleDeleteUser,
   } = useUser();
   const [userInfo, setUserInfo] = useState(user);
-  const { _id } = useParams();
+  const { id } = useParams();
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await handleGetOneUser(_id);
+        const response = await handleGetOneUser(id);
         setUserInfo(response.user);
       } catch (error) {
         console.error('Error fetching product:', error);
@@ -37,7 +37,7 @@ const CustomerDetail = () => {
     };
 
     fetchData();
-  }, [_id, handleGetOneUser]);
+  }, [id, handleGetOneUser]);
 
   const handleBack = () => {
     history.back();
@@ -53,7 +53,7 @@ const CustomerDetail = () => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
-          const response = await handleDeleteUser(_id);
+          const response = await handleDeleteUser(id);
           if (response.success) {
             Swal.fire('', 'Delete Successful!', 'success');
             navigate('/admin/customer-manage');
@@ -88,7 +88,7 @@ const CustomerDetail = () => {
             <Stack
               sx={{ flexDirection: 'row', gap: '8px', alignItems: 'center' }}
             >
-              <Typography variant="h5">User #{_id}</Typography>
+              <Typography variant="h5">User #{id}</Typography>
               <Typography
                 variant="overline"
                 sx={{
@@ -117,7 +117,7 @@ const CustomerDetail = () => {
           <Grid item xs={12} sm={8} md={8}>
             <DetailCardInfo
               fields={[
-                { name: '_id', label: 'ID', gridItemProps: 6 },
+                { name: 'id', label: 'ID', gridItemProps: 6 },
                 { name: 'status', label: 'Status', gridItemProps: 6 },
                 { name: 'fullName', label: 'Full Name', gridItemProps: 6 },
                 { name: 'username', label: 'Username', gridItemProps: 6 },

@@ -54,11 +54,12 @@ export const EmployeesProvider = (prop) => {
       if (response.data.success) {
         dispatch(updateEmployee(response.data.employee));
       }
+      await handleGetAll();
       return response.data;
     } catch (error) {
       return handleError(error);
     }
-  }, []);
+  }, [handleGetAll]);
 
   const handleCreateEmployee = useCallback(async (data) => {
     try {
@@ -66,21 +67,23 @@ export const EmployeesProvider = (prop) => {
       if (response.data.success) {
         dispatch(createEmployee(response.data.employee));
       }
+      await handleGetAll();
       return response.data;
     } catch (error) {
       return handleError(error);
     }
-  }, []);
+  }, [handleGetAll]);
 
   const handleDeleteEmployee = useCallback(async (employeeId) => {
     try {
       const response = await employeeApi.deleteEmployee(employeeId);
       dispatch(deleteEmployee(employeeId));
+      await handleGetAll();
       return response.data;
     } catch (error) {
       return handleError(error);
     }
-  }, []);
+  }, [handleGetAll]);
 
   const handleUpdatePasswordEmployee = useCallback(async (newPassword) => {
     try {

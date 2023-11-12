@@ -37,8 +37,14 @@ export default function LoginForm() {
       password: '',
     },
     validationSchema: yup.object({
-      username: yup.string().required('Invalid username'),
-      password: yup.string().required('Invalid password'),
+      username: yup
+        .string()
+        .required('Username is required')
+        .max(100, 'Username maximum 100 characters'),
+      password: yup
+        .string()
+        .required('Password is required')
+        .min(8),
     }),
     onSubmit: async (values) => {
       try {

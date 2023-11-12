@@ -46,7 +46,7 @@ const OverviewLatestProducts = (props) => {
                 {product?.image_products[0] ? (
                   <Box
                     component="img"
-                    src={product?.image_products[0]}
+                    src={product?.image_products[0]?.imageUrl}
                     sx={{
                       borderRadius: 1,
                       height: 48,
@@ -67,7 +67,7 @@ const OverviewLatestProducts = (props) => {
               <ListItemText
                 primary={product?.name}
                 primaryTypographyProps={{ variant: 'subtitle1' }}
-                secondary={`Updated ${fToNow(product?.updatedAt)}`}
+                secondary={`Updated ${fToNow(product?.updated_at)}`}
                 secondaryTypographyProps={{ variant: 'body2' }}
               />
               <IconButton edge="end">

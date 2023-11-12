@@ -26,7 +26,7 @@ ShopProductCard.propTypes = {
 };
 
 export default function ShopProductCard({ product }) {
-  const { _id, name, status, price, priceSale, image_url, rate } = product;
+  const { id, name, status, price, priceSale, image_products, rate } = product;
   const navigate = useNavigate();
 
   const handleNavigateToProductDetail = (productId) => {
@@ -35,7 +35,7 @@ export default function ShopProductCard({ product }) {
 
   return (
     <Card
-      onClick={() => handleNavigateToProductDetail(_id)}
+      onClick={() => handleNavigateToProductDetail(id)}
       sx={{ cursor: 'pointer' }}
     >
       <Box sx={{ pt: '100%', position: 'relative' }}>
@@ -54,7 +54,7 @@ export default function ShopProductCard({ product }) {
             {status}
           </Label>
         )}
-        <StyledProductImg alt={name} src={image_url[0]} />
+        <StyledProductImg alt={name} src={image_products[0]?.imageUrl} />
       </Box>
 
       <Stack spacing={2} sx={{ p: 3 }}>

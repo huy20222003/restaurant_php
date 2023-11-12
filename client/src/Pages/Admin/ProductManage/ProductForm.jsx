@@ -54,7 +54,7 @@ const ProductForm = () => {
   const navigate = useNavigate();
 
   const [isEdit, setIsEdit] = useState(false);
-  const { _id } = useParams();
+  const { id } = useParams();
   const { handleCreateProduct, handleGetOneProduct, handleUpdateProduct } =
     useProduct();
 
@@ -63,9 +63,9 @@ const ProductForm = () => {
       name: '',
       subDescription: '',
       description: '',
-      image_url: [],
+      image_products: [],
       quantity: '',
-      category: '',
+      categoryId: '',
       size: [],
       color: [],
       price: '',
@@ -82,21 +82,24 @@ const ProductForm = () => {
         .string()
         .required('Description is required')
         .max(3000, 'Maximum characters are 3000'),
-      image_url: yup.array().required('Image is required'),
+      image_products: yup.array().required('Image is required'),
       quantity: yup.number().required('Quantity is required'),
-      category: yup.string().required('Category is required'),
+      categoryId: yup.number().required('Category is required'),
       size: yup.string().nullable(),
       color: yup.string().nullable(),
       price: yup.number().required('Price is required'),
-      priceSale: yup.number().nullable().when('price', (price, schema) => {
-        return schema.lessThan(price, 'Price Sale must be less than Price');
-      }),
+      priceSale: yup
+        .number()
+        .nullable()
+        .when('price', (price, schema) => {
+          return schema.lessThan(price, 'Price Sale must be less than Price');
+        }),
       status: yup.string().required('Status is required'),
     }),
     onSubmit: async (values) => {
       try {
         if (isEdit) {
-          const updateData = await handleUpdateProduct(_id, values);
+          const updateData = await handleUpdateProduct(id, values);
           if (!updateData.success) {
             Swal.fire('Failed', 'Update Product Failed', 'error');
           } else {
@@ -120,11 +123,11 @@ const ProductForm = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      if (_id) {
+      if (id) {
         setIsEdit(true);
         try {
-          const response = await handleGetOneProduct(_id);
-          formik.setValues(response.product);
+          const response = await handleGetOneProduct(id);
+          formik.setValues({ ...response.product, image_products: [] });
         } catch (error) {
           toast.error('Server Error');
         }
@@ -132,7 +135,7 @@ const ProductForm = () => {
     };
 
     fetchData();
-  }, [_id, handleGetOneProduct]);
+  }, [id, handleGetOneProduct]);
 
   return (
     <form style={{ marginTop: '2rem' }} onSubmit={formik.handleSubmit}>

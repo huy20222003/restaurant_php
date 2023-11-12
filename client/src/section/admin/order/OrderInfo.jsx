@@ -94,7 +94,7 @@ const OrderInfo = ({ orderInfo }) => {
             }}
           >
             <Typography variant="subtitle2">Order Date</Typography>
-            <Typography variant="body2">{fDateTime(orderInfo?.createdAt)}</Typography>
+            <Typography variant="body2">{fDateTime(orderInfo?.created_at)}</Typography>
           </Stack>
           <Stack
             sx={{
@@ -104,7 +104,7 @@ const OrderInfo = ({ orderInfo }) => {
             }}
           >
             <Typography variant="subtitle2">Update Date</Typography>
-            <Typography variant="body2">{fDateTime(orderInfo?.updatedAt)}</Typography>
+            <Typography variant="body2">{fDateTime(orderInfo?.updated_at)}</Typography>
           </Stack>
         </Stack>
       </Stack>
@@ -119,8 +119,8 @@ OrderInfo.propTypes = {
     shippingUnit: PropTypes.string,
     phoneNumber: PropTypes.string,
     paymentMethod: PropTypes.string,
-    createdAt: PropTypes.string,
-    updatedAt: PropTypes.string,
+    created_at: PropTypes.string,
+    updated_at: PropTypes.string,
   }),
 };
 

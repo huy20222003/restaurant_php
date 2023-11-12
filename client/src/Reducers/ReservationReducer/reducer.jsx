@@ -1,4 +1,9 @@
-import { CREATE_RESERVATION, CREATE_TABLE, GET_ALL_RESERVATIONS } from './constants';
+import {
+  CREATE_RESERVATION,
+  GET_ALL_RESERVATIONS,
+  FILTER_RESERVATION,
+  GET_ALL_BY_ID,
+} from './constants';
 
 export const initReservationsState = {
   reservations: [],
@@ -14,16 +19,22 @@ export const reducer = (state, action) => {
         ...state,
         reservations: payload,
       };
-      case CREATE_TABLE: {
-        return {
-          ...state,
-          reservation: [...state.reservations, payload],
-        };
-      }
+      case GET_ALL_BY_ID:
+      return {
+        ...state,
+        reservations: payload,
+      };
+
     case CREATE_RESERVATION: {
       return {
         ...state,
-        reservation: [...state.reservations, payload],
+        reservations: [...state.reservations, payload],
+      };
+    }
+    case FILTER_RESERVATION: {
+      return {
+        ...state,
+        reservations: payload,
       };
     }
     default:

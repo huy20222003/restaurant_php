@@ -12,11 +12,12 @@ import {
 import { useCommon } from '../../hooks/context';
 //---------------------------------------------------------------------
 
-const FormDialogTable = ({ fields, formik, handleSave, isEdit }) => {
+const FormDialogTable = ({ fields, formik, handleSave, isEdit, setIsEdit }) => {
   const { openFormDialog, setOpenFormDialog } = useCommon();
 
   const handleClose = () => {
     setOpenFormDialog(false);
+    setIsEdit(false);
   };
 
   return (
@@ -35,7 +36,7 @@ const FormDialogTable = ({ fields, formik, handleSave, isEdit }) => {
             value={formik.values[field.name] || ''}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
-            error={formik.touched[field.name] && formik.errors[field.name]}
+            error={!!(formik.touched[field.name] && formik.errors[field.name])}
             helperText={formik.touched[field.name] && formik.errors[field.name]}
             required
           />
@@ -71,6 +72,7 @@ FormDialogTable.propTypes = {
   formik: PropTypes.object,
   handleSave: PropTypes.func.isRequired,
   isEdit: PropTypes.bool.isRequired,
+  setIsEdit: PropTypes.func.isRequired,
 };
 
 export default FormDialogTable;

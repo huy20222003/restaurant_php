@@ -33,11 +33,12 @@ export const CartProvider = (prop) => {
       if(response.data.success) {
         dispatch(updateCart(response.data.cart));
       }
+      await handleGetCart();
       return response.data;
     } catch (error) {
       return handleError();
     }
-  }, []);
+  }, [handleGetCart]);
 
   const handleDeleteProductFromCart = useCallback(async(productId)=> {
     try {
@@ -45,11 +46,12 @@ export const CartProvider = (prop) => {
       if(response.data.success) {
         dispatch(updateCart(response.data.cart));
       }
+      await handleGetCart();
       return response.data;
     } catch (error) {
       return handleError();
     }
-  }, []);
+  }, [handleGetCart]);
 
   const CartData = {
     cartState,

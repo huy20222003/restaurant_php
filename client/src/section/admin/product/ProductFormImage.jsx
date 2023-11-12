@@ -11,6 +11,7 @@ const ProductFormImageItem = ({ imageUrl, index, handleDeleteImage }) => {
   const onDeleteImage = () => {
     handleDeleteImage(index); // Gọi hàm onDelete để xoá ảnh
   };
+
   return (
     <Stack
       sx={{
@@ -84,7 +85,10 @@ const ProductFormImage = ({ formik }) => {
 
     Promise.all(promises)
       .then((base64Images) => {
-        setFieldValue('image_url', [...values.image_url, ...base64Images]);
+        setFieldValue('image_products', [
+          ...values.image_products,
+          ...base64Images,
+        ]);
       })
       .catch((error) => {
         console.error('Error converting images to base64:', error);
@@ -109,9 +113,9 @@ const ProductFormImage = ({ formik }) => {
     const newImageUrls = [...imageUrls];
     newImageUrls.splice(index, 1);
     setImageUrls(newImageUrls);
-    const newImageUrlsInFormik = [...values.image_url];
+    const newImageUrlsInFormik = [...values.image_products];
     newImageUrlsInFormik.splice(index, 1);
-    setFieldValue('image_url', newImageUrlsInFormik);
+    setFieldValue('image_products', newImageUrlsInFormik);
   };
 
   return (

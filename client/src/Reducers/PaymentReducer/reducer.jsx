@@ -1,5 +1,5 @@
 import {
-    GET_ALL_PAYMENT
+    GET_ALL_PAYMENT, GET_ONE_PAYMENT
   } from './constant';
   
   export const initPaymentsState = {
@@ -16,6 +16,11 @@ import {
           ...state,
           payments: payload,
         };
+        case GET_ONE_PAYMENT:
+          return {
+            ...state,
+            payment: payload,
+          };
       default:
         return {
           ...state,

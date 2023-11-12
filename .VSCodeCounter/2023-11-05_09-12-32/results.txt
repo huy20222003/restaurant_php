@@ -1,0 +1,713 @@
+Date : 2023-11-05 09:12:32
+Directory : c:\xampp\htdocs\restaurants_php
+Total : 500 files,  45804 codes, 2572 comments, 2772 blanks, all 51148 lines
+
+Languages
++----------------+------------+------------+------------+------------+------------+
+| language       | files      | code       | comment    | blank      | total      |
++----------------+------------+------------+------------+------------+------------+
+| JSON           |          7 |     21,900 |          0 |          6 |     21,906 |
+| JavaScript JSX |        348 |     20,216 |      1,165 |      1,836 |     23,217 |
+| PHP            |         91 |      3,206 |      1,375 |        862 |      5,443 |
+| XML            |         39 |        312 |          2 |         13 |        327 |
+| Markdown       |          3 |         52 |          0 |         27 |         79 |
+| HTML           |          2 |         47 |          4 |         10 |         61 |
+| JavaScript     |          6 |         45 |         24 |         14 |         83 |
+| CSS            |          4 |         26 |          2 |          4 |         32 |
++----------------+------------+------------+------------+------------+------------+
+
+Directories
++-----------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                                  | files      | code       | comment    | blank      | total      |
++-----------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                                     |        500 |     45,804 |      2,572 |      2,772 |     51,148 |
+| . (Files)                                                                                                             |          1 |          2 |          0 |          1 |          3 |
+| client                                                                                                                |        397 |     33,035 |      1,170 |      1,871 |     36,076 |
+| client (Files)                                                                                                        |          6 |     12,460 |          1 |         10 |     12,471 |
+| client\public                                                                                                         |         40 |        328 |          4 |         22 |        354 |
+| client\public (Files)                                                                                                 |          3 |         46 |          4 |         10 |         60 |
+| client\public\assets                                                                                                  |         37 |        282 |          0 |         12 |        294 |
+| client\public\assets (Files)                                                                                          |          1 |          1 |          0 |          0 |          1 |
+| client\public\assets\icons                                                                                            |         30 |        236 |          0 |         11 |        247 |
+| client\public\assets\icons (Files)                                                                                    |          8 |          8 |          0 |          0 |          8 |
+| client\public\assets\icons\manage                                                                                     |          2 |          2 |          0 |          0 |          2 |
+| client\public\assets\icons\navbar                                                                                     |          7 |         29 |          0 |          5 |         34 |
+| client\public\assets\icons\product                                                                                    |          1 |          1 |          0 |          0 |          1 |
+| client\public\assets\icons\service                                                                                    |         12 |        196 |          0 |          6 |        202 |
+| client\public\assets\illustrations                                                                                    |          5 |         44 |          0 |          1 |         45 |
+| client\public\assets\images                                                                                           |          1 |          1 |          0 |          0 |          1 |
+| client\src                                                                                                            |        351 |     20,247 |      1,165 |      1,839 |     23,251 |
+| client\src (Files)                                                                                                    |          4 |        159 |         45 |         24 |        228 |
+| client\src\Components                                                                                                 |         45 |      1,829 |        251 |        213 |      2,293 |
+| client\src\Components\Admin                                                                                           |         13 |        582 |         59 |         62 |        703 |
+| client\src\Components\Admin\DataTable                                                                                 |          2 |         33 |          2 |          5 |         40 |
+| client\src\Components\Admin\ListItem                                                                                  |          1 |        155 |          4 |          6 |        165 |
+| client\src\Components\Admin\Title                                                                                     |          2 |         14 |          0 |          3 |         17 |
+| client\src\Components\Admin\chart                                                                                     |          1 |          3 |          0 |          2 |          5 |
+| client\src\Components\Admin\chartsVisit                                                                               |          3 |        217 |         29 |         34 |        280 |
+| client\src\Components\Admin\detailInfo                                                                                |          3 |        108 |         24 |          5 |        137 |
+| client\src\Components\Admin\severity-pill                                                                             |          1 |         52 |          0 |          7 |         59 |
+| client\src\Components\FormDialog                                                                                      |          7 |        749 |        154 |         49 |        952 |
+| client\src\Components\Loader                                                                                          |          3 |         35 |          0 |          4 |         39 |
+| client\src\Components\User                                                                                            |         22 |        463 |         38 |         98 |        599 |
+| client\src\Components\User\color-utils                                                                                |          5 |        167 |         11 |         26 |        204 |
+| client\src\Components\User\iconify                                                                                    |          2 |         14 |          3 |          6 |         23 |
+| client\src\Components\User\label                                                                                      |          3 |         99 |         10 |         19 |        128 |
+| client\src\Components\User\logo                                                                                       |          2 |         29 |          0 |          7 |         36 |
+| client\src\Components\User\nav-section                                                                                |          3 |         63 |          6 |         15 |         84 |
+| client\src\Components\User\scroll-to-top                                                                              |          2 |         10 |          1 |          6 |         17 |
+| client\src\Components\User\scrollbar                                                                                  |          3 |         55 |          5 |         13 |         73 |
+| client\src\Components\User\svg-color                                                                                  |          2 |         26 |          2 |          6 |         34 |
+| client\src\Contexts                                                                                                   |         13 |      1,094 |         15 |        151 |      1,260 |
+| client\src\GlobalStyles                                                                                               |          2 |         14 |          0 |          5 |         19 |
+| client\src\Pages                                                                                                      |         56 |      4,088 |        187 |        334 |      4,609 |
+| client\src\Pages\Admin                                                                                                |         27 |      3,162 |         99 |        217 |      3,478 |
+| client\src\Pages\Admin\AdminDashboard                                                                                 |          2 |        172 |          2 |         18 |        192 |
+| client\src\Pages\Admin\Auth                                                                                           |          2 |         51 |          5 |          3 |         59 |
+| client\src\Pages\Admin\Auth\AdminLogin                                                                                |          2 |         51 |          5 |          3 |         59 |
+| client\src\Pages\Admin\CategoryManage                                                                                 |          3 |        592 |         16 |         45 |        653 |
+| client\src\Pages\Admin\CustomerManage                                                                                 |          3 |        553 |         14 |         32 |        599 |
+| client\src\Pages\Admin\EmployeeManage                                                                                 |          3 |        565 |         15 |         35 |        615 |
+| client\src\Pages\Admin\OrderManage                                                                                    |          3 |        332 |         11 |         23 |        366 |
+| client\src\Pages\Admin\PaymentManage                                                                                  |          2 |        224 |          6 |         16 |        246 |
+| client\src\Pages\Admin\ProductManage                                                                                  |          3 |        437 |         16 |         28 |        481 |
+| client\src\Pages\Admin\Profile                                                                                        |          2 |         27 |          3 |          3 |         33 |
+| client\src\Pages\Admin\ReservationManage                                                                              |          2 |        177 |          8 |         10 |        195 |
+| client\src\Pages\Admin\Setting                                                                                        |          2 |         32 |          3 |          4 |         39 |
+| client\src\Pages\Page404                                                                                              |          2 |         56 |          3 |          8 |         67 |
+| client\src\Pages\User                                                                                                 |         27 |        870 |         85 |        109 |      1,064 |
+| client\src\Pages\User\AboutPage                                                                                       |          2 |         17 |          3 |          4 |         24 |
+| client\src\Pages\User\Auth                                                                                            |          4 |        315 |         36 |         38 |        389 |
+| client\src\Pages\User\Auth\Login                                                                                      |          2 |        156 |         18 |         19 |        193 |
+| client\src\Pages\User\Auth\Register                                                                                   |          2 |        159 |         18 |         19 |        196 |
+| client\src\Pages\User\CartPages                                                                                       |          2 |         49 |          4 |          5 |         58 |
+| client\src\Pages\User\DashboardAppPage                                                                                |          2 |         30 |          3 |          5 |         38 |
+| client\src\Pages\User\FAQPage                                                                                         |          2 |         20 |          3 |          4 |         27 |
+| client\src\Pages\User\HomePage                                                                                        |          2 |         21 |          3 |          3 |         27 |
+| client\src\Pages\User\OrderPage                                                                                       |          4 |        216 |         16 |         24 |        256 |
+| client\src\Pages\User\ProductsPage                                                                                    |          3 |        116 |          8 |         17 |        141 |
+| client\src\Pages\User\ProfilePage                                                                                     |          2 |         27 |          3 |          3 |         33 |
+| client\src\Pages\User\Reservation                                                                                     |          2 |         27 |          3 |          3 |         33 |
+| client\src\Pages\User\SettingPage                                                                                     |          2 |         32 |          3 |          3 |         38 |
+| client\src\Reducers                                                                                                   |         36 |        830 |          0 |        116 |        946 |
+| client\src\Reducers\AuthReducer                                                                                       |          3 |         31 |          0 |          7 |         38 |
+| client\src\Reducers\CartReducer                                                                                       |          3 |         41 |          0 |          7 |         48 |
+| client\src\Reducers\CategoryReducer                                                                                   |          3 |         86 |          0 |         11 |         97 |
+| client\src\Reducers\EmployeesReducer                                                                                  |          3 |         86 |          0 |         10 |         96 |
+| client\src\Reducers\OrderReducer                                                                                      |          3 |         87 |          0 |         10 |         97 |
+| client\src\Reducers\PaymentReducer                                                                                    |          3 |         41 |          0 |          8 |         49 |
+| client\src\Reducers\ProductsReducer                                                                                   |          3 |        139 |          0 |         19 |        158 |
+| client\src\Reducers\ReservationReducer                                                                                |          3 |         53 |          0 |          8 |         61 |
+| client\src\Reducers\ReviewReducer                                                                                     |          3 |         39 |          0 |          7 |         46 |
+| client\src\Reducers\RoleReducer                                                                                       |          3 |         78 |          0 |          9 |         87 |
+| client\src\Reducers\TableReducer                                                                                      |          3 |         81 |          0 |         11 |         92 |
+| client\src\Reducers\UsersReducer                                                                                      |          3 |         68 |          0 |          9 |         77 |
+| client\src\Service                                                                                                    |         13 |        360 |          3 |         32 |        395 |
+| client\src\config                                                                                                     |          3 |         61 |          0 |          6 |         67 |
+| client\src\config (Files)                                                                                             |          2 |         48 |          0 |          3 |         51 |
+| client\src\config\firebase                                                                                            |          1 |         13 |          0 |          3 |         16 |
+| client\src\hooks                                                                                                      |         15 |        120 |         30 |         47 |        197 |
+| client\src\hooks (Files)                                                                                              |          1 |         29 |          4 |         15 |         48 |
+| client\src\hooks\context                                                                                              |         14 |         91 |         26 |         32 |        149 |
+| client\src\layouts                                                                                                    |         18 |      1,705 |         61 |        160 |      1,926 |
+| client\src\layouts\admin                                                                                              |          2 |        463 |         13 |         37 |        513 |
+| client\src\layouts\admin (Files)                                                                                      |          1 |        216 |          7 |         13 |        236 |
+| client\src\layouts\admin\header                                                                                       |          1 |        247 |          6 |         24 |        277 |
+| client\src\layouts\dashboard                                                                                          |          8 |        827 |         34 |         94 |        955 |
+| client\src\layouts\dashboard (Files)                                                                                  |          2 |         37 |          4 |         11 |         52 |
+| client\src\layouts\dashboard\header                                                                                   |          5 |        621 |         19 |         66 |        706 |
+| client\src\layouts\dashboard\nav                                                                                      |          1 |        169 |         11 |         17 |        197 |
+| client\src\layouts\home                                                                                               |          6 |        390 |         10 |         22 |        422 |
+| client\src\layouts\home (Files)                                                                                       |          2 |         17 |          2 |          4 |         23 |
+| client\src\layouts\home\footer                                                                                        |          1 |        104 |          3 |          4 |        111 |
+| client\src\layouts\home\header                                                                                        |          3 |        269 |          5 |         14 |        288 |
+| client\src\layouts\home\header (Files)                                                                                |          1 |         91 |          3 |          8 |        102 |
+| client\src\layouts\home\header\nav                                                                                    |          2 |        178 |          2 |          6 |        186 |
+| client\src\layouts\simple                                                                                             |          2 |         25 |          4 |          7 |         36 |
+| client\src\routers                                                                                                    |          2 |        345 |         13 |         11 |        369 |
+| client\src\section                                                                                                    |        124 |      8,930 |        519 |        636 |     10,085 |
+| client\src\section\@dashboard                                                                                         |         59 |      4,484 |        236 |        353 |      5,073 |
+| client\src\section\@dashboard\app                                                                                     |          8 |        203 |         18 |         32 |        253 |
+| client\src\section\@dashboard\app (Files)                                                                             |          3 |         53 |          6 |         11 |         70 |
+| client\src\section\@dashboard\app\Category                                                                            |          2 |         82 |          5 |         11 |         98 |
+| client\src\section\@dashboard\app\Slider                                                                              |          3 |         68 |          7 |         10 |         85 |
+| client\src\section\@dashboard\cart                                                                                    |         14 |      1,536 |         75 |        108 |      1,719 |
+| client\src\section\@dashboard\cart (Files)                                                                            |          3 |        188 |         26 |         23 |        237 |
+| client\src\section\@dashboard\cart\CartConfirm                                                                        |          3 |        370 |          7 |         13 |        390 |
+| client\src\section\@dashboard\cart\CartPayment                                                                        |          4 |        398 |         16 |         30 |        444 |
+| client\src\section\@dashboard\cart\CartSelect                                                                         |          4 |        580 |         26 |         42 |        648 |
+| client\src\section\@dashboard\common                                                                                  |          2 |         15 |          2 |          4 |         21 |
+| client\src\section\@dashboard\order                                                                                   |          6 |        706 |         23 |         39 |        768 |
+| client\src\section\@dashboard\products                                                                                |         15 |        978 |         38 |         97 |      1,113 |
+| client\src\section\@dashboard\products (Files)                                                                        |          8 |        481 |         21 |         57 |        559 |
+| client\src\section\@dashboard\products\productdetail                                                                  |          7 |        497 |         17 |         40 |        554 |
+| client\src\section\@dashboard\profile                                                                                 |          4 |        297 |         46 |         16 |        359 |
+| client\src\section\@dashboard\reservation                                                                             |          3 |        168 |         10 |         13 |        191 |
+| client\src\section\@dashboard\reviews                                                                                 |          4 |        323 |         15 |         32 |        370 |
+| client\src\section\@dashboard\setting                                                                                 |          3 |        258 |          9 |         12 |        279 |
+| client\src\section\about                                                                                              |          6 |        382 |         11 |         23 |        416 |
+| client\src\section\about (Files)                                                                                      |          3 |        188 |          4 |         12 |        204 |
+| client\src\section\about\slider                                                                                       |          3 |        194 |          7 |         11 |        212 |
+| client\src\section\admin                                                                                              |         34 |      2,735 |        229 |        172 |      3,136 |
+| client\src\section\admin\auth                                                                                         |          2 |        150 |          8 |          7 |        165 |
+| client\src\section\admin\category                                                                                     |          2 |        116 |          5 |          8 |        129 |
+| client\src\section\admin\dashboard                                                                                    |         10 |        791 |         16 |         52 |        859 |
+| client\src\section\admin\order                                                                                        |          4 |        451 |         13 |         21 |        485 |
+| client\src\section\admin\product                                                                                      |          5 |        340 |         99 |         30 |        469 |
+| client\src\section\admin\profile                                                                                      |          4 |        272 |         45 |         15 |        332 |
+| client\src\section\admin\reservation                                                                                  |          4 |        357 |         34 |         29 |        420 |
+| client\src\section\admin\setting                                                                                      |          3 |        258 |          9 |         10 |        277 |
+| client\src\section\auth                                                                                               |          4 |        397 |         14 |         17 |        428 |
+| client\src\section\auth\LoginForm                                                                                     |          2 |        139 |          7 |          8 |        154 |
+| client\src\section\auth\RegisterForm                                                                                  |          2 |        258 |          7 |          9 |        274 |
+| client\src\section\faq                                                                                                |          6 |        349 |          9 |         26 |        384 |
+| client\src\section\home                                                                                               |         15 |        583 |         20 |         45 |        648 |
+| client\src\section\home\Main                                                                                          |          2 |        199 |          1 |         12 |        212 |
+| client\src\section\home\accordion                                                                                     |          4 |        136 |          6 |         11 |        153 |
+| client\src\section\home\info                                                                                          |          3 |        118 |          5 |          9 |        132 |
+| client\src\section\home\service                                                                                       |          4 |        102 |          7 |         10 |        119 |
+| client\src\section\home\trusted                                                                                       |          2 |         28 |          1 |          3 |         32 |
+| client\src\theme                                                                                                      |         16 |        582 |         32 |         63 |        677 |
+| client\src\theme (Files)                                                                                              |          6 |        343 |         21 |         39 |        403 |
+| client\src\theme\overrides                                                                                            |         10 |        239 |         11 |         24 |        274 |
+| client\src\utils                                                                                                      |          4 |        130 |          9 |         41 |        180 |
+| server                                                                                                                |        102 |     12,767 |      1,402 |        900 |     15,069 |
+| server (Files)                                                                                                        |          6 |      9,550 |          2 |         28 |      9,580 |
+| server\app                                                                                                            |         43 |      1,890 |        346 |        438 |      2,674 |
+| server\app\Console                                                                                                    |          1 |         15 |          7 |          6 |         28 |
+| server\app\Exceptions                                                                                                 |          1 |         17 |          9 |          5 |         31 |
+| server\app\Http                                                                                                       |         23 |      1,516 |        250 |        323 |      2,089 |
+| server\app\Http (Files)                                                                                               |          1 |         41 |         21 |          7 |         69 |
+| server\app\Http\Controllers                                                                                           |         13 |      1,375 |        172 |        277 |      1,824 |
+| server\app\Http\Middleware                                                                                            |          9 |        100 |         57 |         39 |        196 |
+| server\app\Models                                                                                                     |         13 |        262 |         36 |         76 |        374 |
+| server\app\Providers                                                                                                  |          5 |         80 |         44 |         28 |        152 |
+| server\bootstrap                                                                                                      |          1 |         17 |         30 |          9 |         56 |
+| server\config                                                                                                         |         17 |        571 |        779 |        248 |      1,598 |
+| server\database                                                                                                       |         20 |        464 |        128 |         85 |        677 |
+| server\database\factories                                                                                             |          1 |         23 |         11 |          5 |         39 |
+| server\database\migrations                                                                                            |         18 |        432 |        108 |         75 |        615 |
+| server\database\seeders                                                                                               |          1 |          9 |          9 |          5 |         23 |
+| server\public                                                                                                         |          1 |         14 |         30 |         12 |         56 |
+| server\resources                                                                                                      |          4 |        122 |         23 |         32 |        177 |
+| server\resources\css                                                                                                  |          1 |          0 |          0 |          1 |          1 |
+| server\resources\js                                                                                                   |          2 |          4 |         23 |          8 |         35 |
+| server\resources\views                                                                                                |          1 |        118 |          0 |         23 |        141 |
+| server\routes                                                                                                         |          4 |         91 |         52 |         28 |        171 |
+| server\tests                                                                                                          |          4 |         41 |         10 |         19 |         70 |
+| server\tests (Files)                                                                                                  |          2 |         20 |          3 |         10 |         33 |
+| server\tests\Feature                                                                                                  |          1 |         11 |          4 |          5 |         20 |
+| server\tests\Unit                                                                                                     |          1 |         10 |          3 |          4 |         17 |
+| server\vendor                                                                                                         |          2 |          7 |          2 |          1 |         10 |
+| server\vendor\spatie                                                                                                  |          2 |          7 |          2 |          1 |         10 |
+| server\vendor\spatie\ignition                                                                                         |          2 |          7 |          2 |          1 |         10 |
+| server\vendor\spatie\ignition\resources                                                                               |          2 |          7 |          2 |          1 |         10 |
+| server\vendor\spatie\ignition\resources\compiled                                                                      |          2 |          7 |          2 |          1 |         10 |
++-----------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++-----------------------------------------------------------------------------------------------------------------------+----------------+------------+------------+------------+------------+
+| filename                                                                                                              | language       | code       | comment    | blank      | total      |
++-----------------------------------------------------------------------------------------------------------------------+----------------+------------+------------+------------+------------+
+| c:\xampp\htdocs\restaurants_php\README.md                                                                             | Markdown       |          2 |          0 |          1 |          3 |
+| c:\xampp\htdocs\restaurants_php\client\.eslintrc.cjs                                                                  | JavaScript     |         20 |          0 |          1 |         21 |
+| c:\xampp\htdocs\restaurants_php\client\README.md                                                                      | Markdown       |          5 |          0 |          4 |          9 |
+| c:\xampp\htdocs\restaurants_php\client\index.html                                                                     | HTML           |         22 |          0 |          1 |         23 |
+| c:\xampp\htdocs\restaurants_php\client\package-lock.json                                                              | JSON           |     12,344 |          0 |          1 |     12,345 |
+| c:\xampp\htdocs\restaurants_php\client\package.json                                                                   | JSON           |         64 |          0 |          1 |         65 |
+| c:\xampp\htdocs\restaurants_php\client\public\assets\icons\ic_flag_de.svg                                             | XML            |          1 |          0 |          0 |          1 |
+| c:\xampp\htdocs\restaurants_php\client\public\assets\icons\ic_flag_en.svg                                             | XML            |          1 |          0 |          0 |          1 |
+| c:\xampp\htdocs\restaurants_php\client\public\assets\icons\ic_flag_fr.svg                                             | XML            |          1 |          0 |          0 |          1 |
+| c:\xampp\htdocs\restaurants_php\client\public\assets\icons\ic_notification_chat.svg                                   | XML            |          1 |          0 |          0 |          1 |
+| c:\xampp\htdocs\restaurants_php\client\public\assets\icons\ic_notification_mail.svg                                   | XML            |          1 |          0 |          0 |          1 |
+| c:\xampp\htdocs\restaurants_php\client\public\assets\icons\ic_notification_package.svg                                | XML            |          1 |          0 |          0 |          1 |
+| c:\xampp\htdocs\restaurants_php\client\public\assets\icons\ic_notification_shipping.svg                               | XML            |          1 |          0 |          0 |          1 |
+| c:\xampp\htdocs\restaurants_php\client\public\assets\icons\manage\ic_export.svg                                       | XML            |          1 |          0 |          0 |          1 |
+| c:\xampp\htdocs\restaurants_php\client\public\assets\icons\manage\ic_upload.svg                                       | XML            |          1 |          0 |          0 |          1 |
+| c:\xampp\htdocs\restaurants_php\client\public\assets\icons\navbar\ic_analytics.svg                                    | XML            |          8 |          0 |          1 |          9 |
+| c:\xampp\htdocs\restaurants_php\client\public\assets\icons\navbar\ic_cart.svg                                         | XML            |          7 |          0 |          1 |          8 |
+| c:\xampp\htdocs\restaurants_php\client\public\assets\icons\navbar\ic_disabled.svg                                     | XML            |          4 |          0 |          1 |          5 |
+| c:\xampp\htdocs\restaurants_php\client\public\assets\icons\navbar\ic_lock.svg                                         | XML            |          4 |          0 |          1 |          5 |
+| c:\xampp\htdocs\restaurants_php\client\public\assets\icons\navbar\ic_product.svg                                      | XML            |          1 |          0 |          0 |          1 |
+| c:\xampp\htdocs\restaurants_php\client\public\assets\icons\navbar\ic_reservation.svg                                  | XML            |          1 |          0 |          0 |          1 |
+| c:\xampp\htdocs\restaurants_php\client\public\assets\icons\navbar\ic_user.svg                                         | XML            |          4 |          0 |          1 |          5 |
+| c:\xampp\htdocs\restaurants_php\client\public\assets\icons\product\ic_check.svg                                       | XML            |          1 |          0 |          0 |          1 |
+| c:\xampp\htdocs\restaurants_php\client\public\assets\icons\service\ic_account.svg                                     | XML            |         34 |          0 |          1 |         35 |
+| c:\xampp\htdocs\restaurants_php\client\public\assets\icons\service\ic_assurances.svg                                  | XML            |         33 |          0 |          1 |         34 |
+| c:\xampp\htdocs\restaurants_php\client\public\assets\icons\service\ic_composable.svg                                  | XML            |          1 |          0 |          0 |          1 |
+| c:\xampp\htdocs\restaurants_php\client\public\assets\icons\service\ic_delivery.svg                                    | XML            |         30 |          0 |          1 |         31 |
+| c:\xampp\htdocs\restaurants_php\client\public\assets\icons\service\ic_developer.svg                                   | XML            |          1 |          0 |          0 |          1 |
+| c:\xampp\htdocs\restaurants_php\client\public\assets\icons\service\ic_freeSupport.svg                                 | XML            |          1 |          0 |          0 |          1 |
+| c:\xampp\htdocs\restaurants_php\client\public\assets\icons\service\ic_lightDark.svg                                   | XML            |          1 |          0 |          0 |          1 |
+| c:\xampp\htdocs\restaurants_php\client\public\assets\icons\service\ic_package.svg                                     | XML            |         29 |          0 |          1 |         30 |
+| c:\xampp\htdocs\restaurants_php\client\public\assets\icons\service\ic_payment.svg                                     | XML            |         33 |          0 |          1 |         34 |
+| c:\xampp\htdocs\restaurants_php\client\public\assets\icons\service\ic_refund.svg                                      | XML            |         31 |          0 |          1 |         32 |
+| c:\xampp\htdocs\restaurants_php\client\public\assets\icons\service\ic_theme.svg                                       | XML            |          1 |          0 |          0 |          1 |
+| c:\xampp\htdocs\restaurants_php\client\public\assets\icons\service\ic_update.svg                                      | XML            |          1 |          0 |          0 |          1 |
+| c:\xampp\htdocs\restaurants_php\client\public\assets\icons\shape-avatar.svg                                           | XML            |          1 |          0 |          0 |          1 |
+| c:\xampp\htdocs\restaurants_php\client\public\assets\illustrations\illustration_404.svg                               | XML            |         40 |          0 |          1 |         41 |
+| c:\xampp\htdocs\restaurants_php\client\public\assets\illustrations\illustration_home.svg                              | XML            |          1 |          0 |          0 |          1 |
+| c:\xampp\htdocs\restaurants_php\client\public\assets\illustrations\illustration_login.svg                             | XML            |          1 |          0 |          0 |          1 |
+| c:\xampp\htdocs\restaurants_php\client\public\assets\illustrations\illustration_login_admin.svg                       | XML            |          1 |          0 |          0 |          1 |
+| c:\xampp\htdocs\restaurants_php\client\public\assets\illustrations\illustration_register.svg                          | XML            |          1 |          0 |          0 |          1 |
+| c:\xampp\htdocs\restaurants_php\client\public\assets\images\chooseFile.svg                                            | XML            |          1 |          0 |          0 |          1 |
+| c:\xampp\htdocs\restaurants_php\client\public\assets\placeholder.svg                                                  | XML            |          1 |          0 |          0 |          1 |
+| c:\xampp\htdocs\restaurants_php\client\public\index.html                                                              | HTML           |         25 |          4 |          9 |         38 |
+| c:\xampp\htdocs\restaurants_php\client\public\manifest.json                                                           | JSON           |         20 |          0 |          1 |         21 |
+| c:\xampp\htdocs\restaurants_php\client\public\vite.svg                                                                | XML            |          1 |          0 |          0 |          1 |
+| c:\xampp\htdocs\restaurants_php\client\src\.prettierrc                                                                | JSON           |          6 |          0 |          0 |          6 |
+| c:\xampp\htdocs\restaurants_php\client\src\App.jsx                                                                    | JavaScript JSX |         58 |          6 |          3 |         67 |
+| c:\xampp\htdocs\restaurants_php\client\src\Components\Admin\DataTable\DataTable.jsx                                   | JavaScript JSX |         32 |          2 |          5 |         39 |
+| c:\xampp\htdocs\restaurants_php\client\src\Components\Admin\DataTable\index.jsx                                       | JavaScript JSX |          1 |          0 |          0 |          1 |
+| c:\xampp\htdocs\restaurants_php\client\src\Components\Admin\ListItem\ListItem.jsx                                     | JavaScript JSX |        155 |          4 |          6 |        165 |
+| c:\xampp\htdocs\restaurants_php\client\src\Components\Admin\Title\Title.jsx                                           | JavaScript JSX |         13 |          0 |          3 |         16 |
+| c:\xampp\htdocs\restaurants_php\client\src\Components\Admin\Title\index.jsx                                           | JavaScript JSX |          1 |          0 |          0 |          1 |
+| c:\xampp\htdocs\restaurants_php\client\src\Components\Admin\chart\chart.jsx                                           | JavaScript JSX |          3 |          0 |          2 |          5 |
+| c:\xampp\htdocs\restaurants_php\client\src\Components\Admin\chartsVisit\index.jsx                                     | JavaScript JSX |          4 |          1 |          5 |         10 |
+| c:\xampp\htdocs\restaurants_php\client\src\Components\Admin\chartsVisit\styles.jsx                                    | JavaScript JSX |         51 |          5 |          6 |         62 |
+| c:\xampp\htdocs\restaurants_php\client\src\Components\Admin\chartsVisit\useChart.jsx                                  | JavaScript JSX |        162 |         23 |         23 |        208 |
+| c:\xampp\htdocs\restaurants_php\client\src\Components\Admin\detailInfo\DetailCardAvatar.jsx                           | JavaScript JSX |         41 |         22 |          1 |         64 |
+| c:\xampp\htdocs\restaurants_php\client\src\Components\Admin\detailInfo\DetailCardInfo.jsx                             | JavaScript JSX |         65 |          2 |          4 |         71 |
+| c:\xampp\htdocs\restaurants_php\client\src\Components\Admin\detailInfo\index.jsx                                      | JavaScript JSX |          2 |          0 |          0 |          2 |
+| c:\xampp\htdocs\restaurants_php\client\src\Components\Admin\severity-pill\severity-pill.jsx                           | JavaScript JSX |         52 |          0 |          7 |         59 |
+| c:\xampp\htdocs\restaurants_php\client\src\Components\FormDialog\FormDialogAddProduct.jsx                             | JavaScript JSX |         73 |          6 |         10 |         89 |
+| c:\xampp\htdocs\restaurants_php\client\src\Components\FormDialog\FormDialogCategory.jsx                               | JavaScript JSX |         89 |        133 |          5 |        227 |
+| c:\xampp\htdocs\restaurants_php\client\src\Components\FormDialog\FormDialogCustomer.jsx                               | JavaScript JSX |         75 |          3 |          7 |         85 |
+| c:\xampp\htdocs\restaurants_php\client\src\Components\FormDialog\FormDialogEmployee.jsx                               | JavaScript JSX |         94 |          3 |          6 |        103 |
+| c:\xampp\htdocs\restaurants_php\client\src\Components\FormDialog\FormDialogReservation.jsx                            | JavaScript JSX |        141 |          3 |          8 |        152 |
+| c:\xampp\htdocs\restaurants_php\client\src\Components\FormDialog\FormDialogReview.jsx                                 | JavaScript JSX |        208 |          3 |          6 |        217 |
+| c:\xampp\htdocs\restaurants_php\client\src\Components\FormDialog\FormDialogTable.jsx                                  | JavaScript JSX |         69 |          3 |          7 |         79 |
+| c:\xampp\htdocs\restaurants_php\client\src\Components\Loader\Loader.jsx                                               | JavaScript JSX |         18 |          0 |          3 |         21 |
+| c:\xampp\htdocs\restaurants_php\client\src\Components\Loader\Loader.module.css                                        | CSS            |         16 |          0 |          1 |         17 |
+| c:\xampp\htdocs\restaurants_php\client\src\Components\Loader\index.jsx                                                | JavaScript JSX |          1 |          0 |          0 |          1 |
+| c:\xampp\htdocs\restaurants_php\client\src\Components\User\color-utils\ColorMultiPicker.jsx                           | JavaScript JSX |         36 |          3 |          5 |         44 |
+| c:\xampp\htdocs\restaurants_php\client\src\Components\User\color-utils\ColorPreview.jsx                               | JavaScript JSX |         31 |          2 |          7 |         40 |
+| c:\xampp\htdocs\restaurants_php\client\src\Components\User\color-utils\ColorSinglePicker.jsx                          | JavaScript JSX |         29 |          3 |          6 |         38 |
+| c:\xampp\htdocs\restaurants_php\client\src\Components\User\color-utils\Icon.jsx                                       | JavaScript JSX |         68 |          3 |          7 |         78 |
+| c:\xampp\htdocs\restaurants_php\client\src\Components\User\color-utils\index.jsx                                      | JavaScript JSX |          3 |          0 |          1 |          4 |
+| c:\xampp\htdocs\restaurants_php\client\src\Components\User\iconify\Iconify.jsx                                        | JavaScript JSX |         13 |          3 |          5 |         21 |
+| c:\xampp\htdocs\restaurants_php\client\src\Components\User\iconify\index.jsx                                          | JavaScript JSX |          1 |          0 |          1 |          2 |
+| c:\xampp\htdocs\restaurants_php\client\src\Components\User\label\Label.jsx                                            | JavaScript JSX |         40 |          3 |          9 |         52 |
+| c:\xampp\htdocs\restaurants_php\client\src\Components\User\label\index.jsx                                            | JavaScript JSX |          1 |          0 |          1 |          2 |
+| c:\xampp\htdocs\restaurants_php\client\src\Components\User\label\styles.jsx                                           | JavaScript JSX |         58 |          7 |          9 |         74 |
+| c:\xampp\htdocs\restaurants_php\client\src\Components\User\logo\Logo.jsx                                              | JavaScript JSX |         28 |          0 |          6 |         34 |
+| c:\xampp\htdocs\restaurants_php\client\src\Components\User\logo\index.jsx                                             | JavaScript JSX |          1 |          0 |          1 |          2 |
+| c:\xampp\htdocs\restaurants_php\client\src\Components\User\nav-section\NavSection.jsx                                 | JavaScript JSX |         44 |          4 |         10 |         58 |
+| c:\xampp\htdocs\restaurants_php\client\src\Components\User\nav-section\index.jsx                                      | JavaScript JSX |          1 |          0 |          1 |          2 |
+| c:\xampp\htdocs\restaurants_php\client\src\Components\User\nav-section\styles.jsx                                     | JavaScript JSX |         18 |          2 |          4 |         24 |
+| c:\xampp\htdocs\restaurants_php\client\src\Components\User\scroll-to-top\ScrollToTop.jsx                              | JavaScript JSX |          9 |          1 |          5 |         15 |
+| c:\xampp\htdocs\restaurants_php\client\src\Components\User\scroll-to-top\index.jsx                                    | JavaScript JSX |          1 |          0 |          1 |          2 |
+| c:\xampp\htdocs\restaurants_php\client\src\Components\User\scrollbar\Scrollbar.jsx                                    | JavaScript JSX |         27 |          3 |          8 |         38 |
+| c:\xampp\htdocs\restaurants_php\client\src\Components\User\scrollbar\index.jsx                                        | JavaScript JSX |          1 |          0 |          1 |          2 |
+| c:\xampp\htdocs\restaurants_php\client\src\Components\User\scrollbar\styles.jsx                                       | JavaScript JSX |         27 |          2 |          4 |         33 |
+| c:\xampp\htdocs\restaurants_php\client\src\Components\User\svg-color\SvgColor.jsx                                     | JavaScript JSX |         25 |          2 |          5 |         32 |
+| c:\xampp\htdocs\restaurants_php\client\src\Components\User\svg-color\index.jsx                                        | JavaScript JSX |          1 |          0 |          1 |          2 |
+| c:\xampp\htdocs\restaurants_php\client\src\Contexts\AuthContext.jsx                                                   | JavaScript JSX |         89 |          0 |         14 |        103 |
+| c:\xampp\htdocs\restaurants_php\client\src\Contexts\CartContext.jsx                                                   | JavaScript JSX |         60 |          0 |          9 |         69 |
+| c:\xampp\htdocs\restaurants_php\client\src\Contexts\CategoryContext.jsx                                               | JavaScript JSX |        111 |          4 |         12 |        127 |
+| c:\xampp\htdocs\restaurants_php\client\src\Contexts\CommonContext.jsx                                                 | JavaScript JSX |         22 |          0 |          7 |         29 |
+| c:\xampp\htdocs\restaurants_php\client\src\Contexts\EmployeesContext.jsx                                              | JavaScript JSX |        130 |          2 |         15 |        147 |
+| c:\xampp\htdocs\restaurants_php\client\src\Contexts\OrderContext.jsx                                                  | JavaScript JSX |        100 |          0 |         12 |        112 |
+| c:\xampp\htdocs\restaurants_php\client\src\Contexts\PaymentContext.jsx                                                | JavaScript JSX |         64 |          0 |         10 |         74 |
+| c:\xampp\htdocs\restaurants_php\client\src\Contexts\ProductsContext.jsx                                               | JavaScript JSX |        158 |          5 |         17 |        180 |
+| c:\xampp\htdocs\restaurants_php\client\src\Contexts\ReservationContext.jsx                                            | JavaScript JSX |         44 |          0 |          9 |         53 |
+| c:\xampp\htdocs\restaurants_php\client\src\Contexts\ReviewContext.jsx                                                 | JavaScript JSX |         46 |          0 |          8 |         54 |
+| c:\xampp\htdocs\restaurants_php\client\src\Contexts\RoleContext.jsx                                                   | JavaScript JSX |         88 |          3 |         11 |        102 |
+| c:\xampp\htdocs\restaurants_php\client\src\Contexts\TableContext.jsx                                                  | JavaScript JSX |         76 |          0 |         12 |         88 |
+| c:\xampp\htdocs\restaurants_php\client\src\Contexts\UsersContext.jsx                                                  | JavaScript JSX |        106 |          1 |         15 |        122 |
+| c:\xampp\htdocs\restaurants_php\client\src\GlobalStyles\GlobalStyles.css                                              | CSS            |          9 |          0 |          2 |         11 |
+| c:\xampp\htdocs\restaurants_php\client\src\GlobalStyles\GlobalStyles.jsx                                              | JavaScript JSX |          5 |          0 |          3 |          8 |
+| c:\xampp\htdocs\restaurants_php\client\src\Pages\Admin\AdminDashboard\AdminDashboard.jsx                              | JavaScript JSX |        171 |          2 |         17 |        190 |
+| c:\xampp\htdocs\restaurants_php\client\src\Pages\Admin\AdminDashboard\index.jsx                                       | JavaScript JSX |          1 |          0 |          1 |          2 |
+| c:\xampp\htdocs\restaurants_php\client\src\Pages\Admin\Auth\AdminLogin\AdminLogin.jsx                                 | JavaScript JSX |         50 |          5 |          3 |         58 |
+| c:\xampp\htdocs\restaurants_php\client\src\Pages\Admin\Auth\AdminLogin\index.jsx                                      | JavaScript JSX |          1 |          0 |          0 |          1 |
+| c:\xampp\htdocs\restaurants_php\client\src\Pages\Admin\CategoryManage\CategoryDetail.jsx                              | JavaScript JSX |        224 |          7 |         21 |        252 |
+| c:\xampp\htdocs\restaurants_php\client\src\Pages\Admin\CategoryManage\CategoryManage.jsx                              | JavaScript JSX |        366 |          9 |         24 |        399 |
+| c:\xampp\htdocs\restaurants_php\client\src\Pages\Admin\CategoryManage\index.jsx                                       | JavaScript JSX |          2 |          0 |          0 |          2 |
+| c:\xampp\htdocs\restaurants_php\client\src\Pages\Admin\CustomerManage\CustomerDetail.jsx                              | JavaScript JSX |        135 |          6 |          8 |        149 |
+| c:\xampp\htdocs\restaurants_php\client\src\Pages\Admin\CustomerManage\CustomerManage.jsx                              | JavaScript JSX |        416 |          8 |         24 |        448 |
+| c:\xampp\htdocs\restaurants_php\client\src\Pages\Admin\CustomerManage\index.jsx                                       | JavaScript JSX |          2 |          0 |          0 |          2 |
+| c:\xampp\htdocs\restaurants_php\client\src\Pages\Admin\EmployeeManage\EmployeeDetail.jsx                              | JavaScript JSX |        130 |          6 |          8 |        144 |
+| c:\xampp\htdocs\restaurants_php\client\src\Pages\Admin\EmployeeManage\EmployeeManage.jsx                              | JavaScript JSX |        433 |          9 |         26 |        468 |
+| c:\xampp\htdocs\restaurants_php\client\src\Pages\Admin\EmployeeManage\index.jsx                                       | JavaScript JSX |          2 |          0 |          1 |          3 |
+| c:\xampp\htdocs\restaurants_php\client\src\Pages\Admin\OrderManage\OrderDetail.jsx                                    | JavaScript JSX |         93 |          5 |          7 |        105 |
+| c:\xampp\htdocs\restaurants_php\client\src\Pages\Admin\OrderManage\OrderManage.jsx                                    | JavaScript JSX |        237 |          6 |         15 |        258 |
+| c:\xampp\htdocs\restaurants_php\client\src\Pages\Admin\OrderManage\index.jsx                                          | JavaScript JSX |          2 |          0 |          1 |          3 |
+| c:\xampp\htdocs\restaurants_php\client\src\Pages\Admin\PaymentManage\PaymentManage.jsx                                | JavaScript JSX |        223 |          6 |         15 |        244 |
+| c:\xampp\htdocs\restaurants_php\client\src\Pages\Admin\PaymentManage\index.jsx                                        | JavaScript JSX |          1 |          0 |          1 |          2 |
+| c:\xampp\htdocs\restaurants_php\client\src\Pages\Admin\ProductManage\ProductForm.jsx                                  | JavaScript JSX |        170 |          8 |          9 |        187 |
+| c:\xampp\htdocs\restaurants_php\client\src\Pages\Admin\ProductManage\ProductManage.jsx                                | JavaScript JSX |        265 |          8 |         19 |        292 |
+| c:\xampp\htdocs\restaurants_php\client\src\Pages\Admin\ProductManage\index.jsx                                        | JavaScript JSX |          2 |          0 |          0 |          2 |
+| c:\xampp\htdocs\restaurants_php\client\src\Pages\Admin\Profile\Profile.jsx                                            | JavaScript JSX |         26 |          3 |          3 |         32 |
+| c:\xampp\htdocs\restaurants_php\client\src\Pages\Admin\Profile\index.jsx                                              | JavaScript JSX |          1 |          0 |          0 |          1 |
+| c:\xampp\htdocs\restaurants_php\client\src\Pages\Admin\ReservationManage\ReservationManage.jsx                        | JavaScript JSX |        176 |          8 |         10 |        194 |
+| c:\xampp\htdocs\restaurants_php\client\src\Pages\Admin\ReservationManage\index.jsx                                    | JavaScript JSX |          1 |          0 |          0 |          1 |
+| c:\xampp\htdocs\restaurants_php\client\src\Pages\Admin\Setting\Setting.jsx                                            | JavaScript JSX |         31 |          3 |          3 |         37 |
+| c:\xampp\htdocs\restaurants_php\client\src\Pages\Admin\Setting\index.jsx                                              | JavaScript JSX |          1 |          0 |          1 |          2 |
+| c:\xampp\htdocs\restaurants_php\client\src\Pages\Page404\Page404.jsx                                                  | JavaScript JSX |         55 |          3 |          8 |         66 |
+| c:\xampp\htdocs\restaurants_php\client\src\Pages\Page404\index.jsx                                                    | JavaScript JSX |          1 |          0 |          0 |          1 |
+| c:\xampp\htdocs\restaurants_php\client\src\Pages\User\AboutPage\AboutPage.jsx                                         | JavaScript JSX |         16 |          3 |          4 |         23 |
+| c:\xampp\htdocs\restaurants_php\client\src\Pages\User\AboutPage\index.jsx                                             | JavaScript JSX |          1 |          0 |          0 |          1 |
+| c:\xampp\htdocs\restaurants_php\client\src\Pages\User\Auth\Login\Login.jsx                                            | JavaScript JSX |        155 |         18 |         19 |        192 |
+| c:\xampp\htdocs\restaurants_php\client\src\Pages\User\Auth\Login\index.jsx                                            | JavaScript JSX |          1 |          0 |          0 |          1 |
+| c:\xampp\htdocs\restaurants_php\client\src\Pages\User\Auth\Register\Register.jsx                                      | JavaScript JSX |        158 |         18 |         19 |        195 |
+| c:\xampp\htdocs\restaurants_php\client\src\Pages\User\Auth\Register\index.jsx                                         | JavaScript JSX |          1 |          0 |          0 |          1 |
+| c:\xampp\htdocs\restaurants_php\client\src\Pages\User\CartPages\CartPage.jsx                                          | JavaScript JSX |         48 |          4 |          5 |         57 |
+| c:\xampp\htdocs\restaurants_php\client\src\Pages\User\CartPages\index.jsx                                             | JavaScript JSX |          1 |          0 |          0 |          1 |
+| c:\xampp\htdocs\restaurants_php\client\src\Pages\User\DashboardAppPage\DashboardAppPage.jsx                           | JavaScript JSX |         29 |          3 |          5 |         37 |
+| c:\xampp\htdocs\restaurants_php\client\src\Pages\User\DashboardAppPage\index.jsx                                      | JavaScript JSX |          1 |          0 |          0 |          1 |
+| c:\xampp\htdocs\restaurants_php\client\src\Pages\User\FAQPage\FAQPage.jsx                                             | JavaScript JSX |         19 |          3 |          4 |         26 |
+| c:\xampp\htdocs\restaurants_php\client\src\Pages\User\FAQPage\index.jsx                                               | JavaScript JSX |          1 |          0 |          0 |          1 |
+| c:\xampp\htdocs\restaurants_php\client\src\Pages\User\HomePage\HomePage.jsx                                           | JavaScript JSX |         20 |          3 |          3 |         26 |
+| c:\xampp\htdocs\restaurants_php\client\src\Pages\User\HomePage\index.jsx                                              | JavaScript JSX |          1 |          0 |          0 |          1 |
+| c:\xampp\htdocs\restaurants_php\client\src\Pages\User\OrderPage\OrderPage.jsx                                         | JavaScript JSX |         18 |          4 |          5 |         27 |
+| c:\xampp\htdocs\restaurants_php\client\src\Pages\User\OrderPage\OrderPageDetail.jsx                                   | JavaScript JSX |         92 |          5 |          7 |        104 |
+| c:\xampp\htdocs\restaurants_php\client\src\Pages\User\OrderPage\PaymentStatus.jsx                                     | JavaScript JSX |        103 |          7 |         11 |        121 |
+| c:\xampp\htdocs\restaurants_php\client\src\Pages\User\OrderPage\index.jsx                                             | JavaScript JSX |          3 |          0 |          1 |          4 |
+| c:\xampp\htdocs\restaurants_php\client\src\Pages\User\ProductsPage\ProductPageDetail.jsx                              | JavaScript JSX |         52 |          0 |          8 |         60 |
+| c:\xampp\htdocs\restaurants_php\client\src\Pages\User\ProductsPage\ProductsPage.jsx                                   | JavaScript JSX |         62 |          8 |          9 |         79 |
+| c:\xampp\htdocs\restaurants_php\client\src\Pages\User\ProductsPage\index.jsx                                          | JavaScript JSX |          2 |          0 |          0 |          2 |
+| c:\xampp\htdocs\restaurants_php\client\src\Pages\User\ProfilePage\ProfilePage.jsx                                     | JavaScript JSX |         26 |          3 |          3 |         32 |
+| c:\xampp\htdocs\restaurants_php\client\src\Pages\User\ProfilePage\index.jsx                                           | JavaScript JSX |          1 |          0 |          0 |          1 |
+| c:\xampp\htdocs\restaurants_php\client\src\Pages\User\Reservation\Reservation.jsx                                     | JavaScript JSX |         26 |          3 |          3 |         32 |
+| c:\xampp\htdocs\restaurants_php\client\src\Pages\User\Reservation\index.jsx                                           | JavaScript JSX |          1 |          0 |          0 |          1 |
+| c:\xampp\htdocs\restaurants_php\client\src\Pages\User\SettingPage\SettingPage.jsx                                     | JavaScript JSX |         31 |          3 |          3 |         37 |
+| c:\xampp\htdocs\restaurants_php\client\src\Pages\User\SettingPage\index.jsx                                           | JavaScript JSX |          1 |          0 |          0 |          1 |
+| c:\xampp\htdocs\restaurants_php\client\src\Reducers\AuthReducer\action.jsx                                            | JavaScript JSX |          7 |          0 |          2 |          9 |
+| c:\xampp\htdocs\restaurants_php\client\src\Reducers\AuthReducer\constants.jsx                                         | JavaScript JSX |          1 |          0 |          1 |          2 |
+| c:\xampp\htdocs\restaurants_php\client\src\Reducers\AuthReducer\reducer.jsx                                           | JavaScript JSX |         23 |          0 |          4 |         27 |
+| c:\xampp\htdocs\restaurants_php\client\src\Reducers\CartReducer\action.jsx                                            | JavaScript JSX |         13 |          0 |          3 |         16 |
+| c:\xampp\htdocs\restaurants_php\client\src\Reducers\CartReducer\constants.jsx                                         | JavaScript JSX |          2 |          0 |          0 |          2 |
+| c:\xampp\htdocs\restaurants_php\client\src\Reducers\CartReducer\reducer.jsx                                           | JavaScript JSX |         26 |          0 |          4 |         30 |
+| c:\xampp\htdocs\restaurants_php\client\src\Reducers\CategoryReducer\action.jsx                                        | JavaScript JSX |         31 |          0 |          6 |         37 |
+| c:\xampp\htdocs\restaurants_php\client\src\Reducers\CategoryReducer\constants.jsx                                     | JavaScript JSX |          5 |          0 |          0 |          5 |
+| c:\xampp\htdocs\restaurants_php\client\src\Reducers\CategoryReducer\reducer.jsx                                       | JavaScript JSX |         50 |          0 |          5 |         55 |
+| c:\xampp\htdocs\restaurants_php\client\src\Reducers\EmployeesReducer\action.jsx                                       | JavaScript JSX |         31 |          0 |          5 |         36 |
+| c:\xampp\htdocs\restaurants_php\client\src\Reducers\EmployeesReducer\constants.jsx                                    | JavaScript JSX |          5 |          0 |          0 |          5 |
+| c:\xampp\htdocs\restaurants_php\client\src\Reducers\EmployeesReducer\reducer.jsx                                      | JavaScript JSX |         50 |          0 |          5 |         55 |
+| c:\xampp\htdocs\restaurants_php\client\src\Reducers\OrderReducer\action.jsx                                           | JavaScript JSX |         37 |          0 |          6 |         43 |
+| c:\xampp\htdocs\restaurants_php\client\src\Reducers\OrderReducer\constant.jsx                                         | JavaScript JSX |          5 |          0 |          0 |          5 |
+| c:\xampp\htdocs\restaurants_php\client\src\Reducers\OrderReducer\reducer.jsx                                          | JavaScript JSX |         45 |          0 |          4 |         49 |
+| c:\xampp\htdocs\restaurants_php\client\src\Reducers\PaymentReducer\action.jsx                                         | JavaScript JSX |         13 |          0 |          3 |         16 |
+| c:\xampp\htdocs\restaurants_php\client\src\Reducers\PaymentReducer\constant.jsx                                       | JavaScript JSX |          2 |          0 |          1 |          3 |
+| c:\xampp\htdocs\restaurants_php\client\src\Reducers\PaymentReducer\reducer.jsx                                        | JavaScript JSX |         26 |          0 |          4 |         30 |
+| c:\xampp\htdocs\restaurants_php\client\src\Reducers\ProductsReducer\action.jsx                                        | JavaScript JSX |         55 |          0 |         13 |         68 |
+| c:\xampp\htdocs\restaurants_php\client\src\Reducers\ProductsReducer\constants.jsx                                     | JavaScript JSX |          9 |          0 |          0 |          9 |
+| c:\xampp\htdocs\restaurants_php\client\src\Reducers\ProductsReducer\reducer.jsx                                       | JavaScript JSX |         75 |          0 |          6 |         81 |
+| c:\xampp\htdocs\restaurants_php\client\src\Reducers\ReservationReducer\action.jsx                                     | JavaScript JSX |         19 |          0 |          4 |         23 |
+| c:\xampp\htdocs\restaurants_php\client\src\Reducers\ReservationReducer\constants.jsx                                  | JavaScript JSX |          3 |          0 |          0 |          3 |
+| c:\xampp\htdocs\restaurants_php\client\src\Reducers\ReservationReducer\reducer.jsx                                    | JavaScript JSX |         31 |          0 |          4 |         35 |
+| c:\xampp\htdocs\restaurants_php\client\src\Reducers\ReviewReducer\action.jsx                                          | JavaScript JSX |         13 |          0 |          3 |         16 |
+| c:\xampp\htdocs\restaurants_php\client\src\Reducers\ReviewReducer\constants.jsx                                       | JavaScript JSX |          2 |          0 |          0 |          2 |
+| c:\xampp\htdocs\restaurants_php\client\src\Reducers\ReviewReducer\reducer.jsx                                         | JavaScript JSX |         24 |          0 |          4 |         28 |
+| c:\xampp\htdocs\restaurants_php\client\src\Reducers\RoleReducer\action.jsx                                            | JavaScript JSX |         31 |          0 |          5 |         36 |
+| c:\xampp\htdocs\restaurants_php\client\src\Reducers\RoleReducer\constant.jsx                                          | JavaScript JSX |          5 |          0 |          0 |          5 |
+| c:\xampp\htdocs\restaurants_php\client\src\Reducers\RoleReducer\reducer.jsx                                           | JavaScript JSX |         42 |          0 |          4 |         46 |
+| c:\xampp\htdocs\restaurants_php\client\src\Reducers\TableReducer\action.jsx                                           | JavaScript JSX |         31 |          0 |          6 |         37 |
+| c:\xampp\htdocs\restaurants_php\client\src\Reducers\TableReducer\constants.jsx                                        | JavaScript JSX |          5 |          0 |          0 |          5 |
+| c:\xampp\htdocs\restaurants_php\client\src\Reducers\TableReducer\reducer.jsx                                          | JavaScript JSX |         45 |          0 |          5 |         50 |
+| c:\xampp\htdocs\restaurants_php\client\src\Reducers\UsersReducer\action.jsx                                           | JavaScript JSX |         25 |          0 |          5 |         30 |
+| c:\xampp\htdocs\restaurants_php\client\src\Reducers\UsersReducer\constants.jsx                                        | JavaScript JSX |          4 |          0 |          0 |          4 |
+| c:\xampp\htdocs\restaurants_php\client\src\Reducers\UsersReducer\reducer.jsx                                          | JavaScript JSX |         39 |          0 |          4 |         43 |
+| c:\xampp\htdocs\restaurants_php\client\src\Service\authApi.jsx                                                        | JavaScript JSX |         24 |          0 |          2 |         26 |
+| c:\xampp\htdocs\restaurants_php\client\src\Service\axiosConfig.jsx                                                    | JavaScript JSX |         60 |          3 |          8 |         71 |
+| c:\xampp\htdocs\restaurants_php\client\src\Service\cartApi.jsx                                                        | JavaScript JSX |         16 |          0 |          2 |         18 |
+| c:\xampp\htdocs\restaurants_php\client\src\Service\categoryApi.jsx                                                    | JavaScript JSX |         28 |          0 |          2 |         30 |
+| c:\xampp\htdocs\restaurants_php\client\src\Service\employeeApi.jsx                                                    | JavaScript JSX |         40 |          0 |          2 |         42 |
+| c:\xampp\htdocs\restaurants_php\client\src\Service\orderApi.jsx                                                       | JavaScript JSX |         28 |          0 |          2 |         30 |
+| c:\xampp\htdocs\restaurants_php\client\src\Service\paymentApi.jsx                                                     | JavaScript JSX |         28 |          0 |          2 |         30 |
+| c:\xampp\htdocs\restaurants_php\client\src\Service\productApi.jsx                                                     | JavaScript JSX |         28 |          0 |          2 |         30 |
+| c:\xampp\htdocs\restaurants_php\client\src\Service\reservationApi.jsx                                                 | JavaScript JSX |         12 |          0 |          2 |         14 |
+| c:\xampp\htdocs\restaurants_php\client\src\Service\reviewApi.jsx                                                      | JavaScript JSX |         12 |          0 |          2 |         14 |
+| c:\xampp\htdocs\restaurants_php\client\src\Service\roleApi.jsx                                                        | JavaScript JSX |         24 |          0 |          2 |         26 |
+| c:\xampp\htdocs\restaurants_php\client\src\Service\tableApi.jsx                                                       | JavaScript JSX |         24 |          0 |          2 |         26 |
+| c:\xampp\htdocs\restaurants_php\client\src\Service\userApi.jsx                                                        | JavaScript JSX |         36 |          0 |          2 |         38 |
+| c:\xampp\htdocs\restaurants_php\client\src\config\editorConfig.jsx                                                    | JavaScript JSX |         25 |          0 |          1 |         26 |
+| c:\xampp\htdocs\restaurants_php\client\src\config\firebase\firebase.jsx                                               | JavaScript JSX |         13 |          0 |          3 |         16 |
+| c:\xampp\htdocs\restaurants_php\client\src\config\tableConfig.jsx                                                     | JavaScript JSX |         23 |          0 |          2 |         25 |
+| c:\xampp\htdocs\restaurants_php\client\src\hooks\context\index.jsx                                                    | JavaScript JSX |         13 |          0 |          1 |         14 |
+| c:\xampp\htdocs\restaurants_php\client\src\hooks\context\useAuth.jsx                                                  | JavaScript JSX |          6 |          2 |          2 |         10 |
+| c:\xampp\htdocs\restaurants_php\client\src\hooks\context\useCart.jsx                                                  | JavaScript JSX |          6 |          2 |          3 |         11 |
+| c:\xampp\htdocs\restaurants_php\client\src\hooks\context\useCategory.jsx                                              | JavaScript JSX |          6 |          2 |          3 |         11 |
+| c:\xampp\htdocs\restaurants_php\client\src\hooks\context\useCommon.jsx                                                | JavaScript JSX |          6 |          2 |          3 |         11 |
+| c:\xampp\htdocs\restaurants_php\client\src\hooks\context\useEmployee.jsx                                              | JavaScript JSX |          6 |          2 |          2 |         10 |
+| c:\xampp\htdocs\restaurants_php\client\src\hooks\context\useOrder.jsx                                                 | JavaScript JSX |          6 |          2 |          2 |         10 |
+| c:\xampp\htdocs\restaurants_php\client\src\hooks\context\usePayment.jsx                                               | JavaScript JSX |          6 |          2 |          2 |         10 |
+| c:\xampp\htdocs\restaurants_php\client\src\hooks\context\useProduct.jsx                                               | JavaScript JSX |          6 |          2 |          3 |         11 |
+| c:\xampp\htdocs\restaurants_php\client\src\hooks\context\useReservation.jsx                                           | JavaScript JSX |          6 |          2 |          2 |         10 |
+| c:\xampp\htdocs\restaurants_php\client\src\hooks\context\useReview.jsx                                                | JavaScript JSX |          6 |          2 |          2 |         10 |
+| c:\xampp\htdocs\restaurants_php\client\src\hooks\context\useRole.jsx                                                  | JavaScript JSX |          6 |          2 |          2 |         10 |
+| c:\xampp\htdocs\restaurants_php\client\src\hooks\context\useTable.jsx                                                 | JavaScript JSX |          6 |          2 |          2 |         10 |
+| c:\xampp\htdocs\restaurants_php\client\src\hooks\context\useUser.jsx                                                  | JavaScript JSX |          6 |          2 |          3 |         11 |
+| c:\xampp\htdocs\restaurants_php\client\src\hooks\useReponsive.jsx                                                     | JavaScript JSX |         29 |          4 |         15 |         48 |
+| c:\xampp\htdocs\restaurants_php\client\src\layouts\admin\DashboardLayoutAdmin.jsx                                     | JavaScript JSX |        216 |          7 |         13 |        236 |
+| c:\xampp\htdocs\restaurants_php\client\src\layouts\admin\header\NotificationsPopover.jsx                              | JavaScript JSX |        247 |          6 |         24 |        277 |
+| c:\xampp\htdocs\restaurants_php\client\src\layouts\dashboard\DashboardLayout.jsx                                      | JavaScript JSX |         36 |          4 |         10 |         50 |
+| c:\xampp\htdocs\restaurants_php\client\src\layouts\dashboard\header\AccountPopover.jsx                                | JavaScript JSX |        134 |          3 |         12 |        149 |
+| c:\xampp\htdocs\restaurants_php\client\src\layouts\dashboard\header\LanguagePopover.jsx                               | JavaScript JSX |         75 |          3 |         10 |         88 |
+| c:\xampp\htdocs\restaurants_php\client\src\layouts\dashboard\header\NotificationsPopover.jsx                          | JavaScript JSX |        247 |          6 |         24 |        277 |
+| c:\xampp\htdocs\restaurants_php\client\src\layouts\dashboard\header\Searchbar.jsx                                     | JavaScript JSX |        100 |          0 |          9 |        109 |
+| c:\xampp\htdocs\restaurants_php\client\src\layouts\dashboard\header\index.jsx                                         | JavaScript JSX |         65 |          7 |         11 |         83 |
+| c:\xampp\htdocs\restaurants_php\client\src\layouts\dashboard\index.jsx                                                | JavaScript JSX |          1 |          0 |          1 |          2 |
+| c:\xampp\htdocs\restaurants_php\client\src\layouts\dashboard\nav\index.jsx                                            | JavaScript JSX |        169 |         11 |         17 |        197 |
+| c:\xampp\htdocs\restaurants_php\client\src\layouts\home\HomeLayout.jsx                                                | JavaScript JSX |         16 |          2 |          4 |         22 |
+| c:\xampp\htdocs\restaurants_php\client\src\layouts\home\footer\Footer.jsx                                             | JavaScript JSX |        104 |          3 |          4 |        111 |
+| c:\xampp\htdocs\restaurants_php\client\src\layouts\home\header\Header.jsx                                             | JavaScript JSX |         91 |          3 |          8 |        102 |
+| c:\xampp\htdocs\restaurants_php\client\src\layouts\home\header\nav\Nav.jsx                                            | JavaScript JSX |        177 |          2 |          6 |        185 |
+| c:\xampp\htdocs\restaurants_php\client\src\layouts\home\header\nav\index.jsx                                          | JavaScript JSX |          1 |          0 |          0 |          1 |
+| c:\xampp\htdocs\restaurants_php\client\src\layouts\home\index.jsx                                                     | JavaScript JSX |          1 |          0 |          0 |          1 |
+| c:\xampp\htdocs\restaurants_php\client\src\layouts\simple\SimpleLayout.jsx                                            | JavaScript JSX |         24 |          4 |          6 |         34 |
+| c:\xampp\htdocs\restaurants_php\client\src\layouts\simple\index.jsx                                                   | JavaScript JSX |          1 |          0 |          1 |          2 |
+| c:\xampp\htdocs\restaurants_php\client\src\main.jsx                                                                   | JavaScript JSX |          6 |          6 |          7 |         19 |
+| c:\xampp\htdocs\restaurants_php\client\src\routers\PrivateRouter.jsx                                                  | JavaScript JSX |         31 |          2 |          8 |         41 |
+| c:\xampp\htdocs\restaurants_php\client\src\routers\routes.jsx                                                         | JavaScript JSX |        314 |         11 |          3 |        328 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\app\Category\Category.jsx                               | JavaScript JSX |         60 |          5 |          7 |         72 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\app\Category\CategoryItem.jsx                           | JavaScript JSX |         22 |          0 |          4 |         26 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\app\PopularProducts.jsx                                 | JavaScript JSX |         27 |          3 |          5 |         35 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\app\RecentlyProducts.jsx                                | JavaScript JSX |         22 |          3 |          5 |         30 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\app\Slider\Slider.jsx                                   | JavaScript JSX |         33 |          5 |          3 |         41 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\app\Slider\SliderConfig.jsx                             | JavaScript JSX |         15 |          0 |          3 |         18 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\app\Slider\SliderItem.jsx                               | JavaScript JSX |         20 |          2 |          4 |         26 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\app\index.jsx                                           | JavaScript JSX |          4 |          0 |          1 |          5 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\cart\CartConfirm\CartConfirm.jsx                        | JavaScript JSX |        241 |          5 |          8 |        254 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\cart\CartConfirm\CartConfirmProductItem.jsx             | JavaScript JSX |        128 |          2 |          5 |        135 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\cart\CartConfirm\index.jsx                              | JavaScript JSX |          1 |          0 |          0 |          1 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\cart\CartPayment\CartDelivery.jsx                       | JavaScript JSX |        120 |          3 |          8 |        131 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\cart\CartPayment\CartPayment.jsx                        | JavaScript JSX |         23 |          3 |          4 |         30 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\cart\CartPayment\CartPaymentInfo.jsx                    | JavaScript JSX |         71 |          3 |          8 |         82 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\cart\CartPayment\CartShipInfo.jsx                       | JavaScript JSX |        184 |          7 |         10 |        201 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\cart\CartSelect\CartSelect.jsx                          | JavaScript JSX |         33 |          3 |          5 |         41 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\cart\CartSelect\CartSummary.jsx                         | JavaScript JSX |        129 |          5 |         11 |        145 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\cart\CartSelect\CartTable.jsx                           | JavaScript JSX |        120 |         15 |         11 |        146 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\cart\CartSelect\CartTableItem.jsx                       | JavaScript JSX |        298 |          3 |         15 |        316 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\cart\CartStepper.jsx                                    | JavaScript JSX |        159 |         23 |         16 |        198 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\cart\CartWithoutProducts.jsx                            | JavaScript JSX |         27 |          3 |          5 |         35 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\cart\index.jsx                                          | JavaScript JSX |          2 |          0 |          2 |          4 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\common\ButtonBack.jsx                                   | JavaScript JSX |         14 |          2 |          4 |         20 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\common\index.jsx                                        | JavaScript JSX |          1 |          0 |          0 |          1 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\order\OrderDetail.jsx                                   | JavaScript JSX |        324 |          8 |         12 |        344 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\order\OrderInfo.jsx                                     | JavaScript JSX |        124 |          3 |          5 |        132 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\order\OrderTab.jsx                                      | JavaScript JSX |         59 |          4 |          8 |         71 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\order\OrderTabPanel.jsx                                 | JavaScript JSX |        132 |          4 |          5 |        141 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\order\OrderTimeLine.jsx                                 | JavaScript JSX |         63 |          4 |          8 |         75 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\order\index.jsx                                         | JavaScript JSX |          4 |          0 |          1 |          5 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\products\ProductCard.jsx                                | JavaScript JSX |         77 |          5 |         10 |         92 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\products\ProductCartWidget.jsx                          | JavaScript JSX |         39 |          5 |          6 |         50 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\products\ProductFilterSidebar.jsx                       | JavaScript JSX |        226 |          6 |         21 |        253 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\products\ProductList.jsx                                | JavaScript JSX |         17 |          2 |          4 |         23 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\products\ProductPagination.jsx                          | JavaScript JSX |         21 |          2 |          4 |         27 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\products\ProductRating.jsx                              | JavaScript JSX |         28 |          0 |          4 |         32 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\products\ProductSort.jsx                                | JavaScript JSX |         66 |          1 |          7 |         74 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\products\index.jsx                                      | JavaScript JSX |          7 |          0 |          1 |          8 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\products\productdetail\ProductDescription.jsx           | JavaScript JSX |         30 |          0 |          5 |         35 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\products\productdetail\ProductInfo.jsx                  | JavaScript JSX |        205 |          4 |         12 |        221 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\products\productdetail\ProductQuantity.jsx              | JavaScript JSX |         76 |          3 |          7 |         86 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\products\productdetail\ProductService.jsx               | JavaScript JSX |         51 |          3 |          3 |         57 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\products\productdetail\ProductSlider.jsx                | JavaScript JSX |         87 |          4 |          6 |         97 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\products\productdetail\ProductTabs.jsx                  | JavaScript JSX |         43 |          3 |          6 |         52 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\products\productdetail\index.jsx                        | JavaScript JSX |          5 |          0 |          1 |          6 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\profile\PreviewAvatar.jsx                               | JavaScript JSX |         63 |          5 |          8 |         76 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\profile\ProfileCardAvatar.jsx                           | JavaScript JSX |         72 |         35 |          4 |        111 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\profile\ProfileCardInfo.jsx                             | JavaScript JSX |        160 |          6 |          4 |        170 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\profile\index.jsx                                       | JavaScript JSX |          2 |          0 |          0 |          2 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\reservation\Table.jsx                                   | JavaScript JSX |         96 |          7 |         10 |        113 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\reservation\TableInfo.jsx                               | JavaScript JSX |         70 |          3 |          3 |         76 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\reservation\index.jsx                                   | JavaScript JSX |          2 |          0 |          0 |          2 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\reviews\ReviewItem.jsx                                  | JavaScript JSX |         78 |          5 |          9 |         92 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\reviews\ReviewList.jsx                                  | JavaScript JSX |         36 |          5 |          7 |         48 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\reviews\ReviewSumary.jsx                                | JavaScript JSX |        207 |          5 |         15 |        227 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\reviews\index.jsx                                       | JavaScript JSX |          2 |          0 |          1 |          3 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\setting\Notification.jsx                                | JavaScript JSX |         85 |          2 |          4 |         91 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\setting\UpdatePassword.jsx                              | JavaScript JSX |        171 |          7 |          7 |        185 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\setting\index.jsx                                       | JavaScript JSX |          2 |          0 |          1 |          3 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\about\Banner.jsx                                                   | JavaScript JSX |         83 |          2 |          5 |         90 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\about\WhatIs.jsx                                                   | JavaScript JSX |        102 |          2 |          5 |        109 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\about\index.jsx                                                    | JavaScript JSX |          3 |          0 |          2 |          5 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\about\slider\Slider.jsx                                            | JavaScript JSX |         36 |          4 |          4 |         44 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\about\slider\SliderItem.jsx                                        | JavaScript JSX |         83 |          3 |          6 |         92 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\about\slider\sliderConfig.jsx                                      | JavaScript JSX |         75 |          0 |          1 |         76 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\admin\auth\LoginForm.jsx                                           | JavaScript JSX |        149 |          8 |          6 |        163 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\admin\auth\index.jsx                                               | JavaScript JSX |          1 |          0 |          1 |          2 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\admin\category\ProductItem.jsx                                     | JavaScript JSX |        115 |          5 |          8 |        128 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\admin\category\index.jsx                                           | JavaScript JSX |          1 |          0 |          0 |          1 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\admin\dashboard\AppWebsiteVisits.jsx                               | JavaScript JSX |         38 |          3 |          5 |         46 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\admin\dashboard\index.jsx                                          | JavaScript JSX |          9 |          0 |          1 |         10 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\admin\dashboard\overview-budget.jsx                                | JavaScript JSX |         84 |          3 |          4 |         91 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\admin\dashboard\overview-latest-orders.jsx                         | JavaScript JSX |         96 |          4 |          8 |        108 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\admin\dashboard\overview-latest-products.jsx                       | JavaScript JSX |         95 |          5 |          8 |        108 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\admin\dashboard\overview-sales.jsx                                 | JavaScript JSX |        155 |          0 |          6 |        161 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\admin\dashboard\overview-total-customers.jsx                       | JavaScript JSX |         83 |          0 |          4 |         87 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\admin\dashboard\overview-total-order.jsx                           | JavaScript JSX |         54 |          1 |          4 |         59 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\admin\dashboard\overview-total-profit.jsx                          | JavaScript JSX |         46 |          0 |          4 |         50 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\admin\dashboard\overview-traffic.jsx                               | JavaScript JSX |        131 |          0 |          8 |        139 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\admin\order\OrderDetail.jsx                                        | JavaScript JSX |        266 |          6 |          8 |        280 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\admin\order\OrderInfo.jsx                                          | JavaScript JSX |        120 |          3 |          5 |        128 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\admin\order\OrderTimeLine.jsx                                      | JavaScript JSX |         63 |          4 |          8 |         75 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\admin\order\index.jsx                                              | JavaScript JSX |          2 |          0 |          0 |          2 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\admin\product\ProductFormDetail.jsx                                | JavaScript JSX |         67 |          0 |          5 |         72 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\admin\product\ProductFormImage.jsx                                 | JavaScript JSX |         95 |         94 |         10 |        199 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\admin\product\ProductFormPrice.jsx                                 | JavaScript JSX |         42 |          2 |          4 |         48 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\admin\product\ProductFormProperty.jsx                              | JavaScript JSX |        132 |          3 |          8 |        143 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\admin\product\index.jsx                                            | JavaScript JSX |          4 |          0 |          3 |          7 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\admin\profile\PreviewAvatar.jsx                                    | JavaScript JSX |         58 |          4 |          7 |         69 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\admin\profile\ProfileCardAvatar.jsx                                | JavaScript JSX |         72 |         35 |          4 |        111 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\admin\profile\ProfileCardInfo.jsx                                  | JavaScript JSX |        140 |          6 |          4 |        150 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\admin\profile\index.jsx                                            | JavaScript JSX |          2 |          0 |          0 |          2 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\admin\reservation\Reservation.jsx                                  | JavaScript JSX |        148 |         25 |         10 |        183 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\admin\reservation\ReservationTable.jsx                             | JavaScript JSX |        164 |          6 |         13 |        183 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\admin\reservation\ReservationTabs.jsx                              | JavaScript JSX |         42 |          3 |          5 |         50 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\admin\reservation\index.jsx                                        | JavaScript JSX |          3 |          0 |          1 |          4 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\admin\setting\Notification.jsx                                     | JavaScript JSX |         85 |          2 |          4 |         91 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\admin\setting\UpdatePassword.jsx                                   | JavaScript JSX |        171 |          7 |          5 |        183 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\admin\setting\index.jsx                                            | JavaScript JSX |          2 |          0 |          1 |          3 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\auth\LoginForm\LoginForm.jsx                                       | JavaScript JSX |        138 |          7 |          8 |        153 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\auth\LoginForm\index.jsx                                           | JavaScript JSX |          1 |          0 |          0 |          1 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\auth\RegisterForm\RegisterForm.jsx                                 | JavaScript JSX |        257 |          7 |          9 |        273 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\auth\RegisterForm\index.jsx                                        | JavaScript JSX |          1 |          0 |          0 |          1 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\faq\Accordion.jsx                                                  | JavaScript JSX |         40 |          3 |          4 |         47 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\faq\AccordionItems.jsx                                             | JavaScript JSX |         33 |          0 |          2 |         35 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\faq\Banner.jsx                                                     | JavaScript JSX |        115 |          2 |          5 |        122 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\faq\ContactForm.jsx                                                | JavaScript JSX |         60 |          2 |          6 |         68 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\faq\Service.jsx                                                    | JavaScript JSX |         97 |          2 |          6 |        105 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\faq\index.jsx                                                      | JavaScript JSX |          4 |          0 |          3 |          7 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\home\Main\Main.jsx                                                 | JavaScript JSX |        198 |          1 |         12 |        211 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\home\Main\index.jsx                                                | JavaScript JSX |          1 |          0 |          0 |          1 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\home\accordion\Accordion.jsx                                       | JavaScript JSX |         43 |          4 |          4 |         51 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\home\accordion\AccordionItems.jsx                                  | JavaScript JSX |         43 |          0 |          2 |         45 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\home\accordion\StillQuestions.jsx                                  | JavaScript JSX |         49 |          2 |          5 |         56 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\home\accordion\index.jsx                                           | JavaScript JSX |          1 |          0 |          0 |          1 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\home\info\Info.jsx                                                 | JavaScript JSX |         56 |          3 |          4 |         63 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\home\info\InfoCard.jsx                                             | JavaScript JSX |         61 |          2 |          5 |         68 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\home\info\index.jsx                                                | JavaScript JSX |          1 |          0 |          0 |          1 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\home\service\Service.jsx                                           | JavaScript JSX |         35 |          4 |          4 |         43 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\home\service\ServiceItem.jsx                                       | JavaScript JSX |         30 |          3 |          4 |         37 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\home\service\config.jsx                                            | JavaScript JSX |         36 |          0 |          2 |         38 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\home\service\index.jsx                                             | JavaScript JSX |          1 |          0 |          0 |          1 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\home\trusted\Trusted.jsx                                           | JavaScript JSX |         27 |          1 |          3 |         31 |
+| c:\xampp\htdocs\restaurants_php\client\src\section\home\trusted\index.jsx                                             | JavaScript JSX |          1 |          0 |          0 |          1 |
+| c:\xampp\htdocs\restaurants_php\client\src\serviceWorker.jsx                                                          | JavaScript JSX |         89 |         33 |         14 |        136 |
+| c:\xampp\htdocs\restaurants_php\client\src\theme\ThemeProviders.jsx                                                   | JavaScript JSX |         37 |          3 |          7 |         47 |
+| c:\xampp\htdocs\restaurants_php\client\src\theme\customShadows.jsx                                                    | JavaScript JSX |         24 |          5 |          4 |         33 |
+| c:\xampp\htdocs\restaurants_php\client\src\theme\globalStyles.jsx                                                     | JavaScript JSX |         57 |          5 |          5 |         67 |
+| c:\xampp\htdocs\restaurants_php\client\src\theme\overrides\Autocomplete.jsx                                           | JavaScript JSX |         11 |          1 |          2 |         14 |
+| c:\xampp\htdocs\restaurants_php\client\src\theme\overrides\Backdrop.jsx                                               | JavaScript JSX |         15 |          1 |          3 |         19 |
+| c:\xampp\htdocs\restaurants_php\client\src\theme\overrides\Button.jsx                                                 | JavaScript JSX |         41 |          1 |          3 |         45 |
+| c:\xampp\htdocs\restaurants_php\client\src\theme\overrides\Card.jsx                                                   | JavaScript JSX |         32 |          1 |          2 |         35 |
+| c:\xampp\htdocs\restaurants_php\client\src\theme\overrides\Input.jsx                                                  | JavaScript JSX |         64 |          1 |          3 |         68 |
+| c:\xampp\htdocs\restaurants_php\client\src\theme\overrides\Paper.jsx                                                  | JavaScript JSX |         14 |          1 |          2 |         17 |
+| c:\xampp\htdocs\restaurants_php\client\src\theme\overrides\Table.jsx                                                  | JavaScript JSX |         12 |          1 |          2 |         15 |
+| c:\xampp\htdocs\restaurants_php\client\src\theme\overrides\Tooltip.jsx                                                | JavaScript JSX |         14 |          1 |          2 |         17 |
+| c:\xampp\htdocs\restaurants_php\client\src\theme\overrides\Typography.jsx                                             | JavaScript JSX |         14 |          1 |          2 |         17 |
+| c:\xampp\htdocs\restaurants_php\client\src\theme\overrides\index.jsx                                                  | JavaScript JSX |         22 |          2 |          3 |         27 |
+| c:\xampp\htdocs\restaurants_php\client\src\theme\palette.jsx                                                          | JavaScript JSX |         93 |          2 |         11 |        106 |
+| c:\xampp\htdocs\restaurants_php\client\src\theme\shadows.jsx                                                          | JavaScript JSX |         35 |          3 |          4 |         42 |
+| c:\xampp\htdocs\restaurants_php\client\src\theme\typography.jsx                                                       | JavaScript JSX |         97 |          3 |          8 |        108 |
+| c:\xampp\htdocs\restaurants_php\client\src\utils\cssStyles.jsx                                                        | JavaScript JSX |         78 |          7 |         17 |        102 |
+| c:\xampp\htdocs\restaurants_php\client\src\utils\formatNumber.jsx                                                     | JavaScript JSX |         24 |          1 |         13 |         38 |
+| c:\xampp\htdocs\restaurants_php\client\src\utils\formatTime.jsx                                                       | JavaScript JSX |         19 |          1 |          8 |         28 |
+| c:\xampp\htdocs\restaurants_php\client\src\utils\setAuthToken.jsx                                                     | JavaScript JSX |          9 |          0 |          3 |         12 |
+| c:\xampp\htdocs\restaurants_php\client\vite.config.js                                                                 | JavaScript     |          5 |          1 |          2 |          8 |
+| c:\xampp\htdocs\restaurants_php\server\README.md                                                                      | Markdown       |         45 |          0 |         22 |         67 |
+| c:\xampp\htdocs\restaurants_php\server\app\Console\Kernel.php                                                         | PHP            |         15 |          7 |          6 |         28 |
+| c:\xampp\htdocs\restaurants_php\server\app\Exceptions\Handler.php                                                     | PHP            |         17 |          9 |          5 |         31 |
+| c:\xampp\htdocs\restaurants_php\server\app\Http\Controllers\AdminAuthController.php                                   | PHP            |         50 |          0 |          6 |         56 |
+| c:\xampp\htdocs\restaurants_php\server\app\Http\Controllers\AuthController.php                                        | PHP            |         76 |          6 |         17 |         99 |
+| c:\xampp\htdocs\restaurants_php\server\app\Http\Controllers\CartController.php                                        | PHP            |         92 |         10 |         22 |        124 |
+| c:\xampp\htdocs\restaurants_php\server\app\Http\Controllers\CategoryController.php                                    | PHP            |         98 |         15 |         25 |        138 |
+| c:\xampp\htdocs\restaurants_php\server\app\Http\Controllers\EmployeeController.php                                    | PHP            |        151 |         17 |         29 |        197 |
+| c:\xampp\htdocs\restaurants_php\server\app\Http\Controllers\OrderController.php                                       | PHP            |        138 |         23 |         25 |        186 |
+| c:\xampp\htdocs\restaurants_php\server\app\Http\Controllers\PaymentController.php                                     | PHP            |        217 |         15 |         41 |        273 |
+| c:\xampp\htdocs\restaurants_php\server\app\Http\Controllers\ProductController.php                                     | PHP            |        138 |          7 |         28 |        173 |
+| c:\xampp\htdocs\restaurants_php\server\app\Http\Controllers\ReservationController.php                                 | PHP            |         22 |         20 |          8 |         50 |
+| c:\xampp\htdocs\restaurants_php\server\app\Http\Controllers\ReviewController.php                                      | PHP            |         74 |          8 |         17 |         99 |
+| c:\xampp\htdocs\restaurants_php\server\app\Http\Controllers\RoleController.php                                        | PHP            |         35 |         12 |          8 |         55 |
+| c:\xampp\htdocs\restaurants_php\server\app\Http\Controllers\TableController.php                                       | PHP            |        149 |         18 |         23 |        190 |
+| c:\xampp\htdocs\restaurants_php\server\app\Http\Controllers\UserController.php                                        | PHP            |        135 |         21 |         28 |        184 |
+| c:\xampp\htdocs\restaurants_php\server\app\Http\Kernel.php                                                            | PHP            |         41 |         21 |          7 |         69 |
+| c:\xampp\htdocs\restaurants_php\server\app\Http\Middleware\Authenticate.php                                           | PHP            |         11 |          3 |          4 |         18 |
+| c:\xampp\htdocs\restaurants_php\server\app\Http\Middleware\EncryptCookies.php                                         | PHP            |          8 |          6 |          4 |         18 |
+| c:\xampp\htdocs\restaurants_php\server\app\Http\Middleware\PreventRequestsDuringMaintenance.php                       | PHP            |          8 |          6 |          4 |         18 |
+| c:\xampp\htdocs\restaurants_php\server\app\Http\Middleware\RedirectIfAuthenticated.php                                | PHP            |         20 |          5 |          6 |         31 |
+| c:\xampp\htdocs\restaurants_php\server\app\Http\Middleware\TrimStrings.php                                            | PHP            |         11 |          5 |          4 |         20 |
+| c:\xampp\htdocs\restaurants_php\server\app\Http\Middleware\TrustHosts.php                                             | PHP            |         12 |          5 |          4 |         21 |
+| c:\xampp\htdocs\restaurants_php\server\app\Http\Middleware\TrustProxies.php                                           | PHP            |         14 |         10 |          5 |         29 |
+| c:\xampp\htdocs\restaurants_php\server\app\Http\Middleware\ValidateSignature.php                                      | PHP            |          8 |         11 |          4 |         23 |
+| c:\xampp\htdocs\restaurants_php\server\app\Http\Middleware\VerifyCsrfToken.php                                        | PHP            |          8 |          6 |          4 |         18 |
+| c:\xampp\htdocs\restaurants_php\server\app\Models\Cart.php                                                            | PHP            |         15 |          5 |          6 |         26 |
+| c:\xampp\htdocs\restaurants_php\server\app\Models\CartDetail.php                                                      | PHP            |         16 |          5 |          7 |         28 |
+| c:\xampp\htdocs\restaurants_php\server\app\Models\Category.php                                                        | PHP            |         17 |          5 |          5 |         27 |
+| c:\xampp\htdocs\restaurants_php\server\app\Models\Employee.php                                                        | PHP            |         22 |          5 |          5 |         32 |
+| c:\xampp\htdocs\restaurants_php\server\app\Models\ImageProduct.php                                                    | PHP            |         15 |          0 |          5 |         20 |
+| c:\xampp\htdocs\restaurants_php\server\app\Models\Order.php                                                           | PHP            |         30 |          0 |          7 |         37 |
+| c:\xampp\htdocs\restaurants_php\server\app\Models\Payment.php                                                         | PHP            |         19 |          0 |          5 |         24 |
+| c:\xampp\htdocs\restaurants_php\server\app\Models\Product.php                                                         | PHP            |         29 |          0 |          6 |         35 |
+| c:\xampp\htdocs\restaurants_php\server\app\Models\Reservation.php                                                     | PHP            |         17 |          0 |          5 |         22 |
+| c:\xampp\htdocs\restaurants_php\server\app\Models\Review.php                                                          | PHP            |         18 |          0 |          5 |         23 |
+| c:\xampp\htdocs\restaurants_php\server\app\Models\Role.php                                                            | PHP            |         14 |          0 |          6 |         20 |
+| c:\xampp\htdocs\restaurants_php\server\app\Models\Table.php                                                           | PHP            |         15 |          0 |          6 |         21 |
+| c:\xampp\htdocs\restaurants_php\server\app\Models\User.php                                                            | PHP            |         35 |         16 |          8 |         59 |
+| c:\xampp\htdocs\restaurants_php\server\app\Providers\AppServiceProvider.php                                           | PHP            |         12 |          8 |          5 |         25 |
+| c:\xampp\htdocs\restaurants_php\server\app\Providers\AuthServiceProvider.php                                          | PHP            |         11 |         11 |          5 |         27 |
+| c:\xampp\htdocs\restaurants_php\server\app\Providers\BroadcastServiceProvider.php                                     | PHP            |         12 |          3 |          5 |         20 |
+| c:\xampp\htdocs\restaurants_php\server\app\Providers\EventServiceProvider.php                                         | PHP            |         21 |         12 |          6 |         39 |
+| c:\xampp\htdocs\restaurants_php\server\app\Providers\RouteServiceProvider.php                                         | PHP            |         24 |         10 |          7 |         41 |
+| c:\xampp\htdocs\restaurants_php\server\bootstrap\app.php                                                              | PHP            |         17 |         30 |          9 |         56 |
+| c:\xampp\htdocs\restaurants_php\server\composer.json                                                                  | JSON           |         68 |          0 |          1 |         69 |
+| c:\xampp\htdocs\restaurants_php\server\composer.lock                                                                  | JSON           |      9,385 |          0 |          1 |      9,386 |
+| c:\xampp\htdocs\restaurants_php\server\config\app.php                                                                 | PHP            |         30 |        130 |         31 |        191 |
+| c:\xampp\htdocs\restaurants_php\server\config\auth.php                                                                | PHP            |         52 |         74 |         15 |        141 |
+| c:\xampp\htdocs\restaurants_php\server\config\broadcasting.php                                                        | PHP            |         36 |         23 |         13 |         72 |
+| c:\xampp\htdocs\restaurants_php\server\config\cache.php                                                               | PHP            |         59 |         34 |         19 |        112 |
+| c:\xampp\htdocs\restaurants_php\server\config\cloudinary.php                                                          | PHP            |          6 |         30 |          8 |         44 |
+| c:\xampp\htdocs\restaurants_php\server\config\cors.php                                                                | PHP            |          3 |         29 |          3 |         35 |
+| c:\xampp\htdocs\restaurants_php\server\config\database.php                                                            | PHP            |         83 |         47 |         22 |        152 |
+| c:\xampp\htdocs\restaurants_php\server\config\filesystems.php                                                         | PHP            |         32 |         32 |         13 |         77 |
+| c:\xampp\htdocs\restaurants_php\server\config\hashing.php                                                             | PHP            |         12 |         32 |          9 |         53 |
+| c:\xampp\htdocs\restaurants_php\server\config\logging.php                                                             | PHP            |         79 |         34 |         19 |        132 |
+| c:\xampp\htdocs\restaurants_php\server\config\mail.php                                                                | PHP            |         54 |         53 |         19 |        126 |
+| c:\xampp\htdocs\restaurants_php\server\config\queue.php                                                               | PHP            |         51 |         42 |         17 |        110 |
+| c:\xampp\htdocs\restaurants_php\server\config\sanctum.php                                                             | PHP            |         15 |         41 |         12 |         68 |
+| c:\xampp\htdocs\restaurants_php\server\config\services.php                                                            | PHP            |         17 |         11 |          7 |         35 |
+| c:\xampp\htdocs\restaurants_php\server\config\session.php                                                             | PHP            |         22 |        147 |         33 |        202 |
+| c:\xampp\htdocs\restaurants_php\server\config\view.php                                                                | PHP            |         10 |         20 |          7 |         37 |
+| c:\xampp\htdocs\restaurants_php\server\config\vnpay.php                                                               | PHP            |         10 |          0 |          1 |         11 |
+| c:\xampp\htdocs\restaurants_php\server\database\factories\UserFactory.php                                             | PHP            |         23 |         11 |          5 |         39 |
+| c:\xampp\htdocs\restaurants_php\server\database\migrations\2014_10_12_100000_create_password_reset_tokens_table.php   | PHP            |         19 |          6 |          4 |         29 |
+| c:\xampp\htdocs\restaurants_php\server\database\migrations\2019_08_19_000000_create_failed_jobs_table.php             | PHP            |         23 |          6 |          4 |         33 |
+| c:\xampp\htdocs\restaurants_php\server\database\migrations\2019_12_14_000001_create_personal_access_tokens_table.php  | PHP            |         24 |          6 |          4 |         34 |
+| c:\xampp\htdocs\restaurants_php\server\database\migrations\2020_06_14_000001_create_media_table.php                   | PHP            |         23 |          5 |          4 |         32 |
+| c:\xampp\htdocs\restaurants_php\server\database\migrations\2023_10_29_111955_create_roles_table.php                   | PHP            |         19 |          6 |          4 |         29 |
+| c:\xampp\htdocs\restaurants_php\server\database\migrations\2023_10_29_112153_create_employees_table.php               | PHP            |         29 |          6 |          5 |         40 |
+| c:\xampp\htdocs\restaurants_php\server\database\migrations\2023_10_29_112248_create_categories_table.php              | PHP            |         22 |          6 |          5 |         33 |
+| c:\xampp\htdocs\restaurants_php\server\database\migrations\2023_10_29_112338_create_products_table.php                | PHP            |         31 |          6 |          4 |         41 |
+| c:\xampp\htdocs\restaurants_php\server\database\migrations\2023_10_29_112713_create_image_product_table.php           | PHP            |         21 |          6 |          4 |         31 |
+| c:\xampp\htdocs\restaurants_php\server\database\migrations\2023_10_29_114355_create_users_table.php                   | PHP            |         29 |          6 |          5 |         40 |
+| c:\xampp\htdocs\restaurants_php\server\database\migrations\2023_10_29_125726_create_payments_table.php                | PHP            |         25 |          6 |          4 |         35 |
+| c:\xampp\htdocs\restaurants_php\server\database\migrations\2023_10_31_073649_create_carts_table.php                   | PHP            |         20 |          6 |          4 |         30 |
+| c:\xampp\htdocs\restaurants_php\server\database\migrations\2023_10_31_074502_create_cart_detail_table.php             | PHP            |         25 |          6 |          4 |         35 |
+| c:\xampp\htdocs\restaurants_php\server\database\migrations\2023_11_01_090101_remove_image_url_from_products_table.php | PHP            |         18 |          7 |          4 |         29 |
+| c:\xampp\htdocs\restaurants_php\server\database\migrations\2023_11_02_130817_create_reviews_table.php                 | PHP            |         26 |          6 |          4 |         36 |
+| c:\xampp\htdocs\restaurants_php\server\database\migrations\2023_11_02_133128_create_orders_table.php                  | PHP            |         34 |          6 |          4 |         44 |
+| c:\xampp\htdocs\restaurants_php\server\database\migrations\2023_11_02_134616_create_tables_table.php                  | PHP            |         20 |          6 |          4 |         30 |
+| c:\xampp\htdocs\restaurants_php\server\database\migrations\2023_11_04_132829_create_reservations_table.php            | PHP            |         24 |          6 |          4 |         34 |
+| c:\xampp\htdocs\restaurants_php\server\database\seeders\DatabaseSeeder.php                                            | PHP            |          9 |          9 |          5 |         23 |
+| c:\xampp\htdocs\restaurants_php\server\package.json                                                                   | JSON           |         13 |          0 |          1 |         14 |
+| c:\xampp\htdocs\restaurants_php\server\phpunit.xml                                                                    | XML            |         29 |          2 |          1 |         32 |
+| c:\xampp\htdocs\restaurants_php\server\public\index.php                                                               | PHP            |         14 |         30 |         12 |         56 |
+| c:\xampp\htdocs\restaurants_php\server\resources\css\app.css                                                          | CSS            |          0 |          0 |          1 |          1 |
+| c:\xampp\htdocs\restaurants_php\server\resources\js\app.js                                                            | JavaScript     |          1 |          0 |          1 |          2 |
+| c:\xampp\htdocs\restaurants_php\server\resources\js\bootstrap.js                                                      | JavaScript     |          3 |         23 |          7 |         33 |
+| c:\xampp\htdocs\restaurants_php\server\resources\views\welcome.blade.php                                              | PHP            |        118 |          0 |         23 |        141 |
+| c:\xampp\htdocs\restaurants_php\server\routes\api.php                                                                 | PHP            |         75 |         22 |         16 |        113 |
+| c:\xampp\htdocs\restaurants_php\server\routes\channels.php                                                            | PHP            |          5 |         10 |          4 |         19 |
+| c:\xampp\htdocs\restaurants_php\server\routes\console.php                                                             | PHP            |          6 |         10 |          4 |         20 |
+| c:\xampp\htdocs\restaurants_php\server\routes\web.php                                                                 | PHP            |          5 |         10 |          4 |         19 |
+| c:\xampp\htdocs\restaurants_php\server\tests\CreatesApplication.php                                                   | PHP            |         13 |          3 |          6 |         22 |
+| c:\xampp\htdocs\restaurants_php\server\tests\Feature\ExampleTest.php                                                  | PHP            |         11 |          4 |          5 |         20 |
+| c:\xampp\htdocs\restaurants_php\server\tests\TestCase.php                                                             | PHP            |          7 |          0 |          4 |         11 |
+| c:\xampp\htdocs\restaurants_php\server\tests\Unit\ExampleTest.php                                                     | PHP            |         10 |          3 |          4 |         17 |
+| c:\xampp\htdocs\restaurants_php\server\vendor\spatie\ignition\resources\compiled\ignition.css                         | CSS            |          1 |          2 |          0 |          3 |
+| c:\xampp\htdocs\restaurants_php\server\vendor\spatie\ignition\resources\compiled\ignition.js                          | JavaScript     |          6 |          0 |          1 |          7 |
+| c:\xampp\htdocs\restaurants_php\server\vite.config.js                                                                 | JavaScript     |         10 |          0 |          2 |         12 |
+| Total                                                                                                                 |                |     45,804 |      2,572 |      2,772 |     51,148 |
++-----------------------------------------------------------------------------------------------------------------------+----------------+------------+------------+------------+------------+

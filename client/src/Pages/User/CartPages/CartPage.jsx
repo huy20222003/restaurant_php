@@ -16,7 +16,7 @@ const CartPage = () => {
     cartState: { items },
     handleGetCart,
   } = useCart();
-  
+
   useEffect(() => {
     handleGetCart();
   }, [handleGetCart]);
@@ -30,7 +30,7 @@ const CartPage = () => {
         <Typography variant="h5" sx={{ mb: 5 }}>
           Checkout
         </Typography>
-        {items.length > 0 ? (
+        {items?.length > 0 ? (
           <Box component="main" sx={{ flexGrow: 1 }}>
             <Container>
               <CartStepper />

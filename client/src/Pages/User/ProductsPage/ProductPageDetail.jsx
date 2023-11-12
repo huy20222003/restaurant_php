@@ -17,14 +17,14 @@ const ProductPageDetail = () => {
     handleGetOneProduct,
   } = useProduct();
 
-  const { _id } = useParams();
+  const { id } = useParams();
 
   const [productInfo, setProductInfo] = useState(product);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await handleGetOneProduct(_id);
+        const response = await handleGetOneProduct(id);
         setProductInfo(response.product);
       } catch (error) {
         console.error('Error fetching product:', error);
@@ -32,7 +32,7 @@ const ProductPageDetail = () => {
     };
 
     fetchData();
-  }, [_id, handleGetOneProduct]);
+  }, [id, handleGetOneProduct]);
 
   return (
     <>

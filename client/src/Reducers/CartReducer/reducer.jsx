@@ -1,10 +1,8 @@
 import { GET_CART, UPDATE_CART } from "./constants";
 
 export const initCartState = {
-    items: [], 
-    totalPrices: 0, 
+    items: null, 
     userCart: null, 
-    property: []
   };
   
   export const reducer = (state, action) => {
@@ -14,16 +12,14 @@ export const initCartState = {
       case GET_CART:
         return {
           ...state,
-          items: payload.items,
-          totalPrices: payload.totalPrices,
-          userCart: payload.userCart,
+          items: payload.cart_details,
+          userCart: payload.userId,
         };
         case UPDATE_CART:
         return {
           ...state,
-          items: payload.items,
-          totalPrices: payload.totalPrices,
-          userCart: payload.userCart,
+          items: payload.cart_details,
+          userCart: payload.userId,
         };
       default:
         return {

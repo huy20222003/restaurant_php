@@ -39,7 +39,7 @@ const CartTable = ({
 
   const handleProductSelect = (product) => {
     const productIndex = selectedProducts.findIndex(
-      (p) => p.product._id === product.product._id
+      (p) => p.product.id === product.product.id
     );
     if (productIndex === -1) {
       setSelectedProducts([...selectedProducts, product]);
@@ -66,7 +66,7 @@ const CartTable = ({
     setOrderData((prevOrderData) => ({
       ...prevOrderData,
       totalPrices: totalPrices,
-      items: selectedProducts,
+      items: JSON.stringify(selectedProducts),
     }));
   }, [selectedProducts, setOrderData, totalPrices]);
 
@@ -116,7 +116,7 @@ const CartTable = ({
                     item={item}
                     onSelect={() => handleProductSelect(item)}
                     isSelected={selectedProducts.some(
-                      (p) => p.product._id === item.product._id
+                      (p) => p.product.id === item.product.id
                     )}
                     orderData={orderData}
                     setOrderData={setOrderData}

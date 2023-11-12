@@ -78,7 +78,7 @@ const EmployeeManage = () => {
 
   const renderRoles = () => {
     return roles.map((role) => (
-      <MenuItem key={role._id} value={role._id}>
+      <MenuItem key={role.id} value={role.id}>
         {role.name}
       </MenuItem>
     ));
@@ -127,11 +127,12 @@ const EmployeeManage = () => {
 
   const formik = useFormik({
     initialValues: {
-      _id: '',
+      id: '',
       fullName: '',
       username: '',
       email: '',
-      salary: '',
+      phoneNumber: '',
+      salary: 0,
       position: 'employee',
     },
     validationSchema: yup.object({
@@ -144,13 +145,17 @@ const EmployeeManage = () => {
         .required('Username is required')
         .max(100, 'Maximum characters are 100'),
       email: yup.string().required('Email is required').email(),
+      phoneNumber: yup
+        .string()
+        .required('Phone Number is required')
+        .matches(/^\d{10}$/, 'Phone Number must be exactly 10 digits'),
       salary: yup.number().required('Salary is required'),
       position: yup.string().required('Position is required'),
     }),
     onSubmit: async (values) => {
       try {
         if (isEdit) {
-          const editData = await handleUpdateEmployee(values._id, values);
+          const editData = await handleUpdateEmployee(values.id, values);
           if (!editData.success) {
             Swal.fire({
               title: 'Update employee failed!',
@@ -178,7 +183,7 @@ const EmployeeManage = () => {
           } else {
             Swal.fire({
               title: 'Add employee Successful!',
-              text: 'Default password is 1234567',
+              text: 'Default password is 12345678',
               icon: 'success',
               showCancelButton: true,
               confirmButtonText: 'OK',
@@ -201,7 +206,7 @@ const EmployeeManage = () => {
     { field: 'id', headerName: 'ID', type: 'String', width: 70 },
     {
       field: 'avatar',
-      headerName: 'Ảnh đại diện',
+      headerName: 'Avatar',
       type: 'String',
       width: 90,
       renderCell: (params) => (
@@ -325,7 +330,7 @@ const EmployeeManage = () => {
 
   const rows = employees.map((employee) => {
     return {
-      id: employee?._id,
+      id: employee?.id,
       avatar: employee?.avatar,
       username: employee?.username,
       fullName: employee?.fullName,
@@ -334,9 +339,9 @@ const EmployeeManage = () => {
       address: employee?.address,
       position: employee?.position,
       salary: employee?.salary,
-      role: employee?.roles,
-      createdAt: fDateTime(employee?.createdAt),
-      updatedAt: fDateTime(employee?.updatedAt),
+      role: employee?.roleId,
+      createdAt: fDateTime(employee?.created_at),
+      updatedAt: fDateTime(employee?.updated_at),
     };
   });
 
@@ -344,6 +349,7 @@ const EmployeeManage = () => {
     { name: 'fullName', label: 'FullName', type: 'text' },
     { name: 'username', label: 'Username', type: 'text' },
     { name: 'email', label: 'Email', type: 'email' },
+    { name: 'phoneNumber', label: 'Phone Number', type: 'text' },
     { name: 'salary', label: 'Salary', type: 'text' },
   ];
 

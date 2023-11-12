@@ -24,7 +24,7 @@ import Swal from 'sweetalert2';
 //-------------------------------------------------------------
 
 const ProductInfo = ({ product }) => {
-  const { quantity, setQuantity, property, setProperty } = useProduct();
+  const { quantity, setQuantity, size, setSize, color, setColor } = useProduct();
   const navigate = useNavigate();
   const { handleUpdateCart } = useCart();
 
@@ -35,9 +35,10 @@ const ProductInfo = ({ product }) => {
   const handleUpdate = useCallback(async () => {
     try {
       const updateData = await handleUpdateCart({
-        productId: product?._id,
+        productId: product?.id,
         quantity,
-        property,
+        color,
+        size,
       });
       if (updateData.success) {
         Swal.fire({
@@ -58,7 +59,7 @@ const ProductInfo = ({ product }) => {
     } catch (error) {
       Swal.fire('', 'Server Error', 'error');
     }
-  }, [handleUpdateCart, product?._id, property, quantity, setQuantity]);
+  }, [color, handleUpdateCart, product?.id, quantity, setQuantity, size]);
 
   const handleNavigateCart = () => {
     handleUpdate();
@@ -135,16 +136,13 @@ const ProductInfo = ({ product }) => {
               labelId="color-label"
               label="Colors"
               size="small"
-              value={property.color || ''}
+              value={color || ''}
               onChange={(e) => {
-                setProperty({
-                  ...property,
-                  color: e.target.value,
-                });
+                setColor(e.target.value);
                 setColorSelected(true);
               }}
             >
-              {renderSelectOptions(product?.color || [])}
+              {renderSelectOptions([JSON.parse(product?.color)] || [])}
             </Select>
           </FormControl>
         </Stack>
@@ -165,16 +163,13 @@ const ProductInfo = ({ product }) => {
               id="size-label"
               label="Size"
               size="small"
-              value={property.size || ''}
+              value={size || ''}
               onChange={(e) => {
-                setProperty({
-                  ...property,
-                  size: e.target.value,
-                });
+                setSize(e.target.value);
                 setSizeSelected(true);
               }}
             >
-              {renderSelectOptions(product?.size || [])}
+              {renderSelectOptions([JSON.parse(product?.size)] || [])}
             </Select>
           </FormControl>
         </Stack>
@@ -209,7 +204,7 @@ const ProductInfo = ({ product }) => {
 
 ProductInfo.propTypes = {
   product: PropTypes.shape({
-    _id: PropTypes.string,
+    id: PropTypes.number,
     status: PropTypes.string,
     name: PropTypes.string,
     rate: PropTypes.number,

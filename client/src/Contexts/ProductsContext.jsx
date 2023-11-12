@@ -27,7 +27,8 @@ export const ProductsContext = createContext();
 export const ProductsProvider = (prop) => {
   const [productsState, dispatch] = useReducer(reducer, initProductsState);
   const [currentPage, setCurrentPage] = useState(1);
-  const [property, setProperty] = useState({});
+  const [size, setSize] = useState('');
+  const [color, setColor] = useState('');
   const [quantity, setQuantity] = useState(1);
 
   const handleError = (error) => {
@@ -77,11 +78,12 @@ export const ProductsProvider = (prop) => {
       if (response.data.success) {
         dispatch(createProduct(response.data.product));
       }
+      await handleGetAllProducts();
       return response.data;
     } catch (error) {
       return handleError(error);
     }
-  }, []);
+  }, [handleGetAllProducts]);
 
   const handleUpdateProduct = useCallback(async (productId, data) => {
     try {
@@ -89,11 +91,12 @@ export const ProductsProvider = (prop) => {
       if (response.data.success) {
         dispatch(updateProduct(response.data.product));
       }
+      await handleGetAllProducts();
       return response.data;
     } catch (error) {
       return handleError(error);
     }
-  }, []);
+  }, [handleGetAllProducts]);
 
   const handleDeleteProduct = useCallback(async (productId) => {
     try {
@@ -101,11 +104,12 @@ export const ProductsProvider = (prop) => {
       if (response.data.success) {
         dispatch(deleteProduct(productId));
       }
+      await handleGetAllProducts();
       return response.data;
     } catch (error) {
       return handleError(error);
     }
-  }, []);
+  }, [handleGetAllProducts]);
 
   const handleSearchProduct = useCallback(async (searchValue) => {
     try {
@@ -150,8 +154,10 @@ export const ProductsProvider = (prop) => {
   const ProductsData = {
     quantity,
     setQuantity,
-    property,
-    setProperty,
+    size,
+    setSize,
+    color,
+    setColor,
     productsState,
     handleGetAllProducts,
     handlePageChange,

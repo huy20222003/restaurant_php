@@ -85,13 +85,13 @@ const CategoryManage = () => {
         .string()
         .required('Username is required')
         .max(100, 'Maximum characters are 100'),
-      description: yup.string().max(3000, 'Maximum characters are 3000'),
+      description: yup.string().max(3000, 'Maximum characters are 3000').required('Description is required'),
       imageUrl: yup.string().required('Image is required'),
     }),
     onSubmit: async (values) => {
       try {
         if (isEdit) {
-          const editData = await handleUpdateCategory(values._id, values);
+          const editData = await handleUpdateCategory(values.id, values);
           if (!editData.success) {
             Swal.fire({
               title: 'Update category failed!',
@@ -249,19 +249,19 @@ const CategoryManage = () => {
   const rows =
     categories &&
     categories.map((category) => {
-      const countItem = products.find((item) => item.category == category._id);
+      const countItem = products.find((item) => item.category == category.id);
       if (countItem) {
         countProduct++;
       }
 
       return {
-        id: category?._id,
+        id: category?.id,
         imageUrl: category?.imageUrl,
         name: category?.name,
         description: category?.description,
         quantity: countProduct,
-        createdAt: fDateTime(category?.createdAt),
-        updatedAt: fDateTime(category?.updatedAt),
+        createdAt: fDateTime(category?.created_at),
+        updatedAt: fDateTime(category?.updated_at),
       };
     });
 
@@ -384,7 +384,6 @@ const CategoryManage = () => {
                   fields={fields}
                   isEdit={isEdit}
                   formik={formik}
-                  handleSave={formik.handleSubmit}
                 />
                 <DataTable columns={columns} rows={rows} />
               </Stack>

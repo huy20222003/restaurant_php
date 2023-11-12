@@ -57,16 +57,16 @@ const CartTableItem = ({
   orderData,
   setOrderData,
 }) => {
-  const { product, property, quantity } = item;
+  const { id, product, size, color, quantity } = item;
   const { handleUpdateCart, handleDeleteProductFromCart } = useCart();
 
   const totalPrices = (product?.priceSale || product?.price) * quantity;
 
   const updateCartItem = useCallback(
     (newQuantity) => {
-      handleUpdateCart({ productId: product?._id, quantity: newQuantity });
+      handleUpdateCart({ productId: product?.id, quantity: newQuantity });
     },
-    [handleUpdateCart, product?._id]
+    [handleUpdateCart, product?.id]
   );
 
   const handleIncrease = useCallback(() => {
@@ -125,7 +125,7 @@ const CartTableItem = ({
     });
   };
 
-  const itemId = item ? item._id : null;
+  const itemId = item ? item.id : null;
 
   return (
     <TableRow key={itemId}>
@@ -141,7 +141,7 @@ const CartTableItem = ({
         }}
       >
         <Avatar
-          src={product?.image_url[0]}
+          src={product?.image_products[0]?.imageUrl}
           sx={{
             width: '64px',
             height: '64px',
@@ -156,7 +156,7 @@ const CartTableItem = ({
             {product?.name}
           </Typography>
           <Stack sx={{ flexDirection: 'row', alignItems: 'center' }}>
-            {property?.size ? (
+            {size ? (
               <Stack
                 sx={{
                   alignItems: 'center',
@@ -187,13 +187,13 @@ const CartTableItem = ({
                     marginLeft: '4px',
                   }}
                 >
-                  {property?.size}
+                  {size}
                 </Box>
               </Stack>
             ) : (
               ''
             )}
-            {property?.color ? (
+            {color ? (
               <Stack
                 sx={{
                   alignItems: 'center',
@@ -224,7 +224,7 @@ const CartTableItem = ({
                     marginLeft: '4px',
                   }}
                 >
-                  {property?.color}
+                  {color}
                 </Box>
               </Stack>
             ) : (
@@ -279,7 +279,7 @@ const CartTableItem = ({
             transition:
               'background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
           }}
-          onClick={() => handleDeleteProduct(product?._id)}
+          onClick={() => handleDeleteProduct(id)}
         >
           <Iconify icon="eva:trash-2-fill" />
         </ButtonBase>
@@ -290,10 +290,12 @@ const CartTableItem = ({
 
 CartTableItem.propTypes = {
   item: PropTypes.shape({
-    _id: PropTypes.string,
+    id: PropTypes.number,
+    size: PropTypes.string,
+    color: PropTypes.string,
     product: PropTypes.shape({
-      _id: PropTypes.string,
-      image_url: PropTypes.array,
+      id: PropTypes.number,
+      image_products: PropTypes.arrayOf(PropTypes.shape({ imageUrl: PropTypes.string })),
       name: PropTypes.string,
       priceSale: PropTypes.number,
       price: PropTypes.number,

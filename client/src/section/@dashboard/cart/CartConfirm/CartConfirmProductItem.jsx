@@ -4,7 +4,7 @@ import { Box, Divider, Stack, Typography } from '@mui/material';
 //-----------------------------------------
 
 const CartConfirmProductItem = ({ item }) => {
-  const { product, quantity, property } = item;
+  const { product, quantity, size, color } = item;
 
   return (
     <Stack
@@ -27,7 +27,7 @@ const CartConfirmProductItem = ({ item }) => {
         <Stack sx={{ flexDirection: 'row', alignItems: 'center' }}>
           <Box
             component="img"
-            src={product?.image_url[0]}
+            src={product?.image_products[0]?.imageUrl}
             sx={{
               width: '70px',
               height: '70px',
@@ -45,7 +45,7 @@ const CartConfirmProductItem = ({ item }) => {
                 flexDirection: 'row',
               }}
             >
-              {property?.size ? (
+              {size ? (
                 <Box sx={{display: 'flex'}}>
                   <Typography variant="body2">size</Typography>
                   <Box
@@ -60,7 +60,6 @@ const CartConfirmProductItem = ({ item }) => {
                       whiteSpace: 'nowrap',
                       display: 'inline-flex',
                       justifyContent: 'center',
-                      textTransform: 'capitalize',
                       padding: '0px 6px',
                       fontSize: '0.75rem',
                       fontWeight: 700,
@@ -70,14 +69,14 @@ const CartConfirmProductItem = ({ item }) => {
                       marginLeft: '4px',
                     }}
                   >
-                    {property?.size}
+                    {size}
                   </Box>
                 </Box>
               ) : (
                 ''
               )}
               <Divider orientation="vertical" variant="middle" flexItem />
-              {property?.color ? (
+              {color ? (
                 <Box sx={{display: 'flex'}}>
                   <Typography variant="body2">color</Typography>
                   <Box
@@ -92,7 +91,6 @@ const CartConfirmProductItem = ({ item }) => {
                       whiteSpace: 'nowrap',
                       display: 'inline-flex',
                       justifyContent: 'center',
-                      textTransform: 'capitalize',
                       padding: '0px 6px',
                       fontSize: '0.75rem',
                       fontWeight: 700,
@@ -102,7 +100,7 @@ const CartConfirmProductItem = ({ item }) => {
                       marginLeft: '4px',
                     }}
                   >
-                    {property?.color}
+                    {color}
                   </Box>
                 </Box>
               ) : (

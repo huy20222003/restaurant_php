@@ -16,7 +16,7 @@ const OrderPageDetail = () => {
     history.back();
   };
 
-  const { _id } = useParams();
+  const { id } = useParams();
   const {
     ordersState: { order },
     handleGetOneOrder,
@@ -26,7 +26,7 @@ const OrderPageDetail = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await handleGetOneOrder(_id);
+        const response = await handleGetOneOrder(id);
         setOrderInfo(response.order);
       } catch (error) {
         console.error('Error fetching order:', error);
@@ -34,7 +34,7 @@ const OrderPageDetail = () => {
     };
 
     fetchData();
-  }, [_id, handleGetOneOrder]);
+  }, [id, handleGetOneOrder]);
 
   return (
     <Box
@@ -56,7 +56,7 @@ const OrderPageDetail = () => {
               <Stack
                 sx={{ flexDirection: 'row', gap: '8px', alignItems: 'center' }}
               >
-                <Typography variant="h5">Order #{orderInfo._id}</Typography>
+                <Typography variant="h5">Order #{orderInfo.id}</Typography>
                 <Typography
                   variant="overline"
                   sx={{
@@ -70,18 +70,18 @@ const OrderPageDetail = () => {
                     textTransform: 'capitalize',
                     padding: '0px 6px',
                     color:
-                      orderInfo.status[orderInfo.status.length - 1] ===
+                      orderInfo.status ===
                       'cancelled'
                         ? 'error.main'
                         : 'primary.main',
                     backgroundColor:
-                      orderInfo.status[orderInfo.status.length - 1] ===
+                      orderInfo.status ===
                       'cancelled'
                         ? 'error.lighter'
                         : 'primary.lighter',
                   }}
                 >
-                  {orderInfo.status[orderInfo.status.length - 1]}
+                  {orderInfo.status}
                 </Typography>
               </Stack>
             </Stack>

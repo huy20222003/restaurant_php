@@ -20,10 +20,10 @@ const OrderTabPanel = () => {
     <>
       {orders.map((order) => (
         <Paper
-          key={order._id}
+          key={order.id}
           elevation={3}
           sx={{ p: '12px', cursor: 'pointer', my: '1rem' }}
-          onClick={() => handleNavigate(order._id)}
+          onClick={() => handleNavigate(order.id)}
         >
           {order?.status && (
             <Stack
@@ -38,11 +38,11 @@ const OrderTabPanel = () => {
                 display: 'inline-flex',
                 color: '#fff',
                 backgroundColor:
-                  order?.status[order?.status.length-1] === 'ordered' ? 'success.main' : 'info.main',
+                  order?.status === 'ordered' ? 'success.main' : 'info.main',
               }}
             >
               <Iconify icon="material-symbols:check" sx={{mr: '0.2rem'}} />
-              <Typography variant='body2'>{order?.status[order?.status.length-1]}</Typography>
+              <Typography variant='body2'>{order?.status}</Typography>
             </Stack>
           )}
           <Divider />
@@ -62,7 +62,7 @@ const OrderTabPanel = () => {
                     height: '80px',
                     borderRadius: '4px',
                     border: '0.5px solid rgb(238, 238, 238)',
-                    backgroundImage: `url(${order.items[0]?.product?.image_url[0]})`,
+                    backgroundImage: `url(${order?.order_details[0]?.product?.image_products[0]?.imageUrl})`,
                     backgroundPosition: 'center center',
                     backgroundRepeat: 'no-repeat',
                     backgroundSize: '100%',
@@ -86,34 +86,34 @@ const OrderTabPanel = () => {
                       borderTopLeftRadius: '10px',
                     }}
                   >
-                    x{order.items[0]?.quantity}
+                    x{order?.order_details[0]?.quantity}
                   </Typography>
                 </Box>
                 <Stack sx={{ mx: '12px' }}>
                   <Typography variant="body2">
-                    {order.items[0]?.product?.name}
+                    {order?.order_details[0]?.product?.name}
                   </Typography>
                   <Stack sx={{ flexDirection: 'row', alignItems: 'center' }}>
                     <Typography
                       variant="caption"
-                      sx={{ color: 'rgb(128, 128, 137)' }}
+                      sx={{ color: 'rgb(128, 128, 137)', mx: '0.25rem' }}
                     >
-                      size: {order.items[0]?.property?.size}
+                      size: {order?.order_details[0]?.size}
                     </Typography>
                     <Typography
                       variant="caption"
-                      sx={{ color: 'rgb(128, 128, 137)' }}
+                      sx={{ color: 'rgb(128, 128, 137)', mx: '0.25rem' }}
                     >
-                      màu: {order.items[0]?.property?.color}
+                      color: {order?.order_details[0]?.color}
                     </Typography>
                   </Stack>
                 </Stack>
               </Box>
               <Box>
                 <Typography variant="body2">
-                  {order.items[0]?.product?.priceSale
-                    ? order.items[0]?.product?.priceSale
-                    : order.items[0]?.product?.price}
+                  {order?.order_details[0]?.product?.priceSale
+                    ? order?.order_details[0]?.product?.priceSale
+                    : order?.order_details[0]?.product?.price}
                 </Typography>
               </Box>
             </Stack>
@@ -122,7 +122,7 @@ const OrderTabPanel = () => {
           <Stack sx={{ mt: '12px', alignItems: 'flex-end' }}>
             <Box>
               <Typography variant="body2">
-                Total: {order?.totalPrices}
+                Total: {order?.totalPrices + order?.shippingFee}
               </Typography>
             </Box>
             <Stack sx={{ flexDirection: 'row', mt: '12px' }}>

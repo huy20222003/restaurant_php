@@ -21,8 +21,14 @@ const OrderPage = lazy(() => import('../Pages/User/OrderPage/OrderPage'));
 const OrderPageDetail = lazy(() =>
   import('../Pages/User/OrderPage/OrderPageDetail')
 );
+const PaymentStatus = lazy(() =>
+  import('../Pages/User/OrderPage/PaymentStatus')
+);
 const Reservation = lazy(() =>
   import('../Pages/User/Reservation/Reservation')
+);
+const ReservationList = lazy(() =>
+  import('../Pages/User/Reservation/ReservationList')
 );
 const ProfilePage = lazy(() => import('../Pages/User/ProfilePage'));
 const FAQPage = lazy(() => import('../Pages/User/FAQPage'));
@@ -92,7 +98,7 @@ export default function Router() {
         { element: <Navigate to="/dashboard/app" />, index: true },
         { path: 'app', element: <DashboardAppPage /> },
         { path: 'products', element: <ProductsPage /> },
-        { path: 'products/:_id', element: <ProductPageDetail /> },
+        { path: 'products/:id', element: <ProductPageDetail /> },
         {
           path: 'cart',
           element: (
@@ -112,10 +118,25 @@ export default function Router() {
           ),
         },
         {
-          path: 'order/:_id',
+          path: 'reservation/reservation-list',
+          element: (
+            <PrivateRouter element={<ReservationList />} redirectTo="/auth/login" />
+          ),
+        },
+        {
+          path: 'order/:id',
           element: (
             <PrivateRouter
               element={<OrderPageDetail />}
+              redirectTo="/auth/login"
+            />
+          ),
+        },
+        {
+          path: 'order/payment-status/:id',
+          element: (
+            <PrivateRouter
+              element={<PaymentStatus />}
               redirectTo="/auth/login"
             />
           ),
@@ -170,7 +191,7 @@ export default function Router() {
           ),
         },
         {
-          path: 'customer-manage/:_id',
+          path: 'customer-manage/:id',
           element: (
             <PrivateRouter
               element={<CustomerDetail />}
@@ -188,7 +209,7 @@ export default function Router() {
           ),
         },
         {
-          path: 'employee-manage/:_id',
+          path: 'employee-manage/:id',
           element: (
             <PrivateRouter
               element={<EmployeeDetail />}
@@ -215,7 +236,7 @@ export default function Router() {
           ),
         },
         {
-          path: 'product-manage/edit/:_id',
+          path: 'product-manage/edit/:id',
           element: (
             <PrivateRouter
               element={<ProductForm />}
@@ -233,7 +254,7 @@ export default function Router() {
           ),
         },
         {
-          path: 'category-manage/:_id',
+          path: 'category-manage/:id',
           element: (
             <PrivateRouter
               element={<CategoryDetail />}
@@ -251,7 +272,7 @@ export default function Router() {
           ),
         },
         {
-          path: 'order-manage/:_id',
+          path: 'order-manage/:id',
           element: (
             <PrivateRouter
               element={<OrderDetail />}

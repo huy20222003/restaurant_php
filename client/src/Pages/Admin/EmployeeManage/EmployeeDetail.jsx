@@ -23,21 +23,21 @@ const EmployeeDetail = () => {
     handleDeleteEmployee,
   } = useEmployee();
   const [employeeInfo, setEmployeeInfo] = useState(employee);
-  const { _id } = useParams();
+  const { id } = useParams();
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await handleGetOneEmployee(_id);
-        setEmployeeInfo(response.user);
+        const response = await handleGetOneEmployee(id);
+        setEmployeeInfo(response.employee);
       } catch (error) {
         console.error('Error fetching product:', error);
       }
     };
 
     fetchData();
-  }, [_id, handleGetOneEmployee]);
+  }, [id, handleGetOneEmployee]);
 
   const handleBack = () => {
     history.back();
@@ -53,7 +53,7 @@ const EmployeeDetail = () => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
-          const response = await handleDeleteEmployee(_id);
+          const response = await handleDeleteEmployee(id);
           if (response.success) {
             Swal.fire('', 'Delete Successful!', 'success');
             navigate('/admin/employee-manage');
@@ -88,7 +88,7 @@ const EmployeeDetail = () => {
             <Stack
               sx={{ flexDirection: 'row', gap: '8px', alignItems: 'center' }}
             >
-              <Typography variant="h5">Employee #{_id}</Typography>
+              <Typography variant="h5">Employee #{id}</Typography>
               <Typography
                 variant="overline"
                 sx={{
@@ -117,7 +117,7 @@ const EmployeeDetail = () => {
           <Grid item xs={12} sm={8} md={8}>
             <DetailCardInfo
               fields={[
-                { name: '_id', label: 'ID', gridItemProps: 6 },
+                { name: 'id', label: 'ID', gridItemProps: 6 },
                 { name: 'fullName', label: 'Full Name', gridItemProps: 6 },
                 { name: 'username', label: 'Username', gridItemProps: 6 },
                 { name: 'email', label: 'Email', gridItemProps: 6 },

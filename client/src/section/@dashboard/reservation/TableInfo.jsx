@@ -34,7 +34,7 @@ const TableInfo = () => {
         >
           <Box
             component={'img'}
-            src="/assets/images/reservation/table-not-empty.png"
+            src="/assets/images/reservation/table-ordered.png"
             sx={{ width: '2rem', height: '2rem' }}
           ></Box>
           <Typography variant="subtitle1">Not Empty</Typography>

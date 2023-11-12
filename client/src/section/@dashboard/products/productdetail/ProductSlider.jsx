@@ -22,10 +22,10 @@ const Slider = (props) => {
         slidesPerView={1}
         ref={swiperRef}
       >
-        {product?.image_url.map((image, index) => (
+        {product?.image_products.map((image, index) => (
           <SwiperSlide key={index}>
             <img
-              src={image}
+              src={image.imageUrl}
               alt={`Slide ${index}`}
               width="645px"
               height="645px"
@@ -44,7 +44,7 @@ const Slider = (props) => {
           my: '0.5rem',
         }}
       >
-        {product?.image_url.map((image, index) => (
+        {product?.image_products.map((image, index) => (
           <Stack
             key={image}
             sx={{
@@ -58,7 +58,7 @@ const Slider = (props) => {
               position: 'relative',
               border: '1px solid rgba(145, 158, 171, 0.16)',
             }}
-            onClick={() => handleImageClick(image, index)}
+            onClick={() => handleImageClick(image?.imageUrl, index)}
           >
             <Stack
               component={'span'}
@@ -70,7 +70,7 @@ const Slider = (props) => {
             >
               <Box
                 component={'img'}
-                src={image}
+                src={image?.imageUrl}
                 sx={{
                   width: '100%',
                   height: '100%',
@@ -89,7 +89,7 @@ const Slider = (props) => {
 
 Slider.propTypes = {
   product: PropTypes.shape({
-    image_url: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+    image_products: PropTypes.array.isRequired,
   }),
 };
 

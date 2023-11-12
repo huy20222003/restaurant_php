@@ -7,7 +7,11 @@ import styled from '@emotion/styled';
 import CartConfirmProductItem from './CartConfirmProductItem';
 import Iconify from '../../../../Components/User/iconify';
 //context
-import { useCommon, useOrder, usePayment } from '../../../../hooks/context';
+import {
+  useCommon,
+  useOrder,
+  usePayment,
+} from '../../../../hooks/context';
 //sweetalert
 import Swal from 'sweetalert2';
 //---------------------------------------------------------------
@@ -37,7 +41,7 @@ const StyledButtonBaseConfirm = styled(ButtonBase)`
 const CartConfirm = ({ orderData }) => {
   const navigate = useNavigate();
   const { setActiveStep } = useCommon();
-  const { handleCreateOrder } = useOrder();
+  const { handleCreateOrder, handleUpdateCart } = useOrder();
   const { handleCreatePayment, handlePaymentWithVnPay } = usePayment();
 
   const handleBack = () => {
@@ -54,16 +58,28 @@ const CartConfirm = ({ orderData }) => {
           } else {
             const paymentData = await handleCreatePayment({
               sender: orderData.fullName,
-              description: `Payment for orderId #${createData.order._id}`,
+              description: `Payment for orderId #${createData.order.id}`,
               amount: orderData.totalPrices,
               paymentMethod: orderData.paymentMethod,
             });
             if (!paymentData.success) {
               Swal.fire('Faield', 'Order failed!', 'error');
             } else {
-              Swal.fire('Success', 'Order Success!', 'success');
-              navigate('/dashboard/cart');
-              setActiveStep(0);
+              const productIds = JSON.parse(orderData.items).map(
+                (item) => item.productId
+              );
+              const updateData = await handleUpdateCart({
+                productIds: JSON.stringify(productIds),
+              });
+              if (!updateData.success) {
+                Swal.fire('Faield', 'Order Failed!', 'error');
+              } else {
+                Swal.fire('Success', 'Order Success!', 'success');
+                navigate(
+                  `/dashboard/order/payment-status/${paymentData.payment.id}`
+                );
+                setActiveStep(0);
+              }
             }
           }
         } catch (error) {
@@ -72,14 +88,27 @@ const CartConfirm = ({ orderData }) => {
         break;
       case 'VNPay':
         try {
-          const response = await handlePaymentWithVnPay({
-            amount: orderData.totalPrices,
-            orderInfo: orderData,
-          });
-          const newLink = document.createElement('a');
-          newLink.href = response.url;
-          newLink.target = '_blank';
-          newLink.click();
+          const createData = await handleCreateOrder(orderData);
+          if(!createData.success) {
+            Swal.fire('Faield', 'Order failed!', 'error');
+          } else {
+            const paymentData = await handleCreatePayment({
+              sender: orderData.fullName,
+              description: `Payment for order ${createData.order.id}`,
+              amount: orderData.totalPrices,
+              status: 'pending',
+              paymentMethod: 'VNPay',
+              userPayment: createData.order.userOrder,
+            });
+            const response = await handlePaymentWithVnPay({
+              amount: orderData.totalPrices,
+              orderInfo: `Payment for orderId ${createData.order.id} and payment ${paymentData.payment.id}`,
+            });
+            const newLink = document.createElement('a');
+            newLink.href = response.url;
+            newLink.target = '_blank';
+            newLink.click();
+          }
         } catch (error) {
           Swal.fire('Error', 'Server Error', 'error');
         }
@@ -206,10 +235,8 @@ const CartConfirm = ({ orderData }) => {
           Products
         </Typography>
         <Stack sx={{ alignItems: 'center' }}>
-          {orderData.items.map((item) => {
-            return (
-              <CartConfirmProductItem key={item.product._id} item={item} />
-            );
+          {JSON.parse(orderData.items).map((item) => {
+            return <CartConfirmProductItem key={item.product.id} item={item} />;
           })}
         </Stack>
         <Stack

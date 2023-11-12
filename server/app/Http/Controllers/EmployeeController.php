@@ -16,10 +16,10 @@ class EmployeeController extends Controller
     public function getAllEmployees()
     {
         try {
-            $employees = Employee::all();
+            $employees = Employee::orderBy('created_at', 'desc')->get();
             return response()->json(['success' => true, 'message' => 'Retrieve data successfully', 'employees' => $employees]);
         } catch (Exception $exception) {
-            return response()->json(['success' => false, 'message' => 'Retrieve data failed!', 'error' => $exception], 500);
+            return response()->json(['success' => false, 'message' => 'An error occurred while processing the request.', 'error' => $exception->getMessage()], 500);
         }
     }
 
@@ -30,13 +30,11 @@ class EmployeeController extends Controller
     {
         try {
             $validator = Validator::make($request->all(), [
-                'fullName' => 'required|string',
-                'username' => 'string',
-                'email' => 'required|string',
-                'phoneNumber' => 'required|string',
-                'address' => 'string',
+                'fullName' => 'required|string|max:200',
+                'username' => 'required|string|max:100|unique:employees',
+                'email' => 'required|string|max:100|unique:employees',
+                'phoneNumber' => 'required|string|max:10',
                 'salary' => 'required|numeric',
-                'status' => 'required|string'
             ]);
             if ($validator->fails()) {
                 return response()->json(['success' => false, 'message' => $validator->errors()], 400);
@@ -46,26 +44,25 @@ class EmployeeController extends Controller
                 'fullName' => $request->fullName,
                 'username' => $request->username,
                 'email' => $request->email,
-                'phoneNumber' => $request->phoneNumber,
-                'address' => $request->address,
                 'salary' => $request->salary,
-                'status' => $request->status,
+                'phoneNumber' => $request->phoneNumber,
             ]);
+            $employee->assignRole('employee');
 
             return response()->json(['success' => true, 'message' => 'Employee created successfully', 'employee' => $employee], 201);
         } catch (Exception $exception) {
-            return response()->json(['success' => false, 'message' => 'Employee created failed', 'error' => $exception], 500);
+            return response()->json(['success' => false, 'message' => 'An error occurred while processing the request.', 'error' => $exception->getMessage()], 500);
         }
     }
     /**
      * Display the specified resource.
      */
-    public function getEmployee(Employee $employee)
+    public function getOneEmployee(Employee $employee)
     {
         try {
             return response()->json(['success' => true, 'message' => 'Retrieve data successfully', 'employee' => $employee]);
         } catch (Exception $exception) {
-            return response()->json(['success' => false, 'message' => 'Retrieve data failed', 'error' => $exception], 500);
+            return response()->json(['success' => false, 'message' => 'An error occurred while processing the request.', 'error' => $exception->getMessage()], 500);
         }
     }
 
@@ -76,13 +73,11 @@ class EmployeeController extends Controller
     {
         try {
             $validator = Validator::make($request->all(), [
-                'fullName' => 'required|string',
-                'username' => 'string',
-                'email' => 'required|string',
+                'fullName' => 'required|string|max:200',
+                'username' => 'required|string|max:100',
+                'email' => 'required|string|max:100',
                 'phoneNumber' => 'required|string',
-                'address' => 'string',
                 'salary' => 'required|numeric',
-                'status' => 'required|string'
             ]);
 
             if ($validator->fails()) {
@@ -99,7 +94,7 @@ class EmployeeController extends Controller
 
             return response()->json(['success' => true, 'message' => 'Employee updated successfully', 'employee' => $employee]);
         } catch (Exception $exception) {
-            return response()->json(['success' => false, 'message' => 'Retrieve data failed', 'error' => $exception], 500);
+            return response()->json(['success' => false, 'message' => 'An error occurred while processing the request.', 'error' => $exception->getMessage()], 500);
         }
     }
 
@@ -109,11 +104,11 @@ class EmployeeController extends Controller
             $employee = $request->user();
 
             $validator = Validator::make($request->all(), [
-                'fullName' => 'required|string',
-                'username' => 'string',
-                'email' => 'required|string',
-                'phoneNumber' => 'required|string',
-                'address' => 'string',
+                'fullName' => 'required|string|max:200',
+                'username' => 'required|string|max:100',
+                'email' => 'required|string|max:100',
+                'phoneNumber' => 'required|string|max:10',
+                'address' => 'string|max:2000',
             ]);
 
 
@@ -131,7 +126,7 @@ class EmployeeController extends Controller
 
             return response()->json(['success' => true, 'message' => 'Employee updated successfully', 'employee' => $employee]);
         } catch (Exception $exception) {
-            return response()->json(['success' => false, 'message' => 'Update data failed', 'error' => $exception], 500);
+            return response()->json(['success' => false, 'message' => 'An error occurred while processing the request.', 'error' => $exception->getMessage()], 500);
         }
     }
 
@@ -153,7 +148,7 @@ class EmployeeController extends Controller
 
             return response()->json(['success' => true, 'message' => 'Password changed successfully']);
         } catch (Exception $exception) {
-            return response()->json(['success' => false, 'message' => 'Password changed successfully failed', 'error' => $exception], 500);
+            return response()->json(['success' => false, 'message' => 'An error occurred while processing the request.', 'error' => $exception->getMessage()], 500);
         }
     }
 
@@ -167,7 +162,36 @@ class EmployeeController extends Controller
 
             return response()->json(['success' => true, 'message' => 'Employee deleted successfully', 'Employee' => $employee]);
         } catch (Exception $exception) {
-            return response()->json(['success' => false, 'message' => 'Retrieve data failed', 'error' => $exception], 500);
+            return response()->json(['success' => false, 'message' => 'An error occurred while processing the request.', 'error' => $exception->getMessage()], 500);
+        }
+    }
+
+    public function updateAvatar(Request $request)
+    {
+        try {
+            $avatarUpdate = $request->input('avatarUpdate');
+            $user = auth()->user();
+
+            if (!$user) {
+                return response()->json(['success' => false, 'message' => 'User not found'], 404);
+            }
+
+            // Kiểm tra xem tệp đã tải lên chưa
+            if (!$avatarUpdate) {
+                return response()->json(['success' => false, 'message' => 'No avatar provided'], 400);
+            }
+
+            $response = cloudinary()->upload($avatarUpdate, ['folder' => 'restaurant_php'])->getSecurePath();
+            $user->avatar = $response;
+            $user->save();
+
+            return response()->json(['success' => true, 'message' => 'Update avatar successful'], 200);
+        } catch (Exception $error) {
+            return response()->json([
+                'success' => false,
+                'message' => 'An error occurred while processing the request.',
+                'error' => $error->getMessage(),
+            ], 500);
         }
     }
 }

@@ -1,0 +1,502 @@
+"filename", "language", "HTML", "Markdown", "JavaScript", "JSON", "PHP", "JavaScript JSX", "CSS", "XML", "comment", "blank", "total"
+"c:\xampp\htdocs\restaurants_php\README.md", "Markdown", 0, 2, 0, 0, 0, 0, 0, 0, 0, 1, 3
+"c:\xampp\htdocs\restaurants_php\client\.eslintrc.cjs", "JavaScript", 0, 0, 20, 0, 0, 0, 0, 0, 0, 1, 21
+"c:\xampp\htdocs\restaurants_php\client\README.md", "Markdown", 0, 5, 0, 0, 0, 0, 0, 0, 0, 4, 9
+"c:\xampp\htdocs\restaurants_php\client\index.html", "HTML", 22, 0, 0, 0, 0, 0, 0, 0, 0, 1, 23
+"c:\xampp\htdocs\restaurants_php\client\package-lock.json", "JSON", 0, 0, 0, 12344, 0, 0, 0, 0, 0, 1, 12345
+"c:\xampp\htdocs\restaurants_php\client\package.json", "JSON", 0, 0, 0, 64, 0, 0, 0, 0, 0, 1, 65
+"c:\xampp\htdocs\restaurants_php\client\public\assets\icons\ic_flag_de.svg", "XML", 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1
+"c:\xampp\htdocs\restaurants_php\client\public\assets\icons\ic_flag_en.svg", "XML", 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1
+"c:\xampp\htdocs\restaurants_php\client\public\assets\icons\ic_flag_fr.svg", "XML", 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1
+"c:\xampp\htdocs\restaurants_php\client\public\assets\icons\ic_notification_chat.svg", "XML", 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1
+"c:\xampp\htdocs\restaurants_php\client\public\assets\icons\ic_notification_mail.svg", "XML", 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1
+"c:\xampp\htdocs\restaurants_php\client\public\assets\icons\ic_notification_package.svg", "XML", 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1
+"c:\xampp\htdocs\restaurants_php\client\public\assets\icons\ic_notification_shipping.svg", "XML", 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1
+"c:\xampp\htdocs\restaurants_php\client\public\assets\icons\manage\ic_export.svg", "XML", 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1
+"c:\xampp\htdocs\restaurants_php\client\public\assets\icons\manage\ic_upload.svg", "XML", 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1
+"c:\xampp\htdocs\restaurants_php\client\public\assets\icons\navbar\ic_analytics.svg", "XML", 0, 0, 0, 0, 0, 0, 0, 8, 0, 1, 9
+"c:\xampp\htdocs\restaurants_php\client\public\assets\icons\navbar\ic_cart.svg", "XML", 0, 0, 0, 0, 0, 0, 0, 7, 0, 1, 8
+"c:\xampp\htdocs\restaurants_php\client\public\assets\icons\navbar\ic_disabled.svg", "XML", 0, 0, 0, 0, 0, 0, 0, 4, 0, 1, 5
+"c:\xampp\htdocs\restaurants_php\client\public\assets\icons\navbar\ic_lock.svg", "XML", 0, 0, 0, 0, 0, 0, 0, 4, 0, 1, 5
+"c:\xampp\htdocs\restaurants_php\client\public\assets\icons\navbar\ic_product.svg", "XML", 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1
+"c:\xampp\htdocs\restaurants_php\client\public\assets\icons\navbar\ic_reservation.svg", "XML", 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1
+"c:\xampp\htdocs\restaurants_php\client\public\assets\icons\navbar\ic_user.svg", "XML", 0, 0, 0, 0, 0, 0, 0, 4, 0, 1, 5
+"c:\xampp\htdocs\restaurants_php\client\public\assets\icons\product\ic_check.svg", "XML", 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1
+"c:\xampp\htdocs\restaurants_php\client\public\assets\icons\service\ic_account.svg", "XML", 0, 0, 0, 0, 0, 0, 0, 34, 0, 1, 35
+"c:\xampp\htdocs\restaurants_php\client\public\assets\icons\service\ic_assurances.svg", "XML", 0, 0, 0, 0, 0, 0, 0, 33, 0, 1, 34
+"c:\xampp\htdocs\restaurants_php\client\public\assets\icons\service\ic_composable.svg", "XML", 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1
+"c:\xampp\htdocs\restaurants_php\client\public\assets\icons\service\ic_delivery.svg", "XML", 0, 0, 0, 0, 0, 0, 0, 30, 0, 1, 31
+"c:\xampp\htdocs\restaurants_php\client\public\assets\icons\service\ic_developer.svg", "XML", 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1
+"c:\xampp\htdocs\restaurants_php\client\public\assets\icons\service\ic_freeSupport.svg", "XML", 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1
+"c:\xampp\htdocs\restaurants_php\client\public\assets\icons\service\ic_lightDark.svg", "XML", 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1
+"c:\xampp\htdocs\restaurants_php\client\public\assets\icons\service\ic_package.svg", "XML", 0, 0, 0, 0, 0, 0, 0, 29, 0, 1, 30
+"c:\xampp\htdocs\restaurants_php\client\public\assets\icons\service\ic_payment.svg", "XML", 0, 0, 0, 0, 0, 0, 0, 33, 0, 1, 34
+"c:\xampp\htdocs\restaurants_php\client\public\assets\icons\service\ic_refund.svg", "XML", 0, 0, 0, 0, 0, 0, 0, 31, 0, 1, 32
+"c:\xampp\htdocs\restaurants_php\client\public\assets\icons\service\ic_theme.svg", "XML", 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1
+"c:\xampp\htdocs\restaurants_php\client\public\assets\icons\service\ic_update.svg", "XML", 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1
+"c:\xampp\htdocs\restaurants_php\client\public\assets\icons\shape-avatar.svg", "XML", 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1
+"c:\xampp\htdocs\restaurants_php\client\public\assets\illustrations\illustration_404.svg", "XML", 0, 0, 0, 0, 0, 0, 0, 40, 0, 1, 41
+"c:\xampp\htdocs\restaurants_php\client\public\assets\illustrations\illustration_home.svg", "XML", 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1
+"c:\xampp\htdocs\restaurants_php\client\public\assets\illustrations\illustration_login.svg", "XML", 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1
+"c:\xampp\htdocs\restaurants_php\client\public\assets\illustrations\illustration_login_admin.svg", "XML", 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1
+"c:\xampp\htdocs\restaurants_php\client\public\assets\illustrations\illustration_register.svg", "XML", 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1
+"c:\xampp\htdocs\restaurants_php\client\public\assets\images\chooseFile.svg", "XML", 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1
+"c:\xampp\htdocs\restaurants_php\client\public\assets\placeholder.svg", "XML", 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1
+"c:\xampp\htdocs\restaurants_php\client\public\index.html", "HTML", 25, 0, 0, 0, 0, 0, 0, 0, 4, 9, 38
+"c:\xampp\htdocs\restaurants_php\client\public\manifest.json", "JSON", 0, 0, 0, 20, 0, 0, 0, 0, 0, 1, 21
+"c:\xampp\htdocs\restaurants_php\client\public\vite.svg", "XML", 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1
+"c:\xampp\htdocs\restaurants_php\client\src\.prettierrc", "JSON", 0, 0, 0, 6, 0, 0, 0, 0, 0, 0, 6
+"c:\xampp\htdocs\restaurants_php\client\src\App.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 58, 0, 0, 6, 3, 67
+"c:\xampp\htdocs\restaurants_php\client\src\Components\Admin\DataTable\DataTable.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 32, 0, 0, 2, 5, 39
+"c:\xampp\htdocs\restaurants_php\client\src\Components\Admin\DataTable\index.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1
+"c:\xampp\htdocs\restaurants_php\client\src\Components\Admin\ListItem\ListItem.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 155, 0, 0, 4, 6, 165
+"c:\xampp\htdocs\restaurants_php\client\src\Components\Admin\Title\Title.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 13, 0, 0, 0, 3, 16
+"c:\xampp\htdocs\restaurants_php\client\src\Components\Admin\Title\index.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1
+"c:\xampp\htdocs\restaurants_php\client\src\Components\Admin\chart\chart.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 3, 0, 0, 0, 2, 5
+"c:\xampp\htdocs\restaurants_php\client\src\Components\Admin\chartsVisit\index.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 4, 0, 0, 1, 5, 10
+"c:\xampp\htdocs\restaurants_php\client\src\Components\Admin\chartsVisit\styles.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 51, 0, 0, 5, 6, 62
+"c:\xampp\htdocs\restaurants_php\client\src\Components\Admin\chartsVisit\useChart.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 162, 0, 0, 23, 23, 208
+"c:\xampp\htdocs\restaurants_php\client\src\Components\Admin\detailInfo\DetailCardAvatar.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 41, 0, 0, 22, 1, 64
+"c:\xampp\htdocs\restaurants_php\client\src\Components\Admin\detailInfo\DetailCardInfo.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 65, 0, 0, 2, 4, 71
+"c:\xampp\htdocs\restaurants_php\client\src\Components\Admin\detailInfo\index.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 2
+"c:\xampp\htdocs\restaurants_php\client\src\Components\Admin\severity-pill\severity-pill.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 52, 0, 0, 0, 7, 59
+"c:\xampp\htdocs\restaurants_php\client\src\Components\FormDialog\FormDialogAddProduct.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 73, 0, 0, 6, 10, 89
+"c:\xampp\htdocs\restaurants_php\client\src\Components\FormDialog\FormDialogCategory.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 89, 0, 0, 133, 5, 227
+"c:\xampp\htdocs\restaurants_php\client\src\Components\FormDialog\FormDialogCustomer.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 75, 0, 0, 3, 7, 85
+"c:\xampp\htdocs\restaurants_php\client\src\Components\FormDialog\FormDialogEmployee.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 94, 0, 0, 3, 6, 103
+"c:\xampp\htdocs\restaurants_php\client\src\Components\FormDialog\FormDialogReservation.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 141, 0, 0, 3, 8, 152
+"c:\xampp\htdocs\restaurants_php\client\src\Components\FormDialog\FormDialogReview.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 208, 0, 0, 3, 6, 217
+"c:\xampp\htdocs\restaurants_php\client\src\Components\FormDialog\FormDialogTable.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 69, 0, 0, 3, 7, 79
+"c:\xampp\htdocs\restaurants_php\client\src\Components\Loader\Loader.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 18, 0, 0, 0, 3, 21
+"c:\xampp\htdocs\restaurants_php\client\src\Components\Loader\Loader.module.css", "CSS", 0, 0, 0, 0, 0, 0, 16, 0, 0, 1, 17
+"c:\xampp\htdocs\restaurants_php\client\src\Components\Loader\index.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1
+"c:\xampp\htdocs\restaurants_php\client\src\Components\User\color-utils\ColorMultiPicker.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 36, 0, 0, 3, 5, 44
+"c:\xampp\htdocs\restaurants_php\client\src\Components\User\color-utils\ColorPreview.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 31, 0, 0, 2, 7, 40
+"c:\xampp\htdocs\restaurants_php\client\src\Components\User\color-utils\ColorSinglePicker.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 29, 0, 0, 3, 6, 38
+"c:\xampp\htdocs\restaurants_php\client\src\Components\User\color-utils\Icon.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 68, 0, 0, 3, 7, 78
+"c:\xampp\htdocs\restaurants_php\client\src\Components\User\color-utils\index.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 3, 0, 0, 0, 1, 4
+"c:\xampp\htdocs\restaurants_php\client\src\Components\User\iconify\Iconify.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 13, 0, 0, 3, 5, 21
+"c:\xampp\htdocs\restaurants_php\client\src\Components\User\iconify\index.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 2
+"c:\xampp\htdocs\restaurants_php\client\src\Components\User\label\Label.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 40, 0, 0, 3, 9, 52
+"c:\xampp\htdocs\restaurants_php\client\src\Components\User\label\index.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 2
+"c:\xampp\htdocs\restaurants_php\client\src\Components\User\label\styles.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 58, 0, 0, 7, 9, 74
+"c:\xampp\htdocs\restaurants_php\client\src\Components\User\logo\Logo.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 28, 0, 0, 0, 6, 34
+"c:\xampp\htdocs\restaurants_php\client\src\Components\User\logo\index.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 2
+"c:\xampp\htdocs\restaurants_php\client\src\Components\User\nav-section\NavSection.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 44, 0, 0, 4, 10, 58
+"c:\xampp\htdocs\restaurants_php\client\src\Components\User\nav-section\index.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 2
+"c:\xampp\htdocs\restaurants_php\client\src\Components\User\nav-section\styles.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 18, 0, 0, 2, 4, 24
+"c:\xampp\htdocs\restaurants_php\client\src\Components\User\scroll-to-top\ScrollToTop.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 9, 0, 0, 1, 5, 15
+"c:\xampp\htdocs\restaurants_php\client\src\Components\User\scroll-to-top\index.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 2
+"c:\xampp\htdocs\restaurants_php\client\src\Components\User\scrollbar\Scrollbar.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 27, 0, 0, 3, 8, 38
+"c:\xampp\htdocs\restaurants_php\client\src\Components\User\scrollbar\index.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 2
+"c:\xampp\htdocs\restaurants_php\client\src\Components\User\scrollbar\styles.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 27, 0, 0, 2, 4, 33
+"c:\xampp\htdocs\restaurants_php\client\src\Components\User\svg-color\SvgColor.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 25, 0, 0, 2, 5, 32
+"c:\xampp\htdocs\restaurants_php\client\src\Components\User\svg-color\index.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 2
+"c:\xampp\htdocs\restaurants_php\client\src\Contexts\AuthContext.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 89, 0, 0, 0, 14, 103
+"c:\xampp\htdocs\restaurants_php\client\src\Contexts\CartContext.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 60, 0, 0, 0, 9, 69
+"c:\xampp\htdocs\restaurants_php\client\src\Contexts\CategoryContext.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 111, 0, 0, 4, 12, 127
+"c:\xampp\htdocs\restaurants_php\client\src\Contexts\CommonContext.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 22, 0, 0, 0, 7, 29
+"c:\xampp\htdocs\restaurants_php\client\src\Contexts\EmployeesContext.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 130, 0, 0, 2, 15, 147
+"c:\xampp\htdocs\restaurants_php\client\src\Contexts\OrderContext.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 100, 0, 0, 0, 12, 112
+"c:\xampp\htdocs\restaurants_php\client\src\Contexts\PaymentContext.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 64, 0, 0, 0, 10, 74
+"c:\xampp\htdocs\restaurants_php\client\src\Contexts\ProductsContext.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 158, 0, 0, 5, 17, 180
+"c:\xampp\htdocs\restaurants_php\client\src\Contexts\ReservationContext.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 44, 0, 0, 0, 9, 53
+"c:\xampp\htdocs\restaurants_php\client\src\Contexts\ReviewContext.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 46, 0, 0, 0, 8, 54
+"c:\xampp\htdocs\restaurants_php\client\src\Contexts\RoleContext.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 88, 0, 0, 3, 11, 102
+"c:\xampp\htdocs\restaurants_php\client\src\Contexts\TableContext.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 76, 0, 0, 0, 12, 88
+"c:\xampp\htdocs\restaurants_php\client\src\Contexts\UsersContext.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 106, 0, 0, 1, 15, 122
+"c:\xampp\htdocs\restaurants_php\client\src\GlobalStyles\GlobalStyles.css", "CSS", 0, 0, 0, 0, 0, 0, 9, 0, 0, 2, 11
+"c:\xampp\htdocs\restaurants_php\client\src\GlobalStyles\GlobalStyles.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 5, 0, 0, 0, 3, 8
+"c:\xampp\htdocs\restaurants_php\client\src\Pages\Admin\AdminDashboard\AdminDashboard.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 171, 0, 0, 2, 17, 190
+"c:\xampp\htdocs\restaurants_php\client\src\Pages\Admin\AdminDashboard\index.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 2
+"c:\xampp\htdocs\restaurants_php\client\src\Pages\Admin\Auth\AdminLogin\AdminLogin.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 50, 0, 0, 5, 3, 58
+"c:\xampp\htdocs\restaurants_php\client\src\Pages\Admin\Auth\AdminLogin\index.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1
+"c:\xampp\htdocs\restaurants_php\client\src\Pages\Admin\CategoryManage\CategoryDetail.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 224, 0, 0, 7, 21, 252
+"c:\xampp\htdocs\restaurants_php\client\src\Pages\Admin\CategoryManage\CategoryManage.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 366, 0, 0, 9, 24, 399
+"c:\xampp\htdocs\restaurants_php\client\src\Pages\Admin\CategoryManage\index.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 2
+"c:\xampp\htdocs\restaurants_php\client\src\Pages\Admin\CustomerManage\CustomerDetail.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 135, 0, 0, 6, 8, 149
+"c:\xampp\htdocs\restaurants_php\client\src\Pages\Admin\CustomerManage\CustomerManage.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 416, 0, 0, 8, 24, 448
+"c:\xampp\htdocs\restaurants_php\client\src\Pages\Admin\CustomerManage\index.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 2
+"c:\xampp\htdocs\restaurants_php\client\src\Pages\Admin\EmployeeManage\EmployeeDetail.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 130, 0, 0, 6, 8, 144
+"c:\xampp\htdocs\restaurants_php\client\src\Pages\Admin\EmployeeManage\EmployeeManage.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 433, 0, 0, 9, 26, 468
+"c:\xampp\htdocs\restaurants_php\client\src\Pages\Admin\EmployeeManage\index.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 2, 0, 0, 0, 1, 3
+"c:\xampp\htdocs\restaurants_php\client\src\Pages\Admin\OrderManage\OrderDetail.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 93, 0, 0, 5, 7, 105
+"c:\xampp\htdocs\restaurants_php\client\src\Pages\Admin\OrderManage\OrderManage.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 237, 0, 0, 6, 15, 258
+"c:\xampp\htdocs\restaurants_php\client\src\Pages\Admin\OrderManage\index.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 2, 0, 0, 0, 1, 3
+"c:\xampp\htdocs\restaurants_php\client\src\Pages\Admin\PaymentManage\PaymentManage.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 223, 0, 0, 6, 15, 244
+"c:\xampp\htdocs\restaurants_php\client\src\Pages\Admin\PaymentManage\index.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 2
+"c:\xampp\htdocs\restaurants_php\client\src\Pages\Admin\ProductManage\ProductForm.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 170, 0, 0, 8, 9, 187
+"c:\xampp\htdocs\restaurants_php\client\src\Pages\Admin\ProductManage\ProductManage.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 265, 0, 0, 8, 19, 292
+"c:\xampp\htdocs\restaurants_php\client\src\Pages\Admin\ProductManage\index.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 2
+"c:\xampp\htdocs\restaurants_php\client\src\Pages\Admin\Profile\Profile.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 26, 0, 0, 3, 3, 32
+"c:\xampp\htdocs\restaurants_php\client\src\Pages\Admin\Profile\index.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1
+"c:\xampp\htdocs\restaurants_php\client\src\Pages\Admin\ReservationManage\ReservationManage.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 176, 0, 0, 8, 10, 194
+"c:\xampp\htdocs\restaurants_php\client\src\Pages\Admin\ReservationManage\index.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1
+"c:\xampp\htdocs\restaurants_php\client\src\Pages\Admin\Setting\Setting.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 31, 0, 0, 3, 3, 37
+"c:\xampp\htdocs\restaurants_php\client\src\Pages\Admin\Setting\index.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 2
+"c:\xampp\htdocs\restaurants_php\client\src\Pages\Page404\Page404.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 55, 0, 0, 3, 8, 66
+"c:\xampp\htdocs\restaurants_php\client\src\Pages\Page404\index.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1
+"c:\xampp\htdocs\restaurants_php\client\src\Pages\User\AboutPage\AboutPage.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 16, 0, 0, 3, 4, 23
+"c:\xampp\htdocs\restaurants_php\client\src\Pages\User\AboutPage\index.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1
+"c:\xampp\htdocs\restaurants_php\client\src\Pages\User\Auth\Login\Login.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 155, 0, 0, 18, 19, 192
+"c:\xampp\htdocs\restaurants_php\client\src\Pages\User\Auth\Login\index.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1
+"c:\xampp\htdocs\restaurants_php\client\src\Pages\User\Auth\Register\Register.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 158, 0, 0, 18, 19, 195
+"c:\xampp\htdocs\restaurants_php\client\src\Pages\User\Auth\Register\index.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1
+"c:\xampp\htdocs\restaurants_php\client\src\Pages\User\CartPages\CartPage.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 48, 0, 0, 4, 5, 57
+"c:\xampp\htdocs\restaurants_php\client\src\Pages\User\CartPages\index.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1
+"c:\xampp\htdocs\restaurants_php\client\src\Pages\User\DashboardAppPage\DashboardAppPage.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 29, 0, 0, 3, 5, 37
+"c:\xampp\htdocs\restaurants_php\client\src\Pages\User\DashboardAppPage\index.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1
+"c:\xampp\htdocs\restaurants_php\client\src\Pages\User\FAQPage\FAQPage.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 19, 0, 0, 3, 4, 26
+"c:\xampp\htdocs\restaurants_php\client\src\Pages\User\FAQPage\index.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1
+"c:\xampp\htdocs\restaurants_php\client\src\Pages\User\HomePage\HomePage.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 20, 0, 0, 3, 3, 26
+"c:\xampp\htdocs\restaurants_php\client\src\Pages\User\HomePage\index.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1
+"c:\xampp\htdocs\restaurants_php\client\src\Pages\User\OrderPage\OrderPage.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 18, 0, 0, 4, 5, 27
+"c:\xampp\htdocs\restaurants_php\client\src\Pages\User\OrderPage\OrderPageDetail.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 92, 0, 0, 5, 7, 104
+"c:\xampp\htdocs\restaurants_php\client\src\Pages\User\OrderPage\PaymentStatus.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 103, 0, 0, 7, 11, 121
+"c:\xampp\htdocs\restaurants_php\client\src\Pages\User\OrderPage\index.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 3, 0, 0, 0, 1, 4
+"c:\xampp\htdocs\restaurants_php\client\src\Pages\User\ProductsPage\ProductPageDetail.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 52, 0, 0, 0, 8, 60
+"c:\xampp\htdocs\restaurants_php\client\src\Pages\User\ProductsPage\ProductsPage.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 62, 0, 0, 8, 9, 79
+"c:\xampp\htdocs\restaurants_php\client\src\Pages\User\ProductsPage\index.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 2
+"c:\xampp\htdocs\restaurants_php\client\src\Pages\User\ProfilePage\ProfilePage.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 26, 0, 0, 3, 3, 32
+"c:\xampp\htdocs\restaurants_php\client\src\Pages\User\ProfilePage\index.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1
+"c:\xampp\htdocs\restaurants_php\client\src\Pages\User\Reservation\Reservation.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 26, 0, 0, 3, 3, 32
+"c:\xampp\htdocs\restaurants_php\client\src\Pages\User\Reservation\index.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1
+"c:\xampp\htdocs\restaurants_php\client\src\Pages\User\SettingPage\SettingPage.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 31, 0, 0, 3, 3, 37
+"c:\xampp\htdocs\restaurants_php\client\src\Pages\User\SettingPage\index.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1
+"c:\xampp\htdocs\restaurants_php\client\src\Reducers\AuthReducer\action.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 7, 0, 0, 0, 2, 9
+"c:\xampp\htdocs\restaurants_php\client\src\Reducers\AuthReducer\constants.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 2
+"c:\xampp\htdocs\restaurants_php\client\src\Reducers\AuthReducer\reducer.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 23, 0, 0, 0, 4, 27
+"c:\xampp\htdocs\restaurants_php\client\src\Reducers\CartReducer\action.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 13, 0, 0, 0, 3, 16
+"c:\xampp\htdocs\restaurants_php\client\src\Reducers\CartReducer\constants.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 2
+"c:\xampp\htdocs\restaurants_php\client\src\Reducers\CartReducer\reducer.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 26, 0, 0, 0, 4, 30
+"c:\xampp\htdocs\restaurants_php\client\src\Reducers\CategoryReducer\action.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 31, 0, 0, 0, 6, 37
+"c:\xampp\htdocs\restaurants_php\client\src\Reducers\CategoryReducer\constants.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 5
+"c:\xampp\htdocs\restaurants_php\client\src\Reducers\CategoryReducer\reducer.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 50, 0, 0, 0, 5, 55
+"c:\xampp\htdocs\restaurants_php\client\src\Reducers\EmployeesReducer\action.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 31, 0, 0, 0, 5, 36
+"c:\xampp\htdocs\restaurants_php\client\src\Reducers\EmployeesReducer\constants.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 5
+"c:\xampp\htdocs\restaurants_php\client\src\Reducers\EmployeesReducer\reducer.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 50, 0, 0, 0, 5, 55
+"c:\xampp\htdocs\restaurants_php\client\src\Reducers\OrderReducer\action.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 37, 0, 0, 0, 6, 43
+"c:\xampp\htdocs\restaurants_php\client\src\Reducers\OrderReducer\constant.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 5
+"c:\xampp\htdocs\restaurants_php\client\src\Reducers\OrderReducer\reducer.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 45, 0, 0, 0, 4, 49
+"c:\xampp\htdocs\restaurants_php\client\src\Reducers\PaymentReducer\action.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 13, 0, 0, 0, 3, 16
+"c:\xampp\htdocs\restaurants_php\client\src\Reducers\PaymentReducer\constant.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 2, 0, 0, 0, 1, 3
+"c:\xampp\htdocs\restaurants_php\client\src\Reducers\PaymentReducer\reducer.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 26, 0, 0, 0, 4, 30
+"c:\xampp\htdocs\restaurants_php\client\src\Reducers\ProductsReducer\action.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 55, 0, 0, 0, 13, 68
+"c:\xampp\htdocs\restaurants_php\client\src\Reducers\ProductsReducer\constants.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 9, 0, 0, 0, 0, 9
+"c:\xampp\htdocs\restaurants_php\client\src\Reducers\ProductsReducer\reducer.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 75, 0, 0, 0, 6, 81
+"c:\xampp\htdocs\restaurants_php\client\src\Reducers\ReservationReducer\action.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 19, 0, 0, 0, 4, 23
+"c:\xampp\htdocs\restaurants_php\client\src\Reducers\ReservationReducer\constants.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 3
+"c:\xampp\htdocs\restaurants_php\client\src\Reducers\ReservationReducer\reducer.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 31, 0, 0, 0, 4, 35
+"c:\xampp\htdocs\restaurants_php\client\src\Reducers\ReviewReducer\action.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 13, 0, 0, 0, 3, 16
+"c:\xampp\htdocs\restaurants_php\client\src\Reducers\ReviewReducer\constants.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 2
+"c:\xampp\htdocs\restaurants_php\client\src\Reducers\ReviewReducer\reducer.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 24, 0, 0, 0, 4, 28
+"c:\xampp\htdocs\restaurants_php\client\src\Reducers\RoleReducer\action.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 31, 0, 0, 0, 5, 36
+"c:\xampp\htdocs\restaurants_php\client\src\Reducers\RoleReducer\constant.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 5
+"c:\xampp\htdocs\restaurants_php\client\src\Reducers\RoleReducer\reducer.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 42, 0, 0, 0, 4, 46
+"c:\xampp\htdocs\restaurants_php\client\src\Reducers\TableReducer\action.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 31, 0, 0, 0, 6, 37
+"c:\xampp\htdocs\restaurants_php\client\src\Reducers\TableReducer\constants.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 5
+"c:\xampp\htdocs\restaurants_php\client\src\Reducers\TableReducer\reducer.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 45, 0, 0, 0, 5, 50
+"c:\xampp\htdocs\restaurants_php\client\src\Reducers\UsersReducer\action.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 25, 0, 0, 0, 5, 30
+"c:\xampp\htdocs\restaurants_php\client\src\Reducers\UsersReducer\constants.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 4
+"c:\xampp\htdocs\restaurants_php\client\src\Reducers\UsersReducer\reducer.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 39, 0, 0, 0, 4, 43
+"c:\xampp\htdocs\restaurants_php\client\src\Service\authApi.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 24, 0, 0, 0, 2, 26
+"c:\xampp\htdocs\restaurants_php\client\src\Service\axiosConfig.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 60, 0, 0, 3, 8, 71
+"c:\xampp\htdocs\restaurants_php\client\src\Service\cartApi.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 16, 0, 0, 0, 2, 18
+"c:\xampp\htdocs\restaurants_php\client\src\Service\categoryApi.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 28, 0, 0, 0, 2, 30
+"c:\xampp\htdocs\restaurants_php\client\src\Service\employeeApi.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 40, 0, 0, 0, 2, 42
+"c:\xampp\htdocs\restaurants_php\client\src\Service\orderApi.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 28, 0, 0, 0, 2, 30
+"c:\xampp\htdocs\restaurants_php\client\src\Service\paymentApi.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 28, 0, 0, 0, 2, 30
+"c:\xampp\htdocs\restaurants_php\client\src\Service\productApi.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 28, 0, 0, 0, 2, 30
+"c:\xampp\htdocs\restaurants_php\client\src\Service\reservationApi.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 12, 0, 0, 0, 2, 14
+"c:\xampp\htdocs\restaurants_php\client\src\Service\reviewApi.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 12, 0, 0, 0, 2, 14
+"c:\xampp\htdocs\restaurants_php\client\src\Service\roleApi.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 24, 0, 0, 0, 2, 26
+"c:\xampp\htdocs\restaurants_php\client\src\Service\tableApi.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 24, 0, 0, 0, 2, 26
+"c:\xampp\htdocs\restaurants_php\client\src\Service\userApi.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 36, 0, 0, 0, 2, 38
+"c:\xampp\htdocs\restaurants_php\client\src\config\editorConfig.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 25, 0, 0, 0, 1, 26
+"c:\xampp\htdocs\restaurants_php\client\src\config\firebase\firebase.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 13, 0, 0, 0, 3, 16
+"c:\xampp\htdocs\restaurants_php\client\src\config\tableConfig.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 23, 0, 0, 0, 2, 25
+"c:\xampp\htdocs\restaurants_php\client\src\hooks\context\index.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 13, 0, 0, 0, 1, 14
+"c:\xampp\htdocs\restaurants_php\client\src\hooks\context\useAuth.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 6, 0, 0, 2, 2, 10
+"c:\xampp\htdocs\restaurants_php\client\src\hooks\context\useCart.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 6, 0, 0, 2, 3, 11
+"c:\xampp\htdocs\restaurants_php\client\src\hooks\context\useCategory.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 6, 0, 0, 2, 3, 11
+"c:\xampp\htdocs\restaurants_php\client\src\hooks\context\useCommon.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 6, 0, 0, 2, 3, 11
+"c:\xampp\htdocs\restaurants_php\client\src\hooks\context\useEmployee.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 6, 0, 0, 2, 2, 10
+"c:\xampp\htdocs\restaurants_php\client\src\hooks\context\useOrder.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 6, 0, 0, 2, 2, 10
+"c:\xampp\htdocs\restaurants_php\client\src\hooks\context\usePayment.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 6, 0, 0, 2, 2, 10
+"c:\xampp\htdocs\restaurants_php\client\src\hooks\context\useProduct.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 6, 0, 0, 2, 3, 11
+"c:\xampp\htdocs\restaurants_php\client\src\hooks\context\useReservation.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 6, 0, 0, 2, 2, 10
+"c:\xampp\htdocs\restaurants_php\client\src\hooks\context\useReview.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 6, 0, 0, 2, 2, 10
+"c:\xampp\htdocs\restaurants_php\client\src\hooks\context\useRole.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 6, 0, 0, 2, 2, 10
+"c:\xampp\htdocs\restaurants_php\client\src\hooks\context\useTable.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 6, 0, 0, 2, 2, 10
+"c:\xampp\htdocs\restaurants_php\client\src\hooks\context\useUser.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 6, 0, 0, 2, 3, 11
+"c:\xampp\htdocs\restaurants_php\client\src\hooks\useReponsive.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 29, 0, 0, 4, 15, 48
+"c:\xampp\htdocs\restaurants_php\client\src\layouts\admin\DashboardLayoutAdmin.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 216, 0, 0, 7, 13, 236
+"c:\xampp\htdocs\restaurants_php\client\src\layouts\admin\header\NotificationsPopover.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 247, 0, 0, 6, 24, 277
+"c:\xampp\htdocs\restaurants_php\client\src\layouts\dashboard\DashboardLayout.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 36, 0, 0, 4, 10, 50
+"c:\xampp\htdocs\restaurants_php\client\src\layouts\dashboard\header\AccountPopover.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 134, 0, 0, 3, 12, 149
+"c:\xampp\htdocs\restaurants_php\client\src\layouts\dashboard\header\LanguagePopover.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 75, 0, 0, 3, 10, 88
+"c:\xampp\htdocs\restaurants_php\client\src\layouts\dashboard\header\NotificationsPopover.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 247, 0, 0, 6, 24, 277
+"c:\xampp\htdocs\restaurants_php\client\src\layouts\dashboard\header\Searchbar.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 100, 0, 0, 0, 9, 109
+"c:\xampp\htdocs\restaurants_php\client\src\layouts\dashboard\header\index.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 65, 0, 0, 7, 11, 83
+"c:\xampp\htdocs\restaurants_php\client\src\layouts\dashboard\index.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 2
+"c:\xampp\htdocs\restaurants_php\client\src\layouts\dashboard\nav\index.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 169, 0, 0, 11, 17, 197
+"c:\xampp\htdocs\restaurants_php\client\src\layouts\home\HomeLayout.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 16, 0, 0, 2, 4, 22
+"c:\xampp\htdocs\restaurants_php\client\src\layouts\home\footer\Footer.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 104, 0, 0, 3, 4, 111
+"c:\xampp\htdocs\restaurants_php\client\src\layouts\home\header\Header.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 91, 0, 0, 3, 8, 102
+"c:\xampp\htdocs\restaurants_php\client\src\layouts\home\header\nav\Nav.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 177, 0, 0, 2, 6, 185
+"c:\xampp\htdocs\restaurants_php\client\src\layouts\home\header\nav\index.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1
+"c:\xampp\htdocs\restaurants_php\client\src\layouts\home\index.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1
+"c:\xampp\htdocs\restaurants_php\client\src\layouts\simple\SimpleLayout.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 24, 0, 0, 4, 6, 34
+"c:\xampp\htdocs\restaurants_php\client\src\layouts\simple\index.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 2
+"c:\xampp\htdocs\restaurants_php\client\src\main.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 6, 0, 0, 6, 7, 19
+"c:\xampp\htdocs\restaurants_php\client\src\routers\PrivateRouter.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 31, 0, 0, 2, 8, 41
+"c:\xampp\htdocs\restaurants_php\client\src\routers\routes.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 314, 0, 0, 11, 3, 328
+"c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\app\Category\Category.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 60, 0, 0, 5, 7, 72
+"c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\app\Category\CategoryItem.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 22, 0, 0, 0, 4, 26
+"c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\app\PopularProducts.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 27, 0, 0, 3, 5, 35
+"c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\app\RecentlyProducts.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 22, 0, 0, 3, 5, 30
+"c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\app\Slider\Slider.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 33, 0, 0, 5, 3, 41
+"c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\app\Slider\SliderConfig.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 15, 0, 0, 0, 3, 18
+"c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\app\Slider\SliderItem.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 20, 0, 0, 2, 4, 26
+"c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\app\index.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 4, 0, 0, 0, 1, 5
+"c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\cart\CartConfirm\CartConfirm.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 241, 0, 0, 5, 8, 254
+"c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\cart\CartConfirm\CartConfirmProductItem.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 128, 0, 0, 2, 5, 135
+"c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\cart\CartConfirm\index.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1
+"c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\cart\CartPayment\CartDelivery.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 120, 0, 0, 3, 8, 131
+"c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\cart\CartPayment\CartPayment.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 23, 0, 0, 3, 4, 30
+"c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\cart\CartPayment\CartPaymentInfo.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 71, 0, 0, 3, 8, 82
+"c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\cart\CartPayment\CartShipInfo.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 184, 0, 0, 7, 10, 201
+"c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\cart\CartSelect\CartSelect.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 33, 0, 0, 3, 5, 41
+"c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\cart\CartSelect\CartSummary.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 129, 0, 0, 5, 11, 145
+"c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\cart\CartSelect\CartTable.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 120, 0, 0, 15, 11, 146
+"c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\cart\CartSelect\CartTableItem.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 298, 0, 0, 3, 15, 316
+"c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\cart\CartStepper.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 159, 0, 0, 23, 16, 198
+"c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\cart\CartWithoutProducts.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 27, 0, 0, 3, 5, 35
+"c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\cart\index.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 2, 0, 0, 0, 2, 4
+"c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\common\ButtonBack.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 14, 0, 0, 2, 4, 20
+"c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\common\index.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1
+"c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\order\OrderDetail.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 324, 0, 0, 8, 12, 344
+"c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\order\OrderInfo.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 124, 0, 0, 3, 5, 132
+"c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\order\OrderTab.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 59, 0, 0, 4, 8, 71
+"c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\order\OrderTabPanel.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 132, 0, 0, 4, 5, 141
+"c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\order\OrderTimeLine.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 63, 0, 0, 4, 8, 75
+"c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\order\index.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 4, 0, 0, 0, 1, 5
+"c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\products\ProductCard.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 77, 0, 0, 5, 10, 92
+"c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\products\ProductCartWidget.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 39, 0, 0, 5, 6, 50
+"c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\products\ProductFilterSidebar.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 226, 0, 0, 6, 21, 253
+"c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\products\ProductList.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 17, 0, 0, 2, 4, 23
+"c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\products\ProductPagination.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 21, 0, 0, 2, 4, 27
+"c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\products\ProductRating.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 28, 0, 0, 0, 4, 32
+"c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\products\ProductSort.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 66, 0, 0, 1, 7, 74
+"c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\products\index.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 7, 0, 0, 0, 1, 8
+"c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\products\productdetail\ProductDescription.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 30, 0, 0, 0, 5, 35
+"c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\products\productdetail\ProductInfo.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 205, 0, 0, 4, 12, 221
+"c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\products\productdetail\ProductQuantity.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 76, 0, 0, 3, 7, 86
+"c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\products\productdetail\ProductService.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 51, 0, 0, 3, 3, 57
+"c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\products\productdetail\ProductSlider.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 87, 0, 0, 4, 6, 97
+"c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\products\productdetail\ProductTabs.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 43, 0, 0, 3, 6, 52
+"c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\products\productdetail\index.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 5, 0, 0, 0, 1, 6
+"c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\profile\PreviewAvatar.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 63, 0, 0, 5, 8, 76
+"c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\profile\ProfileCardAvatar.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 72, 0, 0, 35, 4, 111
+"c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\profile\ProfileCardInfo.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 160, 0, 0, 6, 4, 170
+"c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\profile\index.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 2
+"c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\reservation\Table.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 96, 0, 0, 7, 10, 113
+"c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\reservation\TableInfo.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 70, 0, 0, 3, 3, 76
+"c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\reservation\index.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 2
+"c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\reviews\ReviewItem.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 78, 0, 0, 5, 9, 92
+"c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\reviews\ReviewList.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 36, 0, 0, 5, 7, 48
+"c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\reviews\ReviewSumary.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 207, 0, 0, 5, 15, 227
+"c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\reviews\index.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 2, 0, 0, 0, 1, 3
+"c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\setting\Notification.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 85, 0, 0, 2, 4, 91
+"c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\setting\UpdatePassword.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 171, 0, 0, 7, 7, 185
+"c:\xampp\htdocs\restaurants_php\client\src\section\@dashboard\setting\index.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 2, 0, 0, 0, 1, 3
+"c:\xampp\htdocs\restaurants_php\client\src\section\about\Banner.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 83, 0, 0, 2, 5, 90
+"c:\xampp\htdocs\restaurants_php\client\src\section\about\WhatIs.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 102, 0, 0, 2, 5, 109
+"c:\xampp\htdocs\restaurants_php\client\src\section\about\index.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 3, 0, 0, 0, 2, 5
+"c:\xampp\htdocs\restaurants_php\client\src\section\about\slider\Slider.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 36, 0, 0, 4, 4, 44
+"c:\xampp\htdocs\restaurants_php\client\src\section\about\slider\SliderItem.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 83, 0, 0, 3, 6, 92
+"c:\xampp\htdocs\restaurants_php\client\src\section\about\slider\sliderConfig.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 75, 0, 0, 0, 1, 76
+"c:\xampp\htdocs\restaurants_php\client\src\section\admin\auth\LoginForm.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 149, 0, 0, 8, 6, 163
+"c:\xampp\htdocs\restaurants_php\client\src\section\admin\auth\index.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 2
+"c:\xampp\htdocs\restaurants_php\client\src\section\admin\category\ProductItem.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 115, 0, 0, 5, 8, 128
+"c:\xampp\htdocs\restaurants_php\client\src\section\admin\category\index.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1
+"c:\xampp\htdocs\restaurants_php\client\src\section\admin\dashboard\AppWebsiteVisits.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 38, 0, 0, 3, 5, 46
+"c:\xampp\htdocs\restaurants_php\client\src\section\admin\dashboard\index.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 9, 0, 0, 0, 1, 10
+"c:\xampp\htdocs\restaurants_php\client\src\section\admin\dashboard\overview-budget.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 84, 0, 0, 3, 4, 91
+"c:\xampp\htdocs\restaurants_php\client\src\section\admin\dashboard\overview-latest-orders.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 96, 0, 0, 4, 8, 108
+"c:\xampp\htdocs\restaurants_php\client\src\section\admin\dashboard\overview-latest-products.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 95, 0, 0, 5, 8, 108
+"c:\xampp\htdocs\restaurants_php\client\src\section\admin\dashboard\overview-sales.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 155, 0, 0, 0, 6, 161
+"c:\xampp\htdocs\restaurants_php\client\src\section\admin\dashboard\overview-total-customers.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 83, 0, 0, 0, 4, 87
+"c:\xampp\htdocs\restaurants_php\client\src\section\admin\dashboard\overview-total-order.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 54, 0, 0, 1, 4, 59
+"c:\xampp\htdocs\restaurants_php\client\src\section\admin\dashboard\overview-total-profit.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 46, 0, 0, 0, 4, 50
+"c:\xampp\htdocs\restaurants_php\client\src\section\admin\dashboard\overview-traffic.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 131, 0, 0, 0, 8, 139
+"c:\xampp\htdocs\restaurants_php\client\src\section\admin\order\OrderDetail.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 266, 0, 0, 6, 8, 280
+"c:\xampp\htdocs\restaurants_php\client\src\section\admin\order\OrderInfo.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 120, 0, 0, 3, 5, 128
+"c:\xampp\htdocs\restaurants_php\client\src\section\admin\order\OrderTimeLine.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 63, 0, 0, 4, 8, 75
+"c:\xampp\htdocs\restaurants_php\client\src\section\admin\order\index.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 2
+"c:\xampp\htdocs\restaurants_php\client\src\section\admin\product\ProductFormDetail.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 67, 0, 0, 0, 5, 72
+"c:\xampp\htdocs\restaurants_php\client\src\section\admin\product\ProductFormImage.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 95, 0, 0, 94, 10, 199
+"c:\xampp\htdocs\restaurants_php\client\src\section\admin\product\ProductFormPrice.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 42, 0, 0, 2, 4, 48
+"c:\xampp\htdocs\restaurants_php\client\src\section\admin\product\ProductFormProperty.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 132, 0, 0, 3, 8, 143
+"c:\xampp\htdocs\restaurants_php\client\src\section\admin\product\index.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 4, 0, 0, 0, 3, 7
+"c:\xampp\htdocs\restaurants_php\client\src\section\admin\profile\PreviewAvatar.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 58, 0, 0, 4, 7, 69
+"c:\xampp\htdocs\restaurants_php\client\src\section\admin\profile\ProfileCardAvatar.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 72, 0, 0, 35, 4, 111
+"c:\xampp\htdocs\restaurants_php\client\src\section\admin\profile\ProfileCardInfo.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 140, 0, 0, 6, 4, 150
+"c:\xampp\htdocs\restaurants_php\client\src\section\admin\profile\index.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 2
+"c:\xampp\htdocs\restaurants_php\client\src\section\admin\reservation\Reservation.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 148, 0, 0, 25, 10, 183
+"c:\xampp\htdocs\restaurants_php\client\src\section\admin\reservation\ReservationTable.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 164, 0, 0, 6, 13, 183
+"c:\xampp\htdocs\restaurants_php\client\src\section\admin\reservation\ReservationTabs.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 42, 0, 0, 3, 5, 50
+"c:\xampp\htdocs\restaurants_php\client\src\section\admin\reservation\index.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 3, 0, 0, 0, 1, 4
+"c:\xampp\htdocs\restaurants_php\client\src\section\admin\setting\Notification.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 85, 0, 0, 2, 4, 91
+"c:\xampp\htdocs\restaurants_php\client\src\section\admin\setting\UpdatePassword.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 171, 0, 0, 7, 5, 183
+"c:\xampp\htdocs\restaurants_php\client\src\section\admin\setting\index.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 2, 0, 0, 0, 1, 3
+"c:\xampp\htdocs\restaurants_php\client\src\section\auth\LoginForm\LoginForm.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 138, 0, 0, 7, 8, 153
+"c:\xampp\htdocs\restaurants_php\client\src\section\auth\LoginForm\index.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1
+"c:\xampp\htdocs\restaurants_php\client\src\section\auth\RegisterForm\RegisterForm.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 257, 0, 0, 7, 9, 273
+"c:\xampp\htdocs\restaurants_php\client\src\section\auth\RegisterForm\index.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1
+"c:\xampp\htdocs\restaurants_php\client\src\section\faq\Accordion.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 40, 0, 0, 3, 4, 47
+"c:\xampp\htdocs\restaurants_php\client\src\section\faq\AccordionItems.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 33, 0, 0, 0, 2, 35
+"c:\xampp\htdocs\restaurants_php\client\src\section\faq\Banner.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 115, 0, 0, 2, 5, 122
+"c:\xampp\htdocs\restaurants_php\client\src\section\faq\ContactForm.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 60, 0, 0, 2, 6, 68
+"c:\xampp\htdocs\restaurants_php\client\src\section\faq\Service.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 97, 0, 0, 2, 6, 105
+"c:\xampp\htdocs\restaurants_php\client\src\section\faq\index.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 4, 0, 0, 0, 3, 7
+"c:\xampp\htdocs\restaurants_php\client\src\section\home\Main\Main.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 198, 0, 0, 1, 12, 211
+"c:\xampp\htdocs\restaurants_php\client\src\section\home\Main\index.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1
+"c:\xampp\htdocs\restaurants_php\client\src\section\home\accordion\Accordion.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 43, 0, 0, 4, 4, 51
+"c:\xampp\htdocs\restaurants_php\client\src\section\home\accordion\AccordionItems.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 43, 0, 0, 0, 2, 45
+"c:\xampp\htdocs\restaurants_php\client\src\section\home\accordion\StillQuestions.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 49, 0, 0, 2, 5, 56
+"c:\xampp\htdocs\restaurants_php\client\src\section\home\accordion\index.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1
+"c:\xampp\htdocs\restaurants_php\client\src\section\home\info\Info.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 56, 0, 0, 3, 4, 63
+"c:\xampp\htdocs\restaurants_php\client\src\section\home\info\InfoCard.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 61, 0, 0, 2, 5, 68
+"c:\xampp\htdocs\restaurants_php\client\src\section\home\info\index.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1
+"c:\xampp\htdocs\restaurants_php\client\src\section\home\service\Service.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 35, 0, 0, 4, 4, 43
+"c:\xampp\htdocs\restaurants_php\client\src\section\home\service\ServiceItem.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 30, 0, 0, 3, 4, 37
+"c:\xampp\htdocs\restaurants_php\client\src\section\home\service\config.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 36, 0, 0, 0, 2, 38
+"c:\xampp\htdocs\restaurants_php\client\src\section\home\service\index.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1
+"c:\xampp\htdocs\restaurants_php\client\src\section\home\trusted\Trusted.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 27, 0, 0, 1, 3, 31
+"c:\xampp\htdocs\restaurants_php\client\src\section\home\trusted\index.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1
+"c:\xampp\htdocs\restaurants_php\client\src\serviceWorker.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 89, 0, 0, 33, 14, 136
+"c:\xampp\htdocs\restaurants_php\client\src\theme\ThemeProviders.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 37, 0, 0, 3, 7, 47
+"c:\xampp\htdocs\restaurants_php\client\src\theme\customShadows.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 24, 0, 0, 5, 4, 33
+"c:\xampp\htdocs\restaurants_php\client\src\theme\globalStyles.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 57, 0, 0, 5, 5, 67
+"c:\xampp\htdocs\restaurants_php\client\src\theme\overrides\Autocomplete.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 11, 0, 0, 1, 2, 14
+"c:\xampp\htdocs\restaurants_php\client\src\theme\overrides\Backdrop.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 15, 0, 0, 1, 3, 19
+"c:\xampp\htdocs\restaurants_php\client\src\theme\overrides\Button.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 41, 0, 0, 1, 3, 45
+"c:\xampp\htdocs\restaurants_php\client\src\theme\overrides\Card.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 32, 0, 0, 1, 2, 35
+"c:\xampp\htdocs\restaurants_php\client\src\theme\overrides\Input.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 64, 0, 0, 1, 3, 68
+"c:\xampp\htdocs\restaurants_php\client\src\theme\overrides\Paper.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 14, 0, 0, 1, 2, 17
+"c:\xampp\htdocs\restaurants_php\client\src\theme\overrides\Table.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 12, 0, 0, 1, 2, 15
+"c:\xampp\htdocs\restaurants_php\client\src\theme\overrides\Tooltip.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 14, 0, 0, 1, 2, 17
+"c:\xampp\htdocs\restaurants_php\client\src\theme\overrides\Typography.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 14, 0, 0, 1, 2, 17
+"c:\xampp\htdocs\restaurants_php\client\src\theme\overrides\index.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 22, 0, 0, 2, 3, 27
+"c:\xampp\htdocs\restaurants_php\client\src\theme\palette.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 93, 0, 0, 2, 11, 106
+"c:\xampp\htdocs\restaurants_php\client\src\theme\shadows.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 35, 0, 0, 3, 4, 42
+"c:\xampp\htdocs\restaurants_php\client\src\theme\typography.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 97, 0, 0, 3, 8, 108
+"c:\xampp\htdocs\restaurants_php\client\src\utils\cssStyles.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 78, 0, 0, 7, 17, 102
+"c:\xampp\htdocs\restaurants_php\client\src\utils\formatNumber.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 24, 0, 0, 1, 13, 38
+"c:\xampp\htdocs\restaurants_php\client\src\utils\formatTime.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 19, 0, 0, 1, 8, 28
+"c:\xampp\htdocs\restaurants_php\client\src\utils\setAuthToken.jsx", "JavaScript JSX", 0, 0, 0, 0, 0, 9, 0, 0, 0, 3, 12
+"c:\xampp\htdocs\restaurants_php\client\vite.config.js", "JavaScript", 0, 0, 5, 0, 0, 0, 0, 0, 1, 2, 8
+"c:\xampp\htdocs\restaurants_php\server\README.md", "Markdown", 0, 45, 0, 0, 0, 0, 0, 0, 0, 22, 67
+"c:\xampp\htdocs\restaurants_php\server\app\Console\Kernel.php", "PHP", 0, 0, 0, 0, 15, 0, 0, 0, 7, 6, 28
+"c:\xampp\htdocs\restaurants_php\server\app\Exceptions\Handler.php", "PHP", 0, 0, 0, 0, 17, 0, 0, 0, 9, 5, 31
+"c:\xampp\htdocs\restaurants_php\server\app\Http\Controllers\AdminAuthController.php", "PHP", 0, 0, 0, 0, 50, 0, 0, 0, 0, 6, 56
+"c:\xampp\htdocs\restaurants_php\server\app\Http\Controllers\AuthController.php", "PHP", 0, 0, 0, 0, 76, 0, 0, 0, 6, 17, 99
+"c:\xampp\htdocs\restaurants_php\server\app\Http\Controllers\CartController.php", "PHP", 0, 0, 0, 0, 92, 0, 0, 0, 10, 22, 124
+"c:\xampp\htdocs\restaurants_php\server\app\Http\Controllers\CategoryController.php", "PHP", 0, 0, 0, 0, 98, 0, 0, 0, 15, 25, 138
+"c:\xampp\htdocs\restaurants_php\server\app\Http\Controllers\EmployeeController.php", "PHP", 0, 0, 0, 0, 151, 0, 0, 0, 17, 29, 197
+"c:\xampp\htdocs\restaurants_php\server\app\Http\Controllers\OrderController.php", "PHP", 0, 0, 0, 0, 138, 0, 0, 0, 23, 25, 186
+"c:\xampp\htdocs\restaurants_php\server\app\Http\Controllers\PaymentController.php", "PHP", 0, 0, 0, 0, 217, 0, 0, 0, 15, 41, 273
+"c:\xampp\htdocs\restaurants_php\server\app\Http\Controllers\ProductController.php", "PHP", 0, 0, 0, 0, 138, 0, 0, 0, 7, 28, 173
+"c:\xampp\htdocs\restaurants_php\server\app\Http\Controllers\ReservationController.php", "PHP", 0, 0, 0, 0, 22, 0, 0, 0, 20, 8, 50
+"c:\xampp\htdocs\restaurants_php\server\app\Http\Controllers\ReviewController.php", "PHP", 0, 0, 0, 0, 74, 0, 0, 0, 8, 17, 99
+"c:\xampp\htdocs\restaurants_php\server\app\Http\Controllers\RoleController.php", "PHP", 0, 0, 0, 0, 35, 0, 0, 0, 12, 8, 55
+"c:\xampp\htdocs\restaurants_php\server\app\Http\Controllers\TableController.php", "PHP", 0, 0, 0, 0, 149, 0, 0, 0, 18, 23, 190
+"c:\xampp\htdocs\restaurants_php\server\app\Http\Controllers\UserController.php", "PHP", 0, 0, 0, 0, 135, 0, 0, 0, 21, 28, 184
+"c:\xampp\htdocs\restaurants_php\server\app\Http\Kernel.php", "PHP", 0, 0, 0, 0, 41, 0, 0, 0, 21, 7, 69
+"c:\xampp\htdocs\restaurants_php\server\app\Http\Middleware\Authenticate.php", "PHP", 0, 0, 0, 0, 11, 0, 0, 0, 3, 4, 18
+"c:\xampp\htdocs\restaurants_php\server\app\Http\Middleware\EncryptCookies.php", "PHP", 0, 0, 0, 0, 8, 0, 0, 0, 6, 4, 18
+"c:\xampp\htdocs\restaurants_php\server\app\Http\Middleware\PreventRequestsDuringMaintenance.php", "PHP", 0, 0, 0, 0, 8, 0, 0, 0, 6, 4, 18
+"c:\xampp\htdocs\restaurants_php\server\app\Http\Middleware\RedirectIfAuthenticated.php", "PHP", 0, 0, 0, 0, 20, 0, 0, 0, 5, 6, 31
+"c:\xampp\htdocs\restaurants_php\server\app\Http\Middleware\TrimStrings.php", "PHP", 0, 0, 0, 0, 11, 0, 0, 0, 5, 4, 20
+"c:\xampp\htdocs\restaurants_php\server\app\Http\Middleware\TrustHosts.php", "PHP", 0, 0, 0, 0, 12, 0, 0, 0, 5, 4, 21
+"c:\xampp\htdocs\restaurants_php\server\app\Http\Middleware\TrustProxies.php", "PHP", 0, 0, 0, 0, 14, 0, 0, 0, 10, 5, 29
+"c:\xampp\htdocs\restaurants_php\server\app\Http\Middleware\ValidateSignature.php", "PHP", 0, 0, 0, 0, 8, 0, 0, 0, 11, 4, 23
+"c:\xampp\htdocs\restaurants_php\server\app\Http\Middleware\VerifyCsrfToken.php", "PHP", 0, 0, 0, 0, 8, 0, 0, 0, 6, 4, 18
+"c:\xampp\htdocs\restaurants_php\server\app\Models\Cart.php", "PHP", 0, 0, 0, 0, 15, 0, 0, 0, 5, 6, 26
+"c:\xampp\htdocs\restaurants_php\server\app\Models\CartDetail.php", "PHP", 0, 0, 0, 0, 16, 0, 0, 0, 5, 7, 28
+"c:\xampp\htdocs\restaurants_php\server\app\Models\Category.php", "PHP", 0, 0, 0, 0, 17, 0, 0, 0, 5, 5, 27
+"c:\xampp\htdocs\restaurants_php\server\app\Models\Employee.php", "PHP", 0, 0, 0, 0, 22, 0, 0, 0, 5, 5, 32
+"c:\xampp\htdocs\restaurants_php\server\app\Models\ImageProduct.php", "PHP", 0, 0, 0, 0, 15, 0, 0, 0, 0, 5, 20
+"c:\xampp\htdocs\restaurants_php\server\app\Models\Order.php", "PHP", 0, 0, 0, 0, 30, 0, 0, 0, 0, 7, 37
+"c:\xampp\htdocs\restaurants_php\server\app\Models\Payment.php", "PHP", 0, 0, 0, 0, 19, 0, 0, 0, 0, 5, 24
+"c:\xampp\htdocs\restaurants_php\server\app\Models\Product.php", "PHP", 0, 0, 0, 0, 29, 0, 0, 0, 0, 6, 35
+"c:\xampp\htdocs\restaurants_php\server\app\Models\Reservation.php", "PHP", 0, 0, 0, 0, 17, 0, 0, 0, 0, 5, 22
+"c:\xampp\htdocs\restaurants_php\server\app\Models\Review.php", "PHP", 0, 0, 0, 0, 18, 0, 0, 0, 0, 5, 23
+"c:\xampp\htdocs\restaurants_php\server\app\Models\Role.php", "PHP", 0, 0, 0, 0, 14, 0, 0, 0, 0, 6, 20
+"c:\xampp\htdocs\restaurants_php\server\app\Models\Table.php", "PHP", 0, 0, 0, 0, 15, 0, 0, 0, 0, 6, 21
+"c:\xampp\htdocs\restaurants_php\server\app\Models\User.php", "PHP", 0, 0, 0, 0, 35, 0, 0, 0, 16, 8, 59
+"c:\xampp\htdocs\restaurants_php\server\app\Providers\AppServiceProvider.php", "PHP", 0, 0, 0, 0, 12, 0, 0, 0, 8, 5, 25
+"c:\xampp\htdocs\restaurants_php\server\app\Providers\AuthServiceProvider.php", "PHP", 0, 0, 0, 0, 11, 0, 0, 0, 11, 5, 27
+"c:\xampp\htdocs\restaurants_php\server\app\Providers\BroadcastServiceProvider.php", "PHP", 0, 0, 0, 0, 12, 0, 0, 0, 3, 5, 20
+"c:\xampp\htdocs\restaurants_php\server\app\Providers\EventServiceProvider.php", "PHP", 0, 0, 0, 0, 21, 0, 0, 0, 12, 6, 39
+"c:\xampp\htdocs\restaurants_php\server\app\Providers\RouteServiceProvider.php", "PHP", 0, 0, 0, 0, 24, 0, 0, 0, 10, 7, 41
+"c:\xampp\htdocs\restaurants_php\server\bootstrap\app.php", "PHP", 0, 0, 0, 0, 17, 0, 0, 0, 30, 9, 56
+"c:\xampp\htdocs\restaurants_php\server\composer.json", "JSON", 0, 0, 0, 68, 0, 0, 0, 0, 0, 1, 69
+"c:\xampp\htdocs\restaurants_php\server\composer.lock", "JSON", 0, 0, 0, 9385, 0, 0, 0, 0, 0, 1, 9386
+"c:\xampp\htdocs\restaurants_php\server\config\app.php", "PHP", 0, 0, 0, 0, 30, 0, 0, 0, 130, 31, 191
+"c:\xampp\htdocs\restaurants_php\server\config\auth.php", "PHP", 0, 0, 0, 0, 52, 0, 0, 0, 74, 15, 141
+"c:\xampp\htdocs\restaurants_php\server\config\broadcasting.php", "PHP", 0, 0, 0, 0, 36, 0, 0, 0, 23, 13, 72
+"c:\xampp\htdocs\restaurants_php\server\config\cache.php", "PHP", 0, 0, 0, 0, 59, 0, 0, 0, 34, 19, 112
+"c:\xampp\htdocs\restaurants_php\server\config\cloudinary.php", "PHP", 0, 0, 0, 0, 6, 0, 0, 0, 30, 8, 44
+"c:\xampp\htdocs\restaurants_php\server\config\cors.php", "PHP", 0, 0, 0, 0, 3, 0, 0, 0, 29, 3, 35
+"c:\xampp\htdocs\restaurants_php\server\config\database.php", "PHP", 0, 0, 0, 0, 83, 0, 0, 0, 47, 22, 152
+"c:\xampp\htdocs\restaurants_php\server\config\filesystems.php", "PHP", 0, 0, 0, 0, 32, 0, 0, 0, 32, 13, 77
+"c:\xampp\htdocs\restaurants_php\server\config\hashing.php", "PHP", 0, 0, 0, 0, 12, 0, 0, 0, 32, 9, 53
+"c:\xampp\htdocs\restaurants_php\server\config\logging.php", "PHP", 0, 0, 0, 0, 79, 0, 0, 0, 34, 19, 132
+"c:\xampp\htdocs\restaurants_php\server\config\mail.php", "PHP", 0, 0, 0, 0, 54, 0, 0, 0, 53, 19, 126
+"c:\xampp\htdocs\restaurants_php\server\config\queue.php", "PHP", 0, 0, 0, 0, 51, 0, 0, 0, 42, 17, 110
+"c:\xampp\htdocs\restaurants_php\server\config\sanctum.php", "PHP", 0, 0, 0, 0, 15, 0, 0, 0, 41, 12, 68
+"c:\xampp\htdocs\restaurants_php\server\config\services.php", "PHP", 0, 0, 0, 0, 17, 0, 0, 0, 11, 7, 35
+"c:\xampp\htdocs\restaurants_php\server\config\session.php", "PHP", 0, 0, 0, 0, 22, 0, 0, 0, 147, 33, 202
+"c:\xampp\htdocs\restaurants_php\server\config\view.php", "PHP", 0, 0, 0, 0, 10, 0, 0, 0, 20, 7, 37
+"c:\xampp\htdocs\restaurants_php\server\config\vnpay.php", "PHP", 0, 0, 0, 0, 10, 0, 0, 0, 0, 1, 11
+"c:\xampp\htdocs\restaurants_php\server\database\factories\UserFactory.php", "PHP", 0, 0, 0, 0, 23, 0, 0, 0, 11, 5, 39
+"c:\xampp\htdocs\restaurants_php\server\database\migrations\2014_10_12_100000_create_password_reset_tokens_table.php", "PHP", 0, 0, 0, 0, 19, 0, 0, 0, 6, 4, 29
+"c:\xampp\htdocs\restaurants_php\server\database\migrations\2019_08_19_000000_create_failed_jobs_table.php", "PHP", 0, 0, 0, 0, 23, 0, 0, 0, 6, 4, 33
+"c:\xampp\htdocs\restaurants_php\server\database\migrations\2019_12_14_000001_create_personal_access_tokens_table.php", "PHP", 0, 0, 0, 0, 24, 0, 0, 0, 6, 4, 34
+"c:\xampp\htdocs\restaurants_php\server\database\migrations\2020_06_14_000001_create_media_table.php", "PHP", 0, 0, 0, 0, 23, 0, 0, 0, 5, 4, 32
+"c:\xampp\htdocs\restaurants_php\server\database\migrations\2023_10_29_111955_create_roles_table.php", "PHP", 0, 0, 0, 0, 19, 0, 0, 0, 6, 4, 29
+"c:\xampp\htdocs\restaurants_php\server\database\migrations\2023_10_29_112153_create_employees_table.php", "PHP", 0, 0, 0, 0, 29, 0, 0, 0, 6, 5, 40
+"c:\xampp\htdocs\restaurants_php\server\database\migrations\2023_10_29_112248_create_categories_table.php", "PHP", 0, 0, 0, 0, 22, 0, 0, 0, 6, 5, 33
+"c:\xampp\htdocs\restaurants_php\server\database\migrations\2023_10_29_112338_create_products_table.php", "PHP", 0, 0, 0, 0, 31, 0, 0, 0, 6, 4, 41
+"c:\xampp\htdocs\restaurants_php\server\database\migrations\2023_10_29_112713_create_image_product_table.php", "PHP", 0, 0, 0, 0, 21, 0, 0, 0, 6, 4, 31
+"c:\xampp\htdocs\restaurants_php\server\database\migrations\2023_10_29_114355_create_users_table.php", "PHP", 0, 0, 0, 0, 29, 0, 0, 0, 6, 5, 40
+"c:\xampp\htdocs\restaurants_php\server\database\migrations\2023_10_29_125726_create_payments_table.php", "PHP", 0, 0, 0, 0, 25, 0, 0, 0, 6, 4, 35
+"c:\xampp\htdocs\restaurants_php\server\database\migrations\2023_10_31_073649_create_carts_table.php", "PHP", 0, 0, 0, 0, 20, 0, 0, 0, 6, 4, 30
+"c:\xampp\htdocs\restaurants_php\server\database\migrations\2023_10_31_074502_create_cart_detail_table.php", "PHP", 0, 0, 0, 0, 25, 0, 0, 0, 6, 4, 35
+"c:\xampp\htdocs\restaurants_php\server\database\migrations\2023_11_01_090101_remove_image_url_from_products_table.php", "PHP", 0, 0, 0, 0, 18, 0, 0, 0, 7, 4, 29
+"c:\xampp\htdocs\restaurants_php\server\database\migrations\2023_11_02_130817_create_reviews_table.php", "PHP", 0, 0, 0, 0, 26, 0, 0, 0, 6, 4, 36
+"c:\xampp\htdocs\restaurants_php\server\database\migrations\2023_11_02_133128_create_orders_table.php", "PHP", 0, 0, 0, 0, 34, 0, 0, 0, 6, 4, 44
+"c:\xampp\htdocs\restaurants_php\server\database\migrations\2023_11_02_134616_create_tables_table.php", "PHP", 0, 0, 0, 0, 20, 0, 0, 0, 6, 4, 30
+"c:\xampp\htdocs\restaurants_php\server\database\migrations\2023_11_04_132829_create_reservations_table.php", "PHP", 0, 0, 0, 0, 24, 0, 0, 0, 6, 4, 34
+"c:\xampp\htdocs\restaurants_php\server\database\seeders\DatabaseSeeder.php", "PHP", 0, 0, 0, 0, 9, 0, 0, 0, 9, 5, 23
+"c:\xampp\htdocs\restaurants_php\server\package.json", "JSON", 0, 0, 0, 13, 0, 0, 0, 0, 0, 1, 14
+"c:\xampp\htdocs\restaurants_php\server\phpunit.xml", "XML", 0, 0, 0, 0, 0, 0, 0, 29, 2, 1, 32
+"c:\xampp\htdocs\restaurants_php\server\public\index.php", "PHP", 0, 0, 0, 0, 14, 0, 0, 0, 30, 12, 56
+"c:\xampp\htdocs\restaurants_php\server\resources\css\app.css", "CSS", 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1
+"c:\xampp\htdocs\restaurants_php\server\resources\js\app.js", "JavaScript", 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 2
+"c:\xampp\htdocs\restaurants_php\server\resources\js\bootstrap.js", "JavaScript", 0, 0, 3, 0, 0, 0, 0, 0, 23, 7, 33
+"c:\xampp\htdocs\restaurants_php\server\resources\views\welcome.blade.php", "PHP", 0, 0, 0, 0, 118, 0, 0, 0, 0, 23, 141
+"c:\xampp\htdocs\restaurants_php\server\routes\api.php", "PHP", 0, 0, 0, 0, 75, 0, 0, 0, 22, 16, 113
+"c:\xampp\htdocs\restaurants_php\server\routes\channels.php", "PHP", 0, 0, 0, 0, 5, 0, 0, 0, 10, 4, 19
+"c:\xampp\htdocs\restaurants_php\server\routes\console.php", "PHP", 0, 0, 0, 0, 6, 0, 0, 0, 10, 4, 20
+"c:\xampp\htdocs\restaurants_php\server\routes\web.php", "PHP", 0, 0, 0, 0, 5, 0, 0, 0, 10, 4, 19
+"c:\xampp\htdocs\restaurants_php\server\tests\CreatesApplication.php", "PHP", 0, 0, 0, 0, 13, 0, 0, 0, 3, 6, 22
+"c:\xampp\htdocs\restaurants_php\server\tests\Feature\ExampleTest.php", "PHP", 0, 0, 0, 0, 11, 0, 0, 0, 4, 5, 20
+"c:\xampp\htdocs\restaurants_php\server\tests\TestCase.php", "PHP", 0, 0, 0, 0, 7, 0, 0, 0, 0, 4, 11
+"c:\xampp\htdocs\restaurants_php\server\tests\Unit\ExampleTest.php", "PHP", 0, 0, 0, 0, 10, 0, 0, 0, 3, 4, 17
+"c:\xampp\htdocs\restaurants_php\server\vendor\spatie\ignition\resources\compiled\ignition.css", "CSS", 0, 0, 0, 0, 0, 0, 1, 0, 2, 0, 3
+"c:\xampp\htdocs\restaurants_php\server\vendor\spatie\ignition\resources\compiled\ignition.js", "JavaScript", 0, 0, 6, 0, 0, 0, 0, 0, 0, 1, 7
+"c:\xampp\htdocs\restaurants_php\server\vite.config.js", "JavaScript", 0, 0, 10, 0, 0, 0, 0, 0, 0, 2, 12
+"Total", "-", 47, 52, 45, 21900, 3206, 20216, 26, 312, 2572, 2772, 51148

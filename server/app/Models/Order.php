@@ -9,7 +9,7 @@ use Laravel\Passport\HasApiTokens;
 
 class Order extends Authenticatable
 {
-    
+
     use HasApiTokens, HasFactory, Notifiable;
     protected $table = 'orders';
 
@@ -23,10 +23,11 @@ class Order extends Authenticatable
         'userOrder',
         'paymentMethod',
         'status',
+        'totalPrices',
     ];
 
     public function orderDetails()
     {
-        return $this->hasMany(OrderDetail::class, 'orderId');
+        return $this->hasMany(OrderDetail::class, 'orderId', 'id');
     }
 }

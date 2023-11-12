@@ -23,7 +23,7 @@ import { fDateTime } from '../../../utils/formatTime';
 //-----------------------------------------------------------------------------------
 
 const statusMap = {
-  pending: 'warning',
+  ordered: 'info',
   delivered: 'success',
   refunded: 'error',
 };
@@ -55,18 +55,18 @@ const OverviewLatestOrders = (props) => {
             </TableHead>
             <TableBody>
               {filterOrders.map((order) => {
-                const createdAt = fDateTime(order?.createdAt);
+                const createdAt = fDateTime(order?.created_at);
 
                 return (
                   <TableRow hover key={order.id}>
-                    <TableCell>{order?._id}</TableCell>
+                    <TableCell>{order?.id}</TableCell>
                     <TableCell>{order?.fullName}</TableCell>
                     <TableCell>{order?.phoneNumber}</TableCell>
                     <TableCell>{order?.shipAddress}</TableCell>
                     <TableCell>{order?.totalPrices}</TableCell>
                     <TableCell>
                       <SeverityPill color={statusMap[order.status]}>
-                        {order.status[order?.status.length - 1]}
+                        {order.status}
                       </SeverityPill>
                     </TableCell>
                     <TableCell>{order?.shippingFee}</TableCell>

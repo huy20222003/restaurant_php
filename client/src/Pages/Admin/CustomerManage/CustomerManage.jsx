@@ -50,7 +50,6 @@ const CustomerManage = () => {
     handleGetAllUser,
     handleCreateUser,
     handleDeleteUser,
-    handleGetOneUser,
     handleUpdateRole,
   } = useUser();
 
@@ -68,7 +67,7 @@ const CustomerManage = () => {
 
   const renderRoles = () => {
     return roles.map((role) => (
-      <MenuItem key={role?._id} value={role?._id}>
+      <MenuItem key={role?.id} value={role?.id}>
         {role?.name}
       </MenuItem>
     ));
@@ -76,6 +75,7 @@ const CustomerManage = () => {
 
   const handleChangeRole = (e, rowData) => {
     setRoleData({ id: rowData.id, roleId: e.target.value });
+    console.log(rowData);
     updateRole();
   };
 
@@ -120,6 +120,7 @@ const CustomerManage = () => {
       fullName: '',
       username: '',
       email: '',
+      phoneNumber: ''
     },
     validationSchema: yup.object({
       fullName: yup
@@ -131,6 +132,10 @@ const CustomerManage = () => {
         .required('Username is required')
         .max(100, 'Maximum characters are 100'),
       email: yup.string().required('Email is required').email(),
+      phoneNumber: yup
+        .string()
+        .required('Phone Number is required')
+        .matches(/^\d{10}$/, 'Phone Number must be exactly 10 digits'),
     }),
     onSubmit: async (values) => {
       try {
@@ -145,7 +150,7 @@ const CustomerManage = () => {
         } else {
           Swal.fire({
             title: 'Add user Successful!',
-            text: 'Default password is 1234567',
+            text: 'Default password is 12345678',
             icon: 'success',
             showCancelButton: true,
             confirmButtonText: 'OK',
@@ -315,7 +320,7 @@ const CustomerManage = () => {
 
   const rows = users.map((user) => {
     return {
-      id: user?._id,
+      id: user?.id,
       avatar: user?.avatar,
       username: user?.username,
       fullName: user?.fullName,
@@ -323,10 +328,10 @@ const CustomerManage = () => {
       phoneNumber: user?.phoneNumber,
       address: user?.address,
       shipAddress: user?.shipAddress,
-      role: user?.roles,
+      role: user?.roleId,
       status: user?.status,
-      createdAt: fDateTime(user?.createdAt),
-      updatedAt: fDateTime(user?.updatedAt),
+      createdAt: fDateTime(user?.created_at),
+      updatedAt: fDateTime(user?.updated_at),
     };
   });
 
@@ -334,11 +339,11 @@ const CustomerManage = () => {
     { name: 'fullName', label: 'FullName', type: 'text' },
     { name: 'username', label: 'Username', type: 'text' },
     { name: 'email', label: 'Email', type: 'email' },
+    { name: 'phoneNumber', label: 'Phone Number', type: 'text' },
   ];
 
   const handleView = (userId) => {
     navigate(`/admin/customer-manage/${userId}`);
-    handleGetOneUser(userId);
   };
 
   const handleDelete = async (userId) => {

@@ -20,6 +20,8 @@ import { OrdersProvider } from './Contexts/OrderContext';
 import { RoleProvider } from './Contexts/RoleContext';
 import { PaymentsProvider } from './Contexts/PaymentContext';
 import { ReservationProvider } from './Contexts/ReservationContext';
+import { TableProvider } from './Contexts/TableContext';
+import { ReviewProvider } from './Contexts/ReviewContext';
 
 // ----------------------------------------------------------------------
 
@@ -41,7 +43,11 @@ export default function App() {
                           <RoleProvider>
                             <PaymentsProvider>
                               <ReservationProvider>
-                                <Router />
+                                <TableProvider>
+                                  <ReviewProvider>
+                                    <Router />
+                                  </ReviewProvider>
+                                </TableProvider>
                               </ReservationProvider>
                             </PaymentsProvider>
                           </RoleProvider>

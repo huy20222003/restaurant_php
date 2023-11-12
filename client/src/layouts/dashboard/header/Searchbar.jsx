@@ -1,5 +1,6 @@
-import { useState, useContext, startTransition } from 'react';
+import { useState, startTransition, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+//@mui
 import { styled } from '@mui/material/styles';
 import {
   Input,
@@ -9,10 +10,14 @@ import {
   InputAdornment,
   ClickAwayListener,
 } from '@mui/material';
+//util
 import { bgBlur } from '../../../utils/cssStyles';
+//component
 import Iconify from '../../../Components/User/iconify';
-import { ProductsContext } from '../../../Contexts/ProductsContext';
+//context
+import { useProduct } from '../../../hooks/context';
 
+//----------------------------------------------------------
 const HEADER_MOBILE = 64;
 const HEADER_DESKTOP = 92;
 
@@ -34,11 +39,35 @@ const StyledSearchbar = styled('div')(({ theme }) => ({
   },
 }));
 
-export default function Searchbar() {
+const Searchbar = () => {
   const [open, setOpen] = useState(false);
-  const { handleSearchProduct } = useContext(ProductsContext);
+  const { handleSearchProduct } = useProduct();
   const [searchValue, setSearchValue] = useState('');
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setLoading(true); // Start loading
+        await handleSearchProduct(searchValue);
+        console.log(123);
+        // if (response.success) {
+        //   navigate('products');
+        //   setSearchValue('');
+        //   handleClose();
+        // }
+      } catch (error) {
+        console.log('Error');
+      } finally {
+        setLoading(false); // Stop loading
+      }
+    };
+
+    if (open) {
+      fetchData();
+    }
+  }, [open, searchValue, handleSearchProduct, navigate]);
 
   const handleOpen = () => {
     setOpen(true);
@@ -52,20 +81,11 @@ export default function Searchbar() {
     startTransition(() => setSearchValue(e.target.value));
   };
 
-  const handleSearch = async () => {
-    try {
-      const response = await handleSearchProduct(searchValue);
-      if (!response.success) {
-        console.log(response.message);
-      } else {
-        console.log(response.message);
-        navigate('products');
-        setSearchValue('');
-        handleClose();
-      }
-    } catch (error) {
-      console.log('Error');
-    }
+  const handleSearch = () => {
+    startTransition(() => {
+      setOpen(false);
+      setSearchValue('');
+    });
   };
 
   return (
@@ -96,7 +116,11 @@ export default function Searchbar() {
                 }
                 sx={{ mr: 1, fontWeight: 'fontWeightBold' }}
               />
-              <Button variant="contained" onClick={handleSearch}>
+              <Button
+                variant="contained"
+                onClick={handleSearch}
+                disabled={loading}
+              >
                 Search
               </Button>
             </StyledSearchbar>
@@ -105,4 +129,6 @@ export default function Searchbar() {
       </div>
     </ClickAwayListener>
   );
-}
+};
+
+export default Searchbar;

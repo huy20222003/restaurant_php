@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 //@mui
 import {
@@ -11,19 +12,30 @@ import {
   InputLabel,
   Select,
   MenuItem,
+  Box,
 } from '@mui/material';
 import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 //CommonContext
-import { useCommon } from '../../hooks/context';
-//tableConfig
-import tableConfig from '../../config/tableConfig';
+import { useCommon, useTable } from '../../hooks/context';
+import dayjs from 'dayjs';
 //---------------------------------------------------------------------------
 
-const FormDialogReservation = ({ formik, handleSave, isEdit }) => {
+const FormDialogReservation = (props) => {
+  const { formik, isEdit } = props;
   const { openFormDialog, setOpenFormDialog } = useCommon();
+  const today = dayjs();
+
+  const {
+    tableState: { tables },
+    handleGetAllTables,
+  } = useTable();
+
+  useEffect(() => {
+    handleGetAllTables();
+  }, [handleGetAllTables]);
 
   const handleClose = () => {
     setOpenFormDialog(false);
@@ -31,7 +43,7 @@ const FormDialogReservation = ({ formik, handleSave, isEdit }) => {
 
   return (
     <div>
-      <Dialog open={openFormDialog} onClose={handleClose}>
+      <Dialog open={openFormDialog} onClose={handleClose} fullWidth>
         <DialogTitle sx={{ textAlign: 'center', fontSize: '1.8rem' }}>
           {isEdit ? 'Update Reservation' : 'Add Reservation'}
         </DialogTitle>
@@ -42,49 +54,72 @@ const FormDialogReservation = ({ formik, handleSave, isEdit }) => {
             value={formik.values.fullName || ''}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
-            error={formik.touched.fullName && formik.errors.fullName}
+            error={!!(formik.touched.fullName && formik.errors.fullName)}
             helperText={formik.touched.fullName && formik.errors.fullName}
             required
           />
+          <Box sx={{ my: '0.25rem' }}>
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
+              <DemoContainer components={['DateTimePicker']}>
+                <DateTimePicker
+                  label="Reservation Date"
+                  value={formik.values.reservationDate || today}
+                  disablePast
+                  slotProps={{
+                    textField: {
+                      helperText:
+                        formik.touched.reservationDate &&
+                        formik.errors.reservationDate,
+                    },
+                  }}
+                  onChange={(date) => {
+                    formik.setFieldValue('reservationDate', date);
+                  }}
+                />
+              </DemoContainer>
+            </LocalizationProvider>
+          </Box>
           <FormControl
             fullWidth
             autoFocus
             sx={{ margin: '2rem 0', display: 'block' }}
           >
-            <InputLabel id="tableName-label">Table Name</InputLabel>
+            <InputLabel id="tableId-label">Table Name</InputLabel>
             <Select
-              labelId="tableName-label"
-              id="tableName"
-              name="tableName"
-              value={formik.values.tableName || ''}
+              labelId="tableId-label"
+              id="tableId"
+              name="tableId"
+              value={formik.values.tableId || ''}
               label="Table Name"
               fullWidth
               onChange={formik.handleChange}
-              error={formik.touched.tableName && formik.errors.tableName}
-              helperText={formik.touched.tableName && formik.errors.tableName}
+              error={!!(formik.touched.tableId && formik.errors.tableId)}
+              helperText={formik.touched.tableId && formik.errors.tableId}
             >
-              {tableConfig.map((table) => (
+              {tables.map((table) => (
                 <MenuItem
                   key={table.name}
                   disabled={table.isReservation ? true : false}
-                  value={table.name}
+                  value={table.id}
                 >
                   {table.name} ({table.description})
                 </MenuItem>
               ))}
             </Select>
           </FormControl>
-          <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <DemoContainer components={['DateTimePicker']}>
-              <DateTimePicker
-                label="Reservation Date"
-                value={formik.values.reservationDate || null}
-                onChange={(date) => {
-                  formik.setFieldValue('reservationDate', date);
-                }}
-              />
-            </DemoContainer>
-          </LocalizationProvider>
+          <TextField
+            margin="dense"
+            fullWidth
+            id="note"
+            label="Note"
+            name="note"
+            autoComplete="note"
+            error={!!(formik.touched.note && formik.errors.note)}
+            helperText={formik.touched.note && formik.errors.note}
+            {...formik.getFieldProps('note')}
+            multiline
+            rows={3}
+          />
         </DialogContent>
         <DialogActions>
           <Button
@@ -95,7 +130,11 @@ const FormDialogReservation = ({ formik, handleSave, isEdit }) => {
           >
             Cancel
           </Button>
-          <Button variant="contained" size="large" onClick={handleSave}>
+          <Button
+            variant="contained"
+            size="large"
+            onClick={formik.handleSubmit}
+          >
             {isEdit ? 'Update' : 'Add'}
           </Button>
         </DialogActions>
@@ -106,7 +145,6 @@ const FormDialogReservation = ({ formik, handleSave, isEdit }) => {
 
 FormDialogReservation.propTypes = {
   formik: PropTypes.object,
-  handleSave: PropTypes.func.isRequired,
   isEdit: PropTypes.bool.isRequired,
 };
 

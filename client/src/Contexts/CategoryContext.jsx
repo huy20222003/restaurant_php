@@ -60,11 +60,12 @@ export const CategoryProvider = (prop) => {
       if (response.data.success) {
         dispatch(createCategory(response.data.category));
       }
+      await handleGetAllCategory();
       return response.data;
     } catch (error) {
       return handleError(error);
     }
-  }, []);
+  }, [handleGetAllCategory]);
 
   const handleUpdateCategory = useCallback(async (categoryId, data) => {
     try {
@@ -72,11 +73,12 @@ export const CategoryProvider = (prop) => {
       if (response.data.success) {
         dispatch(updateCategory(response.data.category));
       }
+      await handleGetAllCategory();
       return response.data;
     } catch (error) {
       return handleError(error);
     }
-  }, []);
+  }, [handleGetAllCategory]);
 
   const handleDeleteCategory = useCallback(async (categoryId) => {
     try {
@@ -84,11 +86,12 @@ export const CategoryProvider = (prop) => {
       if (response.data.success) {
         dispatch(deleteCategory(categoryId));
       }
+      await handleGetAllCategory();
       return response.data;
     } catch (error) {
       return handleError(error);
     }
-  }, []);
+  }, [handleGetAllCategory]);
 
   const handleAddProductToCategory = useCallback(
     async (data) => {
